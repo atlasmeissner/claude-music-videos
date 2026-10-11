@@ -1,0 +1,2557 @@
+{
+ "lines": [
+  {
+   "i": 0,
+   "section": "verse1",
+   "text": "Woke up in a flat that's eighty percent mess",
+   "start": 27.3,
+   "end": 31.9,
+   "words": [
+    {
+     "w": "Woke",
+     "start": 27.3,
+     "end": 27.86,
+     "conf": 0.26
+    },
+    {
+     "w": "up",
+     "start": 27.86,
+     "end": 28.24,
+     "conf": 0.09
+    },
+    {
+     "w": "in",
+     "start": 28.24,
+     "end": 28.36,
+     "conf": 0.12
+    },
+    {
+     "w": "a",
+     "start": 28.36,
+     "end": 28.52,
+     "conf": 0.01
+    },
+    {
+     "w": "flat",
+     "start": 28.52,
+     "end": 29.4,
+     "conf": 0.86
+    },
+    {
+     "w": "that's",
+     "start": 29.8,
+     "end": 30.2,
+     "conf": 0.58
+    },
+    {
+     "w": "eighty",
+     "start": 30.2,
+     "end": 30.58,
+     "conf": 0.24
+    },
+    {
+     "w": "percent",
+     "start": 30.58,
+     "end": 31.36,
+     "conf": 0.55
+    },
+    {
+     "w": "mess",
+     "start": 31.36,
+     "end": 31.9,
+     "conf": 0.74
+    }
+   ]
+  },
+  {
+   "i": 1,
+   "section": "verse1",
+   "text": "Spent four-fifths of the morning just trying to dress",
+   "start": 32.2,
+   "end": 36.78,
+   "words": [
+    {
+     "w": "Spent",
+     "start": 32.2,
+     "end": 32.58,
+     "conf": 1.0
+    },
+    {
+     "w": "four-fifths",
+     "start": 32.58,
+     "end": 33.4,
+     "conf": 0.83,
+     "syl": [
+      [
+       32.58,
+       32.8
+      ],
+      [
+       32.9,
+       33.4
+      ]
+     ]
+    },
+    {
+     "w": "of",
+     "start": 33.4,
+     "end": 33.52,
+     "conf": 0.59
+    },
+    {
+     "w": "the",
+     "start": 33.52,
+     "end": 33.68,
+     "conf": 0.8
+    },
+    {
+     "w": "morning",
+     "start": 33.68,
+     "end": 34.51,
+     "conf": 0.95
+    },
+    {
+     "w": "just",
+     "start": 34.76,
+     "end": 35.34,
+     "conf": 0.86
+    },
+    {
+     "w": "trying",
+     "start": 35.34,
+     "end": 35.86,
+     "conf": 0.8
+    },
+    {
+     "w": "to",
+     "start": 35.86,
+     "end": 36.28,
+     "conf": 0.68
+    },
+    {
+     "w": "dress",
+     "start": 36.28,
+     "end": 36.78,
+     "conf": 0.82
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "section": "verse1",
+   "text": "I've got a hundred records sitting on the shelf",
+   "start": 37.32,
+   "end": 41.79,
+   "words": [
+    {
+     "w": "I've",
+     "start": 37.32,
+     "end": 37.56,
+     "conf": 0.8
+    },
+    {
+     "w": "got",
+     "start": 37.56,
+     "end": 37.94,
+     "conf": 1.0
+    },
+    {
+     "w": "a",
+     "start": 37.94,
+     "end": 38.06,
+     "conf": 0.8
+    },
+    {
+     "w": "hundred",
+     "start": 38.06,
+     "end": 38.64,
+     "conf": 0.91
+    },
+    {
+     "w": "records",
+     "start": 38.64,
+     "end": 39.36,
+     "conf": 0.6
+    },
+    {
+     "w": "sitting",
+     "start": 39.98,
+     "end": 40.68,
+     "conf": 0.74
+    },
+    {
+     "w": "on",
+     "start": 40.68,
+     "end": 40.82,
+     "conf": 0.8
+    },
+    {
+     "w": "the",
+     "start": 40.82,
+     "end": 41.04,
+     "conf": 0.74
+    },
+    {
+     "w": "shelf",
+     "start": 41.04,
+     "end": 41.79,
+     "conf": 0.7
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "section": "verse1",
+   "text": "But I only needle-drop twenty to find myself",
+   "start": 42.08,
+   "end": 46.53,
+   "words": [
+    {
+     "w": "But",
+     "start": 42.08,
+     "end": 42.28,
+     "conf": 1.0
+    },
+    {
+     "w": "I",
+     "start": 42.28,
+     "end": 42.64,
+     "conf": 0.69
+    },
+    {
+     "w": "only",
+     "start": 42.66,
+     "end": 42.98,
+     "conf": 0.84
+    },
+    {
+     "w": "needle-drop",
+     "start": 42.98,
+     "end": 43.72,
+     "conf": 0.97,
+     "syl": [
+      [
+       42.98,
+       43.38
+      ],
+      [
+       43.44,
+       43.72
+      ]
+     ]
+    },
+    {
+     "w": "twenty",
+     "start": 43.72,
+     "end": 44.64,
+     "conf": 0.52
+    },
+    {
+     "w": "to",
+     "start": 44.64,
+     "end": 44.94,
+     "conf": 0.61
+    },
+    {
+     "w": "find",
+     "start": 45.28,
+     "end": 45.78,
+     "conf": 0.52
+    },
+    {
+     "w": "myself",
+     "start": 45.78,
+     "end": 46.53,
+     "conf": 0.81
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "section": "verse1",
+   "text": "The kettle's boiling over, the toast is slightly charred",
+   "start": 47.0,
+   "end": 51.68,
+   "words": [
+    {
+     "w": "The",
+     "start": 47.0,
+     "end": 47.14,
+     "conf": 0.6
+    },
+    {
+     "w": "kettle's",
+     "start": 47.14,
+     "end": 47.76,
+     "conf": 0.56
+    },
+    {
+     "w": "boiling",
+     "start": 47.76,
+     "end": 48.72,
+     "conf": 0.62
+    },
+    {
+     "w": "over,",
+     "start": 48.72,
+     "end": 49.38,
+     "conf": 0.25
+    },
+    {
+     "w": "the",
+     "start": 49.46,
+     "end": 49.62,
+     "conf": 0.56
+    },
+    {
+     "w": "toast",
+     "start": 49.62,
+     "end": 50.26,
+     "conf": 0.92
+    },
+    {
+     "w": "is",
+     "start": 50.26,
+     "end": 50.44,
+     "conf": 0.78
+    },
+    {
+     "w": "slightly",
+     "start": 50.44,
+     "end": 51.08,
+     "conf": 0.84
+    },
+    {
+     "w": "charred",
+     "start": 51.08,
+     "end": 51.68,
+     "conf": 0.8
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "section": "verse1",
+   "text": "Why's living the simple life so bloody hard?",
+   "start": 52.08,
+   "end": 56.83,
+   "words": [
+    {
+     "w": "Why's",
+     "start": 52.08,
+     "end": 52.44,
+     "conf": 0.53
+    },
+    {
+     "w": "living",
+     "start": 52.44,
+     "end": 52.9,
+     "conf": 0.83
+    },
+    {
+     "w": "the",
+     "start": 52.9,
+     "end": 53.32,
+     "conf": 0.52
+    },
+    {
+     "w": "simple",
+     "start": 53.32,
+     "end": 54.22,
+     "conf": 0.71
+    },
+    {
+     "w": "life",
+     "start": 54.22,
+     "end": 54.84,
+     "conf": 0.4
+    },
+    {
+     "w": "so",
+     "start": 54.84,
+     "end": 55.32,
+     "conf": 0.76
+    },
+    {
+     "w": "bloody",
+     "start": 55.32,
+     "end": 56.18,
+     "conf": 0.74
+    },
+    {
+     "w": "hard?",
+     "start": 56.18,
+     "end": 56.83,
+     "conf": 0.42
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "section": "verse1",
+   "text": "I'm running 'round the park in my worn-out shoes",
+   "start": 57.14,
+   "end": 61.38,
+   "words": [
+    {
+     "w": "I'm",
+     "start": 57.14,
+     "end": 57.4,
+     "conf": 0.82
+    },
+    {
+     "w": "running",
+     "start": 57.4,
+     "end": 57.86,
+     "conf": 0.83
+    },
+    {
+     "w": "'round",
+     "start": 57.86,
+     "end": 58.18,
+     "conf": 0.73
+    },
+    {
+     "w": "the",
+     "start": 58.18,
+     "end": 58.3,
+     "conf": 0.8
+    },
+    {
+     "w": "park",
+     "start": 58.3,
+     "end": 59.3,
+     "conf": 0.88
+    },
+    {
+     "w": "in",
+     "start": 59.46,
+     "end": 59.58,
+     "conf": 0.9
+    },
+    {
+     "w": "my",
+     "start": 59.58,
+     "end": 59.84,
+     "conf": 0.82
+    },
+    {
+     "w": "worn-out",
+     "start": 59.84,
+     "end": 60.7,
+     "conf": 0.79,
+     "syl": [
+      [
+       59.84,
+       60.18
+      ],
+      [
+       60.38,
+       60.7
+      ]
+     ]
+    },
+    {
+     "w": "shoes",
+     "start": 60.7,
+     "end": 61.38,
+     "conf": 0.73
+    }
+   ]
+  },
+  {
+   "i": 7,
+   "section": "verse1",
+   "text": "While eighty percent of the world is watching the news.",
+   "start": 61.4,
+   "end": 66.71,
+   "words": [
+    {
+     "w": "While",
+     "start": 61.4,
+     "end": 61.78,
+     "conf": 0.73
+    },
+    {
+     "w": "eighty",
+     "start": 61.78,
+     "end": 62.04,
+     "conf": 0.21
+    },
+    {
+     "w": "percent",
+     "start": 62.04,
+     "end": 62.84,
+     "conf": 0.66
+    },
+    {
+     "w": "of",
+     "start": 62.84,
+     "end": 63.04,
+     "conf": 0.39
+    },
+    {
+     "w": "the",
+     "start": 63.04,
+     "end": 63.24,
+     "conf": 0.59
+    },
+    {
+     "w": "world",
+     "start": 63.24,
+     "end": 64.32,
+     "conf": 0.67
+    },
+    {
+     "w": "is",
+     "start": 64.32,
+     "end": 64.54,
+     "conf": 0.14
+    },
+    {
+     "w": "watching",
+     "start": 64.54,
+     "end": 65.4,
+     "conf": 0.66
+    },
+    {
+     "w": "the",
+     "start": 65.4,
+     "end": 65.76,
+     "conf": 0.1
+    },
+    {
+     "w": "news.",
+     "start": 65.76,
+     "end": 66.71,
+     "conf": 0.51
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "section": "chorus1",
+   "text": "Oh, give me the twenty that gives me the lot!",
+   "start": 67.1,
+   "end": 71.26,
+   "words": [
+    {
+     "w": "Oh,",
+     "start": 67.1,
+     "end": 67.32,
+     "conf": 0.52
+    },
+    {
+     "w": "give",
+     "start": 67.32,
+     "end": 67.64,
+     "conf": 0.31
+    },
+    {
+     "w": "me",
+     "start": 67.64,
+     "end": 67.96,
+     "conf": 0.67
+    },
+    {
+     "w": "the",
+     "start": 67.96,
+     "end": 68.18,
+     "conf": 0.39
+    },
+    {
+     "w": "twenty",
+     "start": 68.18,
+     "end": 69.11,
+     "conf": 0.13
+    },
+    {
+     "w": "that",
+     "start": 69.48,
+     "end": 69.78,
+     "conf": 0.26
+    },
+    {
+     "w": "gives",
+     "start": 69.78,
+     "end": 70.1,
+     "conf": 0.84
+    },
+    {
+     "w": "me",
+     "start": 70.1,
+     "end": 70.52,
+     "conf": 1.0
+    },
+    {
+     "w": "the",
+     "start": 70.52,
+     "end": 70.7,
+     "conf": 0.17
+    },
+    {
+     "w": "lot!",
+     "start": 70.7,
+     "end": 71.26,
+     "conf": 0.35
+    }
+   ]
+  },
+  {
+   "i": 9,
+   "section": "chorus1",
+   "text": "The cream of the crop, the best of what I've got",
+   "start": 71.94,
+   "end": 76.06,
+   "words": [
+    {
+     "w": "The",
+     "start": 71.94,
+     "end": 72.16,
+     "conf": 0.12
+    },
+    {
+     "w": "cream",
+     "start": 72.16,
+     "end": 72.68,
+     "conf": 0.66
+    },
+    {
+     "w": "of",
+     "start": 72.68,
+     "end": 72.84,
+     "conf": 0.11
+    },
+    {
+     "w": "the",
+     "start": 72.84,
+     "end": 73.08,
+     "conf": 0.1
+    },
+    {
+     "w": "crop,",
+     "start": 73.08,
+     "end": 73.57,
+     "conf": 0.67
+    },
+    {
+     "w": "the",
+     "start": 73.82,
+     "end": 74.1,
+     "conf": 0.61
+    },
+    {
+     "w": "best",
+     "start": 74.1,
+     "end": 74.56,
+     "conf": 0.79
+    },
+    {
+     "w": "of",
+     "start": 74.56,
+     "end": 74.72,
+     "conf": 0.49
+    },
+    {
+     "w": "what",
+     "start": 74.72,
+     "end": 75.34,
+     "conf": 0.26
+    },
+    {
+     "w": "I've",
+     "start": 75.34,
+     "end": 75.66,
+     "conf": 0.05
+    },
+    {
+     "w": "got",
+     "start": 75.66,
+     "end": 76.06,
+     "conf": 0.16
+    }
+   ]
+  },
+  {
+   "i": 10,
+   "section": "chorus1",
+   "text": "I don't need the filler, I don't need the weight",
+   "start": 76.54,
+   "end": 81.23,
+   "words": [
+    {
+     "w": "I",
+     "start": 76.54,
+     "end": 76.76,
+     "conf": 0.37
+    },
+    {
+     "w": "don't",
+     "start": 76.76,
+     "end": 77.26,
+     "conf": 0.46
+    },
+    {
+     "w": "need",
+     "start": 77.26,
+     "end": 77.9,
+     "conf": 0.69
+    },
+    {
+     "w": "the",
+     "start": 77.9,
+     "end": 78.12,
+     "conf": 0.21
+    },
+    {
+     "w": "filler,",
+     "start": 78.12,
+     "end": 79.0,
+     "conf": 0.61
+    },
+    {
+     "w": "I",
+     "start": 79.28,
+     "end": 79.4,
+     "conf": 0.61
+    },
+    {
+     "w": "don't",
+     "start": 79.4,
+     "end": 80.02,
+     "conf": 0.5
+    },
+    {
+     "w": "need",
+     "start": 80.02,
+     "end": 80.48,
+     "conf": 0.62
+    },
+    {
+     "w": "the",
+     "start": 80.48,
+     "end": 80.64,
+     "conf": 0.83
+    },
+    {
+     "w": "weight",
+     "start": 80.64,
+     "end": 81.23,
+     "conf": 0.22
+    }
+   ]
+  },
+  {
+   "i": 11,
+   "section": "chorus1",
+   "text": "Just the twenty percent that makes me feel great",
+   "start": 81.54,
+   "end": 85.98,
+   "words": [
+    {
+     "w": "Just",
+     "start": 81.54,
+     "end": 81.9,
+     "conf": 0.89
+    },
+    {
+     "w": "the",
+     "start": 81.9,
+     "end": 82.08,
+     "conf": 0.58
+    },
+    {
+     "w": "twenty",
+     "start": 82.08,
+     "end": 82.78,
+     "conf": 0.79
+    },
+    {
+     "w": "percent",
+     "start": 82.78,
+     "end": 83.74,
+     "conf": 0.3
+    },
+    {
+     "w": "that",
+     "start": 83.74,
+     "end": 84.06,
+     "conf": 0.33
+    },
+    {
+     "w": "makes",
+     "start": 84.06,
+     "end": 84.62,
+     "conf": 0.79
+    },
+    {
+     "w": "me",
+     "start": 84.62,
+     "end": 84.94,
+     "conf": 0.8
+    },
+    {
+     "w": "feel",
+     "start": 84.94,
+     "end": 85.58,
+     "conf": 0.81
+    },
+    {
+     "w": "great",
+     "start": 85.58,
+     "end": 85.98,
+     "conf": 0.87
+    }
+   ]
+  },
+  {
+   "i": 12,
+   "section": "chorus1",
+   "text": "Yeah, it's a lopsided world, a mathematical high",
+   "start": 86.18,
+   "end": 91.75,
+   "words": [
+    {
+     "w": "Yeah,",
+     "start": 86.18,
+     "end": 86.64,
+     "conf": 0.27
+    },
+    {
+     "w": "it's",
+     "start": 86.64,
+     "end": 86.9,
+     "conf": 0.28
+    },
+    {
+     "w": "a",
+     "start": 86.9,
+     "end": 87.04,
+     "conf": 0.03
+    },
+    {
+     "w": "lopsided",
+     "start": 87.04,
+     "end": 88.04,
+     "conf": 0.42,
+     "syl": [
+      [
+       87.04,
+       87.28
+      ],
+      [
+       87.42,
+       88.04
+      ]
+     ]
+    },
+    {
+     "w": "world,",
+     "start": 88.04,
+     "end": 88.78,
+     "conf": 0.25
+    },
+    {
+     "w": "a",
+     "start": 88.78,
+     "end": 88.8,
+     "conf": 0.26
+    },
+    {
+     "w": "mathematical",
+     "start": 88.8,
+     "end": 90.52,
+     "conf": 0.57
+    },
+    {
+     "w": "high",
+     "start": 90.52,
+     "end": 91.75,
+     "conf": 0.2
+    }
+   ]
+  },
+  {
+   "i": 13,
+   "section": "chorus1",
+   "text": "We're soaring on the fraction, watching time fly by!",
+   "start": 91.78,
+   "end": 100.56,
+   "words": [
+    {
+     "w": "We're",
+     "start": 91.78,
+     "end": 92.04,
+     "conf": 0.13
+    },
+    {
+     "w": "soaring",
+     "start": 92.04,
+     "end": 92.74,
+     "conf": 0.69
+    },
+    {
+     "w": "on",
+     "start": 92.74,
+     "end": 92.9,
+     "conf": 0.95
+    },
+    {
+     "w": "the",
+     "start": 92.9,
+     "end": 93.14,
+     "conf": 0.78
+    },
+    {
+     "w": "fraction,",
+     "start": 93.14,
+     "end": 94.0,
+     "conf": 0.74
+    },
+    {
+     "w": "watching",
+     "start": 96.1,
+     "end": 97.0,
+     "conf": 0.59
+    },
+    {
+     "w": "time",
+     "start": 97.0,
+     "end": 97.6,
+     "conf": 0.87
+    },
+    {
+     "w": "fly",
+     "start": 97.6,
+     "end": 98.24,
+     "conf": 0.41
+    },
+    {
+     "w": "by!",
+     "start": 98.24,
+     "end": 100.56,
+     "conf": 0.22
+    }
+   ]
+  },
+  {
+   "i": 14,
+   "section": "verse2",
+   "text": "Met a girl in Camden, she spoke in a blur",
+   "start": 101.7,
+   "end": 105.75,
+   "words": [
+    {
+     "w": "Met",
+     "start": 101.7,
+     "end": 101.94,
+     "conf": 0.58
+    },
+    {
+     "w": "a",
+     "start": 101.94,
+     "end": 102.02,
+     "conf": 0.55
+    },
+    {
+     "w": "girl",
+     "start": 102.02,
+     "end": 102.64,
+     "conf": 0.79
+    },
+    {
+     "w": "in",
+     "start": 102.64,
+     "end": 102.84,
+     "conf": 1.0
+    },
+    {
+     "w": "Camden,",
+     "start": 102.84,
+     "end": 103.83,
+     "conf": 0.53
+    },
+    {
+     "w": "she",
+     "start": 104.12,
+     "end": 104.36,
+     "conf": 1.0
+    },
+    {
+     "w": "spoke",
+     "start": 104.36,
+     "end": 105.0,
+     "conf": 0.95
+    },
+    {
+     "w": "in",
+     "start": 105.0,
+     "end": 105.22,
+     "conf": 1.0
+    },
+    {
+     "w": "a",
+     "start": 105.22,
+     "end": 105.34,
+     "conf": 0.1
+    },
+    {
+     "w": "blur",
+     "start": 105.34,
+     "end": 105.75,
+     "conf": 0.75
+    }
+   ]
+  },
+  {
+   "i": 15,
+   "section": "verse2",
+   "text": "Eighty percent of my chat was wasted on her",
+   "start": 106.18,
+   "end": 111.2,
+   "words": [
+    {
+     "w": "Eighty",
+     "start": 106.18,
+     "end": 106.62,
+     "conf": 0.8
+    },
+    {
+     "w": "percent",
+     "start": 106.62,
+     "end": 107.36,
+     "conf": 0.99
+    },
+    {
+     "w": "of",
+     "start": 107.36,
+     "end": 107.58,
+     "conf": 0.34
+    },
+    {
+     "w": "my",
+     "start": 107.58,
+     "end": 107.82,
+     "conf": 0.79
+    },
+    {
+     "w": "chat",
+     "start": 107.82,
+     "end": 108.5,
+     "conf": 0.9
+    },
+    {
+     "w": "was",
+     "start": 108.5,
+     "end": 109.14,
+     "conf": 0.98
+    },
+    {
+     "w": "wasted",
+     "start": 109.14,
+     "end": 110.34,
+     "conf": 0.89
+    },
+    {
+     "w": "on",
+     "start": 110.34,
+     "end": 110.72,
+     "conf": 0.76
+    },
+    {
+     "w": "her",
+     "start": 110.72,
+     "end": 111.2,
+     "conf": 0.68
+    }
+   ]
+  },
+  {
+   "i": 16,
+   "section": "verse2",
+   "text": "But that one little wink, that fifth of a smile",
+   "start": 111.44,
+   "end": 115.91,
+   "words": [
+    {
+     "w": "But",
+     "start": 111.44,
+     "end": 111.62,
+     "conf": 0.74
+    },
+    {
+     "w": "that",
+     "start": 111.62,
+     "end": 111.98,
+     "conf": 0.77
+    },
+    {
+     "w": "one",
+     "start": 111.98,
+     "end": 112.24,
+     "conf": 1.0
+    },
+    {
+     "w": "little",
+     "start": 112.24,
+     "end": 112.84,
+     "conf": 0.87
+    },
+    {
+     "w": "wink,",
+     "start": 112.84,
+     "end": 113.18,
+     "conf": 0.96
+    },
+    {
+     "w": "that",
+     "start": 114.06,
+     "end": 114.32,
+     "conf": 0.75
+    },
+    {
+     "w": "fifth",
+     "start": 114.32,
+     "end": 114.9,
+     "conf": 0.84
+    },
+    {
+     "w": "of",
+     "start": 114.9,
+     "end": 115.06,
+     "conf": 0.69
+    },
+    {
+     "w": "a",
+     "start": 115.06,
+     "end": 115.18,
+     "conf": 0.62
+    },
+    {
+     "w": "smile",
+     "start": 115.18,
+     "end": 115.91,
+     "conf": 0.91
+    }
+   ]
+  },
+  {
+   "i": 17,
+   "section": "verse2",
+   "text": "Made the whole Friday night feel well worth the while",
+   "start": 115.94,
+   "end": 120.93,
+   "words": [
+    {
+     "w": "Made",
+     "start": 115.94,
+     "end": 116.4,
+     "conf": 0.96
+    },
+    {
+     "w": "the",
+     "start": 116.4,
+     "end": 116.6,
+     "conf": 1.0
+    },
+    {
+     "w": "whole",
+     "start": 116.6,
+     "end": 117.14,
+     "conf": 0.76
+    },
+    {
+     "w": "Friday",
+     "start": 117.14,
+     "end": 118.14,
+     "conf": 0.81
+    },
+    {
+     "w": "night",
+     "start": 118.14,
+     "end": 118.72,
+     "conf": 0.79
+    },
+    {
+     "w": "feel",
+     "start": 118.72,
+     "end": 119.06,
+     "conf": 0.8
+    },
+    {
+     "w": "well",
+     "start": 119.06,
+     "end": 119.68,
+     "conf": 0.79
+    },
+    {
+     "w": "worth",
+     "start": 119.68,
+     "end": 120.14,
+     "conf": 0.8
+    },
+    {
+     "w": "the",
+     "start": 120.14,
+     "end": 120.3,
+     "conf": 0.71
+    },
+    {
+     "w": "while",
+     "start": 120.3,
+     "end": 120.93,
+     "conf": 0.84
+    }
+   ]
+  },
+  {
+   "i": 18,
+   "section": "verse2",
+   "text": "Most of my friends are just background noise",
+   "start": 121.82,
+   "end": 125.95,
+   "words": [
+    {
+     "w": "Most",
+     "start": 121.82,
+     "end": 122.28,
+     "conf": 0.89
+    },
+    {
+     "w": "of",
+     "start": 122.28,
+     "end": 122.44,
+     "conf": 0.77
+    },
+    {
+     "w": "my",
+     "start": 122.44,
+     "end": 122.72,
+     "conf": 0.84
+    },
+    {
+     "w": "friends",
+     "start": 122.72,
+     "end": 123.5,
+     "conf": 0.88
+    },
+    {
+     "w": "are",
+     "start": 123.5,
+     "end": 123.68,
+     "conf": 0.16
+    },
+    {
+     "w": "just",
+     "start": 123.68,
+     "end": 124.32,
+     "conf": 0.91
+    },
+    {
+     "w": "background",
+     "start": 124.32,
+     "end": 125.3,
+     "conf": 0.82
+    },
+    {
+     "w": "noise",
+     "start": 125.3,
+     "end": 125.95,
+     "conf": 0.76
+    }
+   ]
+  },
+  {
+   "i": 19,
+   "section": "verse2",
+   "text": "Chasing the shadows and the plastic toys",
+   "start": 126.38,
+   "end": 131.06,
+   "words": [
+    {
+     "w": "Chasing",
+     "start": 126.38,
+     "end": 127.46,
+     "conf": 0.56
+    },
+    {
+     "w": "the",
+     "start": 127.46,
+     "end": 127.68,
+     "conf": 0.56
+    },
+    {
+     "w": "shadows",
+     "start": 127.68,
+     "end": 128.78,
+     "conf": 0.9
+    },
+    {
+     "w": "and",
+     "start": 128.78,
+     "end": 129.02,
+     "conf": 0.46
+    },
+    {
+     "w": "the",
+     "start": 129.02,
+     "end": 129.2,
+     "conf": 0.86
+    },
+    {
+     "w": "plastic",
+     "start": 129.2,
+     "end": 130.16,
+     "conf": 0.96
+    },
+    {
+     "w": "toys",
+     "start": 130.16,
+     "end": 131.06,
+     "conf": 0.49
+    }
+   ]
+  },
+  {
+   "i": 20,
+   "section": "verse2",
+   "text": "But there's two out of ten who'd pull me from the rain",
+   "start": 131.32,
+   "end": 136.2,
+   "words": [
+    {
+     "w": "But",
+     "start": 131.32,
+     "end": 131.52,
+     "conf": 0.58
+    },
+    {
+     "w": "there's",
+     "start": 131.52,
+     "end": 131.8,
+     "conf": 0.43
+    },
+    {
+     "w": "two",
+     "start": 131.8,
+     "end": 131.98,
+     "conf": 0.57
+    },
+    {
+     "w": "out",
+     "start": 131.98,
+     "end": 132.34,
+     "conf": 0.09
+    },
+    {
+     "w": "of",
+     "start": 132.34,
+     "end": 132.68,
+     "conf": 0.08
+    },
+    {
+     "w": "ten",
+     "start": 132.68,
+     "end": 133.36,
+     "conf": 0.69
+    },
+    {
+     "w": "who'd",
+     "start": 133.36,
+     "end": 133.66,
+     "conf": 0.68
+    },
+    {
+     "w": "pull",
+     "start": 133.66,
+     "end": 134.02,
+     "conf": 0.84
+    },
+    {
+     "w": "me",
+     "start": 134.02,
+     "end": 134.26,
+     "conf": 0.78
+    },
+    {
+     "w": "from",
+     "start": 134.6,
+     "end": 134.98,
+     "conf": 1.0
+    },
+    {
+     "w": "the",
+     "start": 134.98,
+     "end": 135.26,
+     "conf": 0.55
+    },
+    {
+     "w": "rain",
+     "start": 135.26,
+     "end": 136.2,
+     "conf": 1.0
+    }
+   ]
+  },
+  {
+   "i": 21,
+   "section": "verse2",
+   "text": "The rest is just static, a beautiful drain.",
+   "start": 136.22,
+   "end": 141.25,
+   "words": [
+    {
+     "w": "The",
+     "start": 136.22,
+     "end": 136.5,
+     "conf": 0.55
+    },
+    {
+     "w": "rest",
+     "start": 136.5,
+     "end": 137.28,
+     "conf": 0.86
+    },
+    {
+     "w": "is",
+     "start": 137.28,
+     "end": 137.44,
+     "conf": 1.0
+    },
+    {
+     "w": "just",
+     "start": 137.44,
+     "end": 137.98,
+     "conf": 0.98
+    },
+    {
+     "w": "static,",
+     "start": 137.98,
+     "end": 138.8,
+     "conf": 0.9
+    },
+    {
+     "w": "a",
+     "start": 138.8,
+     "end": 139.0,
+     "conf": 0.28
+    },
+    {
+     "w": "beautiful",
+     "start": 139.0,
+     "end": 140.22,
+     "conf": 0.96
+    },
+    {
+     "w": "drain.",
+     "start": 140.22,
+     "end": 141.25,
+     "conf": 0.77
+    }
+   ]
+  },
+  {
+   "i": 22,
+   "section": "chorus2",
+   "text": "Oh, give me the twenty that gives me the lot!",
+   "start": 141.64,
+   "end": 145.5,
+   "words": [
+    {
+     "w": "Oh,",
+     "start": 141.64,
+     "end": 141.84,
+     "conf": 0.46
+    },
+    {
+     "w": "give",
+     "start": 141.84,
+     "end": 142.14,
+     "conf": 0.44
+    },
+    {
+     "w": "me",
+     "start": 142.14,
+     "end": 142.46,
+     "conf": 1.0
+    },
+    {
+     "w": "the",
+     "start": 142.46,
+     "end": 142.66,
+     "conf": 0.83
+    },
+    {
+     "w": "twenty",
+     "start": 142.66,
+     "end": 143.71,
+     "conf": 0.45
+    },
+    {
+     "w": "that",
+     "start": 144.0,
+     "end": 144.28,
+     "conf": 1.0
+    },
+    {
+     "w": "gives",
+     "start": 144.28,
+     "end": 144.64,
+     "conf": 1.0
+    },
+    {
+     "w": "me",
+     "start": 144.64,
+     "end": 144.98,
+     "conf": 1.0
+    },
+    {
+     "w": "the",
+     "start": 144.98,
+     "end": 145.22,
+     "conf": 0.34
+    },
+    {
+     "w": "lot!",
+     "start": 145.22,
+     "end": 145.5,
+     "conf": 0.44
+    }
+   ]
+  },
+  {
+   "i": 23,
+   "section": "chorus2",
+   "text": "The cream of the crop, the best of what I've got",
+   "start": 146.48,
+   "end": 150.6,
+   "words": [
+    {
+     "w": "The",
+     "start": 146.48,
+     "end": 146.66,
+     "conf": 1.0
+    },
+    {
+     "w": "cream",
+     "start": 146.66,
+     "end": 147.26,
+     "conf": 1.0
+    },
+    {
+     "w": "of",
+     "start": 147.26,
+     "end": 147.4,
+     "conf": 0.24
+    },
+    {
+     "w": "the",
+     "start": 147.4,
+     "end": 147.6,
+     "conf": 0.05
+    },
+    {
+     "w": "crop,",
+     "start": 147.6,
+     "end": 148.11,
+     "conf": 0.83
+    },
+    {
+     "w": "the",
+     "start": 148.36,
+     "end": 148.64,
+     "conf": 1.0
+    },
+    {
+     "w": "best",
+     "start": 148.64,
+     "end": 149.12,
+     "conf": 0.96
+    },
+    {
+     "w": "of",
+     "start": 149.12,
+     "end": 149.24,
+     "conf": 0.4
+    },
+    {
+     "w": "what",
+     "start": 149.24,
+     "end": 149.48,
+     "conf": 0.28
+    },
+    {
+     "w": "I've",
+     "start": 149.48,
+     "end": 150.18,
+     "conf": 0.07
+    },
+    {
+     "w": "got",
+     "start": 150.2,
+     "end": 150.6,
+     "conf": 0.38
+    }
+   ]
+  },
+  {
+   "i": 24,
+   "section": "chorus2",
+   "text": "I don't need the filler, I don't need the weight",
+   "start": 151.08,
+   "end": 155.56,
+   "words": [
+    {
+     "w": "I",
+     "start": 151.08,
+     "end": 151.28,
+     "conf": 0.4
+    },
+    {
+     "w": "don't",
+     "start": 151.28,
+     "end": 151.76,
+     "conf": 0.29
+    },
+    {
+     "w": "need",
+     "start": 151.76,
+     "end": 152.42,
+     "conf": 0.39
+    },
+    {
+     "w": "the",
+     "start": 152.42,
+     "end": 152.68,
+     "conf": 0.03
+    },
+    {
+     "w": "filler,",
+     "start": 152.68,
+     "end": 153.39,
+     "conf": 0.67
+    },
+    {
+     "w": "I",
+     "start": 153.78,
+     "end": 153.92,
+     "conf": 0.02
+    },
+    {
+     "w": "don't",
+     "start": 153.92,
+     "end": 154.54,
+     "conf": 0.38
+    },
+    {
+     "w": "need",
+     "start": 154.54,
+     "end": 155.04,
+     "conf": 0.54
+    },
+    {
+     "w": "the",
+     "start": 155.04,
+     "end": 155.2,
+     "conf": 0.48
+    },
+    {
+     "w": "weight",
+     "start": 155.2,
+     "end": 155.56,
+     "conf": 0.2
+    }
+   ]
+  },
+  {
+   "i": 25,
+   "section": "chorus2",
+   "text": "Just the twenty percent that makes me feel great",
+   "start": 156.08,
+   "end": 160.72,
+   "words": [
+    {
+     "w": "Just",
+     "start": 156.08,
+     "end": 156.42,
+     "conf": 0.94
+    },
+    {
+     "w": "the",
+     "start": 156.42,
+     "end": 156.62,
+     "conf": 0.97
+    },
+    {
+     "w": "twenty",
+     "start": 156.62,
+     "end": 157.3,
+     "conf": 0.86
+    },
+    {
+     "w": "percent",
+     "start": 157.3,
+     "end": 158.28,
+     "conf": 0.43
+    },
+    {
+     "w": "that",
+     "start": 158.28,
+     "end": 158.62,
+     "conf": 1.0
+    },
+    {
+     "w": "makes",
+     "start": 158.62,
+     "end": 159.2,
+     "conf": 0.79
+    },
+    {
+     "w": "me",
+     "start": 159.2,
+     "end": 159.48,
+     "conf": 1.0
+    },
+    {
+     "w": "feel",
+     "start": 159.48,
+     "end": 160.12,
+     "conf": 0.89
+    },
+    {
+     "w": "great",
+     "start": 160.12,
+     "end": 160.72,
+     "conf": 0.77
+    }
+   ]
+  },
+  {
+   "i": 26,
+   "section": "chorus2",
+   "text": "Yeah, it's a lopsided world, a mathematical high",
+   "start": 160.74,
+   "end": 165.72,
+   "words": [
+    {
+     "w": "Yeah,",
+     "start": 160.74,
+     "end": 161.22,
+     "conf": 0.32
+    },
+    {
+     "w": "it's",
+     "start": 161.22,
+     "end": 161.56,
+     "conf": 0.19
+    },
+    {
+     "w": "a",
+     "start": 161.56,
+     "end": 161.64,
+     "conf": 0.08
+    },
+    {
+     "w": "lopsided",
+     "start": 161.64,
+     "end": 162.64,
+     "conf": 0.38,
+     "syl": [
+      [
+       161.64,
+       161.88
+      ],
+      [
+       161.98,
+       162.64
+      ]
+     ]
+    },
+    {
+     "w": "world,",
+     "start": 162.64,
+     "end": 163.38,
+     "conf": 0.24
+    },
+    {
+     "w": "a",
+     "start": 163.38,
+     "end": 163.52,
+     "conf": 0.2
+    },
+    {
+     "w": "mathematical",
+     "start": 163.52,
+     "end": 165.06,
+     "conf": 0.78
+    },
+    {
+     "w": "high",
+     "start": 165.06,
+     "end": 165.72,
+     "conf": 0.15
+    }
+   ]
+  },
+  {
+   "i": 27,
+   "section": "chorus2",
+   "text": "We're soaring on the fraction, watching time fly by!",
+   "start": 165.74,
+   "end": 173.4,
+   "words": [
+    {
+     "w": "We're",
+     "start": 165.74,
+     "end": 166.62,
+     "conf": 0.08
+    },
+    {
+     "w": "soaring",
+     "start": 166.62,
+     "end": 167.32,
+     "conf": 0.76
+    },
+    {
+     "w": "on",
+     "start": 167.32,
+     "end": 167.48,
+     "conf": 0.84
+    },
+    {
+     "w": "the",
+     "start": 167.48,
+     "end": 167.7,
+     "conf": 0.82
+    },
+    {
+     "w": "fraction,",
+     "start": 167.7,
+     "end": 168.58,
+     "conf": 0.93
+    },
+    {
+     "w": "watching",
+     "start": 170.68,
+     "end": 171.6,
+     "conf": 0.58
+    },
+    {
+     "w": "time",
+     "start": 171.6,
+     "end": 172.2,
+     "conf": 0.48
+    },
+    {
+     "w": "fly",
+     "start": 172.2,
+     "end": 172.86,
+     "conf": 0.73
+    },
+    {
+     "w": "by!",
+     "start": 172.86,
+     "end": 173.4,
+     "conf": 0.15
+    }
+   ]
+  },
+  {
+   "i": 28,
+   "section": "bridge",
+   "text": "Vilfredo Pareto, he knew the score",
+   "start": 182.88,
+   "end": 187.17,
+   "words": [
+    {
+     "w": "Vilfredo",
+     "start": 182.88,
+     "end": 183.82,
+     "conf": 0.76
+    },
+    {
+     "w": "Pareto,",
+     "start": 183.82,
+     "end": 184.69,
+     "conf": 0.65
+    },
+    {
+     "w": "he",
+     "start": 185.42,
+     "end": 185.72,
+     "conf": 0.88
+    },
+    {
+     "w": "knew",
+     "start": 185.72,
+     "end": 186.06,
+     "conf": 0.77
+    },
+    {
+     "w": "the",
+     "start": 186.06,
+     "end": 186.24,
+     "conf": 0.87
+    },
+    {
+     "w": "score",
+     "start": 186.24,
+     "end": 187.17,
+     "conf": 0.67
+    }
+   ]
+  },
+  {
+   "i": 29,
+   "section": "bridge",
+   "text": "From the peas in his garden to the rich and the poor",
+   "start": 187.58,
+   "end": 192.27,
+   "words": [
+    {
+     "w": "From",
+     "start": 187.58,
+     "end": 187.78,
+     "conf": 1.0
+    },
+    {
+     "w": "the",
+     "start": 187.78,
+     "end": 187.9,
+     "conf": 0.94
+    },
+    {
+     "w": "peas",
+     "start": 187.9,
+     "end": 188.36,
+     "conf": 0.71
+    },
+    {
+     "w": "in",
+     "start": 188.36,
+     "end": 188.5,
+     "conf": 0.53
+    },
+    {
+     "w": "his",
+     "start": 188.5,
+     "end": 188.88,
+     "conf": 0.51
+    },
+    {
+     "w": "garden",
+     "start": 188.88,
+     "end": 189.85,
+     "conf": 0.95
+    },
+    {
+     "w": "to",
+     "start": 190.12,
+     "end": 190.32,
+     "conf": 1.0
+    },
+    {
+     "w": "the",
+     "start": 190.32,
+     "end": 190.48,
+     "conf": 0.78
+    },
+    {
+     "w": "rich",
+     "start": 190.48,
+     "end": 190.88,
+     "conf": 0.8
+    },
+    {
+     "w": "and",
+     "start": 190.88,
+     "end": 191.12,
+     "conf": 0.63
+    },
+    {
+     "w": "the",
+     "start": 191.12,
+     "end": 191.36,
+     "conf": 0.2
+    },
+    {
+     "w": "poor",
+     "start": 191.36,
+     "end": 192.27,
+     "conf": 0.49
+    }
+   ]
+  },
+  {
+   "i": 30,
+   "section": "bridge",
+   "text": "It's a law of the universe, carved in the stone",
+   "start": 192.72,
+   "end": 197.4,
+   "words": [
+    {
+     "w": "It's",
+     "start": 192.72,
+     "end": 192.88,
+     "conf": 0.83
+    },
+    {
+     "w": "a",
+     "start": 192.88,
+     "end": 193.0,
+     "conf": 0.35
+    },
+    {
+     "w": "law",
+     "start": 193.0,
+     "end": 193.42,
+     "conf": 0.88
+    },
+    {
+     "w": "of",
+     "start": 193.42,
+     "end": 193.5,
+     "conf": 0.02
+    },
+    {
+     "w": "the",
+     "start": 193.5,
+     "end": 193.92,
+     "conf": 0.64
+    },
+    {
+     "w": "universe,",
+     "start": 193.92,
+     "end": 195.36,
+     "conf": 0.56
+    },
+    {
+     "w": "carved",
+     "start": 195.48,
+     "end": 195.96,
+     "conf": 1.0
+    },
+    {
+     "w": "in",
+     "start": 195.96,
+     "end": 196.16,
+     "conf": 0.71
+    },
+    {
+     "w": "the",
+     "start": 196.16,
+     "end": 196.36,
+     "conf": 0.63
+    },
+    {
+     "w": "stone",
+     "start": 196.36,
+     "end": 197.4,
+     "conf": 1.0
+    }
+   ]
+  },
+  {
+   "i": 31,
+   "section": "bridge",
+   "text": "You reap what you sow in the \"vital few\" zone",
+   "start": 197.42,
+   "end": 202.55,
+   "words": [
+    {
+     "w": "You",
+     "start": 197.42,
+     "end": 197.74,
+     "conf": 0.59
+    },
+    {
+     "w": "reap",
+     "start": 197.74,
+     "end": 198.66,
+     "conf": 0.71
+    },
+    {
+     "w": "what",
+     "start": 198.66,
+     "end": 198.98,
+     "conf": 0.57
+    },
+    {
+     "w": "you",
+     "start": 198.98,
+     "end": 199.26,
+     "conf": 0.55
+    },
+    {
+     "w": "sow",
+     "start": 199.26,
+     "end": 199.76,
+     "conf": 0.85
+    },
+    {
+     "w": "in",
+     "start": 199.76,
+     "end": 199.92,
+     "conf": 0.57
+    },
+    {
+     "w": "the",
+     "start": 199.92,
+     "end": 200.22,
+     "conf": 0.52
+    },
+    {
+     "w": "\"vital",
+     "start": 200.22,
+     "end": 201.16,
+     "conf": 0.32
+    },
+    {
+     "w": "few\"",
+     "start": 201.16,
+     "end": 201.8,
+     "conf": 0.47
+    },
+    {
+     "w": "zone",
+     "start": 201.8,
+     "end": 202.55,
+     "conf": 0.33
+    }
+   ]
+  },
+  {
+   "i": 32,
+   "section": "build",
+   "text": "Cut the fat! Trim the wire!",
+   "start": 204.32,
+   "end": 208.15,
+   "words": [
+    {
+     "w": "Cut",
+     "start": 204.32,
+     "end": 204.66,
+     "conf": 0.38
+    },
+    {
+     "w": "the",
+     "start": 204.66,
+     "end": 204.82,
+     "conf": 0.72
+    },
+    {
+     "w": "fat!",
+     "start": 204.82,
+     "end": 205.35,
+     "conf": 0.55
+    },
+    {
+     "w": "Trim",
+     "start": 206.74,
+     "end": 207.14,
+     "conf": 0.47
+    },
+    {
+     "w": "the",
+     "start": 207.14,
+     "end": 207.3,
+     "conf": 0.37
+    },
+    {
+     "w": "wire!",
+     "start": 207.3,
+     "end": 208.15,
+     "conf": 0.65
+    }
+   ]
+  },
+  {
+   "i": 33,
+   "section": "build",
+   "text": "Set the twenty percent on fire!",
+   "start": 209.28,
+   "end": 214.9,
+   "words": [
+    {
+     "w": "Set",
+     "start": 209.28,
+     "end": 209.64,
+     "conf": 0.83
+    },
+    {
+     "w": "the",
+     "start": 209.64,
+     "end": 209.86,
+     "conf": 0.73
+    },
+    {
+     "w": "twenty",
+     "start": 209.86,
+     "end": 210.56,
+     "conf": 0.39
+    },
+    {
+     "w": "percent",
+     "start": 210.56,
+     "end": 212.12,
+     "conf": 0.3
+    },
+    {
+     "w": "on",
+     "start": 212.12,
+     "end": 212.4,
+     "conf": 0.66
+    },
+    {
+     "w": "fire!",
+     "start": 212.4,
+     "end": 214.9,
+     "conf": 0.71
+    }
+   ]
+  },
+  {
+   "i": 34,
+   "section": "outro",
+   "text": "Eighty percent of this song is just vibe",
+   "start": 243.06,
+   "end": 247.0,
+   "words": [
+    {
+     "w": "Eighty",
+     "start": 243.06,
+     "end": 243.4,
+     "conf": 0.13
+    },
+    {
+     "w": "percent",
+     "start": 243.4,
+     "end": 244.1,
+     "conf": 0.24
+    },
+    {
+     "w": "of",
+     "start": 244.1,
+     "end": 244.26,
+     "conf": 0.51
+    },
+    {
+     "w": "this",
+     "start": 244.26,
+     "end": 244.68,
+     "conf": 0.43
+    },
+    {
+     "w": "song",
+     "start": 244.68,
+     "end": 245.42,
+     "conf": 0.73
+    },
+    {
+     "w": "is",
+     "start": 245.42,
+     "end": 245.64,
+     "conf": 0.84
+    },
+    {
+     "w": "just",
+     "start": 245.64,
+     "end": 246.26,
+     "conf": 0.94
+    },
+    {
+     "w": "vibe",
+     "start": 246.26,
+     "end": 247.0,
+     "conf": 0.27
+    }
+   ]
+  },
+  {
+   "i": 35,
+   "section": "outro",
+   "text": "The other twenty is the reason I'm alive",
+   "start": 247.88,
+   "end": 252.06,
+   "words": [
+    {
+     "w": "The",
+     "start": 247.88,
+     "end": 248.32,
+     "conf": 0.72
+    },
+    {
+     "w": "other",
+     "start": 248.32,
+     "end": 248.74,
+     "conf": 0.53
+    },
+    {
+     "w": "twenty",
+     "start": 248.74,
+     "end": 249.58,
+     "conf": 0.98
+    },
+    {
+     "w": "is",
+     "start": 249.58,
+     "end": 249.8,
+     "conf": 0.78
+    },
+    {
+     "w": "the",
+     "start": 249.8,
+     "end": 250.1,
+     "conf": 0.93
+    },
+    {
+     "w": "reason",
+     "start": 250.1,
+     "end": 250.84,
+     "conf": 1.0
+    },
+    {
+     "w": "I'm",
+     "start": 250.84,
+     "end": 251.0,
+     "conf": 0.44
+    },
+    {
+     "w": "alive",
+     "start": 251.0,
+     "end": 252.06,
+     "conf": 0.61
+    }
+   ]
+  },
+  {
+   "i": 36,
+   "section": "outro",
+   "text": "Just the twenty...",
+   "start": 252.96,
+   "end": 254.38,
+   "words": [
+    {
+     "w": "Just",
+     "start": 252.96,
+     "end": 253.52,
+     "conf": 0.86
+    },
+    {
+     "w": "the",
+     "start": 253.52,
+     "end": 253.86,
+     "conf": 0.38
+    },
+    {
+     "w": "twenty...",
+     "start": 253.86,
+     "end": 254.38,
+     "conf": 0.73
+    }
+   ]
+  },
+  {
+   "i": 37,
+   "section": "outro",
+   "text": "(yeah, the vital few)",
+   "start": 254.4,
+   "end": 256.86,
+   "words": [
+    {
+     "w": "(yeah,",
+     "start": 254.4,
+     "end": 255.54,
+     "conf": 0.41
+    },
+    {
+     "w": "the",
+     "start": 255.54,
+     "end": 255.68,
+     "conf": 0.12
+    },
+    {
+     "w": "vital",
+     "start": 255.68,
+     "end": 256.4,
+     "conf": 0.04
+    },
+    {
+     "w": "few)",
+     "start": 256.4,
+     "end": 256.86,
+     "conf": 0.06
+    }
+   ]
+  },
+  {
+   "i": 38,
+   "section": "outro",
+   "text": "I'm spending my twenty...",
+   "start": 257.48,
+   "end": 259.78,
+   "words": [
+    {
+     "w": "I'm",
+     "start": 257.48,
+     "end": 257.68,
+     "conf": 0.78
+    },
+    {
+     "w": "spending",
+     "start": 257.68,
+     "end": 258.44,
+     "conf": 0.95
+    },
+    {
+     "w": "my",
+     "start": 258.44,
+     "end": 259.02,
+     "conf": 0.83
+    },
+    {
+     "w": "twenty...",
+     "start": 259.02,
+     "end": 259.78,
+     "conf": 0.92
+    }
+   ]
+  },
+  {
+   "i": 39,
+   "section": "outro",
+   "text": "(on a pint and you)",
+   "start": 259.8,
+   "end": 262.15,
+   "words": [
+    {
+     "w": "(on",
+     "start": 259.8,
+     "end": 260.14,
+     "conf": 0.08
+    },
+    {
+     "w": "a",
+     "start": 260.14,
+     "end": 260.34,
+     "conf": 0.37
+    },
+    {
+     "w": "pint",
+     "start": 260.34,
+     "end": 261.14,
+     "conf": 0.31
+    },
+    {
+     "w": "and",
+     "start": 261.14,
+     "end": 261.68,
+     "conf": 0.2
+    },
+    {
+     "w": "you)",
+     "start": 261.68,
+     "end": 262.15,
+     "conf": 0.23
+    }
+   ]
+  },
+  {
+   "i": 40,
+   "section": "outro",
+   "text": "It's unconventional, it's math, it's art",
+   "start": 263.28,
+   "end": 267.28,
+   "words": [
+    {
+     "w": "It's",
+     "start": 263.28,
+     "end": 263.58,
+     "conf": 0.91
+    },
+    {
+     "w": "unconventional,",
+     "start": 263.58,
+     "end": 264.89,
+     "conf": 1.0
+    },
+    {
+     "w": "it's",
+     "start": 265.22,
+     "end": 265.48,
+     "conf": 1.0
+    },
+    {
+     "w": "math,",
+     "start": 265.48,
+     "end": 266.06,
+     "conf": 1.0
+    },
+    {
+     "w": "it's",
+     "start": 266.06,
+     "end": 266.56,
+     "conf": 0.26
+    },
+    {
+     "w": "art",
+     "start": 266.56,
+     "end": 267.28,
+     "conf": 0.69
+    }
+   ]
+  },
+  {
+   "i": 41,
+   "section": "outro",
+   "text": "The smallest piece is the biggest part.",
+   "start": 268.36,
+   "end": 274.71,
+   "words": [
+    {
+     "w": "The",
+     "start": 268.36,
+     "end": 268.56,
+     "conf": 1.0
+    },
+    {
+     "w": "smallest",
+     "start": 268.56,
+     "end": 269.3,
+     "conf": 1.0
+    },
+    {
+     "w": "piece",
+     "start": 269.3,
+     "end": 271.8,
+     "conf": 0.68
+    },
+    {
+     "w": "is",
+     "start": 272.5,
+     "end": 272.74,
+     "conf": 0.74
+    },
+    {
+     "w": "the",
+     "start": 272.74,
+     "end": 273.18,
+     "conf": 0.57
+    },
+    {
+     "w": "biggest",
+     "start": 273.18,
+     "end": 274.1,
+     "conf": 0.76
+    },
+    {
+     "w": "part.",
+     "start": 274.1,
+     "end": 274.71,
+     "conf": 0.76
+    }
+   ]
+  }
+ ],
+ "notes": "CTC forced alignment (fused: MMS_FA+LV60K on htdemucs vocals), global Viterbi with garbage token between lines; word ends extended over held notes from the vocal RMS."
+}

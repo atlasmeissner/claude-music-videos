@@ -8,3 +8,9 @@ videos/pdoom-tabletop/assets/
 # paranoia: gameplay clips and model weights (fetched onto the render machine)
 videos/paranoia/clips/
 videos/paranoia/models/
+# pareto: dependencies and analysis intermediates
+videos/pareto/app/node_modules/
+videos/pareto/analysis/.venv/
+videos/pareto/analysis/.cache/
+videos/pareto/analysis/stems/
+videos/pareto/analysis/work/
