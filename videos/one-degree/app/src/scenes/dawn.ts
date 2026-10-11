@@ -152,7 +152,7 @@ export default class Dawn extends Scene {
     if (hdr > 0) {
       c.globalAlpha = hdr;
       mono(c, 'ONE DEGREE', 120, 128, { size: 15, color: rgba('bone', 0.9), track: 5, weight: 500 });
-      mono(c, 'LEXM', 120, 154, { size: 12, color: rgba('ash', 0.8), track: 4 });
+      mono(c, 'JOBURGALEX', 120, 154, { size: 12, color: rgba('ash', 0.8), track: 4 });
       mono(c, 'FIG. 0 — A TURN, IN 360 PARTS', W - 120, 128, { size: 12, color: rgba('ash', 0.75), track: 3, align: 'right' });
       c.globalAlpha = 1;
     }

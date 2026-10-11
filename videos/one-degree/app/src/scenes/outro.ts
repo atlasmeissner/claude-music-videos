@@ -29,7 +29,7 @@ export default class Outro extends Scene {
     c.restore();
     const b = prog(t, s + 1.8, s + 3, ease.outCubic) * keep;
     c.save(); c.globalAlpha = b;
-    mono(c, 'LEXM', W / 2, 820, { size: 16, color: rgba('bone', 0.9), track: 8, align: 'center', weight: 500 });
+    mono(c, 'JOBURGALEX', W / 2, 820, { size: 16, color: rgba('bone', 0.9), track: 8, align: 'center', weight: 500 });
     mono(c, `${heading(lyrics, t).toFixed(0)} DEGREES · ONE AT A TIME`, W / 2, 868, { size: 12, color: rgba('signal', 1), track: 5, align: 'center' });
     mono(c, 'MUSIC MADE WITH SUNO · VIDEO RENDERED IN CODE', W / 2, 960, { size: 11, color: rgba('ash', 0.6), track: 4, align: 'center' });
     c.restore();

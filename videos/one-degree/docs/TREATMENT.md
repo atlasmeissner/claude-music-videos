@@ -1,6 +1,6 @@
 # One Degree — treatment & style bible
 
-Song: "One Degree" by lexm (made with Suno). Video: a generative, code-rendered music video in the manner of
+Song: "One Degree" by Joburgalex (made with Suno). Video: a generative, code-rendered music video in the manner of
 [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video), on its engine (MIT): every frame is a
 deterministic function of song time, the lyrics are word-synced karaoke typography, cuts land on the beat grid.
 

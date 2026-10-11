@@ -11,5 +11,6 @@ done
 ffmpeg -v error -y -f concat -safe 0 -i $LIST -i audio/one_degree.mp3 -map 0:v -map 1:a \
   -c:v libx264 -preset medium -crf 19 -tune grain -pix_fmt yuv420p \
   -color_primaries bt709 -color_trc bt709 -colorspace bt709 \
+  -metadata title="One Degree" -metadata artist="Joburgalex" \
   -c:a aac -b:a 256k -shortest -movflags +faststart out/one-degree.mp4
 ls -la out/one-degree.mp4

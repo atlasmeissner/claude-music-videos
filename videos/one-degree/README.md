@@ -1,10 +1,10 @@
 # One Degree — music video
 
-A generative, code-rendered music video with word-synced karaoke typography for "One Degree" by lexm (made with
+A generative, code-rendered music video with word-synced karaoke typography for "One Degree" by Joburgalex (made with
 Suno): a quiet song about change too small to see. Every frame is a deterministic function of song time, rendered in
 headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:39, 346 MB) is in [`render/`](render/), split into five parts (GitHub's
+**Watch / download:** the 1080p30 render (3:39, 333 MB) is in [`render/`](render/), split into five parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat one-degree_1080p30.mp4.part0 … one-degree_1080p30.mp4.part4 > one-degree_1080p30.mp4`.
 
@@ -89,7 +89,7 @@ vocal map and the pitch track), the kit, all sixteen plates, the contact-sheet r
 
 ## Credits
 
-- **Song:** "One Degree" by lexm, made with Suno.
+- **Song:** "One Degree" by Joburgalex, made with Suno.
 - **Engine:** forked from [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video) (MIT).
 - **Fonts:** Archivo, IBM Plex Mono, Cormorant Garamond (SIL Open Font License); single-stroke EMS and Hershey fonts
   via the `hersheytext` package (OFL / public domain).
