@@ -278,7 +278,7 @@ export default class Open extends Scene {
     const ck = prog(t, (D[1] ?? start + 4), (D[1] ?? start + 4) + 1);
     if (ck > 0) {
       c.font = font(F.mono(500), 14); c.fillStyle = fg(true, 0.6 * ck); c.textAlign = 'right';
-      c.fillText('A SONG BY LEXM', 1824, 1010);
+      c.fillText('A SONG BY JOBURGALEX', 1824, 1010);
       c.textAlign = 'left';
       footnote(c, '¹ The census is exact. The 20 were chosen by hash; nature uses other methods.', COLX, 1010, { a: kk });
     }

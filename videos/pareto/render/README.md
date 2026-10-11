@@ -16,7 +16,7 @@ copy /b pareto_1080p30.mp4.part0 + pareto_1080p30.mp4.part1 + pareto_1080p30.mp4
 ```
 
 Check the result (optional) — the SHA-256 must be
-`f8431cc0415b32393e1f3cc609fb1ab88887c84d290405669a38b8196ba6b5cf`:
+`69039c6b6154312f5fe1c354c0b17761e15e4fa9079b88edc2af528599f62eb5`:
 
 ```sh
 shasum -a 256 pareto_1080p30.mp4        # macOS (Linux: sha256sum pareto_1080p30.mp4)

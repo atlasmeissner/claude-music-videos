@@ -1,6 +1,6 @@
 # Pareto — treatment & style bible
 
-Song: "Pareto (Remastered)" by lexm (made with Suno). Upbeat Britpop, ~120 BPM, jangly guitar, driving bassline. About the 80/20 rule applied to a scruffy, happy London life: a messy flat, a hundred records, burnt toast, a run in the park, a girl in Camden, two good friends out of ten, a pint.
+Song: "Pareto (Remastered)" by Joburgalex (made with Suno). Upbeat Britpop, ~120 BPM, jangly guitar, driving bassline. About the 80/20 rule applied to a scruffy, happy London life: a messy flat, a hundred records, burnt toast, a run in the park, a girl in Camden, two good friends out of ten, a pint.
 
 ## The idea in one paragraph
 

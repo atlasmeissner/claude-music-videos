@@ -1,6 +1,6 @@
 # Pareto — music video
 
-A generative, code-rendered music video with word-synced karaoke typography for "Pareto (Remastered)" by lexm
+A generative, code-rendered music video with word-synced karaoke typography for "Pareto (Remastered)" by Joburgalex
 (made with Suno): upbeat Britpop about the 80/20 rule applied to a scruffy, happy London life. Every frame is a
 deterministic function of song time, rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
@@ -76,7 +76,7 @@ working from `docs/AGENT_BRIEF.md`, reviewed through contact sheets and revised.
 
 ## Credits
 
-- **Song:** "Pareto (Remastered)" by lexm, made with Suno.
+- **Song:** "Pareto (Remastered)" by Joburgalex, made with Suno.
 - **Engine:** forked from [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video) (MIT).
 - **Fonts:** Archivo, IBM Plex Mono, Cormorant Garamond (SIL Open Font License); single-stroke EMS and Hershey fonts
   via the `hersheytext` package (OFL / public domain).

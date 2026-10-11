@@ -427,7 +427,7 @@ export default class Outro extends Scene {
     const COLX = 1010;
     const cl: [string, string, number][] = [
       ['PARETO', 'title', 0],
-      ['a song by lexm', 'serif', 1],
+      ['a song by Joburgalex', 'serif', 1],
       ['', '', 2],
       ['AN ALMANAC OF THE VITAL FEW', 'mono', 3],
       ['15 plates · 42 lines · 1 red fifth', 'mono', 4],
