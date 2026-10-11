@@ -101,7 +101,7 @@ export default class Fly extends Scene {
     const intro = prog(t, s0, s0 + 0.45, ease.outCubic);
     // camera: a slow push toward the wall after launch
     const cam = prog(t, this.tFly, this.tWall, ease.inOutCubic);
-    const z = 1 + 0.05 * cam, cx = lerp(W / 2, W / 2 + 60, cam), cy = H / 2;
+    const z = 1 + 0.05 * cam, cx = W / 2, cy = H / 2;
     c.save();
     c.translate(W / 2, H / 2); c.scale(z, z); c.translate(-cx, -cy);
     c.lineCap = 'butt';
@@ -216,8 +216,8 @@ export default class Fly extends Scene {
     const n7 = this.la.words.length;
     this.la.words.forEach((w, i) => {
       let p = this.sparkA(w.start);
-      if (i === 0) p = { x: 150, y: PLAT_Y - 9 };
-      if (i === 1) p = { x: 390, y: PLAT_Y - 9 };
+      if (i === 0) p = { x: 190, y: PLAT_Y - 9 };
+      if (i === 1) p = { x: 405, y: PLAT_Y - 9 };
       if (i > 0 && i < n7 - 1) {
         const q = anchors[i - 1]!;
         const need = (c.measureText(this.la.words[i - 1]!.w.toUpperCase()).width + c.measureText(w.w.toUpperCase()).width) / 2 + 26;

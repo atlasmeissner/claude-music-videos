@@ -4,8 +4,9 @@ A generative, code-rendered music video with word-synced karaoke typography for 
 *Maps & Territory*), in the style of [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video): every frame is a
 deterministic function of song time, rendered in headless Chromium (TypeScript + three.js) and encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render is in [`render/`](render/), split into parts (GitHub's 100 MB file limit);
-join them with one command, see [`render/README.md`](render/README.md).
+**Watch / download:** the 1080p30 render (3:00, 297 MB) is in [`render/`](render/), split into four parts (GitHub's
+100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+`cat free-fall_1080p30.mp4.part0 … free-fall_1080p30.mp4.part3 > free-fall_1080p30.mp4`.
 
 The renderer is a fork of the pdoom-video engine (MIT) by way of this repo's `one-degree`, and the video follows
 pdoom-video's style bible: its palette (ink, bone, one hazard orange, one rare acid accent), its grain and halation,
@@ -71,7 +72,7 @@ scripts/assemble.sh                          # joins the plates and muxes the so
 ```
 
 `scripts/render.ts` launches the Chromium bundled with Playwright under SwiftShader (`CHROME_PATH` overrides it). The
-published render was made in a CPU-only cloud container (SwiftShader, about 1–1.5 s per frame), hence 30 fps and one
+published render was made in a CPU-only cloud container (SwiftShader, about 1.5 s per frame, 2.3 hours for the song), hence 30 fps and one
 sample per frame. On a GPU machine, `render.ts video --samples auto --fps 60` renders a single 60 fps file with motion
 blur.
 
