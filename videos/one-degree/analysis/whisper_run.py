@@ -1,0 +1,16 @@
+"""Whisper word timestamps on the vocal stem (cross-check / coarse line placement)."""
+import json, os, sys
+from pathlib import Path
+W = Path(os.environ["WORK"])
+from faster_whisper import WhisperModel
+m = WhisperModel(sys.argv[1] if len(sys.argv) > 1 else "small.en", device="cpu", compute_type="int8", cpu_threads=2)
+import soundfile as sf
+audio, _ = sf.read(str(W / "vocals16.wav"), dtype="float32")
+segs, info = m.transcribe(audio, language="en", word_timestamps=True, vad_filter=False,
+                          beam_size=5, condition_on_previous_text=False,
+                          initial_prompt="One degree, one degree. Turn so slow you can't see. But the whole world's bending.")
+out = []
+for s in segs:
+    out.append({"start": s.start, "end": s.end, "text": s.text, "words": [{"w": w.word, "start": w.start, "end": w.end, "p": w.probability} for w in s.words]})
+    print(f"{s.start:7.2f} {s.end:7.2f} {s.text}", flush=True)
+(W / "whisper.json").write_text(json.dumps(out, indent=1))

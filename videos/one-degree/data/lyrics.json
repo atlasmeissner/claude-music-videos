@@ -1,0 +1,1421 @@
+{
+ "lines": [
+  {
+   "text": "One step doesn't shake the ground",
+   "start": 13.68,
+   "end": 16.23,
+   "words": [
+    {
+     "w": "One",
+     "start": 13.68,
+     "end": 14.0,
+     "conf": 0.499
+    },
+    {
+     "w": "step",
+     "start": 14.0,
+     "end": 14.56,
+     "conf": 0.375
+    },
+    {
+     "w": "doesn't",
+     "start": 14.56,
+     "end": 15.04,
+     "conf": 0.452
+    },
+    {
+     "w": "shake",
+     "start": 15.04,
+     "end": 15.48,
+     "conf": 0.493
+    },
+    {
+     "w": "the",
+     "start": 15.48,
+     "end": 15.68,
+     "conf": 0.485
+    },
+    {
+     "w": "ground",
+     "start": 15.68,
+     "end": 16.23,
+     "conf": 0.455
+    }
+   ]
+  },
+  {
+   "text": "One word doesn't make a sound",
+   "start": 17.4,
+   "end": 19.88,
+   "words": [
+    {
+     "w": "One",
+     "start": 17.4,
+     "end": 17.78,
+     "conf": 0.481
+    },
+    {
+     "w": "word",
+     "start": 17.78,
+     "end": 18.3,
+     "conf": 0.492
+    },
+    {
+     "w": "doesn't",
+     "start": 18.3,
+     "end": 18.76,
+     "conf": 0.428
+    },
+    {
+     "w": "make",
+     "start": 18.76,
+     "end": 19.12,
+     "conf": 0.499
+    },
+    {
+     "w": "a",
+     "start": 19.12,
+     "end": 19.42,
+     "conf": 0.02
+    },
+    {
+     "w": "sound",
+     "start": 19.42,
+     "end": 19.88,
+     "conf": 0.496
+    }
+   ]
+  },
+  {
+   "text": "One day looks like all the rest",
+   "start": 21.16,
+   "end": 23.72,
+   "words": [
+    {
+     "w": "One",
+     "start": 21.16,
+     "end": 21.4,
+     "conf": 0.451
+    },
+    {
+     "w": "day",
+     "start": 21.4,
+     "end": 21.86,
+     "conf": 0.499
+    },
+    {
+     "w": "looks",
+     "start": 21.86,
+     "end": 22.26,
+     "conf": 0.499
+    },
+    {
+     "w": "like",
+     "start": 22.26,
+     "end": 22.66,
+     "conf": 0.499
+    },
+    {
+     "w": "all",
+     "start": 22.66,
+     "end": 23.0,
+     "conf": 0.49
+    },
+    {
+     "w": "the",
+     "start": 23.0,
+     "end": 23.26,
+     "conf": 0.423
+    },
+    {
+     "w": "rest",
+     "start": 23.26,
+     "end": 23.72,
+     "conf": 0.499
+    }
+   ]
+  },
+  {
+   "text": "Nothing worth remembering yet",
+   "start": 24.86,
+   "end": 27.32,
+   "words": [
+    {
+     "w": "Nothing",
+     "start": 24.86,
+     "end": 25.38,
+     "conf": 0.207
+    },
+    {
+     "w": "worth",
+     "start": 25.38,
+     "end": 25.88,
+     "conf": 0.377
+    },
+    {
+     "w": "remembering",
+     "start": 25.88,
+     "end": 27.08,
+     "conf": 0.411
+    },
+    {
+     "w": "yet",
+     "start": 27.08,
+     "end": 27.32,
+     "conf": 0.28
+    }
+   ]
+  },
+  {
+   "text": "But the river doesn't know",
+   "start": 29.6,
+   "end": 32.13,
+   "words": [
+    {
+     "w": "But",
+     "start": 29.6,
+     "end": 29.86,
+     "conf": 0.499
+    },
+    {
+     "w": "the",
+     "start": 29.86,
+     "end": 30.08,
+     "conf": 0.475
+    },
+    {
+     "w": "river",
+     "start": 30.08,
+     "end": 30.48,
+     "conf": 0.457
+    },
+    {
+     "w": "doesn't",
+     "start": 31.0,
+     "end": 31.72,
+     "conf": 0.326
+    },
+    {
+     "w": "know",
+     "start": 31.72,
+     "end": 32.13,
+     "conf": 0.419
+    }
+   ]
+  },
+  {
+   "text": "It's carving through the stone",
+   "start": 33.56,
+   "end": 35.9,
+   "words": [
+    {
+     "w": "It's",
+     "start": 33.56,
+     "end": 33.78,
+     "conf": 0.412
+    },
+    {
+     "w": "carving",
+     "start": 33.78,
+     "end": 34.74,
+     "conf": 0.488
+    },
+    {
+     "w": "through",
+     "start": 34.74,
+     "end": 35.26,
+     "conf": 0.448
+    },
+    {
+     "w": "the",
+     "start": 35.26,
+     "end": 35.48,
+     "conf": 0.472
+    },
+    {
+     "w": "stone",
+     "start": 35.48,
+     "end": 35.9,
+     "conf": 0.459
+    }
+   ]
+  },
+  {
+   "text": "One degree, one degree",
+   "start": 36.74,
+   "end": 41.76,
+   "words": [
+    {
+     "w": "One",
+     "start": 36.74,
+     "end": 37.22,
+     "conf": 0.171,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 37.22,
+     "end": 37.84,
+     "conf": 0.338
+    },
+    {
+     "w": "one",
+     "start": 40.46,
+     "end": 40.94,
+     "conf": 0.17,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 40.94,
+     "end": 41.76,
+     "conf": 0.26
+    }
+   ]
+  },
+  {
+   "text": "Turn so slow you can't see",
+   "start": 43.92,
+   "end": 49.33,
+   "words": [
+    {
+     "w": "Turn",
+     "start": 43.92,
+     "end": 44.62,
+     "conf": 0.482
+    },
+    {
+     "w": "so",
+     "start": 44.62,
+     "end": 45.02,
+     "conf": 0.491
+    },
+    {
+     "w": "slow",
+     "start": 45.02,
+     "end": 47.72,
+     "conf": 0.232
+    },
+    {
+     "w": "you",
+     "start": 47.72,
+     "end": 48.04,
+     "conf": 0.158
+    },
+    {
+     "w": "can't",
+     "start": 48.04,
+     "end": 48.78,
+     "conf": 0.164
+    },
+    {
+     "w": "see",
+     "start": 48.78,
+     "end": 49.33,
+     "conf": 0.444
+    }
+   ]
+  },
+  {
+   "text": "But the whole world's bending",
+   "start": 50.19,
+   "end": 52.41,
+   "words": [
+    {
+     "w": "But",
+     "start": 50.19,
+     "end": 50.45,
+     "conf": 0.311
+    },
+    {
+     "w": "the",
+     "start": 50.45,
+     "end": 50.67,
+     "conf": 0.114
+    },
+    {
+     "w": "whole",
+     "start": 50.67,
+     "end": 51.13,
+     "conf": 0.12
+    },
+    {
+     "w": "world's",
+     "start": 51.13,
+     "end": 51.61,
+     "conf": 0.292
+    },
+    {
+     "w": "bending",
+     "start": 51.61,
+     "end": 52.41,
+     "conf": 0.47
+    }
+   ]
+  },
+  {
+   "text": "One degree, one degree, one degree",
+   "start": 52.68,
+   "end": 61.78,
+   "words": [
+    {
+     "w": "One",
+     "start": 52.68,
+     "end": 53.28,
+     "conf": 0.173,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 53.28,
+     "end": 54.14,
+     "conf": 0.122,
+     "fixed": true
+    },
+    {
+     "w": "one",
+     "start": 56.3,
+     "end": 56.68,
+     "conf": 0.098
+    },
+    {
+     "w": "degree,",
+     "start": 57.03,
+     "end": 57.88,
+     "conf": 0.158,
+     "fixed": true
+    },
+    {
+     "w": "one",
+     "start": 60.0,
+     "end": 60.32,
+     "conf": 0.127
+    },
+    {
+     "w": "degree",
+     "start": 60.78,
+     "end": 61.78,
+     "conf": 0.144,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One page doesn't write the book",
+   "start": 67.88,
+   "end": 70.28,
+   "words": [
+    {
+     "w": "One",
+     "start": 67.88,
+     "end": 68.22,
+     "conf": 0.362
+    },
+    {
+     "w": "page",
+     "start": 68.22,
+     "end": 68.76,
+     "conf": 0.43
+    },
+    {
+     "w": "doesn't",
+     "start": 68.76,
+     "end": 69.18,
+     "conf": 0.16
+    },
+    {
+     "w": "write",
+     "start": 69.18,
+     "end": 69.66,
+     "conf": 0.296
+    },
+    {
+     "w": "the",
+     "start": 69.66,
+     "end": 69.92,
+     "conf": 0.206
+    },
+    {
+     "w": "book",
+     "start": 69.92,
+     "end": 70.28,
+     "conf": 0.356
+    }
+   ]
+  },
+  {
+   "text": "One glance isn't worth a second look",
+   "start": 71.38,
+   "end": 74.52,
+   "words": [
+    {
+     "w": "One",
+     "start": 71.38,
+     "end": 71.78,
+     "conf": 0.446
+    },
+    {
+     "w": "glance",
+     "start": 71.78,
+     "end": 72.6,
+     "conf": 0.288
+    },
+    {
+     "w": "isn't",
+     "start": 72.6,
+     "end": 72.9,
+     "conf": 0.244
+    },
+    {
+     "w": "worth",
+     "start": 72.9,
+     "end": 73.4,
+     "conf": 0.402
+    },
+    {
+     "w": "a",
+     "start": 73.4,
+     "end": 73.6,
+     "conf": 0.19
+    },
+    {
+     "w": "second",
+     "start": 73.6,
+     "end": 74.12,
+     "conf": 0.363
+    },
+    {
+     "w": "look",
+     "start": 74.12,
+     "end": 74.52,
+     "conf": 0.217
+    }
+   ]
+  },
+  {
+   "text": "One night folds into the years",
+   "start": 75.11,
+   "end": 77.93,
+   "words": [
+    {
+     "w": "One",
+     "start": 75.11,
+     "end": 75.49,
+     "conf": 0.396
+    },
+    {
+     "w": "night",
+     "start": 75.49,
+     "end": 75.93,
+     "conf": 0.376
+    },
+    {
+     "w": "folds",
+     "start": 75.93,
+     "end": 76.53,
+     "conf": 0.274
+    },
+    {
+     "w": "into",
+     "start": 76.53,
+     "end": 77.07,
+     "conf": 0.485
+    },
+    {
+     "w": "the",
+     "start": 77.07,
+     "end": 77.35,
+     "conf": 0.382
+    },
+    {
+     "w": "years",
+     "start": 77.35,
+     "end": 77.93,
+     "conf": 0.366
+    }
+   ]
+  },
+  {
+   "text": "But something's gathering here",
+   "start": 77.98,
+   "end": 80.51,
+   "words": [
+    {
+     "w": "But",
+     "start": 77.98,
+     "end": 78.24,
+     "conf": 0.49
+    },
+    {
+     "w": "something's",
+     "start": 78.24,
+     "end": 79.36,
+     "conf": 0.275
+    },
+    {
+     "w": "gathering",
+     "start": 79.36,
+     "end": 80.12,
+     "conf": 0.453
+    },
+    {
+     "w": "here",
+     "start": 80.12,
+     "end": 80.51,
+     "conf": 0.27
+    }
+   ]
+  },
+  {
+   "text": "And the mountain doesn't know",
+   "start": 81.45,
+   "end": 84.15,
+   "words": [
+    {
+     "w": "And",
+     "start": 81.45,
+     "end": 81.53,
+     "conf": 0.058
+    },
+    {
+     "w": "the",
+     "start": 81.53,
+     "end": 81.95,
+     "conf": 0.05
+    },
+    {
+     "w": "mountain",
+     "start": 81.95,
+     "end": 83.07,
+     "conf": 0.191
+    },
+    {
+     "w": "doesn't",
+     "start": 83.07,
+     "end": 83.67,
+     "conf": 0.179
+    },
+    {
+     "w": "know",
+     "start": 83.67,
+     "end": 84.15,
+     "conf": 0.097
+    }
+   ]
+  },
+  {
+   "text": "It was built by falling snow",
+   "start": 85.28,
+   "end": 88.1,
+   "words": [
+    {
+     "w": "It",
+     "start": 85.28,
+     "end": 85.38,
+     "conf": 0.086
+    },
+    {
+     "w": "was",
+     "start": 85.38,
+     "end": 85.66,
+     "conf": 0.448
+    },
+    {
+     "w": "built",
+     "start": 85.66,
+     "end": 86.12,
+     "conf": 0.198
+    },
+    {
+     "w": "by",
+     "start": 86.12,
+     "end": 86.56,
+     "conf": 0.145
+    },
+    {
+     "w": "falling",
+     "start": 86.56,
+     "end": 87.4,
+     "conf": 0.268
+    },
+    {
+     "w": "snow",
+     "start": 87.4,
+     "end": 88.1,
+     "conf": 0.249
+    }
+   ]
+  },
+  {
+   "text": "One degree, one degree",
+   "start": 88.55,
+   "end": 91.53,
+   "words": [
+    {
+     "w": "One",
+     "start": 88.55,
+     "end": 89.1,
+     "conf": 0.12,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 89.1,
+     "end": 89.65,
+     "conf": 0.234,
+     "fixed": true
+    },
+    {
+     "w": "one",
+     "start": 90.06,
+     "end": 91.01,
+     "conf": 0.273,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 91.01,
+     "end": 91.53,
+     "conf": 0.074,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree, one degree",
+   "start": 92.33,
+   "end": 95.18,
+   "words": [
+    {
+     "w": "One",
+     "start": 92.33,
+     "end": 92.86,
+     "conf": 0.115,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 92.86,
+     "end": 93.48,
+     "conf": 0.082,
+     "fixed": true
+    },
+    {
+     "w": "one",
+     "start": 93.86,
+     "end": 94.51,
+     "conf": 0.016,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 94.51,
+     "end": 95.18,
+     "conf": 0.01,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "Turn so slow you can't see",
+   "start": 95.82,
+   "end": 101.0,
+   "words": [
+    {
+     "w": "Turn",
+     "start": 95.82,
+     "end": 96.5,
+     "conf": 0.191
+    },
+    {
+     "w": "so",
+     "start": 96.5,
+     "end": 96.92,
+     "conf": 0.381
+    },
+    {
+     "w": "slow",
+     "start": 96.92,
+     "end": 97.42,
+     "conf": 0.212
+    },
+    {
+     "w": "you",
+     "start": 99.66,
+     "end": 99.96,
+     "conf": 0.058
+    },
+    {
+     "w": "can't",
+     "start": 99.96,
+     "end": 100.66,
+     "conf": 0.183
+    },
+    {
+     "w": "see",
+     "start": 100.66,
+     "end": 101.0,
+     "conf": 0.168
+    }
+   ]
+  },
+  {
+   "text": "But the whole world's bending",
+   "start": 102.11,
+   "end": 104.41,
+   "words": [
+    {
+     "w": "But",
+     "start": 102.11,
+     "end": 102.39,
+     "conf": 0.247
+    },
+    {
+     "w": "the",
+     "start": 102.39,
+     "end": 102.57,
+     "conf": 0.319
+    },
+    {
+     "w": "whole",
+     "start": 102.57,
+     "end": 103.03,
+     "conf": 0.217
+    },
+    {
+     "w": "world's",
+     "start": 103.03,
+     "end": 103.51,
+     "conf": 0.275
+    },
+    {
+     "w": "bending",
+     "start": 103.51,
+     "end": 104.41,
+     "conf": 0.245
+    }
+   ]
+  },
+  {
+   "text": "One degree, whoa",
+   "start": 104.63,
+   "end": 107.8,
+   "words": [
+    {
+     "w": "One",
+     "start": 104.63,
+     "end": 104.93,
+     "conf": 0.078,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 105.32,
+     "end": 106.08,
+     "conf": 0.042,
+     "fixed": true
+    },
+    {
+     "w": "whoa",
+     "start": 106.52,
+     "end": 107.8,
+     "conf": 0.034,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree, whoa",
+   "start": 108.15,
+   "end": 111.5,
+   "words": [
+    {
+     "w": "One",
+     "start": 108.15,
+     "end": 108.92,
+     "conf": 0.013,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 108.92,
+     "end": 109.82,
+     "conf": 0.038,
+     "fixed": true
+    },
+    {
+     "w": "whoa",
+     "start": 110.23,
+     "end": 111.5,
+     "conf": 0.07,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree, whoa",
+   "start": 111.9,
+   "end": 120.05,
+   "words": [
+    {
+     "w": "One",
+     "start": 111.9,
+     "end": 112.2,
+     "conf": 0.01,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 112.65,
+     "end": 113.56,
+     "conf": 0.066,
+     "fixed": true
+    },
+    {
+     "w": "whoa",
+     "start": 113.96,
+     "end": 120.05,
+     "conf": 0.098,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "I almost gave up on the quiet days",
+   "start": 132.24,
+   "end": 137.44,
+   "words": [
+    {
+     "w": "I",
+     "start": 132.24,
+     "end": 132.58,
+     "conf": 0.318,
+     "fixed": true
+    },
+    {
+     "w": "almost",
+     "start": 132.58,
+     "end": 133.7,
+     "conf": 0.286
+    },
+    {
+     "w": "gave",
+     "start": 133.7,
+     "end": 134.5,
+     "conf": 0.043
+    },
+    {
+     "w": "up",
+     "start": 134.5,
+     "end": 134.8,
+     "conf": 0.001
+    },
+    {
+     "w": "on",
+     "start": 135.8,
+     "end": 135.98,
+     "conf": 0.242
+    },
+    {
+     "w": "the",
+     "start": 135.98,
+     "end": 136.16,
+     "conf": 0.008
+    },
+    {
+     "w": "quiet",
+     "start": 136.16,
+     "end": 136.94,
+     "conf": 0.197
+    },
+    {
+     "w": "days",
+     "start": 136.94,
+     "end": 137.44,
+     "conf": 0.027
+    }
+   ]
+  },
+  {
+   "text": "When nothing moved, when nothing changed",
+   "start": 137.94,
+   "end": 141.96,
+   "words": [
+    {
+     "w": "When",
+     "start": 137.94,
+     "end": 138.1,
+     "conf": 0.161
+    },
+    {
+     "w": "nothing",
+     "start": 138.6,
+     "end": 139.14,
+     "conf": 0.429
+    },
+    {
+     "w": "moved,",
+     "start": 139.14,
+     "end": 139.84,
+     "conf": 0.369
+    },
+    {
+     "w": "when",
+     "start": 139.84,
+     "end": 140.06,
+     "conf": 0.334
+    },
+    {
+     "w": "nothing",
+     "start": 140.06,
+     "end": 140.78,
+     "conf": 0.45
+    },
+    {
+     "w": "changed",
+     "start": 140.78,
+     "end": 141.96,
+     "conf": 0.465
+    }
+   ]
+  },
+  {
+   "text": "But I was changing",
+   "start": 143.76,
+   "end": 147.6,
+   "words": [
+    {
+     "w": "But",
+     "start": 143.76,
+     "end": 143.98,
+     "conf": 0.137,
+     "fixed": true
+    },
+    {
+     "w": "I",
+     "start": 143.98,
+     "end": 144.95,
+     "conf": 0.028,
+     "fixed": true
+    },
+    {
+     "w": "was",
+     "start": 144.95,
+     "end": 145.75,
+     "conf": 0.148,
+     "fixed": true
+    },
+    {
+     "w": "changing",
+     "start": 145.75,
+     "end": 147.6,
+     "conf": 0.035,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree, one degree",
+   "start": 147.85,
+   "end": 151.3,
+   "words": [
+    {
+     "w": "One",
+     "start": 147.85,
+     "end": 148.77,
+     "conf": 0.075,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 148.77,
+     "end": 149.7,
+     "conf": 0.115,
+     "fixed": true
+    },
+    {
+     "w": "one",
+     "start": 150.29,
+     "end": 150.91,
+     "conf": 0.058,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 150.91,
+     "end": 151.3,
+     "conf": 0.024,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree, one degree",
+   "start": 152.41,
+   "end": 155.38,
+   "words": [
+    {
+     "w": "One",
+     "start": 152.41,
+     "end": 152.74,
+     "conf": 0.053,
+     "fixed": true
+    },
+    {
+     "w": "degree,",
+     "start": 153.35,
+     "end": 153.6,
+     "conf": 0.119,
+     "fixed": true
+    },
+    {
+     "w": "one",
+     "start": 154.0,
+     "end": 154.7,
+     "conf": 0.024,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 154.7,
+     "end": 155.38,
+     "conf": 0.052,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "Turned so slow I couldn't see",
+   "start": 156.05,
+   "end": 161.41,
+   "words": [
+    {
+     "w": "Turned",
+     "start": 156.05,
+     "end": 156.73,
+     "conf": 0.031
+    },
+    {
+     "w": "so",
+     "start": 156.73,
+     "end": 157.17,
+     "conf": 0.29
+    },
+    {
+     "w": "slow",
+     "start": 157.17,
+     "end": 157.83,
+     "conf": 0.128
+    },
+    {
+     "w": "I",
+     "start": 159.62,
+     "end": 159.98,
+     "conf": 0.006,
+     "fixed": true
+    },
+    {
+     "w": "couldn't",
+     "start": 159.98,
+     "end": 160.7,
+     "conf": 0.082,
+     "fixed": true
+    },
+    {
+     "w": "see",
+     "start": 160.7,
+     "end": 161.41,
+     "conf": 0.158,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "But the whole world's different now",
+   "start": 162.42,
+   "end": 165.1,
+   "words": [
+    {
+     "w": "But",
+     "start": 162.42,
+     "end": 162.72,
+     "conf": 0.345
+    },
+    {
+     "w": "the",
+     "start": 162.72,
+     "end": 162.94,
+     "conf": 0.269
+    },
+    {
+     "w": "whole",
+     "start": 162.94,
+     "end": 163.4,
+     "conf": 0.22
+    },
+    {
+     "w": "world's",
+     "start": 163.4,
+     "end": 163.88,
+     "conf": 0.354
+    },
+    {
+     "w": "different",
+     "start": 163.88,
+     "end": 164.6,
+     "conf": 0.275
+    },
+    {
+     "w": "now",
+     "start": 164.6,
+     "end": 165.1,
+     "conf": 0.276
+    }
+   ]
+  },
+  {
+   "text": "One degree was all I need",
+   "start": 165.31,
+   "end": 168.63,
+   "words": [
+    {
+     "w": "One",
+     "start": 165.31,
+     "end": 166.02,
+     "conf": 0.051,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 166.02,
+     "end": 167.2,
+     "conf": 0.014,
+     "fixed": true
+    },
+    {
+     "w": "was",
+     "start": 167.2,
+     "end": 167.61,
+     "conf": 0.07,
+     "fixed": true
+    },
+    {
+     "w": "all",
+     "start": 167.61,
+     "end": 168.0,
+     "conf": 0.013,
+     "fixed": true
+    },
+    {
+     "w": "I",
+     "start": 168.0,
+     "end": 168.3,
+     "conf": 0.007,
+     "fixed": true
+    },
+    {
+     "w": "need",
+     "start": 168.3,
+     "end": 168.63,
+     "conf": 0.05,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree",
+   "start": 169.11,
+   "end": 170.76,
+   "words": [
+    {
+     "w": "One",
+     "start": 169.11,
+     "end": 169.37,
+     "conf": 0.083
+    },
+    {
+     "w": "degree",
+     "start": 169.77,
+     "end": 170.76,
+     "conf": 0.086
+    }
+   ]
+  },
+  {
+   "text": "One degree",
+   "start": 183.84,
+   "end": 185.59,
+   "words": [
+    {
+     "w": "One",
+     "start": 183.84,
+     "end": 184.5,
+     "conf": 0.28
+    },
+    {
+     "w": "degree",
+     "start": 184.5,
+     "end": 185.59,
+     "conf": 0.123
+    }
+   ]
+  },
+  {
+   "text": "One degree",
+   "start": 187.72,
+   "end": 189.42,
+   "words": [
+    {
+     "w": "One",
+     "start": 187.72,
+     "end": 188.42,
+     "conf": 0.101
+    },
+    {
+     "w": "degree",
+     "start": 188.42,
+     "end": 189.42,
+     "conf": 0.035,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree was all I need",
+   "start": 191.62,
+   "end": 196.02,
+   "words": [
+    {
+     "w": "One",
+     "start": 191.62,
+     "end": 191.88,
+     "conf": 0.067
+    },
+    {
+     "w": "degree",
+     "start": 192.52,
+     "end": 193.5,
+     "conf": 0.028
+    },
+    {
+     "w": "was",
+     "start": 193.5,
+     "end": 194.16,
+     "conf": 0.238,
+     "fixed": true
+    },
+    {
+     "w": "all",
+     "start": 194.16,
+     "end": 194.85,
+     "conf": 0.11,
+     "fixed": true
+    },
+    {
+     "w": "I",
+     "start": 194.85,
+     "end": 194.96,
+     "conf": 0.004,
+     "fixed": true
+    },
+    {
+     "w": "need",
+     "start": 195.45,
+     "end": 196.02,
+     "conf": 0.109,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree was all I need",
+   "start": 196.15,
+   "end": 199.94,
+   "words": [
+    {
+     "w": "One",
+     "start": 196.15,
+     "end": 196.8,
+     "conf": 0.017,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 196.8,
+     "end": 197.63,
+     "conf": 0.009,
+     "fixed": true
+    },
+    {
+     "w": "was",
+     "start": 197.63,
+     "end": 198.12,
+     "conf": 0.014,
+     "fixed": true
+    },
+    {
+     "w": "all",
+     "start": 198.12,
+     "end": 198.55,
+     "conf": 0.165,
+     "fixed": true
+    },
+    {
+     "w": "I",
+     "start": 198.55,
+     "end": 198.95,
+     "conf": 0.289,
+     "fixed": true
+    },
+    {
+     "w": "need",
+     "start": 198.95,
+     "end": 199.94,
+     "conf": 0.022,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree",
+   "start": 199.95,
+   "end": 202.8,
+   "words": [
+    {
+     "w": "One",
+     "start": 199.95,
+     "end": 200.25,
+     "conf": 0.079,
+     "fixed": true
+    },
+    {
+     "w": "degree",
+     "start": 200.67,
+     "end": 202.8,
+     "conf": 0.048,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "One degree",
+   "start": 203.84,
+   "end": 205.39,
+   "words": [
+    {
+     "w": "One",
+     "start": 203.84,
+     "end": 204.6,
+     "conf": 0.13
+    },
+    {
+     "w": "degree",
+     "start": 204.6,
+     "end": 205.39,
+     "conf": 0.093,
+     "fixed": true
+    }
+   ]
+  }
+ ]
+}

@@ -14,3 +14,9 @@ videos/pareto/analysis/.venv/
 videos/pareto/analysis/.cache/
 videos/pareto/analysis/stems/
 videos/pareto/analysis/work/
+# one-degree: dependencies and analysis intermediates
+videos/one-degree/app/node_modules/
+videos/one-degree/analysis/.venv/
+videos/one-degree/analysis/.cache/
+videos/one-degree/analysis/stems/
+videos/one-degree/analysis/work/
