@@ -1,0 +1,1367 @@
+{
+ "lines": [
+  {
+   "text": "They said count the cost before you leap",
+   "start": 24.423,
+   "end": 27.026,
+   "words": [
+    {
+     "w": "They",
+     "start": 24.423,
+     "end": 24.663,
+     "conf": 0.869
+    },
+    {
+     "w": "said",
+     "start": 24.663,
+     "end": 25.064,
+     "conf": 0.576
+    },
+    {
+     "w": "count",
+     "start": 25.064,
+     "end": 25.504,
+     "conf": 0.866
+    },
+    {
+     "w": "the",
+     "start": 25.504,
+     "end": 25.685,
+     "conf": 0.767
+    },
+    {
+     "w": "cost",
+     "start": 25.685,
+     "end": 25.945,
+     "conf": 0.865
+    },
+    {
+     "w": "before",
+     "start": 25.945,
+     "end": 26.546,
+     "conf": 0.984
+    },
+    {
+     "w": "you",
+     "start": 26.546,
+     "end": 26.746,
+     "conf": 0.926
+    },
+    {
+     "w": "leap",
+     "start": 26.746,
+     "end": 27.026,
+     "conf": 0.759
+    }
+   ]
+  },
+  {
+   "text": "Measure twice and think it through",
+   "start": 28.007,
+   "end": 30.43,
+   "words": [
+    {
+     "w": "Measure",
+     "start": 28.007,
+     "end": 28.408,
+     "conf": 0.996
+    },
+    {
+     "w": "twice",
+     "start": 28.408,
+     "end": 29.069,
+     "conf": 0.999
+    },
+    {
+     "w": "and",
+     "start": 29.069,
+     "end": 29.269,
+     "conf": 0.994
+    },
+    {
+     "w": "think",
+     "start": 29.269,
+     "end": 29.77,
+     "conf": 0.963
+    },
+    {
+     "w": "it",
+     "start": 29.77,
+     "end": 30.05,
+     "conf": 0.998
+    },
+    {
+     "w": "through",
+     "start": 30.05,
+     "end": 30.43,
+     "conf": 0.992
+    }
+   ]
+  },
+  {
+   "text": "But the cliff is only shoulder-high",
+   "start": 31.332,
+   "end": 33.87,
+   "words": [
+    {
+     "w": "But",
+     "start": 31.332,
+     "end": 31.532,
+     "conf": 1.0
+    },
+    {
+     "w": "the",
+     "start": 31.532,
+     "end": 31.732,
+     "conf": 0.946
+    },
+    {
+     "w": "cliff",
+     "start": 31.732,
+     "end": 32.273,
+     "conf": 0.999
+    },
+    {
+     "w": "is",
+     "start": 32.273,
+     "end": 32.453,
+     "conf": 0.998
+    },
+    {
+     "w": "only",
+     "start": 32.453,
+     "end": 32.773,
+     "conf": 0.953
+    },
+    {
+     "w": "shoulder-high",
+     "start": 32.773,
+     "end": 33.87,
+     "conf": 0.831
+    }
+   ]
+  },
+  {
+   "text": "And the sky is screaming blue",
+   "start": 34.676,
+   "end": 37.19,
+   "words": [
+    {
+     "w": "And",
+     "start": 34.676,
+     "end": 34.876,
+     "conf": 0.993
+    },
+    {
+     "w": "the",
+     "start": 34.876,
+     "end": 35.056,
+     "conf": 1.0
+    },
+    {
+     "w": "sky",
+     "start": 35.056,
+     "end": 35.256,
+     "conf": 0.957
+    },
+    {
+     "w": "is",
+     "start": 35.737,
+     "end": 35.897,
+     "conf": 0.391
+    },
+    {
+     "w": "screaming",
+     "start": 35.897,
+     "end": 36.758,
+     "conf": 0.866
+    },
+    {
+     "w": "blue",
+     "start": 36.758,
+     "end": 37.19,
+     "conf": 0.934
+    }
+   ]
+  },
+  {
+   "text": "The worst that happens is a stumble",
+   "start": 38.861,
+   "end": 41.97,
+   "words": [
+    {
+     "w": "The",
+     "start": 38.861,
+     "end": 39.022,
+     "conf": 1.0
+    },
+    {
+     "w": "worst",
+     "start": 39.022,
+     "end": 39.282,
+     "conf": 0.957
+    },
+    {
+     "w": "that",
+     "start": 39.282,
+     "end": 39.482,
+     "conf": 1.0
+    },
+    {
+     "w": "happens",
+     "start": 39.482,
+     "end": 40.224,
+     "conf": 1.0
+    },
+    {
+     "w": "is",
+     "start": 40.224,
+     "end": 40.604,
+     "conf": 0.982
+    },
+    {
+     "w": "a",
+     "start": 40.604,
+     "end": 40.885,
+     "conf": 0.982
+    },
+    {
+     "w": "stumble",
+     "start": 40.885,
+     "end": 41.97,
+     "conf": 0.863
+    }
+   ]
+  },
+  {
+   "text": "The best is something beautiful",
+   "start": 42.187,
+   "end": 44.19,
+   "words": [
+    {
+     "w": "The",
+     "start": 42.187,
+     "end": 42.387,
+     "conf": 0.96
+    },
+    {
+     "w": "best",
+     "start": 42.387,
+     "end": 42.647,
+     "conf": 1.0
+    },
+    {
+     "w": "is",
+     "start": 42.647,
+     "end": 42.808,
+     "conf": 0.987
+    },
+    {
+     "w": "something",
+     "start": 42.808,
+     "end": 43.449,
+     "conf": 0.975
+    },
+    {
+     "w": "beautiful",
+     "start": 43.449,
+     "end": 44.19,
+     "conf": 0.389
+    }
+   ]
+  },
+  {
+   "text": "Free fall, free fall",
+   "start": 44.24,
+   "end": 47.59,
+   "words": [
+    {
+     "w": "Free",
+     "start": 44.24,
+     "end": 44.841,
+     "conf": 0.263
+    },
+    {
+     "w": "fall",
+     "start": 44.841,
+     "end": 45.562,
+     "conf": 0.16
+    },
+    {
+     "w": "free",
+     "start": 46.323,
+     "end": 46.764,
+     "conf": 0.371
+    },
+    {
+     "w": "fall",
+     "start": 46.764,
+     "end": 47.59,
+     "conf": 0.059
+    }
+   ]
+  },
+  {
+   "text": "I\u2019d rather fly and hit a wall",
+   "start": 47.645,
+   "end": 50.7,
+   "words": [
+    {
+     "w": "I\u2019d",
+     "start": 47.645,
+     "end": 47.826,
+     "conf": 0.083
+    },
+    {
+     "w": "rather",
+     "start": 47.826,
+     "end": 48.406,
+     "conf": 0.201
+    },
+    {
+     "w": "fly",
+     "start": 48.406,
+     "end": 48.607,
+     "conf": 0.11
+    },
+    {
+     "w": "and",
+     "start": 48.967,
+     "end": 49.308,
+     "conf": 0.155
+    },
+    {
+     "w": "hit",
+     "start": 49.308,
+     "end": 49.828,
+     "conf": 0.177
+    },
+    {
+     "w": "a",
+     "start": 49.828,
+     "end": 50.049,
+     "conf": 0.07
+    },
+    {
+     "w": "wall",
+     "start": 50.049,
+     "end": 50.7,
+     "conf": 0.204
+    }
+   ]
+  },
+  {
+   "text": "Than spend forever standing tall",
+   "start": 50.93,
+   "end": 54.03,
+   "words": [
+    {
+     "w": "Than",
+     "start": 50.93,
+     "end": 51.13,
+     "conf": 0.496
+    },
+    {
+     "w": "spend",
+     "start": 51.13,
+     "end": 51.591,
+     "conf": 0.693
+    },
+    {
+     "w": "forever",
+     "start": 51.591,
+     "end": 52.592,
+     "conf": 0.963
+    },
+    {
+     "w": "standing",
+     "start": 52.592,
+     "end": 53.494,
+     "conf": 0.963
+    },
+    {
+     "w": "tall",
+     "start": 53.494,
+     "end": 54.03,
+     "conf": 0.973
+    }
+   ]
+  },
+  {
+   "text": "On ground that never moves at all",
+   "start": 54.295,
+   "end": 57.4,
+   "words": [
+    {
+     "w": "On",
+     "start": 54.295,
+     "end": 54.535,
+     "conf": 0.982
+    },
+    {
+     "w": "ground",
+     "start": 54.535,
+     "end": 54.916,
+     "conf": 0.976
+    },
+    {
+     "w": "that",
+     "start": 54.916,
+     "end": 55.176,
+     "conf": 0.322
+    },
+    {
+     "w": "never",
+     "start": 55.176,
+     "end": 55.977,
+     "conf": 0.949
+    },
+    {
+     "w": "moves",
+     "start": 55.977,
+     "end": 56.718,
+     "conf": 0.849
+    },
+    {
+     "w": "at",
+     "start": 56.718,
+     "end": 56.919,
+     "conf": 0.912
+    },
+    {
+     "w": "all",
+     "start": 56.919,
+     "end": 57.4,
+     "conf": 0.888
+    }
+   ]
+  },
+  {
+   "text": "Free fall, free fall",
+   "start": 57.82,
+   "end": 63.23,
+   "words": [
+    {
+     "w": "Free",
+     "start": 57.82,
+     "end": 58.422,
+     "conf": 0.737
+    },
+    {
+     "w": "fall",
+     "start": 58.422,
+     "end": 60.811,
+     "conf": 0.221
+    },
+    {
+     "w": "free",
+     "start": 61.172,
+     "end": 61.774,
+     "conf": 0.75
+    },
+    {
+     "w": "fall",
+     "start": 61.774,
+     "end": 63.23,
+     "conf": 0.191
+    }
+   ]
+  },
+  {
+   "text": "They said what if nobody answers",
+   "start": 64.321,
+   "end": 67.82,
+   "words": [
+    {
+     "w": "They",
+     "start": 64.321,
+     "end": 64.722,
+     "conf": 0.96
+    },
+    {
+     "w": "said",
+     "start": 64.722,
+     "end": 65.162,
+     "conf": 0.899
+    },
+    {
+     "w": "what",
+     "start": 65.162,
+     "end": 65.643,
+     "conf": 0.934
+    },
+    {
+     "w": "if",
+     "start": 65.643,
+     "end": 65.823,
+     "conf": 0.987
+    },
+    {
+     "w": "nobody",
+     "start": 65.823,
+     "end": 66.925,
+     "conf": 0.994
+    },
+    {
+     "w": "answers",
+     "start": 66.925,
+     "end": 67.82,
+     "conf": 0.967
+    }
+   ]
+  },
+  {
+   "text": "What if all your words get lost",
+   "start": 68.107,
+   "end": 70.65,
+   "words": [
+    {
+     "w": "What",
+     "start": 68.107,
+     "end": 68.367,
+     "conf": 0.962
+    },
+    {
+     "w": "if",
+     "start": 68.367,
+     "end": 68.627,
+     "conf": 0.996
+    },
+    {
+     "w": "all",
+     "start": 68.627,
+     "end": 68.948,
+     "conf": 1.0
+    },
+    {
+     "w": "your",
+     "start": 68.948,
+     "end": 69.348,
+     "conf": 0.935
+    },
+    {
+     "w": "words",
+     "start": 69.348,
+     "end": 69.809,
+     "conf": 0.998
+    },
+    {
+     "w": "get",
+     "start": 69.809,
+     "end": 70.189,
+     "conf": 0.988
+    },
+    {
+     "w": "lost",
+     "start": 70.189,
+     "end": 70.65,
+     "conf": 0.999
+    }
+   ]
+  },
+  {
+   "text": "But a whisper costs you nothing",
+   "start": 71.431,
+   "end": 74.32,
+   "words": [
+    {
+     "w": "But",
+     "start": 71.431,
+     "end": 71.752,
+     "conf": 0.999
+    },
+    {
+     "w": "a",
+     "start": 71.752,
+     "end": 71.852,
+     "conf": 0.468
+    },
+    {
+     "w": "whisper",
+     "start": 71.852,
+     "end": 72.693,
+     "conf": 0.963
+    },
+    {
+     "w": "costs",
+     "start": 72.693,
+     "end": 73.174,
+     "conf": 0.859
+    },
+    {
+     "w": "you",
+     "start": 73.174,
+     "end": 73.554,
+     "conf": 1.0
+    },
+    {
+     "w": "nothing",
+     "start": 73.554,
+     "end": 74.32,
+     "conf": 0.996
+    }
+   ]
+  },
+  {
+   "text": "And silence is the only cost",
+   "start": 74.836,
+   "end": 77.5,
+   "words": [
+    {
+     "w": "And",
+     "start": 74.836,
+     "end": 75.197,
+     "conf": 0.997
+    },
+    {
+     "w": "silence",
+     "start": 75.197,
+     "end": 75.898,
+     "conf": 0.998
+    },
+    {
+     "w": "is",
+     "start": 75.898,
+     "end": 76.078,
+     "conf": 0.906
+    },
+    {
+     "w": "the",
+     "start": 76.078,
+     "end": 76.318,
+     "conf": 0.833
+    },
+    {
+     "w": "only",
+     "start": 76.318,
+     "end": 76.839,
+     "conf": 0.972
+    },
+    {
+     "w": "cost",
+     "start": 76.839,
+     "end": 77.5,
+     "conf": 0.266
+    }
+   ]
+  },
+  {
+   "text": "The door says no or the door swings wide",
+   "start": 77.681,
+   "end": 81.33,
+   "words": [
+    {
+     "w": "The",
+     "start": 77.681,
+     "end": 77.881,
+     "conf": 0.601
+    },
+    {
+     "w": "door",
+     "start": 77.881,
+     "end": 78.302,
+     "conf": 0.434
+    },
+    {
+     "w": "says",
+     "start": 78.302,
+     "end": 78.743,
+     "conf": 0.392
+    },
+    {
+     "w": "no",
+     "start": 78.743,
+     "end": 79.204,
+     "conf": 0.494
+    },
+    {
+     "w": "or",
+     "start": 79.204,
+     "end": 79.384,
+     "conf": 0.714
+    },
+    {
+     "w": "the",
+     "start": 79.384,
+     "end": 79.565,
+     "conf": 0.989
+    },
+    {
+     "w": "door",
+     "start": 79.565,
+     "end": 79.865,
+     "conf": 0.998
+    },
+    {
+     "w": "swings",
+     "start": 79.865,
+     "end": 80.246,
+     "conf": 0.999
+    },
+    {
+     "w": "wide",
+     "start": 80.246,
+     "end": 81.33,
+     "conf": 0.917
+    }
+   ]
+  },
+  {
+   "text": "Either way I\u2019m on the other side",
+   "start": 81.22,
+   "end": 86.59,
+   "words": [
+    {
+     "w": "Either",
+     "start": 81.22,
+     "end": 81.68,
+     "conf": 0.046,
+     "fixed": true
+    },
+    {
+     "w": "way",
+     "start": 81.68,
+     "end": 82.12,
+     "conf": 0.037,
+     "fixed": true
+    },
+    {
+     "w": "I\u2019m",
+     "start": 82.12,
+     "end": 82.431,
+     "conf": 0.001,
+     "fixed": true
+    },
+    {
+     "w": "on",
+     "start": 82.431,
+     "end": 82.752,
+     "conf": 0.819
+    },
+    {
+     "w": "the",
+     "start": 82.752,
+     "end": 83.032,
+     "conf": 0.708
+    },
+    {
+     "w": "other",
+     "start": 83.032,
+     "end": 83.533,
+     "conf": 0.941
+    },
+    {
+     "w": "side",
+     "start": 83.533,
+     "end": 86.59,
+     "conf": 0.168
+    }
+   ]
+  },
+  {
+   "text": "Free fall, free fall",
+   "start": 86.64,
+   "end": 89.37,
+   "words": [
+    {
+     "w": "Free",
+     "start": 86.64,
+     "end": 87.081,
+     "conf": 0.043
+    },
+    {
+     "w": "fall",
+     "start": 87.081,
+     "end": 87.481,
+     "conf": 0.022
+    },
+    {
+     "w": "free",
+     "start": 88.102,
+     "end": 88.563,
+     "conf": 0.176
+    },
+    {
+     "w": "fall",
+     "start": 88.563,
+     "end": 89.37,
+     "conf": 0.061
+    }
+   ]
+  },
+  {
+   "text": "I\u2019d rather fly and hit a wall",
+   "start": 89.424,
+   "end": 92.67,
+   "words": [
+    {
+     "w": "I\u2019d",
+     "start": 89.424,
+     "end": 89.604,
+     "conf": 0.025
+    },
+    {
+     "w": "rather",
+     "start": 89.604,
+     "end": 90.205,
+     "conf": 0.072
+    },
+    {
+     "w": "fly",
+     "start": 90.205,
+     "end": 90.405,
+     "conf": 0.073
+    },
+    {
+     "w": "and",
+     "start": 90.866,
+     "end": 91.106,
+     "conf": 0.01
+    },
+    {
+     "w": "hit",
+     "start": 91.106,
+     "end": 91.627,
+     "conf": 0.011
+    },
+    {
+     "w": "a",
+     "start": 91.627,
+     "end": 91.767,
+     "conf": 0.024
+    },
+    {
+     "w": "wall",
+     "start": 91.767,
+     "end": 92.67,
+     "conf": 0.004
+    }
+   ]
+  },
+  {
+   "text": "Than spend forever standing tall",
+   "start": 92.729,
+   "end": 95.73,
+   "words": [
+    {
+     "w": "Than",
+     "start": 92.729,
+     "end": 92.929,
+     "conf": 0.354
+    },
+    {
+     "w": "spend",
+     "start": 92.929,
+     "end": 93.349,
+     "conf": 0.411
+    },
+    {
+     "w": "forever",
+     "start": 93.349,
+     "end": 94.371,
+     "conf": 0.992
+    },
+    {
+     "w": "standing",
+     "start": 94.371,
+     "end": 95.192,
+     "conf": 0.997
+    },
+    {
+     "w": "tall",
+     "start": 95.192,
+     "end": 95.73,
+     "conf": 0.39
+    }
+   ]
+  },
+  {
+   "text": "On ground that never moves at all",
+   "start": 96.133,
+   "end": 99.23,
+   "words": [
+    {
+     "w": "On",
+     "start": 96.133,
+     "end": 96.313,
+     "conf": 0.104
+    },
+    {
+     "w": "ground",
+     "start": 96.313,
+     "end": 96.714,
+     "conf": 0.826
+    },
+    {
+     "w": "that",
+     "start": 96.714,
+     "end": 96.954,
+     "conf": 0.916
+    },
+    {
+     "w": "never",
+     "start": 96.954,
+     "end": 97.775,
+     "conf": 0.986
+    },
+    {
+     "w": "moves",
+     "start": 97.775,
+     "end": 98.476,
+     "conf": 0.888
+    },
+    {
+     "w": "at",
+     "start": 98.476,
+     "end": 98.697,
+     "conf": 0.503
+    },
+    {
+     "w": "all",
+     "start": 98.697,
+     "end": 99.23,
+     "conf": 0.443
+    }
+   ]
+  },
+  {
+   "text": "Free fall",
+   "start": 99.598,
+   "end": 100.88,
+   "words": [
+    {
+     "w": "Free",
+     "start": 99.598,
+     "end": 100.239,
+     "conf": 0.724
+    },
+    {
+     "w": "fall",
+     "start": 100.239,
+     "end": 100.88,
+     "conf": 0.358
+    }
+   ]
+  },
+  {
+   "text": "Every great thing started with a jump",
+   "start": 120.581,
+   "end": 123.49,
+   "words": [
+    {
+     "w": "Every",
+     "start": 120.581,
+     "end": 120.941,
+     "conf": 0.981
+    },
+    {
+     "w": "great",
+     "start": 120.941,
+     "end": 121.341,
+     "conf": 0.982
+    },
+    {
+     "w": "thing",
+     "start": 121.341,
+     "end": 121.962,
+     "conf": 0.931
+    },
+    {
+     "w": "started",
+     "start": 121.962,
+     "end": 122.622,
+     "conf": 0.961
+    },
+    {
+     "w": "with",
+     "start": 122.622,
+     "end": 122.902,
+     "conf": 0.864
+    },
+    {
+     "w": "a",
+     "start": 122.902,
+     "end": 123.022,
+     "conf": 0.824
+    },
+    {
+     "w": "jump",
+     "start": 123.022,
+     "end": 123.49,
+     "conf": 0.823
+    }
+   ]
+  },
+  {
+   "text": "Every love began with just a name",
+   "start": 123.543,
+   "end": 126.84,
+   "words": [
+    {
+     "w": "Every",
+     "start": 123.543,
+     "end": 123.863,
+     "conf": 0.984
+    },
+    {
+     "w": "love",
+     "start": 123.863,
+     "end": 124.343,
+     "conf": 0.69
+    },
+    {
+     "w": "began",
+     "start": 124.343,
+     "end": 124.924,
+     "conf": 0.977
+    },
+    {
+     "w": "with",
+     "start": 124.924,
+     "end": 125.344,
+     "conf": 1.0
+    },
+    {
+     "w": "just",
+     "start": 125.344,
+     "end": 125.864,
+     "conf": 0.997
+    },
+    {
+     "w": "a",
+     "start": 125.864,
+     "end": 126.205,
+     "conf": 0.997
+    },
+    {
+     "w": "name",
+     "start": 126.205,
+     "end": 126.84,
+     "conf": 0.98
+    }
+   ]
+  },
+  {
+   "text": "Every single life worth telling",
+   "start": 127.285,
+   "end": 129.83,
+   "words": [
+    {
+     "w": "Every",
+     "start": 127.285,
+     "end": 127.606,
+     "conf": 0.788
+    },
+    {
+     "w": "single",
+     "start": 127.606,
+     "end": 128.046,
+     "conf": 0.781
+    },
+    {
+     "w": "life",
+     "start": 128.046,
+     "end": 128.466,
+     "conf": 0.474
+    },
+    {
+     "w": "worth",
+     "start": 128.466,
+     "end": 128.907,
+     "conf": 0.373
+    },
+    {
+     "w": "telling",
+     "start": 128.907,
+     "end": 129.83,
+     "conf": 0.186
+    }
+   ]
+  },
+  {
+   "text": "Started when somebody risked the shame",
+   "start": 129.887,
+   "end": 133.37,
+   "words": [
+    {
+     "w": "Started",
+     "start": 129.887,
+     "end": 130.348,
+     "conf": 0.943
+    },
+    {
+     "w": "when",
+     "start": 130.348,
+     "end": 130.808,
+     "conf": 0.868
+    },
+    {
+     "w": "somebody",
+     "start": 130.808,
+     "end": 132.049,
+     "conf": 0.995
+    },
+    {
+     "w": "risked",
+     "start": 132.049,
+     "end": 132.449,
+     "conf": 0.859
+    },
+    {
+     "w": "the",
+     "start": 132.449,
+     "end": 132.85,
+     "conf": 0.917
+    },
+    {
+     "w": "shame",
+     "start": 132.85,
+     "end": 133.37,
+     "conf": 0.62
+    }
+   ]
+  },
+  {
+   "text": "Free fall, free fall",
+   "start": 133.44,
+   "end": 136.19,
+   "words": [
+    {
+     "w": "Free",
+     "start": 133.44,
+     "end": 133.881,
+     "conf": 0.175
+    },
+    {
+     "w": "fall",
+     "start": 133.881,
+     "end": 134.281,
+     "conf": 0.02
+    },
+    {
+     "w": "free",
+     "start": 134.902,
+     "end": 135.322,
+     "conf": 0.387
+    },
+    {
+     "w": "fall",
+     "start": 135.322,
+     "end": 136.19,
+     "conf": 0.059
+    }
+   ]
+  },
+  {
+   "text": "I\u2019d rather fly and hit the wall",
+   "start": 136.243,
+   "end": 139.31,
+   "words": [
+    {
+     "w": "I\u2019d",
+     "start": 136.243,
+     "end": 136.403,
+     "conf": 0.083
+    },
+    {
+     "w": "rather",
+     "start": 136.403,
+     "end": 137.004,
+     "conf": 0.339
+    },
+    {
+     "w": "fly",
+     "start": 137.004,
+     "end": 137.224,
+     "conf": 0.254
+    },
+    {
+     "w": "and",
+     "start": 137.725,
+     "end": 137.905,
+     "conf": 0.195
+    },
+    {
+     "w": "hit",
+     "start": 137.905,
+     "end": 138.285,
+     "conf": 0.259
+    },
+    {
+     "w": "the",
+     "start": 138.285,
+     "end": 138.666,
+     "conf": 0.27
+    },
+    {
+     "w": "wall",
+     "start": 138.666,
+     "end": 139.31,
+     "conf": 0.065
+    }
+   ]
+  },
+  {
+   "text": "Than spend a life just standing tall",
+   "start": 139.527,
+   "end": 142.86,
+   "words": [
+    {
+     "w": "Than",
+     "start": 139.527,
+     "end": 139.687,
+     "conf": 0.263
+    },
+    {
+     "w": "spend",
+     "start": 139.687,
+     "end": 140.228,
+     "conf": 0.493
+    },
+    {
+     "w": "a",
+     "start": 140.228,
+     "end": 140.368,
+     "conf": 0.115
+    },
+    {
+     "w": "life",
+     "start": 140.368,
+     "end": 140.808,
+     "conf": 0.29
+    },
+    {
+     "w": "just",
+     "start": 140.808,
+     "end": 141.169,
+     "conf": 0.348
+    },
+    {
+     "w": "standing",
+     "start": 141.169,
+     "end": 142.05,
+     "conf": 0.964
+    },
+    {
+     "w": "tall",
+     "start": 142.05,
+     "end": 142.86,
+     "conf": 0.622
+    }
+   ]
+  },
+  {
+   "text": "On ground that never moves at all",
+   "start": 142.911,
+   "end": 148.42,
+   "words": [
+    {
+     "w": "On",
+     "start": 142.911,
+     "end": 143.131,
+     "conf": 0.999
+    },
+    {
+     "w": "ground",
+     "start": 143.131,
+     "end": 143.511,
+     "conf": 1.0
+    },
+    {
+     "w": "that",
+     "start": 143.511,
+     "end": 143.731,
+     "conf": 0.962
+    },
+    {
+     "w": "never",
+     "start": 143.731,
+     "end": 144.552,
+     "conf": 0.933
+    },
+    {
+     "w": "moves",
+     "start": 144.552,
+     "end": 145.18,
+     "conf": 0.786
+    },
+    {
+     "w": "at",
+     "start": 145.18,
+     "end": 145.45,
+     "conf": 0.015,
+     "fixed": true
+    },
+    {
+     "w": "all",
+     "start": 145.45,
+     "end": 148.42,
+     "conf": 0.004,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "Free fall, free fall",
+   "start": 148.497,
+   "end": 151.62,
+   "words": [
+    {
+     "w": "Free",
+     "start": 148.497,
+     "end": 148.957,
+     "conf": 0.28
+    },
+    {
+     "w": "fall",
+     "start": 148.957,
+     "end": 149.297,
+     "conf": 0.03
+    },
+    {
+     "w": "free",
+     "start": 149.938,
+     "end": 150.399,
+     "conf": 0.425
+    },
+    {
+     "w": "fall",
+     "start": 150.399,
+     "end": 151.62,
+     "conf": 0.02
+    }
+   ]
+  },
+  {
+   "text": "Free fall, free fall",
+   "start": 153.285,
+   "end": 158.0,
+   "words": [
+    {
+     "w": "Free",
+     "start": 153.285,
+     "end": 153.727,
+     "conf": 0.366
+    },
+    {
+     "w": "fall",
+     "start": 153.727,
+     "end": 155.653,
+     "conf": 0.018
+    },
+    {
+     "w": "free",
+     "start": 156.616,
+     "end": 157.077,
+     "conf": 0.524
+    },
+    {
+     "w": "fall",
+     "start": 157.077,
+     "end": 158.0,
+     "conf": 0.03
+    }
+   ]
+  }
+ ]
+}

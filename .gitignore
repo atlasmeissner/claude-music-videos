@@ -20,3 +20,9 @@ videos/one-degree/analysis/.venv/
 videos/one-degree/analysis/.cache/
 videos/one-degree/analysis/stems/
 videos/one-degree/analysis/work/
+# free-fall: dependencies and analysis intermediates
+videos/free-fall/app/node_modules/
+videos/free-fall/analysis/.venv/
+videos/free-fall/analysis/.cache/
+videos/free-fall/analysis/stems/
+videos/free-fall/analysis/work/
