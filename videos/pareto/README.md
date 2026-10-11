@@ -4,8 +4,9 @@ A generative, code-rendered music video with word-synced karaoke typography for 
 (made with Suno): upbeat Britpop about the 80/20 rule applied to a scruffy, happy London life. Every frame is a
 deterministic function of song time, rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (4:58, 222 MB) is attached to the
-[`pareto-v1` release](https://github.com/atlasmeissner/claude-music-videos/releases/tag/pareto-v1).
+**Watch / download:** the 1080p30 render (4:58, 222 MB) is in [`render/`](render/), split into three parts (GitHub's
+100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+`cat pareto_1080p30.mp4.part0 pareto_1080p30.mp4.part1 pareto_1080p30.mp4.part2 > pareto_1080p30.mp4`.
 
 The renderer is a fork of the [pdoom-video](https://github.com/mexicat/pdoom-video) engine (MIT): same timeline,
 post-processing, typography and export pipeline, with a new palette, a new kit of motifs and fifteen new scenes.

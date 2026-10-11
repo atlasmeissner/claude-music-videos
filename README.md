@@ -11,7 +11,7 @@ and the review passes and ran the renders.
 |---|---|---|---|---|
 | [`pdoom-tabletop`](videos/pdoom-tabletop/) | "I'm Upping My P(doom)" (Claude-Pop version) | Stop-motion-style miniature on a researcher's desk at night: Clawd as a vinyl toy, a peg-doll researcher, a brass P(doom) gauge | Blender 5.2 (EEVEE) from Python scripts; 4K 60 fps | [YouTube](https://www.youtube.com/watch?v=Hu3Gupp-wKc) |
 | [`paranoia`](videos/paranoia/) | HEARTSTEEL, "PARANOIA" (last minute) | League of Legends montage of my own plays: CCTV intro, pentakills synced to the drums, impacts, split-screens, kill callouts | Python/PyTorch footage engine (RIFE slow-mo, time remaps, GPU effects, synthesized SFX); 1440p 60 fps | [YouTube](https://youtu.be/4_YzMI2pPY8) |
-| [`pareto`](videos/pareto/) | lexm, "Pareto (Remastered)" | A deadpan statistical almanac of one British life: 15 plates split 80/20, a pillar-box-red fifth marking what matters, word-synced karaoke | TypeScript + three.js in headless Chromium (fork of the pdoom-video engine); 1080p 30 fps | [Release](https://github.com/atlasmeissner/claude-music-videos/releases/tag/pareto-v1) |
+| [`pareto`](videos/pareto/) | lexm, "Pareto (Remastered)" | A deadpan statistical almanac of one British life: 15 plates split 80/20, a pillar-box-red fifth marking what matters, word-synced karaoke | TypeScript + three.js in headless Chromium (fork of the pdoom-video engine); 1080p 30 fps | [3-part MP4](videos/pareto/render/) |
 
 Each folder is self-contained: its README covers the concept, layout, requirements, render commands and credits,
 and its `docs/` hold the planning doc (`TREATMENT.md`), the brief the agents worked from (`ENGINE.md`) and notes on
