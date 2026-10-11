@@ -134,7 +134,7 @@ export default class Drew extends Scene {
     });
     // a deadpan readout: the plan's length and its years
     c.globalAlpha = prog(t, l1.start, l1.start + 0.4);
-    mono(c, `PLANNED  ${PLAN_LEN.toFixed(1)} KM  ·  2000 → 2040  ·  ${Math.floor(40 * ticks)} YEARS DRAWN`, 750, 1010, { size: 11, color: rgba('ink', 0.65), track: 3 });
+    mono(c, `PLANNED  ${PLAN_LEN.toFixed(1)} KM  ·  2000 → 2040  ·  ${Math.floor(40 * ticks)} YEARS DRAWN`, 750, 1040, { size: 11, color: rgba('bone', 0.55), track: 3 });
     c.globalAlpha = 1;
     lb.render(renderer, out);
     comp.draw(renderer, T.upload(), out);

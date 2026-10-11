@@ -113,7 +113,7 @@ void main() {
     col += C_BONE * br * (1.0 - smoothstep(0.4, 1.4, d)) * 0.9 * stars * (1.0 - y * 0.85) * (1.0 - warmth * 0.8);
   } else {
     // below the horizon: the dark sea / land, with a faint warm reflection near the horizon at dawn
-    col = C_INK * 0.95 + warmth * C_EMBER * 0.07 * exp(above / 140.0);
+    col = mix(C_INK2 * 1.25, C_INK * 0.95, warmth) + warmth * C_EMBER * 0.07 * exp(above / 140.0);
   }
   fragColor = vec4(col, 1.0);
 }`;

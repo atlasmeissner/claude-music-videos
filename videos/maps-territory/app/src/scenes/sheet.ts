@@ -53,8 +53,8 @@ export default class Sheet extends Scene {
     if (pen) penCross(c, pen.x, pen.y, prog(t, t0, b(0.4)));
     // paper margin notes
     c.globalAlpha = prog(t, b(0.5), b(1.5));
-    mono(c, 'SURVEYED  NO', 1610, 1010, { size: 11, color: rgba('ink', 0.55), track: 3, align: 'right' });
-    mono(c, 'DRAWN  FROM IMAGINATION', 750, 1010, { size: 11, color: rgba('ink', 0.55), track: 3 });
+    mono(c, 'SURVEYED  NO', 1610, 1040, { size: 11, color: rgba('bone', 0.5), track: 3, align: 'right' });
+    mono(c, 'DRAWN  FROM IMAGINATION', 750, 1040, { size: 11, color: rgba('bone', 0.5), track: 3 });
     c.globalAlpha = 1;
     comp.draw(renderer, T.upload(), out);
     return { bloom: 0.15, vignette: 0.22, ca: 0.25, halation: 0, paper: 1, fade: 1 - prog(t, t0, t0 + 0.35) };

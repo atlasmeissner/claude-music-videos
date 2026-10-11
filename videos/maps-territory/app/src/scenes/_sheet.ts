@@ -15,11 +15,25 @@ export const titleStroke = () => (titleST ??= strokeText('The Plan', 'script', 7
 
 export interface FurnitureK { frame: number; star: number; scale: number; legend: number; title: number; ticks?: number }
 
+/** The left column's own paper: a card beside the sheet on the dark desk (for the title, the verse, the legend). */
+export function columnCard(c: CanvasRenderingContext2D, k: number) {
+  if (k <= 0) return;
+  const e = ease.outCubic(clamp(k));
+  c.save();
+  c.globalAlpha *= clamp(k * 1.5);
+  c.translate(-(1 - e) * 60, 0);
+  c.fillStyle = 'rgba(0,0,0,0.35)'; c.fillRect(COL_X - 44 + 6, 84 + 8, 640, 920);
+  c.fillStyle = rgba('bone', 1); c.fillRect(COL_X - 44, 84, 640, 920);
+  c.strokeStyle = rgba('ink', 0.5); c.lineWidth = 1; c.strokeRect(COL_X - 32, 96, 616, 896);
+  c.restore();
+}
+
 /** The sheet's furniture at progress k (each 0..1). Returns the pen position if something is being drawn. */
 export function drawFurniture(c: CanvasRenderingContext2D, v: View, k: FurnitureK, o: { alpha?: number } = {}) {
   let pen: { x: number; y: number } | null = null;
   c.save();
   c.globalAlpha *= o.alpha ?? 1;
+  columnCard(c, Math.max(k.legend, k.title) * 4);
   const ink = rgba('ink', 0.88);
   neatline(c, v, ink, { k: k.frame, step: 10 });
   // compass star, top right inside the frame
