@@ -12,7 +12,7 @@ import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { Lyrics } from '../engine/lyrics';
 import { clamp, ease, lerp, prog, pulse, TAU } from '../engine/util';
-import { degreeTimes, drawHeading, drawKaraoke, heading, mono, needle, pivot, rad, rollPost } from './_od';
+import { degreeTimes, drawCompound, drawKaraoke, heading, mono, needle, pivot, rad, rollPost } from './_od';
 
 export default class Hook extends Scene {
   lb = new LineBatch(9000);
@@ -35,6 +35,9 @@ export default class Hook extends Scene {
     const k = prog(t, this.tB - 0.1, this.tB + 0.75, ease.inOutCubic); // A -> B
     // dial: huge and off to the right in A, centred in B
     const cx = lerp(1460, W / 2, k), cy = lerp(790, 600, k), R = lerp(820, 330, k);
+    // the hand steps one degree on each "degree" (a ratchet), then creeps at one degree a minute
+    let steps = 0;
+    for (const d of this.degs) steps += prog(t, d, d + 0.45, (x) => ease.outBack(x, 2.2));
     const lb = this.lb; lb.clear();
     const flare = this.degs.reduce((m, d) => Math.max(m, pulse(t, d, 0.35)), 0);
     const intro = prog(t, this.ctx.start, this.ctx.start + 0.6, ease.outCubic);
@@ -44,7 +47,7 @@ export default class Hook extends Scene {
       const vis = clamp(intro * 1.4 - Math.abs(((i + 180) % 360) - 180) / 360);
       if (vis <= 0) continue;
       const L = i % 30 === 0 ? 48 : i % 10 === 0 ? 30 : i % 5 === 0 ? 18 : 9;
-      const hot = (i === 180 || i === 181) ? 1 : 0;
+      const hot = (i === 180 + Math.round(steps) || i === 179 + Math.round(steps)) ? 1 : 0;
       const col = hot ? LIN.signal : LIN.bone;
       lb.seg2(cx + Math.cos(a) * R, cy + Math.sin(a) * R, cx + Math.cos(a) * (R - L), cy + Math.sin(a) * (R - L), i % 10 === 0 ? 1.6 : 1, col, (hot ? 0.6 + flare : 0.62) * vis);
     }
@@ -62,14 +65,14 @@ export default class Hook extends Scene {
     // the one-degree wedge between 180° and 181°, flaring on each "degree"
     if (flare > 0.01) {
       for (let s = 0; s < 6; s++) {
-        const a = rad(180 + s / 5);
+        const a = rad(179 + Math.round(steps) + s / 5);
         lb.seg2(cx + Math.cos(a) * R * 0.18, cy + Math.sin(a) * R * 0.18, cx + Math.cos(a) * (R + 30), cy + Math.sin(a) * (R + 30), 1.2,
           [LIN.signal[0] * 2 * flare, LIN.signal[1] * 2 * flare, LIN.signal[2] * 2 * flare], 0.5 + 0.5 * flare);
       }
     }
     // the hand: in A it rests at 180°; in B it turns at one degree a minute (you can't see it)
     const vel = 1 / 60; // degrees per second
-    const handA = rad(180 + Math.max(0, t - this.tB) * vel);
+    const handA = rad(180 + steps + Math.max(0, t - this.tB) * vel);
     pivot(lb, cx, cy, 9, LIN.bone, intro);
     needle(lb, cx, cy, handA, R * lerp(0.4, 0.93, k), t, { width: 1.8, tail: R * 0.12, tip: intro });
     lb.render(renderer, out);
@@ -174,7 +177,7 @@ export default class Hook extends Scene {
       mono(c, 'VISIBLE TO THE EYE  NO', Lx - LR, Ly + LR + 62, { size: 12, color: rgba('signal', 1), track: 2 });
       c.restore();
     }
-    drawHeading(c, 120, 990, heading(lyrics, t));
+    drawCompound(c, 120, 990, t, { ly: lyrics });
     comp.draw(renderer, L.upload(), out);
     void drawKaraoke; void H;
     const shake = this.degs.reduce((m, d) => Math.max(m, pulse(t, d, 0.08)), 0);

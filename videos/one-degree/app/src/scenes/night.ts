@@ -9,7 +9,7 @@ import { F } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { ease, hash, lerp, noise1, prog, TAU } from '../engine/util';
-import { drawHeading, drawKaraoke, heading, mono, needleTip, rollPost } from './_od';
+import { drawCompound, drawKaraoke, heading, mono, needleTip, rollPost } from './_od';
 
 const PX = 1240, PY = 330, HORIZON = 820;
 const N = 520;
@@ -72,7 +72,7 @@ export default class Night extends Scene {
     mono(c, 'EXPOSURE', 120, 150, { size: 12, color: rgba('ash', 0.75), track: 3 });
     mono(c, `${nights.toLocaleString('en-US')} NIGHT${nights > 1 ? 'S' : ''}`, 120, 176, { size: 18, color: rgba('bone', 0.9), track: 2, weight: 500 });
     mono(c, 'POLARIS  ALT 47.8°', PX + 26, PY - 18, { size: 12, color: rgba('ash', 0.8), track: 2 });
-    drawHeading(c, W - 340, 150, heading(lyrics, t));
+    drawCompound(c, W - 340, 150, t, { ly: lyrics });
     comp.draw(renderer, L.upload(), out);
     return { ...rollPost(lyrics, t), bloom: 0.6, ca: 0.5, vignette: 0.45 };
   }

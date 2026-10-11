@@ -11,7 +11,7 @@ import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { Lyrics } from '../engine/lyrics';
 import { clamp, ease, lerp, prog, pulse } from '../engine/util';
-import { degreeTimes, drawHeading, heading, mono, needleTip, rad, rollPost } from './_od';
+import { degreeTimes, drawCompound, heading, mono, needleTip, rad, rollPost } from './_od';
 
 export default class Whoa extends Scene {
   lb = new LineBatch(12000);
@@ -107,7 +107,7 @@ export default class Whoa extends Scene {
       mono(c, 'OF ONE TURN', cx, cy + 40, { size: 12, color: rgba('ash', 0.85), track: 4, align: 'center' });
       c.restore();
     }
-    drawHeading(c, 120, 990, heading(lyrics, t));
+    drawCompound(c, 120, 990, t, { ly: lyrics });
     comp.draw(renderer, T.upload(), out);
     return { ...rollPost(lyrics, t), bloom: 0.7, ca: 0.5, vignette: 0.45 };
   }

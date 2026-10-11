@@ -9,7 +9,7 @@ import { F, font } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, prog, pulse } from '../engine/util';
-import { drawKaraoke, jit, mono } from './_od';
+import { drawKaraoke, fmtGain, gain, jit, mono } from './_od';
 
 const COLS = 53, ROWS = 7, CELL = 26, GAP = 6;
 const GX = (W - COLS * (CELL + GAP) + GAP) / 2, GY = 610;
@@ -95,6 +95,7 @@ export default class Days extends Scene {
     // ledger
     const notable = t >= this.tYet ? 1 : 0;
     mono(c, `DAYS ${String(n).padStart(3, '0')} / 365`, GX, GY + ROWS * (CELL + GAP) + 44, { size: 14, color: rgba('ink', 0.75), track: 3, weight: 500 });
+    mono(c, `1% BETTER EACH DAY  ${fmtGain(gain(n))}`, GX + 780, GY + ROWS * (CELL + GAP) + 44, { size: 14, color: n > 300 ? rgba('signal', 1) : rgba('ink', 0.75), track: 3, weight: 500 });
     mono(c, `WORTH REMEMBERING  ${notable}`, GX + 330, GY + ROWS * (CELL + GAP) + 44, { size: 14, color: notable ? rgba('signal', 1) : rgba('ink', 0.75), track: 3, weight: 500 });
     if (yk > 0) {
       const { x, y } = cellXY(364);

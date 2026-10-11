@@ -10,7 +10,7 @@ import { F } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { ease, lerp, prog } from '../engine/util';
-import { drawHeading, drawKaraoke, heading, jit, mono, needleTip, rad, rollPost, levelCtx } from './_od';
+import { drawCompound, drawKaraoke, heading, jit, mono, needleTip, rad, rollPost, levelCtx } from './_od';
 
 const GROUPS_X = 30, ROWS = 16, N = GROUPS_X * ROWS * 5;
 const SW = 15, GW = 104, RH = 112, SL = 64;
@@ -52,7 +52,7 @@ export default class Quiet extends Scene {
     const wallW = GROUPS_X * GW, wallH = ROWS * RH;
     const fx = lerp(sc.x - 120, wallW / 2 - 30, reveal), fy = lerp(sc.y, wallH / 2 - RH / 2, reveal);
     const zoom = lerp(2.4, 0.58, reveal) * (1 + 0.015 * Math.sin(t * 0.4));
-    const rot = rad(-(sc.a + heading(lyrics, t)) * (1 - reveal));
+    const rot = rad(-sc.a * (1 - reveal));
     const cs = Math.cos(rot), sn = Math.sin(rot);
     const S = (x: number, y: number) => { const dx = x - fx, dy = y - fy; return { x: W / 2 + (dx * cs - dy * sn) * zoom, y: H / 2 - 40 + (dx * sn + dy * cs) * zoom }; };
     for (let i = 0; i <= cur; i++) {
@@ -94,7 +94,7 @@ export default class Quiet extends Scene {
     const days = cur + 1;
     mono(c, `QUIET DAYS  ${days.toLocaleString('en-US')}`, 120, 150, { size: 13, color: rgba('ash', 0.85), track: 3 });
     mono(c, reveal < 0.5 ? 'CHANGE SINCE YESTERDAY  0.02°' : `CHANGE SINCE DAY ONE  ${((cur / N) * TURN).toFixed(0)}°`, 120, 176, { size: 13, color: reveal < 0.5 ? rgba('bone', 0.8) : rgba('signal', 1), track: 3 });
-    drawHeading(c, W - 340, 150, heading(lyrics, t));
+    drawCompound(c, W - 340, 150, t, { ly: lyrics });
     c.restore();
     comp.draw(renderer, T.upload(), out);
     return { ...rollPost(lyrics, t), bloom: 0.55, ca: 0.4, vignette: 0.5 };

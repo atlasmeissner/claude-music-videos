@@ -6,7 +6,7 @@ import { LineBatch } from '../engine/lines';
 import { F, font } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import { ease, prog } from '../engine/util';
-import { heading, mono, needle, pivot, rad } from './_od';
+import { mono, needle, pivot, rad } from './_od';
 
 export default class Outro extends Scene {
   lb = new LineBatch(400);
@@ -30,7 +30,7 @@ export default class Outro extends Scene {
     const b = prog(t, s + 1.8, s + 3, ease.outCubic) * keep;
     c.save(); c.globalAlpha = b;
     mono(c, 'JOBURGALEX', W / 2, 820, { size: 16, color: rgba('bone', 0.9), track: 8, align: 'center', weight: 500 });
-    mono(c, `${heading(lyrics, t).toFixed(0)} DEGREES · ONE AT A TIME`, W / 2, 868, { size: 12, color: rgba('signal', 1), track: 5, align: 'center' });
+    mono(c, `1% A DAY · ×37.8 A YEAR`, W / 2, 868, { size: 12, color: rgba('signal', 1), track: 5, align: 'center' });
     mono(c, 'MUSIC MADE WITH SUNO · VIDEO RENDERED IN CODE', W / 2, 960, { size: 11, color: rgba('ash', 0.6), track: 4, align: 'center' });
     c.restore();
     comp.draw(renderer, T.upload(), out);

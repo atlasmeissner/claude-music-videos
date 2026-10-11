@@ -9,7 +9,7 @@ import { F, font } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, lerp, prog, TAU } from '../engine/util';
-import { drawHeading, drawKaraoke, heading, jit, mono, needle, pivot, rad, rollPost } from './_od';
+import { drawCompound, drawKaraoke, heading, jit, mono, needle, pivot, rad, rollPost } from './_od';
 
 export default class Pages extends Scene {
   lb = new LineBatch(6000);
@@ -100,7 +100,7 @@ export default class Pages extends Scene {
       if (t > second.start) mono(c, 'A SECOND  1.000 s', 120, 446, { size: 13, color: rgba('signal', 1), track: 3 });
       c.restore();
     }
-    drawHeading(c, 120, 990, heading(lyrics, t));
+    drawCompound(c, 120, 990, t, { ly: lyrics });
     lb.render(renderer, out);
     comp.draw(renderer, L.upload(), out);
     return { ...rollPost(lyrics, t), bloom: 0.55, ca: 0.5, vignette: 0.42 };

@@ -10,7 +10,7 @@ import { F, font } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, lerp, noise1, prog, pulse, TAU } from '../engine/util';
-import { degreeTimes, drawHeading, drawKaraoke, heading, mono, rad, rollPost } from './_od';
+import { degreeTimes, drawCompound, drawKaraoke, heading, mono, rad, rollPost } from './_od';
 
 const PX = 230, PY = 640; // the port on screen
 
@@ -144,7 +144,7 @@ export default class Course extends Scene {
       mono(c, 'WHERE YOU MEANT TO GO', p1.x, p1.y, { size: 11, color: rgba('ink', 0.75 * a), track: 2, align: 'center' });
       mono(c, 'WHERE YOU ARRIVE', p2.x, p2.y, { size: 11, color: rgba('signal', a), track: 2, align: 'center' });
     }
-    drawHeading(c, 120, 990, heading(lyrics, t), { color: rgba('ink', 0.75) });
+    drawCompound(c, 120, 990, t, { ly: lyrics, color: rgba('ink', 0.75) });
     comp.draw(renderer, T.upload(), out);
     void lerp;
     return { ...rollPost(lyrics, t, LIN.bone), bloom: 0.25, ca: 0.4, vignette: 0.2, halation: 0 };

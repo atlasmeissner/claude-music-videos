@@ -38,9 +38,10 @@ export function heading(ly: Lyrics, t: number): number {
   }
   return h;
 }
-/** Post overrides that roll the plate by the world's heading (bg: the plate's own background, linear). */
-export function rollPost(ly: Lyrics, t: number, bg: [number, number, number] = LIN.ink, k = 1): PostOverrides {
-  return { roll: heading(ly, t) * k, rollBg: bg };
+/** Post overrides for the plate's background. (Revision 2: the world no longer rolls with the degree count —
+ *  the frame stays level; kept so plates can pass their background colour.) */
+export function rollPost(_ly: Lyrics, _t: number, bg: [number, number, number] = LIN.ink, _k = 1): PostOverrides {
+  return { roll: 0, rollBg: bg };
 }
 /** Format a heading for mono readouts: 007.0° */
 export const fmtDeg = (h: number, digits = 1) => `${h < 0 ? '−' : ''}${Math.abs(h).toFixed(digits).padStart(4 + digits, '0')}°`;
@@ -285,12 +286,54 @@ export function drawArcKaraoke(c: CanvasRenderingContext2D, line: Line, cx: numb
 }
 
 /** World point that lands on screen point (sx, sy) once the plate is rolled by h degrees (post roll, clockwise about the frame centre). */
-export function unroll(sx: number, sy: number, h: number) {
-  const th = -(h * Math.PI) / 180, dx = sx - 960, dy = sy - 540;
-  return { x: 960 + dx * Math.cos(th) - dy * Math.sin(th), y: 540 + dx * Math.sin(th) + dy * Math.cos(th) };
+export function unroll(sx: number, sy: number, _h: number) {
+  return { x: sx, y: sy }; // revision 2: no roll
 }
 
 /** Counter-rotate a 2D context against the world's roll (h degrees) so what is drawn next stays level on screen. */
-export function levelCtx(c: CanvasRenderingContext2D, h: number) {
-  c.translate(960, 540); c.rotate((-h * Math.PI) / 180); c.translate(-960, -540);
+export function levelCtx(_c: CanvasRenderingContext2D, _h: number) {
+  // revision 2: the world no longer rolls, so there is nothing to counter-rotate
 }
+
+// ------------------------------------------------------------------ the compounding counter (revision 2)
+// The song is one year: day 0 on the first sung word, day 365 on the last. Each day compounds by 1%:
+// ×1.01^day, 1.00 for a long time, 37.8 at the end (the 1% rule).
+export const RATE = 1.01, DAYS = 365;
+export const YEAR_GAIN = Math.pow(RATE, DAYS); // 37.78
+export function songDay(ly: Lyrics, t: number): number {
+  const t0 = ly.lines[0]!.words[0]!.start;
+  const last = ly.lines[ly.lines.length - 1]!;
+  const t1 = last.words[last.words.length - 1]!.start;
+  return clamp((t - t0) / (t1 - t0)) * DAYS;
+}
+export const gain = (day: number) => Math.pow(RATE, day);
+export const fmtGain = (g: number) => `×${g < 10 ? g.toFixed(2) : g.toFixed(1)}`;
+
+/** The compounding readout: a tiny 1.01^n curve over the year with today's point, DAY n and ×gain. */
+export function drawCompound(c: CanvasRenderingContext2D, x: number, y: number, t: number, o: { color?: string; hot?: string; ly?: Lyrics; day?: number } = {}) {
+  const ly = o.ly ?? CURRENT_LY.ly;
+  const day = o.day ?? (ly ? songDay(ly, t) : 0);
+  const col = o.color ?? rgba('bone', 0.75), hot = o.hot ?? rgba('signal', 1);
+  const w = 120, h = 40, x0 = x, y0 = y;
+  c.save();
+  // axes
+  c.strokeStyle = col; c.globalAlpha = 0.5; c.lineWidth = 1;
+  c.beginPath(); c.moveTo(x0, y0 - h - 4); c.lineTo(x0, y0); c.lineTo(x0 + w + 4, y0); c.stroke();
+  c.globalAlpha = 1;
+  const P = (d: number) => ({ x: x0 + (d / DAYS) * w, y: y0 - ((gain(d) - 1) / (YEAR_GAIN - 1)) * h });
+  // the whole year, faint; the days lived, hot
+  c.setLineDash([2, 3]); c.strokeStyle = col; c.globalAlpha = 0.35;
+  c.beginPath(); for (let d = 0; d <= DAYS; d += 5) { const p = P(d); d ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y); } c.stroke();
+  c.setLineDash([]); c.globalAlpha = 1; c.strokeStyle = hot; c.lineWidth = 1.6;
+  c.beginPath(); for (let d = 0; d <= day; d += 2) { const p = P(d); d ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y); } { const p = P(day); c.lineTo(p.x, p.y); } c.stroke();
+  const p = P(day);
+  c.fillStyle = hot; c.beginPath(); c.arc(p.x, p.y, 2.6, 0, TAU); c.fill();
+  // digits
+  c.font = font(F.mono(400), 12); c.letterSpacing = '2px'; c.fillStyle = col; c.textBaseline = 'alphabetic';
+  c.fillText(`DAY ${String(Math.floor(day)).padStart(3, '0')}`, x0 + w + 18, y0 - 22);
+  c.font = font(F.mono(500), 20); c.fillStyle = hot;
+  c.fillText(fmtGain(gain(day)), x0 + w + 18, y0);
+  c.restore();
+}
+/** The lyrics of the running engine, for drawCompound when a plate doesn't pass them (set by scenes in init). */
+export const CURRENT_LY: { ly: Lyrics | null } = { ly: null };

@@ -9,7 +9,7 @@ import { F } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, hash, noise1, prog } from '../engine/util';
-import { drawHeading, drawKaraoke, heading, mono, needleTip, rollPost } from './_od';
+import { drawCompound, drawKaraoke, heading, mono, needleTip, rollPost } from './_od';
 
 const BASE = 1000;
 const NFLAKE = 700;
@@ -78,7 +78,7 @@ export default class Snow extends Scene {
     mono(c, `LAYERS  ${layers}`, W - 120, 150, { size: 14, color: rgba('bone', 0.85), track: 3, align: 'right', weight: 500 });
     mono(c, `${yrs.toLocaleString('en-US')} WINTERS`, W - 120, 176, { size: 12, color: rgba('ash', 0.8), track: 3, align: 'right' });
     mono(c, `SUMMIT ${Math.round((BASE - sy) * 6.9).toLocaleString('en-US')} m`, sx + 18, sy - 22, { size: 12, color: rgba('signal', clamp(g * 3)), track: 2 });
-    drawHeading(c, 120, 990 - 50, heading(lyrics, t));
+    drawCompound(c, 120, 990 - 50, t, { ly: lyrics });
     comp.draw(renderer, L.upload(), out);
     return { ...rollPost(lyrics, t), bloom: 0.55, ca: 0.5, vignette: 0.45 };
   }
