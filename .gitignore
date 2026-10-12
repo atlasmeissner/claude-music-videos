@@ -32,3 +32,9 @@ videos/maps-territory/analysis/.venv/
 videos/maps-territory/analysis/.cache/
 videos/maps-territory/analysis/stems/
 videos/maps-territory/analysis/work/
+# bones: dependencies and analysis intermediates
+videos/bones/app/node_modules/
+videos/bones/analysis/.venv/
+videos/bones/analysis/.cache/
+videos/bones/analysis/stems/
+videos/bones/analysis/work/

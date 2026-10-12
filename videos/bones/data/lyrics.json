@@ -1,0 +1,1421 @@
+{
+ "lines": [
+  {
+   "text": "They built these walls before I got here",
+   "start": 8.42,
+   "end": 10.22,
+   "words": [
+    {
+     "w": "They",
+     "start": 8.42,
+     "end": 8.6,
+     "conf": 0.045
+    },
+    {
+     "w": "built",
+     "start": 8.6,
+     "end": 8.8,
+     "conf": 0.779
+    },
+    {
+     "w": "these",
+     "start": 8.8,
+     "end": 9.0,
+     "conf": 0.642
+    },
+    {
+     "w": "walls",
+     "start": 9.0,
+     "end": 9.34,
+     "conf": 0.751
+    },
+    {
+     "w": "before",
+     "start": 9.34,
+     "end": 9.72,
+     "conf": 0.92
+    },
+    {
+     "w": "I",
+     "start": 9.72,
+     "end": 9.76,
+     "conf": 0.901
+    },
+    {
+     "w": "got",
+     "start": 9.76,
+     "end": 10.0,
+     "conf": 0.7
+    },
+    {
+     "w": "here",
+     "start": 10.0,
+     "end": 10.22,
+     "conf": 0.765
+    }
+   ]
+  },
+  {
+   "text": "Told me this is just the shape of things",
+   "start": 12.48,
+   "end": 14.26,
+   "words": [
+    {
+     "w": "Told",
+     "start": 12.48,
+     "end": 12.68,
+     "conf": 0.498
+    },
+    {
+     "w": "me",
+     "start": 12.68,
+     "end": 12.8,
+     "conf": 0.912
+    },
+    {
+     "w": "this",
+     "start": 12.8,
+     "end": 12.98,
+     "conf": 0.999
+    },
+    {
+     "w": "is",
+     "start": 12.98,
+     "end": 13.1,
+     "conf": 0.998
+    },
+    {
+     "w": "just",
+     "start": 13.1,
+     "end": 13.28,
+     "conf": 0.833
+    },
+    {
+     "w": "the",
+     "start": 13.28,
+     "end": 13.48,
+     "conf": 0.631
+    },
+    {
+     "w": "shape",
+     "start": 13.48,
+     "end": 13.78,
+     "conf": 0.986
+    },
+    {
+     "w": "of",
+     "start": 13.78,
+     "end": 13.9,
+     "conf": 0.999
+    },
+    {
+     "w": "things",
+     "start": 13.9,
+     "end": 14.26,
+     "conf": 0.998
+    }
+   ]
+  },
+  {
+   "text": "But I've been pulling at the edges",
+   "start": 16.9,
+   "end": 18.34,
+   "words": [
+    {
+     "w": "But",
+     "start": 16.9,
+     "end": 17.06,
+     "conf": 0.998
+    },
+    {
+     "w": "I've",
+     "start": 17.06,
+     "end": 17.16,
+     "conf": 0.0
+    },
+    {
+     "w": "been",
+     "start": 17.16,
+     "end": 17.34,
+     "conf": 0.337
+    },
+    {
+     "w": "pulling",
+     "start": 17.34,
+     "end": 17.7,
+     "conf": 0.956
+    },
+    {
+     "w": "at",
+     "start": 17.7,
+     "end": 17.8,
+     "conf": 0.888
+    },
+    {
+     "w": "the",
+     "start": 17.8,
+     "end": 18.0,
+     "conf": 0.452
+    },
+    {
+     "w": "edges",
+     "start": 18.0,
+     "end": 18.34,
+     "conf": 0.891
+    }
+   ]
+  },
+  {
+   "text": "And the whole thing bends",
+   "start": 20.76,
+   "end": 21.88,
+   "words": [
+    {
+     "w": "And",
+     "start": 20.76,
+     "end": 20.86,
+     "conf": 0.62
+    },
+    {
+     "w": "the",
+     "start": 20.86,
+     "end": 20.96,
+     "conf": 0.775
+    },
+    {
+     "w": "whole",
+     "start": 20.96,
+     "end": 21.2,
+     "conf": 0.635
+    },
+    {
+     "w": "thing",
+     "start": 21.2,
+     "end": 21.48,
+     "conf": 0.993
+    },
+    {
+     "w": "bends",
+     "start": 21.48,
+     "end": 21.88,
+     "conf": 0.772
+    }
+   ]
+  },
+  {
+   "text": "What if everything I'm carrying",
+   "start": 34.22,
+   "end": 37.44,
+   "words": [
+    {
+     "w": "What",
+     "start": 34.22,
+     "end": 34.52,
+     "conf": 0.247
+    },
+    {
+     "w": "if",
+     "start": 34.52,
+     "end": 34.92,
+     "conf": 0.968
+    },
+    {
+     "w": "everything",
+     "start": 34.92,
+     "end": 36.06,
+     "conf": 0.469
+    },
+    {
+     "w": "I'm",
+     "start": 36.06,
+     "end": 36.34,
+     "conf": 0.299
+    },
+    {
+     "w": "carrying",
+     "start": 36.34,
+     "end": 37.44,
+     "conf": 0.346
+    }
+   ]
+  },
+  {
+   "text": "Was never mine to hold",
+   "start": 38.13,
+   "end": 41.6,
+   "words": [
+    {
+     "w": "Was",
+     "start": 38.13,
+     "end": 38.35,
+     "conf": 0.371
+    },
+    {
+     "w": "never",
+     "start": 38.35,
+     "end": 38.97,
+     "conf": 0.523
+    },
+    {
+     "w": "mine",
+     "start": 38.97,
+     "end": 39.65,
+     "conf": 0.688
+    },
+    {
+     "w": "to",
+     "start": 39.65,
+     "end": 39.91,
+     "conf": 0.506
+    },
+    {
+     "w": "hold",
+     "start": 39.91,
+     "end": 41.6,
+     "conf": 0.328
+    }
+   ]
+  },
+  {
+   "text": "Take me down to the bones",
+   "start": 42.64,
+   "end": 45.7,
+   "words": [
+    {
+     "w": "Take",
+     "start": 42.64,
+     "end": 43.12,
+     "conf": 0.404
+    },
+    {
+     "w": "me",
+     "start": 43.12,
+     "end": 43.34,
+     "conf": 0.193
+    },
+    {
+     "w": "down",
+     "start": 43.34,
+     "end": 43.84,
+     "conf": 0.194
+    },
+    {
+     "w": "to",
+     "start": 44.38,
+     "end": 44.86,
+     "conf": 0.836
+    },
+    {
+     "w": "the",
+     "start": 44.86,
+     "end": 45.06,
+     "conf": 0.697
+    },
+    {
+     "w": "bones",
+     "start": 45.06,
+     "end": 45.7,
+     "conf": 0.59
+    }
+   ]
+  },
+  {
+   "text": "Strip the gold and the stone",
+   "start": 46.07,
+   "end": 49.01,
+   "words": [
+    {
+     "w": "Strip",
+     "start": 46.07,
+     "end": 46.59,
+     "conf": 0.528
+    },
+    {
+     "w": "the",
+     "start": 46.59,
+     "end": 46.79,
+     "conf": 0.65
+    },
+    {
+     "w": "gold",
+     "start": 46.79,
+     "end": 47.99,
+     "conf": 0.666
+    },
+    {
+     "w": "and",
+     "start": 47.99,
+     "end": 48.29,
+     "conf": 0.363
+    },
+    {
+     "w": "the",
+     "start": 48.29,
+     "end": 48.45,
+     "conf": 0.622
+    },
+    {
+     "w": "stone",
+     "start": 48.45,
+     "end": 49.01,
+     "conf": 0.745
+    }
+   ]
+  },
+  {
+   "text": "I don't need what I was shown",
+   "start": 49.68,
+   "end": 52.8,
+   "words": [
+    {
+     "w": "I",
+     "start": 49.68,
+     "end": 49.86,
+     "conf": 0.007
+    },
+    {
+     "w": "don't",
+     "start": 49.86,
+     "end": 50.26,
+     "conf": 0.281
+    },
+    {
+     "w": "need",
+     "start": 50.26,
+     "end": 50.92,
+     "conf": 0.374
+    },
+    {
+     "w": "what",
+     "start": 50.92,
+     "end": 51.26,
+     "conf": 0.217
+    },
+    {
+     "w": "I",
+     "start": 51.26,
+     "end": 51.56,
+     "conf": 0.01
+    },
+    {
+     "w": "was",
+     "start": 51.56,
+     "end": 51.94,
+     "conf": 0.228
+    },
+    {
+     "w": "shown",
+     "start": 51.94,
+     "end": 52.8,
+     "conf": 0.347
+    }
+   ]
+  },
+  {
+   "text": "Build it up from the bones",
+   "start": 53.35,
+   "end": 57.79,
+   "words": [
+    {
+     "w": "Build",
+     "start": 53.35,
+     "end": 53.54,
+     "conf": 0.101,
+     "fixed": true
+    },
+    {
+     "w": "it",
+     "start": 53.54,
+     "end": 53.8,
+     "conf": 0.08,
+     "fixed": true
+    },
+    {
+     "w": "up",
+     "start": 53.8,
+     "end": 56.56,
+     "conf": 0.0,
+     "fixed": true
+    },
+    {
+     "w": "from",
+     "start": 56.56,
+     "end": 56.98,
+     "conf": 0.38
+    },
+    {
+     "w": "the",
+     "start": 56.98,
+     "end": 57.2,
+     "conf": 0.017
+    },
+    {
+     "w": "bones",
+     "start": 57.2,
+     "end": 57.79,
+     "conf": 0.357
+    }
+   ]
+  },
+  {
+   "text": "Every map they drew was borrowed",
+   "start": 71.86,
+   "end": 74.44,
+   "words": [
+    {
+     "w": "Every",
+     "start": 71.86,
+     "end": 72.22,
+     "conf": 0.642
+    },
+    {
+     "w": "map",
+     "start": 72.22,
+     "end": 72.64,
+     "conf": 0.169
+    },
+    {
+     "w": "they",
+     "start": 72.64,
+     "end": 72.84,
+     "conf": 0.47
+    },
+    {
+     "w": "drew",
+     "start": 72.84,
+     "end": 73.3,
+     "conf": 0.481
+    },
+    {
+     "w": "was",
+     "start": 73.3,
+     "end": 73.74,
+     "conf": 0.974
+    },
+    {
+     "w": "borrowed",
+     "start": 73.74,
+     "end": 74.44,
+     "conf": 0.609
+    }
+   ]
+  },
+  {
+   "text": "Every truth was someone else's guess",
+   "start": 75.31,
+   "end": 78.83,
+   "words": [
+    {
+     "w": "Every",
+     "start": 75.31,
+     "end": 75.63,
+     "conf": 0.688
+    },
+    {
+     "w": "truth",
+     "start": 75.63,
+     "end": 76.09,
+     "conf": 0.596
+    },
+    {
+     "w": "was",
+     "start": 76.09,
+     "end": 76.31,
+     "conf": 0.008
+    },
+    {
+     "w": "someone",
+     "start": 76.31,
+     "end": 77.29,
+     "conf": 0.904
+    },
+    {
+     "w": "else's",
+     "start": 77.29,
+     "end": 78.03,
+     "conf": 0.488
+    },
+    {
+     "w": "guess",
+     "start": 78.03,
+     "end": 78.83,
+     "conf": 0.319
+    }
+   ]
+  },
+  {
+   "text": "So I'm burning all the blueprints",
+   "start": 81.08,
+   "end": 84.26,
+   "words": [
+    {
+     "w": "So",
+     "start": 81.08,
+     "end": 81.38,
+     "conf": 0.902
+    },
+    {
+     "w": "I'm",
+     "start": 81.38,
+     "end": 81.54,
+     "conf": 0.295
+    },
+    {
+     "w": "burning",
+     "start": 81.54,
+     "end": 82.5,
+     "conf": 0.394
+    },
+    {
+     "w": "all",
+     "start": 82.5,
+     "end": 83.06,
+     "conf": 0.344
+    },
+    {
+     "w": "the",
+     "start": 83.06,
+     "end": 83.24,
+     "conf": 0.546
+    },
+    {
+     "w": "blueprints",
+     "start": 83.24,
+     "end": 84.26,
+     "conf": 0.713
+    }
+   ]
+  },
+  {
+   "text": "Starting from what's left",
+   "start": 85.13,
+   "end": 87.7,
+   "words": [
+    {
+     "w": "Starting",
+     "start": 85.13,
+     "end": 85.83,
+     "conf": 0.667
+    },
+    {
+     "w": "from",
+     "start": 85.83,
+     "end": 86.33,
+     "conf": 0.915
+    },
+    {
+     "w": "what's",
+     "start": 86.33,
+     "end": 86.77,
+     "conf": 0.343
+    },
+    {
+     "w": "left",
+     "start": 86.77,
+     "end": 87.7,
+     "conf": 0.368
+    }
+   ]
+  },
+  {
+   "text": "What if all I really needed",
+   "start": 87.88,
+   "end": 90.82,
+   "words": [
+    {
+     "w": "What",
+     "start": 87.88,
+     "end": 88.18,
+     "conf": 0.497
+    },
+    {
+     "w": "if",
+     "start": 88.18,
+     "end": 88.58,
+     "conf": 0.253
+    },
+    {
+     "w": "all",
+     "start": 88.58,
+     "end": 89.36,
+     "conf": 0.609
+    },
+    {
+     "w": "I",
+     "start": 89.36,
+     "end": 89.58,
+     "conf": 0.003
+    },
+    {
+     "w": "really",
+     "start": 89.58,
+     "end": 90.18,
+     "conf": 0.553
+    },
+    {
+     "w": "needed",
+     "start": 90.18,
+     "end": 90.82,
+     "conf": 0.496
+    }
+   ]
+  },
+  {
+   "text": "Was the ground beneath my feet",
+   "start": 91.27,
+   "end": 94.33,
+   "words": [
+    {
+     "w": "Was",
+     "start": 91.27,
+     "end": 91.71,
+     "conf": 0.884
+    },
+    {
+     "w": "the",
+     "start": 91.71,
+     "end": 91.87,
+     "conf": 0.843
+    },
+    {
+     "w": "ground",
+     "start": 91.87,
+     "end": 92.59,
+     "conf": 0.485
+    },
+    {
+     "w": "beneath",
+     "start": 92.59,
+     "end": 93.23,
+     "conf": 0.859
+    },
+    {
+     "w": "my",
+     "start": 93.23,
+     "end": 93.63,
+     "conf": 0.787
+    },
+    {
+     "w": "feet",
+     "start": 93.63,
+     "end": 94.33,
+     "conf": 0.538
+    }
+   ]
+  },
+  {
+   "text": "Take me down to the bones",
+   "start": 94.62,
+   "end": 97.74,
+   "words": [
+    {
+     "w": "Take",
+     "start": 94.62,
+     "end": 95.18,
+     "conf": 0.292
+    },
+    {
+     "w": "me",
+     "start": 95.18,
+     "end": 95.42,
+     "conf": 0.272
+    },
+    {
+     "w": "down",
+     "start": 95.42,
+     "end": 96.48,
+     "conf": 0.237
+    },
+    {
+     "w": "to",
+     "start": 96.48,
+     "end": 96.94,
+     "conf": 0.2
+    },
+    {
+     "w": "the",
+     "start": 96.94,
+     "end": 97.14,
+     "conf": 0.025
+    },
+    {
+     "w": "bones",
+     "start": 97.14,
+     "end": 97.74,
+     "conf": 0.434
+    }
+   ]
+  },
+  {
+   "text": "Strip the gold and the stone",
+   "start": 98.13,
+   "end": 100.99,
+   "words": [
+    {
+     "w": "Strip",
+     "start": 98.13,
+     "end": 98.67,
+     "conf": 0.456
+    },
+    {
+     "w": "the",
+     "start": 98.67,
+     "end": 98.89,
+     "conf": 0.256
+    },
+    {
+     "w": "gold",
+     "start": 98.89,
+     "end": 100.07,
+     "conf": 0.518
+    },
+    {
+     "w": "and",
+     "start": 100.07,
+     "end": 100.37,
+     "conf": 0.223
+    },
+    {
+     "w": "the",
+     "start": 100.37,
+     "end": 100.51,
+     "conf": 0.002
+    },
+    {
+     "w": "stone",
+     "start": 100.51,
+     "end": 100.99,
+     "conf": 0.352
+    }
+   ]
+  },
+  {
+   "text": "I don't need what I was shown",
+   "start": 101.78,
+   "end": 104.7,
+   "words": [
+    {
+     "w": "I",
+     "start": 101.78,
+     "end": 101.94,
+     "conf": 0.003
+    },
+    {
+     "w": "don't",
+     "start": 101.94,
+     "end": 102.34,
+     "conf": 0.174
+    },
+    {
+     "w": "need",
+     "start": 102.34,
+     "end": 103.06,
+     "conf": 0.088
+    },
+    {
+     "w": "what",
+     "start": 103.06,
+     "end": 103.6,
+     "conf": 0.232
+    },
+    {
+     "w": "I",
+     "start": 103.6,
+     "end": 103.7,
+     "conf": 0.005
+    },
+    {
+     "w": "was",
+     "start": 103.7,
+     "end": 104.02,
+     "conf": 0.065
+    },
+    {
+     "w": "shown",
+     "start": 104.02,
+     "end": 104.7,
+     "conf": 0.329
+    }
+   ]
+  },
+  {
+   "text": "Build it up from the bones",
+   "start": 105.2,
+   "end": 107.53,
+   "words": [
+    {
+     "w": "Build",
+     "start": 105.2,
+     "end": 105.43,
+     "conf": 0.006,
+     "fixed": true
+    },
+    {
+     "w": "it",
+     "start": 105.43,
+     "end": 105.64,
+     "conf": 0.11,
+     "fixed": true
+    },
+    {
+     "w": "up",
+     "start": 105.64,
+     "end": 105.91,
+     "conf": 0.002,
+     "fixed": true
+    },
+    {
+     "w": "from",
+     "start": 105.91,
+     "end": 106.45,
+     "conf": 0.208,
+     "fixed": true
+    },
+    {
+     "w": "the",
+     "start": 106.45,
+     "end": 106.97,
+     "conf": 0.074,
+     "fixed": true
+    },
+    {
+     "w": "bones",
+     "start": 106.97,
+     "end": 107.53,
+     "conf": 0.078,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "Take me down to the bones",
+   "start": 108.62,
+   "end": 111.62,
+   "words": [
+    {
+     "w": "Take",
+     "start": 108.62,
+     "end": 109.08,
+     "conf": 0.202
+    },
+    {
+     "w": "me",
+     "start": 109.08,
+     "end": 109.28,
+     "conf": 0.162
+    },
+    {
+     "w": "down",
+     "start": 109.28,
+     "end": 110.68,
+     "conf": 0.037
+    },
+    {
+     "w": "to",
+     "start": 110.68,
+     "end": 110.82,
+     "conf": 0.068
+    },
+    {
+     "w": "the",
+     "start": 110.82,
+     "end": 111.02,
+     "conf": 0.071
+    },
+    {
+     "w": "bones",
+     "start": 111.02,
+     "end": 111.62,
+     "conf": 0.191
+    }
+   ]
+  },
+  {
+   "text": "Strip the gold and the stone",
+   "start": 112.07,
+   "end": 114.97,
+   "words": [
+    {
+     "w": "Strip",
+     "start": 112.07,
+     "end": 112.57,
+     "conf": 0.139
+    },
+    {
+     "w": "the",
+     "start": 112.57,
+     "end": 112.77,
+     "conf": 0.109
+    },
+    {
+     "w": "gold",
+     "start": 112.77,
+     "end": 113.49,
+     "conf": 0.22
+    },
+    {
+     "w": "and",
+     "start": 113.99,
+     "end": 114.21,
+     "conf": 0.349
+    },
+    {
+     "w": "the",
+     "start": 114.21,
+     "end": 114.41,
+     "conf": 0.007
+    },
+    {
+     "w": "stone",
+     "start": 114.41,
+     "end": 114.97,
+     "conf": 0.496
+    }
+   ]
+  },
+  {
+   "text": "I don't need what I was shown",
+   "start": 115.48,
+   "end": 118.9,
+   "words": [
+    {
+     "w": "I",
+     "start": 115.48,
+     "end": 115.8,
+     "conf": 0.005
+    },
+    {
+     "w": "don't",
+     "start": 115.8,
+     "end": 116.22,
+     "conf": 0.24
+    },
+    {
+     "w": "need",
+     "start": 116.22,
+     "end": 116.9,
+     "conf": 0.088
+    },
+    {
+     "w": "what",
+     "start": 116.9,
+     "end": 117.38,
+     "conf": 0.238
+    },
+    {
+     "w": "I",
+     "start": 117.38,
+     "end": 117.54,
+     "conf": 0.001
+    },
+    {
+     "w": "was",
+     "start": 117.54,
+     "end": 117.94,
+     "conf": 0.412
+    },
+    {
+     "w": "shown",
+     "start": 117.94,
+     "end": 118.9,
+     "conf": 0.241
+    }
+   ]
+  },
+  {
+   "text": "Build it up from the bones",
+   "start": 119.14,
+   "end": 123.8,
+   "words": [
+    {
+     "w": "Build",
+     "start": 119.14,
+     "end": 119.34,
+     "conf": 0.161,
+     "fixed": true
+    },
+    {
+     "w": "it",
+     "start": 119.34,
+     "end": 119.55,
+     "conf": 0.214,
+     "fixed": true
+    },
+    {
+     "w": "up",
+     "start": 119.55,
+     "end": 120.04,
+     "conf": 0.005,
+     "fixed": true
+    },
+    {
+     "w": "from",
+     "start": 122.48,
+     "end": 123.0,
+     "conf": 0.888
+    },
+    {
+     "w": "the",
+     "start": 123.0,
+     "end": 123.18,
+     "conf": 0.624
+    },
+    {
+     "w": "bones",
+     "start": 123.18,
+     "end": 123.8,
+     "conf": 0.52
+    }
+   ]
+  },
+  {
+   "text": "I stood in the wreckage and I finally saw",
+   "start": 126.71,
+   "end": 130.23,
+   "words": [
+    {
+     "w": "I",
+     "start": 126.71,
+     "end": 126.81,
+     "conf": 0.014
+    },
+    {
+     "w": "stood",
+     "start": 126.81,
+     "end": 127.09,
+     "conf": 0.398
+    },
+    {
+     "w": "in",
+     "start": 127.09,
+     "end": 127.19,
+     "conf": 0.814
+    },
+    {
+     "w": "the",
+     "start": 127.19,
+     "end": 127.29,
+     "conf": 0.22
+    },
+    {
+     "w": "wreckage",
+     "start": 127.29,
+     "end": 127.81,
+     "conf": 0.597
+    },
+    {
+     "w": "and",
+     "start": 129.31,
+     "end": 129.41,
+     "conf": 0.343
+    },
+    {
+     "w": "I",
+     "start": 129.41,
+     "end": 129.53,
+     "conf": 0.005
+    },
+    {
+     "w": "finally",
+     "start": 129.53,
+     "end": 130.03,
+     "conf": 0.159
+    },
+    {
+     "w": "saw",
+     "start": 130.03,
+     "end": 130.23,
+     "conf": 0.589
+    }
+   ]
+  },
+  {
+   "text": "The only foundation was never the wall",
+   "start": 132.76,
+   "end": 136.3,
+   "words": [
+    {
+     "w": "The",
+     "start": 132.76,
+     "end": 132.96,
+     "conf": 0.981
+    },
+    {
+     "w": "only",
+     "start": 132.96,
+     "end": 133.24,
+     "conf": 0.994
+    },
+    {
+     "w": "foundation",
+     "start": 133.24,
+     "end": 133.92,
+     "conf": 0.987
+    },
+    {
+     "w": "was",
+     "start": 135.34,
+     "end": 135.58,
+     "conf": 0.999
+    },
+    {
+     "w": "never",
+     "start": 135.58,
+     "end": 135.88,
+     "conf": 0.995
+    },
+    {
+     "w": "the",
+     "start": 135.88,
+     "end": 136.04,
+     "conf": 0.953
+    },
+    {
+     "w": "wall",
+     "start": 136.04,
+     "end": 136.3,
+     "conf": 0.358
+    }
+   ]
+  },
+  {
+   "text": "Take me down to the bones",
+   "start": 138.14,
+   "end": 141.16,
+   "words": [
+    {
+     "w": "Take",
+     "start": 138.14,
+     "end": 138.6,
+     "conf": 0.127
+    },
+    {
+     "w": "me",
+     "start": 138.6,
+     "end": 138.82,
+     "conf": 0.26
+    },
+    {
+     "w": "down",
+     "start": 138.82,
+     "end": 139.52,
+     "conf": 0.165
+    },
+    {
+     "w": "to",
+     "start": 139.88,
+     "end": 140.34,
+     "conf": 0.048
+    },
+    {
+     "w": "the",
+     "start": 140.34,
+     "end": 140.54,
+     "conf": 0.311
+    },
+    {
+     "w": "bones",
+     "start": 140.54,
+     "end": 141.16,
+     "conf": 0.43
+    }
+   ]
+  },
+  {
+   "text": "Strip the gold and the stone",
+   "start": 141.55,
+   "end": 144.53,
+   "words": [
+    {
+     "w": "Strip",
+     "start": 141.55,
+     "end": 142.07,
+     "conf": 0.367
+    },
+    {
+     "w": "the",
+     "start": 142.07,
+     "end": 142.29,
+     "conf": 0.418
+    },
+    {
+     "w": "gold",
+     "start": 142.29,
+     "end": 143.49,
+     "conf": 0.457
+    },
+    {
+     "w": "and",
+     "start": 143.49,
+     "end": 143.75,
+     "conf": 0.69
+    },
+    {
+     "w": "the",
+     "start": 143.75,
+     "end": 143.95,
+     "conf": 0.123
+    },
+    {
+     "w": "stone",
+     "start": 143.95,
+     "end": 144.53,
+     "conf": 0.537
+    }
+   ]
+  },
+  {
+   "text": "I was lost but now I know",
+   "start": 144.98,
+   "end": 148.1,
+   "words": [
+    {
+     "w": "I",
+     "start": 144.98,
+     "end": 145.32,
+     "conf": 0.012
+    },
+    {
+     "w": "was",
+     "start": 145.32,
+     "end": 145.76,
+     "conf": 0.643
+    },
+    {
+     "w": "lost",
+     "start": 145.76,
+     "end": 146.4,
+     "conf": 0.637
+    },
+    {
+     "w": "but",
+     "start": 146.4,
+     "end": 146.64,
+     "conf": 0.289
+    },
+    {
+     "w": "now",
+     "start": 146.64,
+     "end": 147.14,
+     "conf": 0.443
+    },
+    {
+     "w": "I",
+     "start": 147.14,
+     "end": 147.36,
+     "conf": 0.0
+    },
+    {
+     "w": "know",
+     "start": 147.36,
+     "end": 148.1,
+     "conf": 0.331
+    }
+   ]
+  },
+  {
+   "text": "Build it up from the bones",
+   "start": 148.59,
+   "end": 156.0,
+   "words": [
+    {
+     "w": "Build",
+     "start": 148.59,
+     "end": 149.06,
+     "conf": 0.24
+    },
+    {
+     "w": "it",
+     "start": 149.06,
+     "end": 149.3,
+     "conf": 0.126,
+     "fixed": true
+    },
+    {
+     "w": "up",
+     "start": 149.3,
+     "end": 151.28,
+     "conf": 0.002,
+     "fixed": true
+    },
+    {
+     "w": "from",
+     "start": 151.28,
+     "end": 152.11,
+     "conf": 0.209,
+     "fixed": true
+    },
+    {
+     "w": "the",
+     "start": 152.11,
+     "end": 152.76,
+     "conf": 0.022,
+     "fixed": true
+    },
+    {
+     "w": "bones",
+     "start": 152.76,
+     "end": 156.0,
+     "conf": 0.065,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "From the bones",
+   "start": 157.75,
+   "end": 161.69,
+   "words": [
+    {
+     "w": "From",
+     "start": 157.75,
+     "end": 158.36,
+     "conf": 0.027,
+     "fixed": true
+    },
+    {
+     "w": "the",
+     "start": 158.36,
+     "end": 159.05,
+     "conf": 0.098,
+     "fixed": true
+    },
+    {
+     "w": "bones",
+     "start": 159.05,
+     "end": 161.69,
+     "conf": 0.109,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "Take me down",
+   "start": 189.9,
+   "end": 195.51,
+   "words": [
+    {
+     "w": "Take",
+     "start": 189.9,
+     "end": 193.81,
+     "conf": 0.173,
+     "fixed": true
+    },
+    {
+     "w": "me",
+     "start": 193.81,
+     "end": 194.39,
+     "conf": 0.19,
+     "fixed": true
+    },
+    {
+     "w": "down",
+     "start": 194.39,
+     "end": 195.51,
+     "conf": 0.055,
+     "fixed": true
+    }
+   ]
+  }
+ ]
+}
