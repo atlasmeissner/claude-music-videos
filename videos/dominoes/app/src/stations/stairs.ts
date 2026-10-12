@@ -6,7 +6,7 @@ import { type R } from '../engine/draw';
 import { archivo } from '../engine/fonts';
 import { line } from '../engine/lyrics';
 import { label, lyric, orderTag } from '../engine/text';
-import { clamp, ease, lerp, smoothstep, type V2 } from '../engine/util';
+import { clamp, ease, smoothstep } from '../engine/util';
 import { hit } from '../machine/motion';
 import { ground } from '../machine/parts';
 import { LN, type Station } from '../station';
@@ -28,34 +28,66 @@ export function makeStairs(x0: number, worldX0: number) {
   const fullW = SX + TREAD * N - worldX0 + 1400;
   const zFull = 1920 / fullW;
 
-  /** The slinky between landing points: n coils along an arch from end A to end B. */
-  function slinky(r: R, t: number) {
-    let k = 0;
-    while (k < T.length - 1 && t >= T[k + 1]!) k++;
-    const A: V2 = { x: landX(k), y: stepY(k) };
-    let B: V2 = A;
-    let u = 0;
-    if (k < T.length - 1 && t >= T[k]!) {
-      const T0 = T[k]!, T1 = T[k + 1]!;
-      u = clamp((t - T0) / (T1 - T0));
-      const next: V2 = { x: landX(k + 1), y: stepY(k + 1) };
-      // the top end flips over: a half circle from above A down onto the next step
-      const a = Math.PI * ease.inOutSine(u);
-      const cx = (A.x + next.x) / 2, cy = Math.min(A.y, next.y) - 30;
-      const rx = (next.x - A.x) / 2, ry = 120;
-      B = { x: cx - Math.cos(a) * rx, y: cy - Math.sin(a) * ry + (next.y - A.y) * ease.inQuad(u) * 0.5 };
-      if (u > 0.98) B = next;
+  // ---- the slinky: NR rings, stacked on the front edge of a tread. On each step the top ring leaves
+  // first, the rings stream over the edge in an arch (each on its own bezier, a few ms apart, so in
+  // flight they form the bent spring), and they stack up again on the next tread, the first ring
+  // landing exactly on the step's word. Seen from the side, a ring is an ellipse across the spring's
+  // axis: major radius RR, minor RR * 0.3.
+  const NR = 30, PITCH = 3.4, RR = 34;
+  const restX = (k: number) => stepX(k) + TREAD - RR - 22;
+  const NM = T.length - 1; // moves 1..NM, from step m-1 to step m
+  const dT = (m: number) => T[Math.min(Math.max(m, 1), NM)]! - T[Math.min(Math.max(m, 1), NM) - 1]!;
+  const moves = Array.from({ length: NM + 1 }, (_, m) => {
+    if (m === 0) return { a: -1, b: -1, D: 0, S: 0 };
+    const d = Math.min(dT(m), m < NM ? dT(m + 1) : dT(m));
+    const D = 0.42 * d, S = 0.45 * d;
+    return { a: T[m]! - D, b: T[m]! + S, D, S };
+  });
+  function ringsAt(t: number): { x: number; y: number; ang: number; hot: number }[] {
+    // which move is under way (or which step the slinky rests on)
+    let m = 0;
+    for (let k = 1; k <= NM; k++) if (t >= moves[k]!.a) m = k;
+    const out: { x: number; y: number; ang: number; hot: number }[] = [];
+    const mv = moves[m]!;
+    if (m === 0 || t >= mv.b) {
+      // at rest on step m
+      const k = m;
+      const sinceLand = m === 0 ? 9 : t - mv.b;
+      for (let i = 0; i < NR; i++) out.push({ x: restX(k), y: stepY(k) - i * PITCH - 2, ang: -Math.PI / 2, hot: Math.max(0, 1 - sinceLand / 0.5) * (m === 0 ? 0 : 1) });
+      return out;
     }
-    const n = 22;
-    const apexH = 70 + 50 * Math.sin(u * Math.PI);
-    const hot = k < T.length - 1 && t < T[T.length - 1]! + 0.4;
-    for (let i = 0; i < n; i++) {
-      const s = i / (n - 1);
-      const x = lerp(A.x, B.x, s);
-      const y = lerp(A.y, B.y, s) - Math.sin(s * Math.PI) * apexH;
-      r.g.beginPath();
-      r.g.ellipse(x, y - 12, 9, 26, Math.atan2(B.y - A.y, B.x - A.x) * 0.5, 0, Math.PI * 2);
-      r.stroke(hot ? r.mix('fg', 'sig', 0.85) : r.c('fg'), 1.2);
+    const k0 = m - 1, k1 = m;
+    for (let i = 0; i < NR; i++) {
+      const dep = mv.a + (i / (NR - 1)) * mv.S;
+      const Ps = { x: restX(k0), y: stepY(k0) - (NR - 1 - i) * PITCH - 2 };
+      const Pe = { x: restX(k1), y: stepY(k1) - i * PITCH - 2 };
+      if (t < dep) { out.push({ ...Ps, ang: -Math.PI / 2, hot: 0.35 }); continue; }
+      const u = clamp((t - dep) / mv.D);
+      if (u >= 1) { out.push({ ...Pe, ang: -Math.PI / 2, hot: Math.max(0, 1 - (t - dep - mv.D) / 0.5) }); continue; }
+      // the arch: up from the top of the stack, over the edge, down onto the next tread
+      const c1 = { x: Ps.x + 40, y: Ps.y - 120 };
+      const c2 = { x: Pe.x - 30, y: Pe.y - 150 };
+      const e = ease.inOutSine(u);
+      const v = 1 - e;
+      const x = v * v * v * Ps.x + 3 * v * v * e * c1.x + 3 * v * e * e * c2.x + e * e * e * Pe.x;
+      const y = v * v * v * Ps.y + 3 * v * v * e * c1.y + 3 * v * e * e * c2.y + e * e * e * Pe.y;
+      const dx = 3 * v * v * (c1.x - Ps.x) + 6 * v * e * (c2.x - c1.x) + 3 * e * e * (Pe.x - c2.x);
+      const dy = 3 * v * v * (c1.y - Ps.y) + 6 * v * e * (c2.y - c1.y) + 3 * e * e * (Pe.y - c2.y);
+      out.push({ x, y, ang: Math.atan2(dy, dx), hot: 1 });
+    }
+    return out;
+  }
+  function slinky(r: R, t: number) {
+    const g = r.g;
+    const rings = ringsAt(t);
+    // back half of every ring first, then the front half, so the coil reads as a spring
+    for (const half of [0, 1]) {
+      for (const q of rings) {
+        g.beginPath();
+        // the ring's plane is perpendicular to the spring's axis (the path tangent)
+        g.ellipse(q.x, q.y, RR * 0.3, RR, q.ang, half ? Math.PI / 2 : -Math.PI / 2, half ? Math.PI * 1.5 : Math.PI / 2);
+        r.stroke(q.hot > 0.01 ? r.mix('fg', 'sig', q.hot) : r.c('fg'), half ? 1.1 : 0.7);
+      }
     }
   }
 
@@ -80,11 +112,11 @@ export function makeStairs(x0: number, worldX0: number) {
       r.line(SX - 300, TOPY, SX - 300, 0, r.c('dim'), 1);
       // steps appear only when reached
       for (let k = 1; k <= N; k++) {
-        const appear = smoothstep(T[k]! - 0.35, T[k]! - 0.1, t);
+        const appear = smoothstep(moves[k]!.a - 0.1, moves[k]!.a + 0.15, t);
         const x = stepX(k), y = stepY(k);
         if (appear < 0.01) {
           // not yet drawn: a faint question mark where it should be
-          if (k <= 2 || t > T[k - 1]! - 0.3) r.text('?', x + TREAD / 2, y - 10, archivo(48, 1000, 500), r.c('dim', 0.6), 'center');
+          if (k <= 2 || t > moves[k - 1]!.a) r.text('?', x + TREAD / 2, y - 10, archivo(48, 1000, 500), r.c('dim', 0.6), 'center');
           continue;
         }
         r.alpha(1, () => {
@@ -102,9 +134,9 @@ export function makeStairs(x0: number, worldX0: number) {
         size: SIZE, appear: 0.3,
         fx: (f) => {
           const k = f.i + 1;
-          f.dx = stepX(k) + TREAD * 0.62 - (f.box.x + f.box.w / 2) - 30;
+          f.dx = stepX(k) + TREAD - 2 * RR - 40 - (f.box.x + f.box.w); // left of the slinky's stack
           f.dy = stepY(k) - 14;
-          f.alpha = smoothstep(T[k]! - 0.35, T[k]! - 0.05, t);
+          f.alpha = smoothstep(moves[k]!.a - 0.1, moves[k]!.a + 0.2, t);
         },
       });
       label(r, 'STEP 2 — NOT DRAWN UNTIL REACHED', SX - 260, TOPY - 140, 14, undefined, 'left', 500, smoothstep(76, 76.4, t) * (1 - smoothstep(78.5, 79, t)));
@@ -115,7 +147,7 @@ export function makeStairs(x0: number, worldX0: number) {
       // line 2 over the pull-back: the whole route behind it
       if (t < W2[0]!.start - 0.6 || t > 83.2) return;
       const a = 1 - smoothstep(82.95, 83.15, t);
-      r.alpha(a, () => lyric(r, L2, 120, 960, { size: 96, width: 1000, weight: 800, appear: 0.4 }));
+      r.alpha(a, () => lyric(r, L2, 120, 960, { size: 66, width: 1000, weight: 700, appear: 0.4 }));
       r.alpha(a * smoothstep(W2[3]!.start, W2[3]!.start + 0.4, t), () => {
         r.text('FIG. 18 — EVERYWHERE YOU HAVE BEEN (WHOLE MACHINE, 1:240)', 124, 1010, `500 15px "PlexMono-500"`, r.c('mid'));
       });

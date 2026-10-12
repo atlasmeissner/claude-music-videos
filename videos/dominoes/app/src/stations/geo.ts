@@ -332,16 +332,12 @@ export function makeGeo(x0: number, machineX0: number, machineX1: number, others
       }
     },
     overlay(r: R, t: number) {
-      // ---- bridge (screen space: the camera zooms continuously here)
-      const l0 = LB[0]!;
-      if (t > l0.start - 0.6 && t < LB[1]!.start + 0.2) {
-        const a = 1 - smoothstep(LB[1]!.start - 0.6, LB[1]!.start - 0.1, t);
-        r.alpha(a, () => lyric(r, l0, 120, H - 170, { size: 76, width: 875, weight: 600, appear: 0.5, maxWidth: 1500 }));
-      }
-      // whispered: Cormorant italic, each word forgotten soon after it is sung
-      for (const [li, y] of [[1, 210], [2, 300]] as const) {
+      // ---- bridge (screen space: the camera zooms continuously here). All three lines are whispered:
+      // Cormorant italic, top left, each forgotten soon after it is sung.
+      for (const [li, y] of [[0, 160], [1, 250], [2, 340]] as const) {
         const l = LB[li]!;
-        if (t < l.start - 0.6 || t > T_STAR + 1.4) continue;
+        const until = li === 0 ? LB[1]!.start - 0.2 : li === 1 ? T_STAR + 1.3 : T_STAR + 1.3;
+        if (t < l.start - 0.6 || t > until + 0.6) continue;
         const size = li === 2 ? 72 : 60;
         r.g.font = cormorant(size, true, 400);
         let cx = 140;
@@ -349,7 +345,7 @@ export function makeGeo(x0: number, machineX0: number, machineX1: number, others
           const text = display(w.w);
           const ww = r.g.measureText(text + ' ').width;
           const appear = smoothstep(l.start - 0.5, l.start - 0.1, t);
-          const forget = li === 1 ? 1 - smoothstep(w.end + 0.4, w.end + 1.6, t) : 1 - smoothstep(T_STAR + 0.6, T_STAR + 1.3, t);
+          const forget = li === 1 ? 1 - smoothstep(w.end + 0.4, w.end + 1.6, t) : li === 0 ? 1 - smoothstep(until - 0.4, until + 0.4, t) : 1 - smoothstep(T_STAR + 0.6, T_STAR + 1.3, t);
           const stt = wordState(w, t);
           const col = stt === 'unsung' ? r.c('fg', 0.3) : li === 2 && w.w === 'changing' ? r.c('sig') : r.mix('sig', 'fg', smoothstep(w.end, w.end + 0.6, t));
           r.alpha(appear * forget, () => r.text(text, cx, y, cormorant(size, true, li === 2 ? 600 : 400), col));
@@ -364,15 +360,15 @@ export function makeGeo(x0: number, machineX0: number, machineX1: number, others
       // a cappella line: lower third, quieter
       if (t > fin[4]!.start - 0.6 && t < fin[4]!.end + 0.8) {
         const a = 1 - smoothstep(fin[4]!.end + 0.4, fin[4]!.end + 0.8, t);
-        r.alpha(a, () => lyric(r, fin[4]!, W / 2, H - 170, { size: 84, width: 1000, weight: 800, align: 'center', appear: 0.5 }));
+        r.alpha(a, () => lyric(r, fin[4]!, 120, H - 150, { size: 66, width: 1000, weight: 700, appear: 0.5 }));
       }
       slam(r, fin[5]!, t, W / 2, H / 2 - 20, 150, { width: 1000 });
       if (t > fin[6]!.start - 0.5 && t < 150) {
         const a = 1 - smoothstep(139.5, 140.5, t);
-        r.alpha(a, () => lyric(r, fin[6]!, 120, H - 230, { size: 104, width: 1000, weight: 800, appear: 0.4, maxWidth: 1500 }));
+        r.alpha(a, () => lyric(r, fin[6]!, 120, H - 150, { size: 66, width: 1000, weight: 700, appear: 0.4 }));
       }
       // the magnifier on the machine
-      inset(r, t, smoothstep(T_LAND + 0.3, T_LAND + 1.2, t) * (1 - smoothstep(149.4, 150.2, t)));
+      // (the "machine, enlarged" magnifier is not shown)
       // climax caption and counter
       if (t > T_LAND && t < 150.3) {
         const a = smoothstep(T_LAND + 1.5, T_LAND + 2.2, t) * (1 - smoothstep(149.6, 150.2, t));
@@ -389,7 +385,7 @@ export function makeGeo(x0: number, machineX0: number, machineX1: number, others
       slam(r, LF2[2]!, t, W / 2, H / 2 + 40, 220, { until: LF2[3]!.start - 0.1 });
       if (t > LF2[3]!.start - 0.5 && t < 165) {
         const a = 1 - smoothstep(164.4, 165, t);
-        r.alpha(a, () => lyric(r, LF2[3]!, W / 2, H - 260, { size: 110, width: 1000, weight: 800, align: 'center', appear: 0.4, maxWidth: 1600 }));
+        r.alpha(a, () => lyric(r, LF2[3]!, 120, H - 150, { size: 66, width: 1000, weight: 700, appear: 0.4 }));
       }
     },
   };

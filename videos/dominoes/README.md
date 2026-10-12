@@ -5,7 +5,7 @@ Suno), the closing track of the album *Maps & Territory*: a song about second-or
 rippling outward in ways you never fully see. Every frame is a deterministic function of song time, drawn with
 Canvas 2D (Skia via `@napi-rs/canvas` offline, the browser's canvas in the preview) and encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:07, 135 MB) is in [`render/`](render/), split into two parts (GitHub's 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+**Watch / download:** the 1080p30 render (3:07, 134 MB) is in [`render/`](render/), split into two parts (GitHub's 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat dominoes_1080p30.mp4.part0 dominoes_1080p30.mp4.part1 > dominoes_1080p30.mp4`.
 
 It is made in the style of [pdoom-video](https://github.com/mexicat/pdoom-video) (MIT): the same ink, bone and
@@ -42,7 +42,7 @@ Full concept, palette, type and the station list: [`docs/TREATMENT.md`](docs/TRE
 | `chorus` | choruses 1 and 2 (paper) | letter-dominoes; one touch to 1,024 echoes; a row to the vanishing point |
 | `galton` | interlude | a pegboard of "AND THEN?", one ball per beat |
 | `map` | verse 2 | plan view: a coin picks LEFT, a war missed, a hymn found, two held doors, YOU ARE HERE |
-| `stairs` | pre-chorus 2 | a slinky on stairs that appear only when reached; the whole machine |
+| `stairs` | pre-chorus 2 | a thirty-ring slinky walking down stairs that appear only when reached; the whole machine |
 | `geo` | bridge, final chorus | 0.78× down to 1 mm; ×2 up to 1.09 km; the echo network; three slams |
 | `frame.ts` | outro | everything rewinds to the first frame |
 
@@ -91,7 +91,7 @@ bun scripts/render.ts video --samples 3 --workers 2 --out ../out/dominoes.mp4
 Preview keys: space play/pause, ←/→ seek 1 s (shift: 5 s), `,` / `.` one frame, `h` hide the UI.
 
 The published render was made in a CPU-only cloud container: 1080p, 30 fps, three motion-blur sub-frames per frame
-(up to sixteen during the rewind), about 0.3 s per frame with two workers, 25 minutes for the song.
+(up to sixteen during the rewind), about 0.3 s per frame with two workers, 14 minutes for the song.
 `--fps 60 --scale 2` gives a 4K60 file from the same code.
 
 ## Regenerate the timing data
