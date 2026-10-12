@@ -50,3 +50,5 @@ videos/dominoes/analysis/stems/
 videos/dominoes/analysis/work/
 # maps-territory-v2: dependencies
 videos/maps-territory-v2/app/node_modules/
+# maps-territory-v3: dependencies
+videos/maps-territory-v3/app/node_modules/

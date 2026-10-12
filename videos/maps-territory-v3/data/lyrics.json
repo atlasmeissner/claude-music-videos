@@ -1,0 +1,1483 @@
+{
+ "lines": [
+  {
+   "text": "I drew the life I thought I'd live",
+   "start": 62.68,
+   "end": 65.14,
+   "words": [
+    {
+     "w": "I",
+     "start": 62.68,
+     "end": 62.74,
+     "conf": 0.48
+    },
+    {
+     "w": "drew",
+     "start": 62.74,
+     "end": 63.02,
+     "conf": 0.198
+    },
+    {
+     "w": "the",
+     "start": 63.02,
+     "end": 63.22,
+     "conf": 0.179
+    },
+    {
+     "w": "life",
+     "start": 63.22,
+     "end": 63.72,
+     "conf": 0.367
+    },
+    {
+     "w": "I",
+     "start": 63.72,
+     "end": 63.88,
+     "conf": 0.052
+    },
+    {
+     "w": "thought",
+     "start": 63.88,
+     "end": 64.58,
+     "conf": 0.041
+    },
+    {
+     "w": "I'd",
+     "start": 64.58,
+     "end": 64.72,
+     "conf": 0.164
+    },
+    {
+     "w": "live",
+     "start": 64.72,
+     "end": 65.14,
+     "conf": 0.383
+    }
+   ]
+  },
+  {
+   "text": "Every year in perfect lines",
+   "start": 66.31,
+   "end": 68.73,
+   "words": [
+    {
+     "w": "Every",
+     "start": 66.31,
+     "end": 66.71,
+     "conf": 0.416
+    },
+    {
+     "w": "year",
+     "start": 66.71,
+     "end": 67.17,
+     "conf": 0.491
+    },
+    {
+     "w": "in",
+     "start": 67.17,
+     "end": 67.33,
+     "conf": 0.36
+    },
+    {
+     "w": "perfect",
+     "start": 67.33,
+     "end": 68.01,
+     "conf": 0.488
+    },
+    {
+     "w": "lines",
+     "start": 68.01,
+     "end": 68.73,
+     "conf": 0.395
+    }
+   ]
+  },
+  {
+   "text": "Named the cities, marked the roads",
+   "start": 69.7,
+   "end": 72.62,
+   "words": [
+    {
+     "w": "Named",
+     "start": 69.7,
+     "end": 69.96,
+     "conf": 0.377
+    },
+    {
+     "w": "the",
+     "start": 69.96,
+     "end": 70.14,
+     "conf": 0.176
+    },
+    {
+     "w": "cities,",
+     "start": 70.14,
+     "end": 70.8,
+     "conf": 0.365
+    },
+    {
+     "w": "marked",
+     "start": 70.8,
+     "end": 71.46,
+     "conf": 0.265
+    },
+    {
+     "w": "the",
+     "start": 71.46,
+     "end": 71.74,
+     "conf": 0.249
+    },
+    {
+     "w": "roads",
+     "start": 71.74,
+     "end": 72.62,
+     "conf": 0.158
+    }
+   ]
+  },
+  {
+   "text": "Colored in between the signs",
+   "start": 72.73,
+   "end": 76.59,
+   "words": [
+    {
+     "w": "Colored",
+     "start": 72.73,
+     "end": 73.53,
+     "conf": 0.369
+    },
+    {
+     "w": "in",
+     "start": 73.53,
+     "end": 73.85,
+     "conf": 0.478
+    },
+    {
+     "w": "between",
+     "start": 73.85,
+     "end": 74.61,
+     "conf": 0.424
+    },
+    {
+     "w": "the",
+     "start": 75.15,
+     "end": 75.27,
+     "conf": 0.365
+    },
+    {
+     "w": "signs",
+     "start": 75.73,
+     "end": 76.59,
+     "conf": 0.237
+    }
+   ]
+  },
+  {
+   "text": "But the ground beneath my feet",
+   "start": 77.3,
+   "end": 80.12,
+   "words": [
+    {
+     "w": "But",
+     "start": 77.3,
+     "end": 77.52,
+     "conf": 0.391
+    },
+    {
+     "w": "the",
+     "start": 77.52,
+     "end": 77.7,
+     "conf": 0.04
+    },
+    {
+     "w": "ground",
+     "start": 77.7,
+     "end": 78.4,
+     "conf": 0.433
+    },
+    {
+     "w": "beneath",
+     "start": 78.4,
+     "end": 79.02,
+     "conf": 0.351
+    },
+    {
+     "w": "my",
+     "start": 79.02,
+     "end": 79.4,
+     "conf": 0.243
+    },
+    {
+     "w": "feet",
+     "start": 79.4,
+     "end": 80.12,
+     "conf": 0.239
+    }
+   ]
+  },
+  {
+   "text": "Was never on the page",
+   "start": 80.79,
+   "end": 84.11,
+   "words": [
+    {
+     "w": "Was",
+     "start": 80.79,
+     "end": 81.37,
+     "conf": 0.055
+    },
+    {
+     "w": "never",
+     "start": 81.37,
+     "end": 82.13,
+     "conf": 0.391
+    },
+    {
+     "w": "on",
+     "start": 82.13,
+     "end": 82.53,
+     "conf": 0.209
+    },
+    {
+     "w": "the",
+     "start": 82.53,
+     "end": 82.85,
+     "conf": 0.092
+    },
+    {
+     "w": "page",
+     "start": 82.85,
+     "end": 84.11,
+     "conf": 0.145
+    }
+   ]
+  },
+  {
+   "text": "These are maps and this is territory",
+   "start": 84.0,
+   "end": 88.66,
+   "words": [
+    {
+     "w": "These",
+     "start": 84.0,
+     "end": 84.5,
+     "conf": 0.089
+    },
+    {
+     "w": "are",
+     "start": 84.5,
+     "end": 84.64,
+     "conf": 0.068
+    },
+    {
+     "w": "maps",
+     "start": 84.64,
+     "end": 85.2,
+     "conf": 0.189
+    },
+    {
+     "w": "and",
+     "start": 86.86,
+     "end": 87.02,
+     "conf": 0.314
+    },
+    {
+     "w": "this",
+     "start": 87.02,
+     "end": 87.2,
+     "conf": 0.059
+    },
+    {
+     "w": "is",
+     "start": 87.2,
+     "end": 87.42,
+     "conf": 0.235
+    },
+    {
+     "w": "territory",
+     "start": 87.42,
+     "end": 88.66,
+     "conf": 0.249
+    }
+   ]
+  },
+  {
+   "text": "Nothing looks the way it did before",
+   "start": 90.86,
+   "end": 95.72,
+   "words": [
+    {
+     "w": "Nothing",
+     "start": 90.86,
+     "end": 91.52,
+     "conf": 0.225
+    },
+    {
+     "w": "looks",
+     "start": 91.52,
+     "end": 92.2,
+     "conf": 0.316
+    },
+    {
+     "w": "the",
+     "start": 92.2,
+     "end": 92.38,
+     "conf": 0.007
+    },
+    {
+     "w": "way",
+     "start": 92.38,
+     "end": 92.94,
+     "conf": 0.297
+    },
+    {
+     "w": "it",
+     "start": 92.94,
+     "end": 93.24,
+     "conf": 0.211
+    },
+    {
+     "w": "did",
+     "start": 93.24,
+     "end": 93.7,
+     "conf": 0.201
+    },
+    {
+     "w": "before",
+     "start": 94.32,
+     "end": 95.72,
+     "conf": 0.241
+    }
+   ]
+  },
+  {
+   "text": "I was tracing someone else's story",
+   "start": 98.1,
+   "end": 102.42,
+   "words": [
+    {
+     "w": "I",
+     "start": 98.1,
+     "end": 98.2,
+     "conf": 0.007
+    },
+    {
+     "w": "was",
+     "start": 98.2,
+     "end": 98.38,
+     "conf": 0.108
+    },
+    {
+     "w": "tracing",
+     "start": 98.38,
+     "end": 99.16,
+     "conf": 0.239
+    },
+    {
+     "w": "someone",
+     "start": 100.52,
+     "end": 101.12,
+     "conf": 0.292
+    },
+    {
+     "w": "else's",
+     "start": 101.12,
+     "end": 101.76,
+     "conf": 0.282
+    },
+    {
+     "w": "story",
+     "start": 101.76,
+     "end": 102.42,
+     "conf": 0.366
+    }
+   ]
+  },
+  {
+   "text": "Now I'm standing somewhere off the shore",
+   "start": 104.65,
+   "end": 111.0,
+   "words": [
+    {
+     "w": "Now",
+     "start": 104.65,
+     "end": 104.91,
+     "conf": 0.262
+    },
+    {
+     "w": "I'm",
+     "start": 104.91,
+     "end": 105.19,
+     "conf": 0.144
+    },
+    {
+     "w": "standing",
+     "start": 105.19,
+     "end": 106.33,
+     "conf": 0.4
+    },
+    {
+     "w": "somewhere",
+     "start": 106.33,
+     "end": 107.13,
+     "conf": 0.263
+    },
+    {
+     "w": "off",
+     "start": 107.13,
+     "end": 108.31,
+     "conf": 0.123
+    },
+    {
+     "w": "the",
+     "start": 108.31,
+     "end": 108.47,
+     "conf": 0.0
+    },
+    {
+     "w": "shore",
+     "start": 108.47,
+     "end": 111.0,
+     "conf": 0.222
+    }
+   ]
+  },
+  {
+   "text": "I planned for sun but it was raining",
+   "start": 117.78,
+   "end": 120.64,
+   "words": [
+    {
+     "w": "I",
+     "start": 117.78,
+     "end": 117.88,
+     "conf": 0.002
+    },
+    {
+     "w": "planned",
+     "start": 117.88,
+     "end": 118.2,
+     "conf": 0.209
+    },
+    {
+     "w": "for",
+     "start": 118.2,
+     "end": 118.4,
+     "conf": 0.056
+    },
+    {
+     "w": "sun",
+     "start": 118.4,
+     "end": 118.84,
+     "conf": 0.343
+    },
+    {
+     "w": "but",
+     "start": 118.84,
+     "end": 119.18,
+     "conf": 0.185
+    },
+    {
+     "w": "it",
+     "start": 119.18,
+     "end": 119.52,
+     "conf": 0.173
+    },
+    {
+     "w": "was",
+     "start": 119.52,
+     "end": 119.92,
+     "conf": 0.451
+    },
+    {
+     "w": "raining",
+     "start": 119.92,
+     "end": 120.64,
+     "conf": 0.291
+    }
+   ]
+  },
+  {
+   "text": "Packed for war but found a feast",
+   "start": 121.19,
+   "end": 123.99,
+   "words": [
+    {
+     "w": "Packed",
+     "start": 121.19,
+     "end": 121.59,
+     "conf": 0.192
+    },
+    {
+     "w": "for",
+     "start": 121.59,
+     "end": 121.85,
+     "conf": 0.287
+    },
+    {
+     "w": "war",
+     "start": 121.85,
+     "end": 122.27,
+     "conf": 0.232
+    },
+    {
+     "w": "but",
+     "start": 122.27,
+     "end": 122.45,
+     "conf": 0.068
+    },
+    {
+     "w": "found",
+     "start": 122.45,
+     "end": 123.17,
+     "conf": 0.377
+    },
+    {
+     "w": "a",
+     "start": 123.17,
+     "end": 123.31,
+     "conf": 0.044
+    },
+    {
+     "w": "feast",
+     "start": 123.31,
+     "end": 123.99,
+     "conf": 0.472
+    }
+   ]
+  },
+  {
+   "text": "Every detour was the real road",
+   "start": 124.72,
+   "end": 127.68,
+   "words": [
+    {
+     "w": "Every",
+     "start": 124.72,
+     "end": 125.08,
+     "conf": 0.412
+    },
+    {
+     "w": "detour",
+     "start": 125.08,
+     "end": 125.92,
+     "conf": 0.257
+    },
+    {
+     "w": "was",
+     "start": 125.92,
+     "end": 126.56,
+     "conf": 0.409
+    },
+    {
+     "w": "the",
+     "start": 126.56,
+     "end": 126.8,
+     "conf": 0.418
+    },
+    {
+     "w": "real",
+     "start": 126.8,
+     "end": 127.24,
+     "conf": 0.487
+    },
+    {
+     "w": "road",
+     "start": 127.24,
+     "end": 127.68,
+     "conf": 0.353
+    }
+   ]
+  },
+  {
+   "text": "Every wrong turn headed east",
+   "start": 127.77,
+   "end": 131.99,
+   "words": [
+    {
+     "w": "Every",
+     "start": 127.77,
+     "end": 128.43,
+     "conf": 0.176
+    },
+    {
+     "w": "wrong",
+     "start": 128.43,
+     "end": 128.93,
+     "conf": 0.317
+    },
+    {
+     "w": "turn",
+     "start": 128.93,
+     "end": 129.57,
+     "conf": 0.202
+    },
+    {
+     "w": "headed",
+     "start": 129.57,
+     "end": 130.99,
+     "conf": 0.161
+    },
+    {
+     "w": "east",
+     "start": 130.99,
+     "end": 131.99,
+     "conf": 0.091
+    }
+   ]
+  },
+  {
+   "text": "And the life I never planned",
+   "start": 132.42,
+   "end": 135.16,
+   "words": [
+    {
+     "w": "And",
+     "start": 132.42,
+     "end": 132.58,
+     "conf": 0.117
+    },
+    {
+     "w": "the",
+     "start": 132.58,
+     "end": 132.8,
+     "conf": 0.024
+    },
+    {
+     "w": "life",
+     "start": 132.8,
+     "end": 133.56,
+     "conf": 0.293
+    },
+    {
+     "w": "I",
+     "start": 133.56,
+     "end": 133.68,
+     "conf": 0.022
+    },
+    {
+     "w": "never",
+     "start": 133.68,
+     "end": 134.46,
+     "conf": 0.284
+    },
+    {
+     "w": "planned",
+     "start": 134.46,
+     "end": 135.16,
+     "conf": 0.088
+    }
+   ]
+  },
+  {
+   "text": "Fits better than the one I drew by hand",
+   "start": 135.37,
+   "end": 139.05,
+   "words": [
+    {
+     "w": "Fits",
+     "start": 135.37,
+     "end": 135.59,
+     "conf": 0.082
+    },
+    {
+     "w": "better",
+     "start": 135.59,
+     "end": 136.03,
+     "conf": 0.261
+    },
+    {
+     "w": "than",
+     "start": 136.03,
+     "end": 136.25,
+     "conf": 0.097
+    },
+    {
+     "w": "the",
+     "start": 136.25,
+     "end": 136.55,
+     "conf": 0.199
+    },
+    {
+     "w": "one",
+     "start": 136.55,
+     "end": 136.95,
+     "conf": 0.297
+    },
+    {
+     "w": "I",
+     "start": 136.95,
+     "end": 137.05,
+     "conf": 0.245
+    },
+    {
+     "w": "drew",
+     "start": 137.05,
+     "end": 137.53,
+     "conf": 0.137
+    },
+    {
+     "w": "by",
+     "start": 137.53,
+     "end": 137.99,
+     "conf": 0.297
+    },
+    {
+     "w": "hand",
+     "start": 137.99,
+     "end": 139.05,
+     "conf": 0.057
+    }
+   ]
+  },
+  {
+   "text": "These are maps and this is territory",
+   "start": 139.02,
+   "end": 143.68,
+   "words": [
+    {
+     "w": "These",
+     "start": 139.02,
+     "end": 139.54,
+     "conf": 0.078
+    },
+    {
+     "w": "are",
+     "start": 139.54,
+     "end": 139.68,
+     "conf": 0.056
+    },
+    {
+     "w": "maps",
+     "start": 139.68,
+     "end": 140.22,
+     "conf": 0.216
+    },
+    {
+     "w": "and",
+     "start": 141.88,
+     "end": 142.04,
+     "conf": 0.112
+    },
+    {
+     "w": "this",
+     "start": 142.04,
+     "end": 142.28,
+     "conf": 0.175
+    },
+    {
+     "w": "is",
+     "start": 142.28,
+     "end": 142.44,
+     "conf": 0.019
+    },
+    {
+     "w": "territory",
+     "start": 142.44,
+     "end": 143.68,
+     "conf": 0.199
+    }
+   ]
+  },
+  {
+   "text": "Nothing looks the way it did before",
+   "start": 145.9,
+   "end": 150.5,
+   "words": [
+    {
+     "w": "Nothing",
+     "start": 145.9,
+     "end": 146.56,
+     "conf": 0.281
+    },
+    {
+     "w": "looks",
+     "start": 146.56,
+     "end": 147.22,
+     "conf": 0.322
+    },
+    {
+     "w": "the",
+     "start": 147.22,
+     "end": 147.42,
+     "conf": 0.004
+    },
+    {
+     "w": "way",
+     "start": 147.42,
+     "end": 147.88,
+     "conf": 0.263
+    },
+    {
+     "w": "it",
+     "start": 147.88,
+     "end": 148.26,
+     "conf": 0.288
+    },
+    {
+     "w": "did",
+     "start": 148.26,
+     "end": 148.7,
+     "conf": 0.221
+    },
+    {
+     "w": "before",
+     "start": 149.34,
+     "end": 150.5,
+     "conf": 0.244
+    }
+   ]
+  },
+  {
+   "text": "I was tracing someone else's story",
+   "start": 153.12,
+   "end": 157.44,
+   "words": [
+    {
+     "w": "I",
+     "start": 153.12,
+     "end": 153.2,
+     "conf": 0.421
+    },
+    {
+     "w": "was",
+     "start": 153.2,
+     "end": 153.42,
+     "conf": 0.231
+    },
+    {
+     "w": "tracing",
+     "start": 153.42,
+     "end": 154.2,
+     "conf": 0.284
+    },
+    {
+     "w": "someone",
+     "start": 155.56,
+     "end": 156.14,
+     "conf": 0.467
+    },
+    {
+     "w": "else's",
+     "start": 156.14,
+     "end": 156.78,
+     "conf": 0.278
+    },
+    {
+     "w": "story",
+     "start": 156.78,
+     "end": 157.44,
+     "conf": 0.392
+    }
+   ]
+  },
+  {
+   "text": "Now I'm lost but I'm not looking anymore",
+   "start": 159.65,
+   "end": 165.8,
+   "words": [
+    {
+     "w": "Now",
+     "start": 159.65,
+     "end": 160.11,
+     "conf": 0.282
+    },
+    {
+     "w": "I'm",
+     "start": 160.11,
+     "end": 160.33,
+     "conf": 0.007
+    },
+    {
+     "w": "lost",
+     "start": 160.33,
+     "end": 160.99,
+     "conf": 0.292
+    },
+    {
+     "w": "but",
+     "start": 160.99,
+     "end": 161.31,
+     "conf": 0.425
+    },
+    {
+     "w": "I'm",
+     "start": 161.31,
+     "end": 161.63,
+     "conf": 0.164
+    },
+    {
+     "w": "not",
+     "start": 161.63,
+     "end": 162.05,
+     "conf": 0.46
+    },
+    {
+     "w": "looking",
+     "start": 162.05,
+     "end": 163.05,
+     "conf": 0.375
+    },
+    {
+     "w": "anymore",
+     "start": 163.05,
+     "end": 165.8,
+     "conf": 0.278
+    }
+   ]
+  },
+  {
+   "text": "What if getting lost",
+   "start": 166.05,
+   "end": 170.78,
+   "words": [
+    {
+     "w": "What",
+     "start": 166.05,
+     "end": 167.45,
+     "conf": 0.103,
+     "fixed": true
+    },
+    {
+     "w": "if",
+     "start": 167.45,
+     "end": 168.2,
+     "conf": 0.006,
+     "fixed": true
+    },
+    {
+     "w": "getting",
+     "start": 168.2,
+     "end": 169.22,
+     "conf": 0.126,
+     "fixed": true
+    },
+    {
+     "w": "lost",
+     "start": 169.22,
+     "end": 170.78,
+     "conf": 0.195,
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "text": "What if getting lost",
+   "start": 171.66,
+   "end": 174.14,
+   "words": [
+    {
+     "w": "What",
+     "start": 171.66,
+     "end": 172.04,
+     "conf": 0.301
+    },
+    {
+     "w": "if",
+     "start": 172.04,
+     "end": 172.38,
+     "conf": 0.383
+    },
+    {
+     "w": "getting",
+     "start": 172.38,
+     "end": 173.24,
+     "conf": 0.314,
+     "fixed": true
+    },
+    {
+     "w": "lost",
+     "start": 173.24,
+     "end": 174.14,
+     "conf": 0.293
+    }
+   ]
+  },
+  {
+   "text": "Was the only way to finally arrive",
+   "start": 174.27,
+   "end": 181.3,
+   "words": [
+    {
+     "w": "Was",
+     "start": 174.27,
+     "end": 174.89,
+     "conf": 0.284
+    },
+    {
+     "w": "the",
+     "start": 174.89,
+     "end": 175.05,
+     "conf": 0.069
+    },
+    {
+     "w": "only",
+     "start": 176.09,
+     "end": 176.79,
+     "conf": 0.13
+    },
+    {
+     "w": "way",
+     "start": 177.29,
+     "end": 177.55,
+     "conf": 0.076
+    },
+    {
+     "w": "to",
+     "start": 178.11,
+     "end": 178.35,
+     "conf": 0.231
+    },
+    {
+     "w": "finally",
+     "start": 178.35,
+     "end": 179.39,
+     "conf": 0.331
+    },
+    {
+     "w": "arrive",
+     "start": 179.77,
+     "end": 181.3,
+     "conf": 0.067
+    }
+   ]
+  },
+  {
+   "text": "These are maps and this is territory",
+   "start": 182.02,
+   "end": 186.66,
+   "words": [
+    {
+     "w": "These",
+     "start": 182.02,
+     "end": 182.54,
+     "conf": 0.033
+    },
+    {
+     "w": "are",
+     "start": 182.54,
+     "end": 182.68,
+     "conf": 0.05
+    },
+    {
+     "w": "maps",
+     "start": 182.68,
+     "end": 183.76,
+     "conf": 0.188
+    },
+    {
+     "w": "and",
+     "start": 184.86,
+     "end": 185.0,
+     "conf": 0.139
+    },
+    {
+     "w": "this",
+     "start": 185.0,
+     "end": 185.3,
+     "conf": 0.195
+    },
+    {
+     "w": "is",
+     "start": 185.3,
+     "end": 185.46,
+     "conf": 0.003
+    },
+    {
+     "w": "territory",
+     "start": 185.46,
+     "end": 186.66,
+     "conf": 0.256
+    }
+   ]
+  },
+  {
+   "text": "Nothing looks the way I thought it would",
+   "start": 188.84,
+   "end": 194.9,
+   "words": [
+    {
+     "w": "Nothing",
+     "start": 188.84,
+     "end": 189.56,
+     "conf": 0.098
+    },
+    {
+     "w": "looks",
+     "start": 189.56,
+     "end": 190.2,
+     "conf": 0.473
+    },
+    {
+     "w": "the",
+     "start": 190.2,
+     "end": 190.42,
+     "conf": 0.106
+    },
+    {
+     "w": "way",
+     "start": 190.42,
+     "end": 191.12,
+     "conf": 0.486
+    },
+    {
+     "w": "I",
+     "start": 191.12,
+     "end": 191.24,
+     "conf": 0.485
+    },
+    {
+     "w": "thought",
+     "start": 191.24,
+     "end": 192.04,
+     "conf": 0.107
+    },
+    {
+     "w": "it",
+     "start": 192.04,
+     "end": 192.7,
+     "conf": 0.064
+    },
+    {
+     "w": "would",
+     "start": 192.7,
+     "end": 194.9,
+     "conf": 0.11
+    }
+   ]
+  },
+  {
+   "text": "But the life I found beyond the story",
+   "start": 195.78,
+   "end": 200.5,
+   "words": [
+    {
+     "w": "But",
+     "start": 195.78,
+     "end": 196.18,
+     "conf": 0.038
+    },
+    {
+     "w": "the",
+     "start": 196.18,
+     "end": 196.4,
+     "conf": 0.179
+    },
+    {
+     "w": "life",
+     "start": 196.4,
+     "end": 196.72,
+     "conf": 0.097
+    },
+    {
+     "w": "I",
+     "start": 196.72,
+     "end": 197.02,
+     "conf": 0.073
+    },
+    {
+     "w": "found",
+     "start": 197.48,
+     "end": 198.42,
+     "conf": 0.025
+    },
+    {
+     "w": "beyond",
+     "start": 198.98,
+     "end": 199.66,
+     "conf": 0.05
+    },
+    {
+     "w": "the",
+     "start": 199.66,
+     "end": 199.8,
+     "conf": 0.048
+    },
+    {
+     "w": "story",
+     "start": 199.8,
+     "end": 200.5,
+     "conf": 0.253
+    }
+   ]
+  },
+  {
+   "text": "Oh, it's more beautiful than lines on paper could",
+   "start": 200.95,
+   "end": 210.0,
+   "words": [
+    {
+     "w": "Oh,",
+     "start": 200.95,
+     "end": 202.55,
+     "conf": 0.026,
+     "fixed": true
+    },
+    {
+     "w": "it's",
+     "start": 202.55,
+     "end": 202.89,
+     "conf": 0.219,
+     "fixed": true
+    },
+    {
+     "w": "more",
+     "start": 202.89,
+     "end": 203.27,
+     "conf": 0.357
+    },
+    {
+     "w": "beautiful",
+     "start": 203.27,
+     "end": 204.61,
+     "conf": 0.295
+    },
+    {
+     "w": "than",
+     "start": 204.61,
+     "end": 204.99,
+     "conf": 0.257
+    },
+    {
+     "w": "lines",
+     "start": 204.99,
+     "end": 205.57,
+     "conf": 0.457
+    },
+    {
+     "w": "on",
+     "start": 205.57,
+     "end": 205.83,
+     "conf": 0.46
+    },
+    {
+     "w": "paper",
+     "start": 205.83,
+     "end": 206.69,
+     "conf": 0.487
+    },
+    {
+     "w": "could",
+     "start": 206.69,
+     "end": 210.0,
+     "conf": 0.068
+    }
+   ]
+  },
+  {
+   "text": "These are maps and this is territory",
+   "start": 250.72,
+   "end": 255.38,
+   "words": [
+    {
+     "w": "These",
+     "start": 250.72,
+     "end": 251.24,
+     "conf": 0.009
+    },
+    {
+     "w": "are",
+     "start": 251.24,
+     "end": 251.4,
+     "conf": 0.006
+    },
+    {
+     "w": "maps",
+     "start": 251.4,
+     "end": 251.82,
+     "conf": 0.046
+    },
+    {
+     "w": "and",
+     "start": 253.54,
+     "end": 253.72,
+     "conf": 0.364
+    },
+    {
+     "w": "this",
+     "start": 253.72,
+     "end": 253.98,
+     "conf": 0.339
+    },
+    {
+     "w": "is",
+     "start": 253.98,
+     "end": 254.12,
+     "conf": 0.159
+    },
+    {
+     "w": "territory",
+     "start": 254.12,
+     "end": 255.38,
+     "conf": 0.345
+    }
+   ]
+  },
+  {
+   "text": "Nothing looks the way I thought it would",
+   "start": 257.56,
+   "end": 262.56,
+   "words": [
+    {
+     "w": "Nothing",
+     "start": 257.56,
+     "end": 258.2,
+     "conf": 0.142
+    },
+    {
+     "w": "looks",
+     "start": 258.2,
+     "end": 258.86,
+     "conf": 0.151
+    },
+    {
+     "w": "the",
+     "start": 258.86,
+     "end": 259.1,
+     "conf": 0.027
+    },
+    {
+     "w": "way",
+     "start": 259.1,
+     "end": 259.4,
+     "conf": 0.107
+    },
+    {
+     "w": "I",
+     "start": 259.76,
+     "end": 259.92,
+     "conf": 0.2
+    },
+    {
+     "w": "thought",
+     "start": 259.92,
+     "end": 260.74,
+     "conf": 0.044
+    },
+    {
+     "w": "it",
+     "start": 260.74,
+     "end": 261.46,
+     "conf": 0.035
+    },
+    {
+     "w": "would",
+     "start": 261.46,
+     "end": 262.56,
+     "conf": 0.051
+    }
+   ]
+  },
+  {
+   "text": "But the life I found beyond the story",
+   "start": 264.42,
+   "end": 269.2,
+   "words": [
+    {
+     "w": "But",
+     "start": 264.42,
+     "end": 264.84,
+     "conf": 0.282
+    },
+    {
+     "w": "the",
+     "start": 264.84,
+     "end": 265.08,
+     "conf": 0.158
+    },
+    {
+     "w": "life",
+     "start": 265.08,
+     "end": 265.82,
+     "conf": 0.354
+    },
+    {
+     "w": "I",
+     "start": 267.26,
+     "end": 267.4,
+     "conf": 0.032
+    },
+    {
+     "w": "found",
+     "start": 267.4,
+     "end": 267.68,
+     "conf": 0.137
+    },
+    {
+     "w": "beyond",
+     "start": 267.68,
+     "end": 268.3,
+     "conf": 0.446
+    },
+    {
+     "w": "the",
+     "start": 268.3,
+     "end": 268.46,
+     "conf": 0.352
+    },
+    {
+     "w": "story",
+     "start": 268.46,
+     "end": 269.2,
+     "conf": 0.493
+    }
+   ]
+  },
+  {
+   "text": "Is more beautiful than lines on paper could",
+   "start": 271.12,
+   "end": 275.95,
+   "words": [
+    {
+     "w": "Is",
+     "start": 271.12,
+     "end": 271.53,
+     "conf": 0.386,
+     "fixed": true
+    },
+    {
+     "w": "more",
+     "start": 271.53,
+     "end": 271.95,
+     "conf": 0.431
+    },
+    {
+     "w": "beautiful",
+     "start": 271.95,
+     "end": 273.31,
+     "conf": 0.449
+    },
+    {
+     "w": "than",
+     "start": 273.31,
+     "end": 273.75,
+     "conf": 0.364
+    },
+    {
+     "w": "lines",
+     "start": 273.75,
+     "end": 274.45,
+     "conf": 0.483
+    },
+    {
+     "w": "on",
+     "start": 274.45,
+     "end": 274.75,
+     "conf": 0.488
+    },
+    {
+     "w": "paper",
+     "start": 274.75,
+     "end": 275.43,
+     "conf": 0.49
+    },
+    {
+     "w": "could",
+     "start": 275.43,
+     "end": 275.95,
+     "conf": 0.139
+    }
+   ]
+  }
+ ]
+}
