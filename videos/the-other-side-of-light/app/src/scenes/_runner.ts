@@ -12,21 +12,23 @@ export interface RunnerOpts {
   near?: string; far?: string;
   /** forward lean of the torso (rad) */
   lean?: number;
+  /** stride amplitude (1 = jog, ~1.3 = sprint) */
+  amp?: number;
 }
 
 /** Joint positions for cycle phase `ph` (radians; one cycle = two footfalls), feet on y = 0, facing +x. */
-export function runnerPose(ph: number, size = 380, lean = 0.3) {
+export function runnerPose(ph: number, size = 380, lean = 0.3, amp = 1) {
   const k = size / 380;
   const TH = 100 * k, SH = 100 * k, UA = 66 * k, FA = 60 * k, TO = 128 * k, NECK = 18 * k, HEAD = 30 * k;
   // vertical bob: highest in the flight phase between footfalls (twice per cycle)
   const bob = -9 * k * Math.cos(2 * ph);
   const leg = (p: number) => {
-    const thigh = 0.18 + 0.62 * Math.sin(p); // swing angle from vertical, + = forward
-    const knee = 0.42 + 1.55 * Math.pow(Math.max(0, Math.cos(p + 0.45)), 2); // flexion, highest mid-swing
+    const thigh = 0.18 + 0.62 * amp * Math.sin(p); // swing angle from vertical, + = forward
+    const knee = 0.42 + 1.55 * Math.min(1.25, amp) * Math.pow(Math.max(0, Math.cos(p + 0.45)), 2); // flexion, highest mid-swing
     const foot = 0.35 + 0.6 * Math.max(0, Math.cos(p - 0.2)); // toe pointing back in swing
     return { thigh, knee, foot };
   };
-  const arm = (p: number) => ({ sh: -0.95 * Math.sin(p) - 0.15, el: 1.6 + 0.3 * Math.sin(p) });
+  const arm = (p: number) => ({ sh: -0.95 * amp * Math.sin(p) - 0.15, el: 1.6 + 0.3 * Math.sin(p) });
   // hip height: legs nearly straight under the body at mid-stance
   const hipY = -(TH + SH) * 0.9 + bob;
   const hip: P = { x: 0, y: hipY };
@@ -62,7 +64,7 @@ function stroke(c: CanvasRenderingContext2D, pts: P[], w: number[], x: number, y
 
 /** Draw the runner with feet on (x, groundY). Returns the near hand's position. */
 export function drawRunner(c: CanvasRenderingContext2D, x: number, groundY: number, ph: number, o: RunnerOpts = {}) {
-  const P = runnerPose(ph, o.size ?? 380, o.lean ?? 0.3);
+  const P = runnerPose(ph, o.size ?? 380, o.lean ?? 0.3, o.amp ?? 1);
   const k = P.k;
   c.save();
   c.lineCap = 'round'; c.lineJoin = 'round';
@@ -87,7 +89,7 @@ export function drawRunner(c: CanvasRenderingContext2D, x: number, groundY: numb
   return { x: x + hand.x, y: groundY + hand.y };
 }
 
-/** Cycle phase at song time t from a continuous beat index: one footfall per beat. */
-export const runPhase = (beat: number) => beat * Math.PI;
+/** Cycle phase from a continuous beat index: `perBeat` footfalls per beat. */
+export const runPhase = (beat: number, perBeat = 1) => beat * Math.PI * perBeat;
 /** Opacity of the chronophotograph echo i (1 = most recent) of n. */
 export const echoAlpha = (i: number, n: number) => clamp(0.22 * (1 - (i - 1) / n));

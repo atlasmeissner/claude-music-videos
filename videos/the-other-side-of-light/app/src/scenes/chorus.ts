@@ -119,26 +119,37 @@ export default class Chorus extends Scene {
       }
       // the runner: an animated ink figure crossing the frame, one footfall per beat, with a chronophotograph
       // trail of its earlier poses; the lamp runs ahead of it and the route trails behind
-      const rx = (tt: number) => lerp(-260, W + 260, prog(tt, f.start, tLight + 0.35, ease.linear));
+      // two sprints across the frame, one per lyric line, two footfalls per beat
+      const tP2 = w[3]!.start - 0.12;
+      const pass = (tt: number) => (tt < tP2 ? 0 : 1);
+      const rx = (tt: number) => pass(tt) === 0
+        ? lerp(-300, W + 300, prog(tt, f.start, tP2, ease.linear))
+        : lerp(-300, W + 300, prog(tt, tP2, tLight + 0.25, ease.linear));
       const ground = 930;
-      const ph = (tt: number) => runPhase(au.beatAt(tt));
-      if (rx(t) < W + 240) {
+      const ph = (tt: number) => runPhase(au.beatAt(tt), 2);
+      const RUN_O = { size: 460, near: rgba('ink', 1), far: rgba('graphite', 1), lean: 0.42, amp: 1.3 };
+      if (rx(t) < W + 280) {
         c.fillStyle = ink(0.35); c.fillRect(0, ground + 2, W, 1.5);
         for (let e = 3; e >= 1; e--) {
-          const te = t - e * 0.11;
-          if (te < f.start) continue;
-          c.globalAlpha = echoAlpha(e, 3) * 0.8;
-          drawRunner(c, rx(te), ground, ph(te), { size: 460, near: rgba('ink', 1), far: rgba('graphite', 1) });
+          const te = t - e * 0.06;
+          if (te < f.start || pass(te) !== pass(t)) continue;
+          c.globalAlpha = echoAlpha(e, 3) * 0.6;
+          drawRunner(c, rx(te), ground, ph(te), RUN_O);
         }
         c.globalAlpha = 1;
-        drawRunner(c, rx(t), ground, ph(t), { size: 460, near: rgba('ink', 1), far: rgba('graphite', 1) });
+        drawRunner(c, rx(t), ground, ph(t), RUN_O);
+        // speed streaks behind him
+        for (let i = 0; i < 5; i++) {
+          const y = ground - 120 - i * 62, len = 160 + 90 * ((i * 37) % 5);
+          c.fillStyle = ink(0.28); c.fillRect(rx(t) - 120 - len, y, len, 2);
+        }
       }
-      const lampAt = (tt: number) => ({ x: rx(tt) + 260, y: ground - 300 + Math.sin(ph(tt) * 2) * 6 });
+      const lampAt = (tt: number) => ({ x: rx(tt) + 300, y: ground - 300 + Math.sin(ph(tt) * 2) * 6 });
       const lp = lampAt(t);
       if (lp.x > -50 && lp.x < W + 50) {
         routeLine(this.lb, [{ x: -10, y: lp.y }, { x: lp.x, y: lp.y }], { w: 3, I: 1.6 });
         sparkHead(this.lb, lp.x, lp.y, t, 1.3, 1.3);
-        sparkParticles(this.lb, t, (tb) => (tb < f.start ? null : lampAt(tb)), { rate: 120, speed: 200, life: 0.4 });
+        sparkParticles(this.lb, t, (tb) => (tb < f.start || pass(tb) !== pass(t) ? null : lampAt(tb)), { rate: 120, speed: 200, life: 0.4 });
       }
       // type: two lines of slams, then LIGHT
       const nW = w.length;
