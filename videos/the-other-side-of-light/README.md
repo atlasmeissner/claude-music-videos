@@ -6,7 +6,7 @@ ostinato and a military snare under a pipe organ, about **inversion** — mappin
 away from what's wrong rather than toward what's right. Every frame is a deterministic function of song time,
 rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (4:04, 651 MB) is in [`render/`](render/), split into seven parts (GitHub's 100 MB file
+**Watch / download:** the 1080p30 render (4:04, 661 MB) is in [`render/`](render/), split into seven parts (GitHub's 100 MB file
 limit); join them with one command, see [`render/README.md`](render/README.md).
 
 The renderer is a fork of the [pdoom-video](https://github.com/mexicat/pdoom-video) engine (MIT) and sticks to its
@@ -38,7 +38,7 @@ it; Munger ("where I'm going to die, so I'll never go there") sits in the break.
 | `mirror` | Every lie I'd tell myself | the frame is a mirror; MYSELF answers reversed; the glass breaks into strips |
 | `bridge` | Every bridge I'd set to burning | Hiroshige's bridge burns behind the lamp; BURNING chars to ash over Turner |
 | `names` | I learned the dark by name / Every shadow, every flame | a specimen sheet of darkness with Latin names; shadows; flames multiplying on every bar to white |
-| `chorus` ×3 | So I'm running to the other side of light… | the inversion: an animated runner chasing the lamp across negative roads, LIGHT on a black sun; every wrong turn crossed until the right one lights up; WANT struck out; the plates of fear (and, the last time, of the fight) receding behind a distance meter |
+| `chorus` ×3 | So I'm running to the other side of light… | the inversion: a run through the atlas (plates bursting out of the lamp at the centre and flying at the camera, one per beat), LIGHT on a black sun; every wrong turn crossed until the right one lights up; WANT struck out; the plates of fear (and, the last time, of the fight) receding behind a distance meter |
 | `munger` | break | Munger's line typed out under his portrait |
 | `ledger` | I wrote the list… / All the poison dressed as medicine | a ledger of failures on the beat; POISON, then MEDICINE pasted over it |
 | `descent` | Every shortcut to the bottom / Every comfortable sin | down the stairwells; red armchairs, Doré, Bruegel's *Sloth* |
@@ -66,7 +66,7 @@ Full concept, palette, type and plate list: [`docs/TREATMENT.md`](docs/TREATMENT
 - `app/` — the renderer (bun + Vite + three.js). `src/engine/` is the forked engine (two changes for software GL:
   synchronous readback with `?syncread=1`, and no full-frame HUD upload when the HUD is empty; plus a silent tail
   after the song for the credits). `src/scenes/_kit.ts` is the kit: the image bank, the plate shader and its looks,
-  karaoke and caption helpers, the lamp's routes and crosses, a 2D camera; `_runner.ts` is the chorus' animated runner. One module per plate in `src/scenes/`;
+  karaoke and caption helpers, the lamp's routes and crosses, a 2D camera. One module per plate in `src/scenes/`;
   `src/timeline.ts` anchors the plates to lyric lines and downbeats.
 - `docs/` — `TREATMENT.md` (the plan), `ENGINE.md` (the pdoom-video engine and scene API).
 

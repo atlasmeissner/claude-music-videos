@@ -19,10 +19,13 @@ import { F, font, measure } from '../engine/type';
 import { Lyrics, type Word } from '../engine/lyrics';
 import { ease, prog, clamp, lerp, hash, frameIdx } from '../engine/util';
 import { sparkHead, sparkParticles } from './_motifs';
-import { drawRunner, runPhase, echoAlpha } from './_runner';
 import { PlateDrawer, loadImages, caption, LIN, rgba, W, H, kc, LOOK, kb, karaoke, beatsIn, slot, routeLine, xMark, chaikin, along, mixC, Cam, type Line, type PlateOpts } from './_kit';
 
 // empty roads and tracks: the animated runner is the only runner in the shot
+/** plates of the verses, flying past as we run */
+const PAST = ['1478fd3b', '489800bb', 'b9d92c2a', '633bf87a', 'cma133655', '00fa3566', 'b0150c56', 'cma122351', '5953f9f0', '4e090678', 'cma149107', '65d44a67', 'cma96320', 'b13825ae', 'fcbb40f9'];
+/** what we run through in the burst: the roads, and the verses' plates */
+const BURST = ['6b6e739e', '1478fd3b', 'de5288b0', '633bf87a', 'f2f80676', 'b9d92c2a', '9b3132d0', 'cma133655', 'dba2a6bb', '00fa3566', '712c27e3', 'b0150c56', '6f07fcb2', 'cma122351', '101aad9d', '5953f9f0', '489800bb', 'cma149107', '4e090678', '65d44a67'];
 const RUN = ['6b6e739e', 'de5288b0', 'f2f80676', '9b3132d0', 'dba2a6bb', '712c27e3', '6f07fcb2', '101aad9d'];
 const LIGHT = ['b3c52bf4', '452abf93', '938a08c9', '2c314b82', '1beeaf74', 'c6e86ad1', '6f07fcb2', '8da33c9c', 'b089d6b4', '56aa2962'];
 const MAPS = ['cma423521', 'cma423516', 'cma423523'];
@@ -67,7 +70,7 @@ export default class Chorus extends Scene {
     this.tD = beatBefore(this.ld.words[0]!.start);
     this.cutsA = [start, ...beatsIn(au, start + 0.1, this.tB, n === 1 ? 2 : 1)];
     this.cutsD = beatsIn(au, this.tD, end, 2);
-    const ids = [...RUN, ...LIGHT, MAPS[n - 1]!, ...SIGNS, ...FORK, ...FEAR[n]!];
+    const ids = [...RUN, ...PAST, ...BURST, ...LIGHT, MAPS[n - 1]!, ...SIGNS, ...FORK, ...FEAR[n]!];
     await loadImages(ids);
     // the map route: a main path with wrong turns branching off and ending in crosses
     const main = [{ x: 140, y: 900 }, { x: 420, y: 760 }, { x: 600, y: 800 }, { x: 860, y: 600 }, { x: 1080, y: 640 }, { x: 1280, y: 430 }, { x: 1520, y: 380 }, { x: 1800, y: 180 }];
@@ -93,7 +96,7 @@ export default class Chorus extends Scene {
     const t = f.t, n = this.n;
     clearRT(renderer, out, LIN.bone);
     const c = this.L.ctx; this.L.clear(); this.lb.clear(); this.ink.clear();
-    let shake: [number, number] = [0, 0], flash = 0, exposure = 1, bloom = 0.8;
+    let shake: [number, number] = [0, 0], flash = 0, exposure = 1, bloom = 0.8, zoom = 1;
     const ink = (a: number) => rgba('ink', a);
     // the inversion itself: a white flash into the paper world on the first beat
     flash = Math.pow(0.5, Math.max(0, t - f.start) / 0.09) * 0.9;
@@ -104,10 +107,27 @@ export default class Chorus extends Scene {
       const k = Math.max(0, slot(this.cutsA, t));
       const tLight = w[w.length - 1]!.start;
       const t0 = this.cutsA[k]!, t1 = this.cutsA[k + 1] ?? this.tB;
-      if (t < tLight - 0.05) {
-        const id = RUN[(k + n * 3) % RUN.length]!;
-        this.plates.draw(renderer, out, id, { x: -40, y: -30, w: W + 80, h: H + 60, ...kb(t, t0, t1, 1.08, 1.2, (k % 2) * 0.8 - 0.4, 0), ...NEG(0.6), redKey: 0, seed: k });
-        caption(c, id, 96, H - 52, { color: ink(0.6) });
+      // the burst (as at the start of the outro): plates shoot out of the lamp at the centre, one per beat, and grow
+      // toward the camera until they fill the frame and pass us: running forward through the atlas
+      const VX = W / 2, VY = H / 2;
+      const run = t < tLight - 0.05;
+      if (run) {
+        const b0 = Math.ceil(au.beatAt(f.start) - 0.01), b1 = Math.floor(au.beatAt(t));
+        let latest = '';
+        for (let j = Math.max(b0, b1 - 6); j <= b1; j++) {
+          const age = t - au.timeOfBeat(j);
+          if (age < 0) continue;
+          const sc = 0.08 * Math.exp(age * 1.75);
+          if (sc > 2.6) continue;
+          const id = BURST[(j * 5 + n * 7) % BURST.length]!;
+          const ww = W * sc, hh = H * sc;
+          const ang = (hash(j, 2) - 0.5) * 0.5;
+          const ox = Math.cos(j * 2.4) * 260 * sc, oy = Math.sin(j * 2.4) * 160 * sc;
+          this.plates.draw(renderer, out, id, { x: VX + ox - ww / 2, y: VY + oy - hh / 2, w: ww, h: hh, rot: ang * sc, ...NEG(0.2), redKey: 0, border: 1, alpha: clamp(3 - sc * 1.2), seed: j });
+          latest = id;
+        }
+        if (latest) caption(c, latest, 96, H - 52, { color: ink(0.6) });
+        sparkHead(this.lb, VX, VY, t, 1.4, 1.4);
       } else {
         // LIGHT: the tunnel's light printed as its own negative (a black sun at the end of a white tunnel)
         const kk = Math.max(0, slot(this.cutsA, t) - slot(this.cutsA, tLight));
@@ -116,40 +136,6 @@ export default class Chorus extends Scene {
         this.plates.draw(renderer, out, id, { x: -60, y: -40, w: W + 120, h: H + 80, zoom: 1.05 + tl * 0.08, ...NEG(0.85), glow: 0, seed: kk });
         caption(c, id, 96, H - 52, { color: ink(0.6) });
         exposure = 1 + 0.15 * Math.pow(0.5, tl / 0.4);
-      }
-      // the runner: an animated ink figure crossing the frame, one footfall per beat, with a chronophotograph
-      // trail of its earlier poses; the lamp runs ahead of it and the route trails behind
-      // two sprints across the frame, one per lyric line, two footfalls per beat
-      const tP2 = w[3]!.start - 0.12;
-      const pass = (tt: number) => (tt < tP2 ? 0 : 1);
-      const rx = (tt: number) => pass(tt) === 0
-        ? lerp(-300, W + 300, prog(tt, f.start, tP2, ease.linear))
-        : lerp(-300, W + 300, prog(tt, tP2, tLight + 0.25, ease.linear));
-      const ground = 930;
-      const ph = (tt: number) => runPhase(au.beatAt(tt), 2);
-      const RUN_O = { size: 460, near: rgba('ink', 1), far: rgba('graphite', 1), lean: 0.42, amp: 1.3 };
-      if (rx(t) < W + 280) {
-        c.fillStyle = ink(0.35); c.fillRect(0, ground + 2, W, 1.5);
-        for (let e = 3; e >= 1; e--) {
-          const te = t - e * 0.06;
-          if (te < f.start || pass(te) !== pass(t)) continue;
-          c.globalAlpha = echoAlpha(e, 3) * 0.6;
-          drawRunner(c, rx(te), ground, ph(te), RUN_O);
-        }
-        c.globalAlpha = 1;
-        drawRunner(c, rx(t), ground, ph(t), RUN_O);
-        // speed streaks behind him
-        for (let i = 0; i < 5; i++) {
-          const y = ground - 120 - i * 62, len = 160 + 90 * ((i * 37) % 5);
-          c.fillStyle = ink(0.28); c.fillRect(rx(t) - 120 - len, y, len, 2);
-        }
-      }
-      const lampAt = (tt: number) => ({ x: rx(tt) + 300, y: ground - 300 + Math.sin(ph(tt) * 2) * 6 });
-      const lp = lampAt(t);
-      if (lp.x > -50 && lp.x < W + 50) {
-        routeLine(this.lb, [{ x: -10, y: lp.y }, { x: lp.x, y: lp.y }], { w: 3, I: 1.6 });
-        sparkHead(this.lb, lp.x, lp.y, t, 1.3, 1.3);
-        sparkParticles(this.lb, t, (tb) => (tb < f.start || pass(tb) !== pass(t) ? null : lampAt(tb)), { rate: 120, speed: 200, life: 0.4 });
       }
       // type: two lines of slams, then LIGHT
       const nW = w.length;
@@ -303,6 +289,6 @@ export default class Chorus extends Scene {
     this.ink.render(renderer, out);
     this.lb.render(renderer, out);
     comp.draw(renderer, this.L.upload(), out);
-    return { bloom, bloomThreshold: 1.0, vignette: 0.2, shake, flash, exposure, paper: 1, grain: 0.05 };
+    return { bloom, bloomThreshold: 1.0, vignette: 0.2, shake, flash, exposure, zoom, paper: 1, grain: 0.05 };
   }
 }
