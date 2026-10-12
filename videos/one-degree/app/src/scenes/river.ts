@@ -42,14 +42,32 @@ void main() {
     int L = 0;
     for (int i = 1; i < 8; i++) if (p.y > boundary(i, p.x)) L = i;
     float d = dark[L];
-    vec2 q = rot2(ang[L]) * p;
-    // engraving: parallel hatch, closer for darker layers, with a slow wobble like a burin's line
-    float per = 11.0 - d * 6.0;
-    float u = q.y / per + 0.35 * sin(q.x * 0.009 + float(L) * 2.0);
-    float line = pxLine(abs(fract(u) - 0.5) * per, 0.0, 0.5 + d * 0.8);
-    // every other layer gets a sparse cross-hatch
-    if (L % 2 == 1) { vec2 r = rot2(1.2) * p; float u2 = r.y / (per * 1.7); line = max(line, 0.6 * pxLine(abs(fract(u2) - 0.5) * per * 1.7, 0.0, 0.6)); }
-    col = mix(C_INK, C_BONE * 0.5, line * (0.22 + d * 0.38));
+    // geological map symbols, one per rock: clean, sparse, thin (a cross-section from a survey, not a texture)
+    vec3 base = C_INK2 * (0.75 + 0.5 * d);
+    float m = 0.0;
+    int k = L % 5;
+    if (k == 0) { // sandstone: dots
+      vec2 g = p / 11.0 + vec2(0.5 * mod(floor(p.y / 11.0), 2.0), 0.0);
+      m = 1.0 - smoothstep(0.8, 1.6, length((fract(g) - 0.5) * 11.0));
+    } else if (k == 1) { // limestone: brickwork
+      float row = floor(p.y / 16.0);
+      float hl = pxLine(abs(fract(p.y / 16.0) - 0.0) * 16.0, 0.0, 0.7) + pxLine(abs(fract(p.y / 16.0) - 1.0) * 16.0, 0.0, 0.7);
+      float vx = fract((p.x + mod(row, 2.0) * 18.0) / 36.0);
+      float vl = pxLine(min(vx, 1.0 - vx) * 36.0, 0.0, 0.7);
+      m = max(hl, vl);
+    } else if (k == 2) { // shale: dashes
+      float yy = fract(p.y / 9.0), xx = fract((p.x + floor(p.y / 9.0) * 7.0) / 22.0);
+      m = pxLine(min(yy, 1.0 - yy) * 9.0, 0.0, 0.6) * step(xx, 0.6);
+    } else if (k == 3) { // schist: waves
+      float yy = p.y + 3.0 * sin(p.x * 0.09);
+      float f = fract(yy / 10.0);
+      m = pxLine(min(f, 1.0 - f) * 10.0, 0.0, 0.6);
+    } else { // granite: crosses
+      vec2 g = fract(p / 22.0 + vec2(0.5 * mod(floor(p.y / 22.0), 2.0), 0.0)) - 0.5;
+      vec2 a = abs(g * 22.0);
+      m = max(pxLine(a.x, 0.0, 0.6) * step(a.y, 4.0), pxLine(a.y, 0.0, 0.6) * step(a.x, 4.0));
+    }
+    col = base + C_BONE * 0.28 * m;
     // boundaries: a firmer hairline
     for (int i = 1; i < 8; i++) col = mix(col, C_BONE * 0.8, pxLine(abs(p.y - boundary(i, p.x)), 0.4, 1.2));
     // the canyon: carved out

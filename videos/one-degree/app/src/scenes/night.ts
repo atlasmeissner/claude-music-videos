@@ -65,9 +65,9 @@ export default class Night extends Scene {
     const L = this.text, c = L.ctx; L.clear();
     const st = { family: F.archivo(100, 700), size: 84, tracking: -1, sung: rgba('bone', 1), unsung: rgba('bone', 0.16), active: rgba('signal', 1), lead: 0.5 } as const;
     // line 12, then line 13 in its place
-    const sw = prog(t, Math.min(this.l12.end, this.l13.start) - 0.05, this.l13.start + 0.12, ease.inOutCubic);
-    if (sw < 1) { c.save(); c.globalAlpha = 1 - sw; drawKaraoke(c, this.l12, 120, 930 - sw * 30, t, st); c.restore(); }
-    if (sw > 0) { c.save(); c.globalAlpha = sw; drawKaraoke(c, this.l13, 120, 960 - sw * 30, t, st); c.restore(); }
+    // a clean cut from line 12 to line 13 just before its first word (no overlapping crossfade)
+    if (t < this.l13.start - 0.04) drawKaraoke(c, this.l12, 120, 930, t, st);
+    else drawKaraoke(c, this.l13, 120, 930, t, st);
     const nights = Math.round(Math.pow(sweep / TAU, 3) * 3650) + 1;
     mono(c, 'EXPOSURE', 120, 150, { size: 12, color: rgba('ash', 0.75), track: 3 });
     mono(c, `${nights.toLocaleString('en-US')} NIGHT${nights > 1 ? 'S' : ''}`, 120, 176, { size: 18, color: rgba('bone', 0.9), track: 2, weight: 500 });

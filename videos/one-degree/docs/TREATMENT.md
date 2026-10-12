@@ -16,15 +16,17 @@ layers away again.
 
 ## The idea in one paragraph
 
-The video is **an atlas of slow change**: a sequence of plates, each an instrument that measures something too small
-to notice. There is a seismograph that does not register a footstep, a sound meter pinned at −∞ dB, a year of
-identical days, a river cutting a canyon, a book growing a page at a time, star trails, snow becoming a mountain, a
-ship's course one degree off, and a wall of tally marks. Running through all of them is **the compounding counter**:
-the song is one year (day 0 on the first sung word, day 365 on the last), and a small readout in each plate shows
-the 1.01ⁿ curve so far, DAY n and ×1.01ⁿ. It sits near ×1.00 for most of the first half ("nothing worth remembering
-yet") and climbs to ×37.8 on the last word. The hook's "degree" is the unit of the small step: each sung "degree"
-moves something by exactly one degree inside the plate (the dial's hand, the ship's course, the protractor's
-needle). The frame itself never tilts.
+The verses are **an atlas of slow change**: instruments that measure something too small to notice (a seismograph
+that does not register a footstep, a sound meter pinned at −∞ dB, a year of identical days, a river cutting a canyon,
+a book growing a page at a time, star trails, snow becoming a mountain, a wall of tally marks), with the
+**compounding counter** (×1.01ⁿ over the song's year) running through them. The choruses and the ending are
+**the little world**: one small planet whose axis tilts by exactly one degree on every sung "degree", 0° at the
+first chorus, 24° at the last word. That is a hair more than Earth's 23.4°, the tilt that gives Earth its seasons, and
+the song happens to sing "degree" exactly 24 times. The frame never tilts; the planet does. The shots cut on the beat
+between the planet turning and the village at 50°N that lives on it. Each degree is one degree of planet and a
+season's difference down there: the noon sun climbs, the ice line retreats 289 km, the river thaws, the trees leaf,
+the windows light. A ledger in the village names what each degree did ("+4° THE RIVER CRACKS", "+14° THE ICE LINE
+PASSES THE VILLAGE"). At 24°: a world with seasons.
 
 ## Tone
 
@@ -58,23 +60,26 @@ then revealed on their start), the word being sung in signal, cooling to bone. N
 |---|---|---|
 | `dawn` | intro | Black; a protractor draws itself on the downbeats around one upright needle, then pushes into a single degree. |
 | `ground` | One step… / One word… | Seismograph drum (MAGNITUDE 0.0), then a sound-level meter pinned at −∞ dB. |
-| `days` | One day… / Nothing worth remembering yet | Bone paper: a year of identical day cells crossed off faster and faster; the ledger's "1% better each day" creeps from ×1.00 and only shoots up at the end; on "yet" the first day after the year turns orange. |
-| `river` | But the river… / It's carving… | Engraved strata; the orange river cuts a canyon; each word of the line labels the layer it has reached. |
-| `hook` | One degree, one degree / Turn so slow… | Giant ONE DEGREE type over a 360-tick dial whose hand steps one degree on each "degree"; then a clock hand you can't see move, and a loupe at 60×. |
-| `curve` | But the whole world's bending / one degree ×3 / break | The 1% rule as a plot: the curve runs flat along the floor and bends upward on "bending" to ×37.8; then 1.00ⁿ and 0.99ⁿ for comparison and the gap (×1,481); the break marks the quiet days, "where most people stop". |
-| `pages` | One page… / One glance… | A book's fore-edge growing a page per eighth note; a stopwatch: a glance is 0.2 s, a second is 1.000 s. |
+| `days` | One day… / Nothing worth remembering yet | Bone paper: a year of identical day cells crossed off faster and faster; "1% better each day" creeps from ×1.00; on "yet" the first day after the year turns orange. |
+| `river` | But the river… / It's carving… | A survey cross-section in geological map symbols (sandstone dots, limestone brickwork, shale dashes, schist waves, granite crosses); the orange river cuts a canyon; each word labels the layer it has reached. |
+| `turn` | One degree, one degree / Turn so slow… | The little world, frozen, at 0°; each "degree" tilts its axis one degree (the arc from the vertical, +1°), then cuts to the village; "Turn so slow": a slow push in. |
+| `bending` | But the whole world's bending / one degree ×3 / break | The axis leaning from the vertical; three more degrees, turn / village; the break at the village as the light goes. |
+| `pages` | One page… / One glance… | A book's fore-edge growing a page per eighth note; a stopwatch: a second is 1.000 s. |
 | `night` | One night… / something's gathering | Star trails over a horizon: each night an arc, the years close them into rings that gather on the pole star. |
 | `snow` | And the mountain… / falling snow | Snowflakes settle into strata that stack into an engraved mountain. |
-| `course` | One degree ×4 / Turn so slow… / bending | Bone nautical chart: the true course and one that opens by a degree on each "degree"; the pull-back shows they end on different coasts. |
-| `whoa` | One degree, whoa ×3 + break | A fan of rays, one per "degree" so far, one degree apart; the pull-back shows 12 of 360 ticks lit. |
+| `ice` | One degree ×4 / Turn so slow… / bending | Four degrees in six seconds, planet / village / planet / village; the ice line closing on the village (ICE n KM FROM THE VILLAGE). |
+| `whoa` | One degree, whoa ×3 + break | Turn / village on each "whoa"; the break at dusk, the windows coming on. |
 | `quiet` | I almost gave up… / But I was changing | Whispered: a wall of tally marks, each a hair steeper than the last; close up every one looks upright; the pull-back shows the turn. |
-| `different` | One degree ×4 / Turned so slow… / different now / all I need | THEN \| NOW pairs, one opened on each "degree": one step \| a worn path; one page \| a book; one night \| ten years of trails; one flake \| a mountain. On "different" the THENs are gone and the four NOWs fill the frame. |
-| `sunflower` | tag (whoa) | 365 days as a sunflower at the golden angle, each dot 1% bigger than the last (day 365 is 37.8× day one), arriving faster and faster; it closes into a single point. |
-| `coda` | One degree… was all I need | The opening's protractor: the needle really turns, one degree on each "degree", leaving a hairline at each step; then 1.01³⁶⁵ = 37.8. |
-| `outro` | — | The needle and the title card: "1% a day · ×37.8 a year". |
+| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | The ice line passes the village (+14°); "different now" cuts to the village in full summer. |
+| `lights` | tag | The planet's night side, filling with the lights of the people on it. |
+| `coda` | One degree… was all I need | The last six degrees, quietly, on the planet alone: 18° → 24°, EARTH: 23.4°; "twenty-four degrees: a world with seasons". |
+| `outro` | — | The little world at 24° above the title card. |
 
 ## Revisions
 
+- **3:** the little world. The choruses and the ending became one small planet tilting a degree per "degree" and the
+  village that lives on it (`scenes/_world.ts`, `scenes/world.ts`); the curve, the then/now pairs, the sunflower and
+  the protractor coda were dropped. The river's hatching (read as noise) became geological map symbols.
 - **2:** the world no longer tilts (the first cut rolled the whole frame one degree per "degree": it cropped the type
   and read as a mistake). The degree is now a step inside each plate, and the running thread is the compounding
   counter. The globe became the `curve`, and the final-chorus sunrise, the corona and the coda were rethought around

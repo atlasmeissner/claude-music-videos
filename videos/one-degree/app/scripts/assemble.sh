@@ -5,7 +5,7 @@
 cd "$(dirname "$0")/../.." || exit 1
 LIST=out/seg/list.txt
 : > $LIST
-for id in dawn ground days river hook curve pages night snow course whoa quiet different sunflower coda outro; do
+for id in dawn ground days river turn bending pages night snow ice whoa quiet thaw lights coda outro; do
   echo "file '$(pwd)/out/seg/$id.mp4'" >> $LIST
 done
 ffmpeg -v error -y -f concat -safe 0 -i $LIST -i audio/one_degree.mp3 -map 0:v -map 1:a \
