@@ -5,7 +5,7 @@ Suno), the closing track of the album *Maps & Territory*: a song about second-or
 rippling outward in ways you never fully see. Every frame is a deterministic function of song time, drawn with
 Canvas 2D (Skia via `@napi-rs/canvas` offline, the browser's canvas in the preview) and encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:07, 134 MB) is in [`render/`](render/), split into two parts (GitHub's 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+**Watch / download:** the 1080p30 render (3:07, 135 MB) is in [`render/`](render/), split into two parts (GitHub's 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat dominoes_1080p30.mp4.part0 dominoes_1080p30.mp4.part1 > dominoes_1080p30.mp4`.
 
 It is made in the style of [pdoom-video](https://github.com/mexicat/pdoom-video) (MIT): the same ink, bone and
