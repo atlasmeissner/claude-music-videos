@@ -74,7 +74,7 @@ start), the word being sung in signal, cooling to bone. Never ahead of the voice
 | `orders` | chorus 2 | Bone paper: one Corinthian column stripped word by word through the orders to a bare post; then posts on the beat into a colonnade. |
 | `build` | chorus 3 | 3D: the new frame rises from the point, one member group per beat — piers, arcades, the first vault arches. |
 | `wreckage` | I stood in the wreckage… / The only foundation was never the wall | Whispered (Cormorant italic). The rubble; on "saw" a section: under the wall nothing, under the point the bedrock. ASSUMED reaches 0. |
-| `cathedral` | final chorus | The vaults close, the buttresses spring; on the last "bones" the keystone is set, and it is the point. |
+| `cathedral` | final chorus | The vaults close, the buttresses spring; the frame is complete before the last line. Through "Build it up from the bones" the keystone — the last piece of the roof — is lowered on a hoist line into the apse vault and set on the last "bones": it is the point. |
 | `vault` | "From the bones" + the choir | Inside the finished nave, a slow walk; the choir lights the frame node by node. |
 | `asbuilt` | choir | Bone paper record drawing: sections of what was built, the old façade struck through, stamped AS BUILT. |
 | `outro` | Take me down | The nave in section retracts into the point it was set out from; the point rings like the first note; title. |

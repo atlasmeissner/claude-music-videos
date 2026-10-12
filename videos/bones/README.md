@@ -5,7 +5,7 @@ Suno), the opening track of the album *Maps & Territory*: a song about first pri
 to what is actually true, then build up from there. Every frame is a deterministic function of song time,
 rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:19, 387 MB) is in [`render/`](render/), split into five parts (GitHub's
+**Watch / download:** the 1080p30 render (3:19, 389 MB) is in [`render/`](render/), split into five parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat bones_1080p30.mp4.part0 … bones_1080p30.mp4.part4 > bones_1080p30.mp4`.
 
@@ -45,7 +45,7 @@ is a **drawing sheet** with a deadpan title block (D- sheets for demolition, S- 
 | `orders` | chorus 2 | one Corinthian column stripped through the orders to a post; a colonnade |
 | `build` | chorus 3 | the new frame rising from the point, a member group per beat |
 | `wreckage` | I stood in the wreckage… / The only foundation was never the wall | whispered: the rubble; a section — under the wall, nothing |
-| `cathedral` | final chorus | the vaults close; the keystone is the point |
+| `cathedral` | final chorus | the vaults close; the keystone is lowered into place on the last "bones": it is the point |
 | `vault` | "From the bones" / choir | inside the nave; the choir lights the frame node by node |
 | `asbuilt` | choir | the record drawing, stamped AS BUILT |
 | `outro` | Take me down | the nave retracts into the point; title |

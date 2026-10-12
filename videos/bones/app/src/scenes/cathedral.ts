@@ -16,6 +16,7 @@ import { aim, buildTimes, drawNave, makeCam, NAVE_GROUPS, project, CLER_H, VAULT
 export default class Cathedral extends Scene {
   lb = new LineBatch(4000, { screen2D: false });
   lp = new LineBatch(300);
+  kl = new LineBatch(200, { screen2D: false });
   text = new Layer2D();
   cam = makeCam(44);
   L: Line[] = [];
@@ -48,18 +49,42 @@ export default class Cathedral extends Scene {
     for (let z = 10; z >= -52; z -= 4) lb.seg(-28, 0, z, 28, 0, z, 0.6, LIN.graphite[0], LIN.graphite[1], LIN.graphite[2], 0.3);
     const built = drawNave(lb, this.cam, audio, t, { bone: scaleRGB(LIN.bone, 1.0), hot: scaleRGB(LIN.signal, 2.4), near: 14, far: 95, interior: shot === 3 ? 1 : 0 });
     lb.render(renderer, out, this.cam);
-    // the keystone: the boss of the apse vault, set on the last "bones"
-    const lp = this.lp; lp.clear();
+    // the keystone: the last piece of the roof, the boss where the apse ribs meet. It is lowered from above
+    // through the last line and set on the last "bones": an octagonal stone with a pendant, the point at its heart.
     const bones = this.L[3]!.words[5]!;
     const zA = -NAVE_BAYS * BAY;
     const boss: V3 = [0, CLER_H + VAULT_RISE, zA - 3];
-    const [bx, by, bv] = project(this.cam, boss);
-    const kk = prog(t, bones.start - 0.4, bones.start, ease.inQuad);
-    if (bv && kk > 0) {
-      const [sx, sy] = project(this.cam, [boss[0], boss[1] + 30 * (1 - kk), boss[2]]);
-      point(lp, sx, sy, t, 1.4, 1);
-      ring(lp, bx, by, t, bones.start, { rgb: LIN.signal, speed: 420, life: 1.8, alpha: 0.8 });
-      ring(lp, bx, by, t, bones.start + 0.15, { rgb: LIN.bone, speed: 300, life: 2.2, alpha: 0.4 });
+    const tK0 = this.L[3]!.words[0]!.start - 0.2;
+    const kk = prog(t, tK0, bones.start, ease.inOutQuad);
+    const lp = this.lp; lp.clear();
+    if (kk > 0) {
+      const lift = 22 * (1 - kk);
+      const cool = prog(t, bones.start, bones.start + 0.8);
+      const kc = scaleRGB(LIN.signal, 2.2 * (1 - cool) + 0.0);
+      const col: V3 = [kc[0] + LIN.bone[0] * 1.05 * cool, kc[1] + LIN.bone[1] * 1.05 * cool, kc[2] + LIN.bone[2] * 1.05 * cool];
+      const kb: V3 = [boss[0], boss[1] + lift, boss[2]];
+      const R = 1.3, n = 8;
+      const ringPts: V3[] = [];
+      for (let k = 0; k <= n; k++) { const a = (k / n) * Math.PI * 2 + Math.PI / 8; ringPts.push([kb[0] + Math.cos(a) * R, kb[1], kb[2] + Math.sin(a) * R]); }
+      const kl = this.kl; kl.clear();
+      for (let k = 1; k < ringPts.length; k++) {
+        const a = ringPts[k - 1]!, b = ringPts[k]!;
+        kl.seg(a[0], a[1], a[2], b[0], b[1], b[2], 2, col[0], col[1], col[2], 1);
+        kl.seg(a[0], a[1], a[2], kb[0], kb[1] - 0.25, kb[2], 1.2, col[0], col[1], col[2], 0.9);
+        kl.seg(a[0], a[1] + 0.5, a[2], b[0], b[1] + 0.5, b[2], 1.2, col[0], col[1], col[2], 0.8);
+        kl.seg(a[0], a[1], a[2], a[0], a[1] + 0.5, a[2], 1.2, col[0], col[1], col[2], 0.8);
+      }
+      kl.seg(kb[0], kb[1] - 0.25, kb[2], kb[0], kb[1] - 1.3, kb[2], 1.6, col[0], col[1], col[2], 1);
+      // while it is lowered, a hoist line from above
+      if (kk < 1) kl.seg(kb[0], kb[1] + 0.5, kb[2], kb[0], kb[1] + 30, kb[2], 0.8, LIN.signal[0], LIN.signal[1], LIN.signal[2], 0.5 * (1 - kk));
+      kl.render(renderer, out, this.cam);
+      const [sx, sy, sv] = project(this.cam, [kb[0], kb[1] - 0.6, kb[2]]);
+      if (sv) point(lp, sx, sy, t, 1.2, 1);
+      const [bx, by, bv] = project(this.cam, boss);
+      if (bv) {
+        ring(lp, bx, by, t, bones.start, { rgb: LIN.signal, speed: 420, life: 1.8, alpha: 0.8 });
+        ring(lp, bx, by, t, bones.start + 0.15, { rgb: LIN.bone, speed: 300, life: 2.2, alpha: 0.4 });
+      }
     }
     const [px, py, pv] = project(this.cam, [-5, 0, 0]);
     if (pv) point(lp, px, py, t, 0.9);

@@ -208,7 +208,7 @@ export const NAVE_GROUPS: Seg3[][] = (() => {
 const schedCache = new WeakMap<AudioData, number[]>();
 /**
  * When each build group rises: one per beat through chorus 3 (from its first beat to the bridge), the rest one
- * every 1.5 beats from the final chorus on.
+ * every half beat from the final chorus on.
  */
 export function buildTimes(au: AudioData): number[] {
   let s = schedCache.get(au);
@@ -218,8 +218,10 @@ export function buildTimes(au: AudioData): number[] {
   const fin = au.sections.find((x) => x.name === 'final')!;
   let b = Math.ceil(au.beatAt(c3.start - 0.01));
   while (s.length < NAVE_GROUPS.length && au.timeOfBeat(b) < br.start - 0.3) { s.push(au.timeOfBeat(b)); b++; }
+  // the rest on every half beat from the final chorus, so the frame is complete well before its last line
+  // (only the keystone, drawn by the cathedral plate, is still to come)
   let bf = Math.ceil(au.beatAt(fin.start - 0.01));
-  while (s.length < NAVE_GROUPS.length) { s.push(au.timeOfBeat(bf)); bf += 1.5; }
+  while (s.length < NAVE_GROUPS.length) { s.push(au.timeOfBeat(bf)); bf += 0.5; }
   schedCache.set(au, s);
   return s;
 }
