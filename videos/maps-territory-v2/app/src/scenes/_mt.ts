@@ -72,30 +72,67 @@ vec4 vnoise4(vec2 p) { return texture(nz, p / 32.0) * 2.0 - 1.0; }`;
 
 // ------------------------------------------------------------------ the trail field
 let trTex: THREE.DataTexture | null = null;
-/** 256² over the sheet: R = distance (km) to the walked trail, G = arc length (km) of its nearest point. */
+let snapTex: THREE.DataTexture | null = null;
+const TN = 256;
+/** 256² over the sheet: R = distance (km) to the whole trail, G = arc length (km) of its nearest point. */
 export function trailTexture(): THREE.DataTexture {
-  if (trTex) return trTex;
-  const N = 256, T = track(), P = T.pts;
-  const px = new Uint16Array(N * N * 4);
+  if (!trTex) buildTrailFields();
+  return trTex!;
+}
+/**
+ * Snapshot atlas, 256 × (256·5), RGBA: snapshot k (0..19; row k >> 2, channel k & 3) is the distance (km) to the
+ * trail walked up to waypoint k. The shader reveals exactly what was walked up to the last waypoint passed, and the
+ * current leg from the nearest-point field, so crossings and loops leave no holes.
+ */
+export function trailSnapTexture(): THREE.DataTexture {
+  if (!snapTex) buildTrailFields();
+  return snapTex!;
+}
+function buildTrailFields() {
+  const T = track(), P = T.pts;
   const H = THREE.DataUtils.toHalfFloat;
-  for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) {
-    const x = ((i + 0.5) / N) * WORLD, y = ((j + 0.5) / N) * WORLD;
-    let best = 1e9, bs = 0;
-    for (let k = 1; k < P.length; k++) {
-      const a = P[k - 1]!, b = P[k]!;
-      const vx = b.x - a.x, vy = b.y - a.y, L2 = vx * vx + vy * vy || 1e-9;
-      const u = Math.max(0, Math.min(1, ((x - a.x) * vx + (y - a.y) * vy) / L2));
-      const dx = a.x + vx * u - x, dy = a.y + vy * u - y, d = dx * dx + dy * dy;
-      if (d < best) { best = d; bs = T.len[k - 1]! + (T.len[k]! - T.len[k - 1]!) * u; }
-    }
-    const o = (j * N + i) * 4;
-    px[o] = H(Math.sqrt(best)); px[o + 1] = H(bs); px[o + 2] = H(0); px[o + 3] = H(1);
+  const px = new Uint16Array(TN * TN * 4);
+  const snap = new Uint16Array(TN * TN * 5 * 4);
+  const best = new Float32Array(TN * TN).fill(1e9), bs = new Float32Array(TN * TN);
+  const cur = new Float32Array(TN * TN).fill(1e9); // walked-so-far distance (squared)
+  const store = (k: number) => {
+    const row = k >> 2, ch = k & 3;
+    for (let j = 0; j < TN; j++) for (let i = 0; i < TN; i++) snap[(((row * TN) + j) * TN + i) * 4 + ch] = H(Math.min(60000, Math.sqrt(cur[j * TN + i]!)));
+  };
+  // snapshot 0: the start point alone
+  for (let j = 0; j < TN; j++) for (let i = 0; i < TN; i++) {
+    const x = ((i + 0.5) / TN) * WORLD, y = ((j + 0.5) / TN) * WORLD;
+    cur[j * TN + i] = (x - P[0]!.x) ** 2 + (y - P[0]!.y) ** 2;
   }
-  const t = new THREE.DataTexture(px, N, N, THREE.RGBAFormat, THREE.HalfFloatType);
-  t.minFilter = THREE.LinearFilter; t.magFilter = THREE.LinearFilter; t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
-  t.needsUpdate = true;
-  trTex = t;
-  return t;
+  store(0);
+  let w = 1;
+  for (let k = 1; k < P.length; k++) {
+    const a = P[k - 1]!, b = P[k]!;
+    const vx = b.x - a.x, vy = b.y - a.y, L2 = vx * vx + vy * vy || 1e-9;
+    // only texels near the segment can change (bounding box + 70 km covers everything we reveal)
+    for (let j = 0; j < TN; j++) {
+      const y = ((j + 0.5) / TN) * WORLD;
+      for (let i = 0; i < TN; i++) {
+        const x = ((i + 0.5) / TN) * WORLD;
+        const u = Math.max(0, Math.min(1, ((x - a.x) * vx + (y - a.y) * vy) / L2));
+        const dx = a.x + vx * u - x, dy = a.y + vy * u - y, d = dx * dx + dy * dy;
+        const o = j * TN + i;
+        if (d < cur[o]!) cur[o] = d;
+        if (d < best[o]!) { best[o] = d; bs[o] = T.len[k - 1]! + (T.len[k]! - T.len[k - 1]!) * u; }
+      }
+    }
+    while (w < T.wayAt.length && T.wayAt[w] === k) { store(w); w++; }
+  }
+  for (; w < 20; w++) store(w);
+  for (let o = 0; o < TN * TN; o++) { px[o * 4] = H(Math.sqrt(best[o]!)); px[o * 4 + 1] = H(bs[o]!); px[o * 4 + 2] = H(0); px[o * 4 + 3] = H(1); }
+  const mk = (data: Uint16Array, h: number) => {
+    const t = new THREE.DataTexture(data, TN, h, THREE.RGBAFormat, THREE.HalfFloatType);
+    t.minFilter = THREE.LinearFilter; t.magFilter = THREE.LinearFilter; t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+    t.needsUpdate = true;
+    return t;
+  };
+  trTex = mk(px, TN);
+  snapTex = mk(snap, TN * 5);
 }
 
 // ------------------------------------------------------------------ the terrain shader
@@ -104,6 +141,8 @@ uniform sampler2D hm;
 uniform sampler2D nz;
 uniform sampler2D trailTex; // R: distance to the walked trail (km), G: arc length of the nearest trail point (km)
 uniform vec4 reveal;  // sNow (km walked), radius (km), global (0..1), on
+uniform sampler2D trailSnap; // snapshot atlas (see trailSnapTexture)
+uniform vec2 revealK;  // snapshot index of the last waypoint passed, its arc length (km)
 ${VNOISE_GLSL}
 uniform vec4 view;      // cx, cy (km), px per km, rotation
 uniform float mapMix;   // 0 territory .. 1 map (where no mask applies)
@@ -228,11 +267,20 @@ void main() {
     float r = 0.0;
     if (tu.x >= 0.0 && tu.y >= 0.0 && tu.x <= 1.0 && tu.y <= 1.0) {
       vec4 tt = texture(trailTex, tu);
-      float walked = 1.0 - smoothstep(reveal.x - 0.6, reveal.x + 0.15, tt.g);
+      // the current leg: nearest-point field (points whose nearest trail point lies between the last waypoint and the lamp)
+      float walked = (1.0 - smoothstep(reveal.x - 0.6, reveal.x + 0.15, tt.g)) * step(revealK.y - 0.3, tt.g);
+      // everything up to the last waypoint passed: its exact distance snapshot
+      int k = int(revealK.x + 0.5);
+      vec2 su = vec2(tu.x, (clamp(tu.y, 0.5 / 256.0, 1.0 - 0.5 / 256.0) + float(k / 4)) / 5.0);
+      vec4 sv = texture(trailSnap, su);
+      int ch = k - (k / 4) * 4;
+      float dSnap = ch == 0 ? sv.r : ch == 1 ? sv.g : ch == 2 ? sv.b : sv.a;
+      float dCur = mix(1e4, tt.r, walked);
+      float d = min(dSnap, dCur);
       float R = reveal.y + (0.5 * vnoise(w * 0.8) + 0.22 * vnoise(w * 2.6 + 3.3)) * min(1.0, reveal.y);
-      float fw = max(fwidth(tt.r), 1e-4);
-      r = (1.0 - smoothstep(R - fw * 1.5, R + fw * 1.5, tt.r)) * walked;
-      cutShadow = (1.0 - smoothstep(R, R + 0.9, tt.r)) * walked * (1.0 - r);
+      float fw = max(fwidth(d), 1e-4);
+      r = 1.0 - smoothstep(R - fw * 1.5, R + fw * 1.5, d);
+      cutShadow = (1.0 - smoothstep(R, R + 0.9, d)) * (1.0 - r);
     }
     // reveal.z: the country beyond the sheet's edge
     if (tu.x < 0.0 || tu.y < 0.0 || tu.x > 1.0 || tu.y > 1.0) r = max(r, reveal.z);
@@ -263,12 +311,12 @@ export interface TerrainOpts {
 /** The world as map or territory. One per scene; set options each frame with draw(). */
 export class Terrain {
   pass = new FSPass(TERRAIN_FRAG, {
-    hm: { value: null }, nz: { value: null }, trailTex: { value: null }, reveal: { value: new THREE.Vector4() }, view: { value: new THREE.Vector4() }, mapMix: { value: 0 }, split: { value: new THREE.Vector4() },
+    hm: { value: null }, nz: { value: null }, trailTex: { value: null }, trailSnap: { value: null }, revealK: { value: new THREE.Vector2() }, reveal: { value: new THREE.Vector4() }, view: { value: new THREE.Vector4() }, mapMix: { value: 0 }, split: { value: new THREE.Vector4() },
     lens: { value: new THREE.Vector4() }, misreg: { value: new THREE.Vector3() }, sun: { value: new THREE.Vector3(-0.6, -0.5, 0.6) },
     warmth: { value: 0 }, relief: { value: 6 }, seaAcid: { value: 0 }, contour: { value: 0.05 }, paperInk: { value: 1 },
     contourInk: { value: 1 }, ghost: { value: 0 }, terrInk: { value: 0.6 }, t: { value: 0 }, fadeOut: { value: 0 }, sheet: { value: 0 }, paperCol: { value: new THREE.Vector3(...LIN.bone) },
   });
-  constructor() { this.pass.u.hm!.value = heightTexture(); this.pass.u.nz!.value = noiseTexture(); this.pass.u.trailTex!.value = trailTexture(); }
+  constructor() { this.pass.u.hm!.value = heightTexture(); this.pass.u.nz!.value = noiseTexture(); this.pass.u.trailTex!.value = trailTexture(); this.pass.u.trailSnap!.value = trailSnapTexture(); }
   draw(renderer: THREE.WebGLRenderer, out: THREE.WebGLRenderTarget, o: TerrainOpts) {
     const u = this.pass.u;
     (u.view!.value as THREE.Vector4).set(o.view.cx, o.view.cy, o.view.s, o.view.rot);
@@ -289,6 +337,13 @@ export class Terrain {
     u.fadeOut!.value = o.fadeOut ?? 0;
     u.sheet!.value = o.sheet ?? 0;
     (u.reveal!.value as THREE.Vector4).set(o.reveal?.[0] ?? 0, o.reveal?.[1] ?? 0, o.reveal?.[2] ?? 0, o.reveal ? 1 : 0);
+    if (o.reveal) {
+      // the last waypoint passed
+      const T = track(), sNow = o.reveal[0];
+      let k = 0;
+      for (let w = 0; w < T.wayAt.length; w++) if (T.len[T.wayAt[w]!]! <= sNow) k = w;
+      (u.revealK!.value as THREE.Vector2).set(Math.min(19, k), T.len[T.wayAt[k]!]!);
+    }
     (u.paperCol!.value as THREE.Vector3).set(...(o.paper ?? LIN.bone));
     this.pass.render(renderer, out);
   }

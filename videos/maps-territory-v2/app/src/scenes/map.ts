@@ -144,7 +144,7 @@ export default class MapScene extends Scene {
     this.terrain.draw(renderer, out, {
       view: v, mapMix: 1, contourInk: 0, paperInk: coast, reveal: [t > T.ground! ? (s >= track().total - 0.01 ? s + 5 : Math.max(s, 1.2)) : s, R, G], warmth: warm, seaAcid: sea,
       terrInk: 0.5, relief: 3.2, t, sun: warm > 0.01 ? [lerp(-0.5, -0.8, warm), lerp(-0.6, -0.3, warm), lerp(0.55, 0.42, warm)] : [-0.5, -0.6, 0.55],
-      ghost: prog(t, T.band! + 2, T.horn!, ease.inOutSine) * 0.8, contour: 0.05, fadeOut: Math.max(dark * 0.97, outroDark),
+      ghost: prog(t, T.band! + 2, T.horn!, ease.inOutSine) * 0.8, contour: 0.05, fadeOut: Math.max(dark * 0.988, outroDark),
     });
 
     const ink = this.ink; ink.clear();
