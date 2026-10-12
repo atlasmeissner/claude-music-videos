@@ -6,7 +6,7 @@ ostinato and a military snare under a pipe organ, about **inversion** — mappin
 away from what's wrong rather than toward what's right. Every frame is a deterministic function of song time,
 rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (4:04, 661 MB) is in [`render/`](render/), split into seven parts (GitHub's 100 MB file
+**Watch / download:** the 1080p30 render (4:04, 661 MB) is in [`render/`](render/), split into eight parts (GitHub's 100 MB file
 limit); join them with one command, see [`render/README.md`](render/README.md).
 
 The renderer is a fork of the [pdoom-video](https://github.com/mexicat/pdoom-video) engine (MIT) and sticks to its
