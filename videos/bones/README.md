@@ -5,7 +5,7 @@ Suno), the opening track of the album *Maps & Territory*: a song about first pri
 to what is actually true, then build up from there. Every frame is a deterministic function of song time,
 rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:19, 384 MB) is in [`render/`](render/), split into five parts (GitHub's
+**Watch / download:** the 1080p30 render (3:19, 387 MB) is in [`render/`](render/), split into five parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat bones_1080p30.mp4.part0 … bones_1080p30.mp4.part4 > bones_1080p30.mp4`.
 

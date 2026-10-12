@@ -9,12 +9,22 @@ import type { AudioData } from '../engine/audio';
 import type { LineBatch } from '../engine/lines';
 
 export type V3 = [number, number, number];
-export interface Seg3 { a: V3; b: V3; w: number; stage: number; order: number; m: number }
+export interface Seg3 { a: V3; b: V3; w: number; stage: number; order: number; m: number; ja: boolean; jb: boolean }
 
 let member = 0;
 function pushPoly(out: Seg3[], pts: V3[], w: number, stage: number, order: number) {
   member++;
-  for (let i = 1; i < pts.length; i++) out.push({ a: pts[i - 1]!, b: pts[i]!, w, stage, order, m: member });
+  // long straight runs are cut into pieces of at most 1.2 m, so a member that passes the camera is drawn up to
+  // the lens instead of vanishing whole; ja/jb mark the member's real joints (its own vertices)
+  for (let i = 1; i < pts.length; i++) {
+    const p = pts[i - 1]!, q = pts[i]!;
+    const n = Math.max(1, Math.ceil(Math.hypot(q[0] - p[0], q[1] - p[1], q[2] - p[2]) / 1.2));
+    for (let k = 0; k < n; k++) {
+      const a: V3 = [p[0] + (q[0] - p[0]) * (k / n), p[1] + (q[1] - p[1]) * (k / n), p[2] + (q[2] - p[2]) * (k / n)];
+      const b: V3 = [p[0] + (q[0] - p[0]) * ((k + 1) / n), p[1] + (q[1] - p[1]) * ((k + 1) / n), p[2] + (q[2] - p[2]) * ((k + 1) / n)];
+      out.push({ a, b, w, stage, order, m: member, ja: k === 0, jb: k === n - 1 });
+    }
+  }
 }
 
 // ------------------------------------------------------------------ the old frame
@@ -238,7 +248,7 @@ export function drawNave(lb: LineBatch, cam: THREE.Camera, au: AudioData, t: num
         // members passing right by the lens fade out instead of sweeping across the frame
         const mx = (s.a[0] + b[0]) / 2 - cam.position.x, my = (s.a[1] + b[1]) / 2 - cam.position.y, mz = (s.a[2] + b[2]) / 2 - cam.position.z;
         const dn = Math.sqrt(mx * mx + my * my + mz * mz);
-        const nearK = Math.min(1, Math.max(0, (dn - 3) / 6));
+        const nearK = Math.min(1, Math.max(0, (dn - 0.8) / 1.7));
         // interior views: the aisles dim and what stands outside the walls (buttresses, flyers) goes
         let ik = 1;
         if (o.interior) {

@@ -27,7 +27,8 @@ export default class Vault extends Scene {
     // candidate nodes: the upper ends of members (springings, crossings, heads), deduplicated, shuffled
     const seen = new Set<string>();
     const pts: V3[] = [];
-    for (const s of NAVE) for (const p of [s.a, s.b]) {
+    for (const s of NAVE) for (const p of [s.ja ? s.a : null, s.jb ? s.b : null]) {
+      if (!p) continue;
       if (p[1] < 6) continue;
       const k = p.map((v) => Math.round(v * 2)).join(',');
       if (seen.has(k)) continue;
