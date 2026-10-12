@@ -5,8 +5,9 @@ the title track of the album *Maps & Territory* (made with Suno): a French horn 
 song about the gap between the life you plan and the one you find. Every frame is a deterministic function of song
 time, rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render is in [`render/`](render/), split into parts (GitHub's 100 MB file
-limit); join them with one command, see [`render/README.md`](render/README.md).
+**Watch / download:** the 1080p30 render (5:19, 536 MB) is in [`render/`](render/), split into six parts (GitHub's
+100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+`cat maps-territory_1080p30.mp4.part0 … maps-territory_1080p30.mp4.part5 > maps-territory_1080p30.mp4`.
 
 The renderer is a fork of the [pdoom-video](https://github.com/mexicat/pdoom-video) engine (MIT), by way of
 [`one-degree`](../one-degree/): same timeline, post-processing, typography and export pipeline, with the album
@@ -83,8 +84,8 @@ scripts/assemble.sh                          # joins the plates and muxes the so
 ```
 
 `scripts/render.ts` launches the Chromium bundled with Playwright under SwiftShader (`CHROME_PATH` overrides it).
-The published render was made in a CPU-only cloud container (SwiftShader, about 1.5–2 s per frame), hence 30 fps and
-one sample per frame. On a GPU machine, `render.ts video --samples auto --fps 60` renders a single 60 fps file with
+The published render was made in a CPU-only cloud container (SwiftShader, 1.4–2.6 s per frame depending on the plate,
+about five and a half hours for the song), hence 30 fps and one sample per frame. On a GPU machine, `render.ts video --samples auto --fps 60` renders a single 60 fps file with
 motion blur. The terrain shader keeps software GL in mind: the height field is baked once into a half-float texture
 (height and gradient), the fine relief is a tiling value-noise texture differentiated on screen, and each detail
 octave fades out before it would alias.
