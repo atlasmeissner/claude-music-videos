@@ -1,0 +1,11 @@
+[["e_prison","Piranesi Carceri",8],["e_ruin","Piranesi ruins",5],["e_map","map",6],["e_map","world map",4],["e_maze","labyrinth",4],
+["e_dark","Melencolia",2],["e_dark","Goya Caprichos",8],["e_dark","Goya Disasters of War",5],["e_dark","night",5],["e_dark","darkness",4],["e_dark","shadow",3],
+["e_fire","fire",6],["e_fire","burning",5],["e_fire","candle",5],["e_fire","flame",3],["e_bridge","bridge",6],
+["e_light","light",5],["e_light","sun",5],["e_light","dawn",4],["e_light","eclipse",3],["e_light","lantern",3],
+["e_door","door",5],["e_door","gate",4],["e_mirror","mirror",4],["e_list","manuscript",4],["e_list","letter writing",3],
+["e_poison","poison",3],["e_poison","apothecary",3],["e_poison","medicine",3],["e_bottom","staircase",4],["e_bottom","abyss",3],["e_bottom","well",2],
+["e_sin","seven deadly sins",6],["e_sin","temptation",4],["e_sin","vanity",3],["e_sin","Inferno",4],["e_sin","Bruegel",5],
+["e_fight","battle",4],["e_fight","fight",3],["e_fight","St George dragon",3],
+["e_glory","triumph",5],["e_glory","glory",4],["e_glory","laurel",3],["e_grief","mourning",5],["e_grief","grief",4],["e_grief","tomb",4],["e_grief","death",4],["e_grief","skull",3],
+["e_walk","pilgrim",4],["e_walk","road",4],["e_walk","wanderer",3],["e_walk","path",3],["e_run","running",4],["e_run","flight",4],
+["e_inst","cello",3],["e_inst","drum",3],["e_inst","organ",3],["e_inst","cathedral interior",4],["e_sea","shipwreck",4],["e_sea","storm",4],["e_compass","compass",3],["e_icarus","Icarus",3],["e_dore","Dore",6],["e_rembrandt","Rembrandt",6],["e_durer","Durer",6]]

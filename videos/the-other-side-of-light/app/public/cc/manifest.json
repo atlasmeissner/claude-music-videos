@@ -1,0 +1,3762 @@
+{
+ "6ed5a954": {
+  "id": "6ed5a954",
+  "file": "6ed5a954.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Typus orbis terrarum",
+  "creator": "Norman B. Leventhal Map Center at the BPL",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/24528911@N05/2710792122",
+  "plate": 1,
+  "scene": "title",
+  "lum": [
+   0.0873,
+   0.3113,
+   0.6358
+  ]
+ },
+ "93fab2ca": {
+  "id": "93fab2ca",
+  "file": "93fab2ca.jpg",
+  "w": 1024,
+  "h": 732,
+  "title": "Tipus orbis uniuersalis iuxta Ptolomei cosmographi traditionem et Americi Vespucii alior[um]que",
+  "creator": "Norman B. Leventhal Map Center at the BPL",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/24528911@N05/2710790868",
+  "plate": 2,
+  "scene": "title",
+  "lum": [
+   0.0009,
+   0.3167,
+   0.626
+  ]
+ },
+ "cma108501": {
+  "id": "cma108501",
+  "file": "cma108501.jpg",
+  "w": 1267,
+  "h": 1600,
+  "title": "Melencolia I",
+  "creator": "Albrecht D\u00fcrer (German, 1471\u20131528)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1926.211",
+  "plate": 3,
+  "scene": "title",
+  "lum": [
+   0.0264,
+   0.2002,
+   0.7996
+  ]
+ },
+ "b7a82383": {
+  "id": "b7a82383",
+  "file": "b7a82383.jpg",
+  "w": 1280,
+  "h": 1289,
+  "title": "Carl.Gustav.Jacob.Jacobi.Grabkreuz",
+  "creator": "Membeth",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=29662898",
+  "plate": 4,
+  "scene": "title",
+  "lum": [
+   0.0129,
+   0.1281,
+   0.9936
+  ]
+ },
+ "80a40402": {
+  "id": "80a40402",
+  "file": "80a40402.jpg",
+  "w": 900,
+  "h": 1024,
+  "title": "Illuminated Manuscript, Map of Western hemisphere within a windrose, from Book on Navigation, Walters Art Museum Ms. W.658, fol.24b detail",
+  "creator": "Walters Art Museum Illuminated Manuscripts",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/39699193@N03/16617091643",
+  "plate": 5,
+  "scene": "title",
+  "lum": [
+   0.0773,
+   0.3667,
+   0.8282
+  ]
+ },
+ "3070ba34": {
+  "id": "3070ba34",
+  "file": "3070ba34.jpg",
+  "w": 821,
+  "h": 1024,
+  "title": "Celestial Map Northern Sky (Imagines",
+  "creator": "artinstitutechicago",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/8972685/image-paper-person-space",
+  "plate": 6,
+  "scene": "title",
+  "lum": [
+   0.2774,
+   0.7703,
+   0.9048
+  ]
+ },
+ "c00ef074": {
+  "id": "c00ef074",
+  "file": "c00ef074.jpg",
+  "w": 1024,
+  "h": 782,
+  "title": "Novus Planiglobii Terrestris per Utrumque Polum Conspectus",
+  "creator": "Boston Public Library",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/24029425@N06/3573511204",
+  "plate": 7,
+  "scene": "map",
+  "lum": [
+   0.0389,
+   0.3373,
+   0.6914
+  ]
+ },
+ "33f4b2d9": {
+  "id": "33f4b2d9",
+  "file": "33f4b2d9.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Orbis terrarum nova et accuratissima tabula",
+  "creator": "Norman B. Leventhal Map Center at the BPL",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/24528911@N05/2710795616",
+  "plate": 8,
+  "scene": "map",
+  "lum": [
+   0.0365,
+   0.3434,
+   0.5825
+  ]
+ },
+ "ca21b201": {
+  "id": "ca21b201",
+  "file": "ca21b201.jpg",
+  "w": 1024,
+  "h": 741,
+  "title": "Orbis typus uniuersalis iuxta hydrographorum traditionem",
+  "creator": "Norman B. Leventhal Map Center at the BPL",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/24528911@N05/2710790498",
+  "plate": 9,
+  "scene": "map",
+  "lum": [
+   0.0016,
+   0.4971,
+   0.659
+  ]
+ },
+ "655e34ab": {
+  "id": "655e34ab",
+  "file": "655e34ab.jpg",
+  "w": 1280,
+  "h": 1325,
+  "title": "Mappa Mundi 2 from Bede, De natura rerum",
+  "creator": "Bede",
+  "license": "by",
+  "license_name": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=42115941",
+  "plate": 10,
+  "scene": "map",
+  "lum": [
+   0.0852,
+   0.5023,
+   0.7159
+  ]
+ },
+ "6a8854a2": {
+  "id": "6a8854a2",
+  "file": "6a8854a2.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Detail of a sea monster on antique map",
+  "creator": "quinet",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/91994044@N00/43014787851",
+  "plate": 11,
+  "scene": "map",
+  "lum": [
+   0.012,
+   0.1659,
+   0.5813
+  ]
+ },
+ "cma423518": {
+  "id": "cma423518",
+  "file": "cma423518.jpg",
+  "w": 1600,
+  "h": 1012,
+  "title": "Nuova pianta di Roma data in luce da Giambattista Nolli l\u2019anno MDCCXLVII, known as La Pianta Grande di Roma",
+  "creator": "Giovanni Battista Nolli (Italian, 1701\u20131756); Carlo Nolli (Italian, 1690\u20131790); Rocco Pozzi (Italian, 1701\u20131774); Pietro Campana de Soriano (Italian, 1725\u2013c. 1779); Stefano Pozzi (Italian, 1699\u20131768)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2020.276.10",
+  "plate": 12,
+  "scene": "map",
+  "lum": [
+   0.128,
+   0.4314,
+   0.6489
+  ]
+ },
+ "cma139898": {
+  "id": "cma139898",
+  "file": "cma139898.jpg",
+  "w": 1035,
+  "h": 1600,
+  "title": "Labyrinth with Floral and Cornucopia Border, folio 16 (recto), from Florilegium (A Book of Flower Studies)",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1963.594.16.a",
+  "plate": 13,
+  "scene": "map",
+  "lum": [
+   0.0393,
+   0.3152,
+   0.6853
+  ]
+ },
+ "fef8f35c": {
+  "id": "fef8f35c",
+  "file": "fef8f35c.jpg",
+  "w": 1024,
+  "h": 681,
+  "title": "Chartres Labyrinth",
+  "creator": "Steve Snodgrass",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/10710442@N08/5377805295",
+  "plate": 14,
+  "scene": "map",
+  "lum": [
+   0.0,
+   0.1878,
+   0.7231
+  ]
+ },
+ "a352ef17": {
+  "id": "a352ef17",
+  "file": "a352ef17.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Spoiler alert. Dead End sign and snow in Aitkin County, Minnesota",
+  "creator": "Lorie Shaull",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/11020019@N04/51681633771",
+  "plate": 15,
+  "scene": "map",
+  "lum": [
+   0.0151,
+   0.545,
+   0.8622
+  ]
+ },
+ "4894723b": {
+  "id": "4894723b",
+  "file": "4894723b.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Dead End Sign",
+  "creator": "TireZoo",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/48722259@N02/7545613610",
+  "plate": 16,
+  "scene": "map",
+  "lum": [
+   0.0295,
+   0.1562,
+   0.8639
+  ]
+ },
+ "4e090678": {
+  "id": "4e090678",
+  "file": "4e090678.jpg",
+  "w": 1023,
+  "h": 710,
+  "title": "Old Wooden Doors",
+  "creator": "dejankrsmanovic",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/155403590@N07/46973051342",
+  "plate": 17,
+  "scene": "doors",
+  "lum": [
+   0.0056,
+   0.0573,
+   0.1849
+  ]
+ },
+ "034991cc": {
+  "id": "034991cc",
+  "file": "034991cc.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "161212-doorways-ruin-pueblo-bonita.jpg",
+  "creator": "r.nial.bradshaw",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/33227787@N05/30817589263",
+  "plate": 18,
+  "scene": "doors",
+  "lum": [
+   0.0005,
+   0.0014,
+   0.7219
+  ]
+ },
+ "489800bb": {
+  "id": "489800bb",
+  "file": "489800bb.jpg",
+  "w": 764,
+  "h": 1024,
+  "title": "Marble Carved Doorway Ruined Temple",
+  "creator": "thegetty",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/14262502/marble-carved-doorway-ruined-temple-amber-lala-deen-dayal",
+  "plate": 19,
+  "scene": "doors",
+  "lum": [
+   0.0255,
+   0.1249,
+   0.3958
+  ]
+ },
+ "1478fd3b": {
+  "id": "1478fd3b",
+  "file": "1478fd3b.jpg",
+  "w": 1200,
+  "h": 1600,
+  "title": "Abandoned house door Etterbeek",
+  "creator": "Caramelia14",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=175681571",
+  "plate": 20,
+  "scene": "doors",
+  "lum": [
+   0.0261,
+   0.3112,
+   0.8624
+  ]
+ },
+ "52bef14b": {
+  "id": "52bef14b",
+  "file": "52bef14b.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Entry",
+  "creator": "enneafive",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/75612671@N03/30520136962",
+  "plate": 21,
+  "scene": "doors",
+  "lum": [
+   0.0152,
+   0.1575,
+   0.4582
+  ]
+ },
+ "b13825ae": {
+  "id": "b13825ae",
+  "file": "b13825ae.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Old wooden door tagged",
+  "creator": "Henry S\u00f6derlund",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/46563758@N04/49560739282",
+  "plate": 22,
+  "scene": "doors",
+  "lum": [
+   0.0058,
+   0.0846,
+   0.2209
+  ]
+ },
+ "cma96320": {
+  "id": "cma96320",
+  "file": "cma96320.jpg",
+  "w": 857,
+  "h": 1600,
+  "title": "Door and Frame",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1916.2051",
+  "plate": 23,
+  "scene": "doors",
+  "lum": [
+   0.0026,
+   0.0453,
+   0.3209
+  ]
+ },
+ "cma136191": {
+  "id": "cma136191",
+  "file": "cma136191.jpg",
+  "w": 1159,
+  "h": 1600,
+  "title": "The Annunciation",
+  "creator": "Albrecht D\u00fcrer (German, 1471\u20131528)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1959.99.8",
+  "plate": 24,
+  "scene": "doors",
+  "lum": [
+   0.0408,
+   0.335,
+   0.9214
+  ]
+ },
+ "b0150c56": {
+  "id": "b0150c56",
+  "file": "b0150c56.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "doorways, ruins, lion asses.",
+  "creator": "permanently scatterbrained",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/88774309@N00/372348840",
+  "plate": 25,
+  "scene": "doors",
+  "lum": [
+   0.0264,
+   0.223,
+   1.0
+  ]
+ },
+ "040b24d6": {
+  "id": "040b24d6",
+  "file": "040b24d6.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "The back of the ruined abbey",
+  "creator": "Fimb",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/48573253@N00/3823044811",
+  "plate": 26,
+  "scene": "doors",
+  "lum": [
+   0.013,
+   0.063,
+   0.7084
+  ]
+ },
+ "e1edf255": {
+  "id": "e1edf255",
+  "file": "e1edf255.jpg",
+  "w": 1024,
+  "h": 765,
+  "title": "Ruined abbey",
+  "creator": "Phil_Parker",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/45131642@N00/35384007995",
+  "plate": 27,
+  "scene": "doors",
+  "lum": [
+   0.0324,
+   0.1966,
+   1.0
+  ]
+ },
+ "7edee81d": {
+  "id": "7edee81d",
+  "file": "7edee81d.jpg",
+  "w": 1024,
+  "h": 680,
+  "title": "The Ruined Abbey at Tintern",
+  "creator": "Stewart Black",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/36967498@N00/18546972316",
+  "plate": 28,
+  "scene": "doors",
+  "lum": [
+   0.0055,
+   0.1619,
+   0.8874
+  ]
+ },
+ "b2360d37": {
+  "id": "b2360d37",
+  "file": "b2360d37.jpg",
+  "w": 1024,
+  "h": 746,
+  "title": "Ruined arches.",
+  "creator": "Bernard Spragg",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/88123769@N02/17171050176",
+  "plate": 29,
+  "scene": "doors",
+  "lum": [
+   0.0038,
+   0.0757,
+   0.5125
+  ]
+ },
+ "cma118652": {
+  "id": "cma118652",
+  "file": "cma118652.jpg",
+  "w": 1600,
+  "h": 1585,
+  "title": "Sketch of the Labyrinth of the Villa Pisani",
+  "creator": "Francesco Guardi (Italian, 1712\u20131793)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1939.665.a",
+  "plate": 30,
+  "scene": "doors",
+  "lum": [
+   0.0579,
+   0.5665,
+   0.8883
+  ]
+ },
+ "cma107251": {
+  "id": "cma107251",
+  "file": "cma107251.jpg",
+  "w": 1600,
+  "h": 1116,
+  "title": "Views: The Portico with the Lantern",
+  "creator": "Antonio Canaletto (Italian, 1697\u20131768)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1925.1239.10",
+  "plate": 31,
+  "scene": "doors",
+  "lum": [
+   0.0835,
+   0.3586,
+   0.8331
+  ]
+ },
+ "cma106564": {
+  "id": "cma106564",
+  "file": "cma106564.jpg",
+  "w": 1600,
+  "h": 1270,
+  "title": "Paris Gate",
+  "creator": "Frank Wilcox (American, 1887\u20131964)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1924.615",
+  "plate": 32,
+  "scene": "doors",
+  "lum": [
+   0.016,
+   0.4438,
+   0.8361
+  ]
+ },
+ "00fa3566": {
+  "id": "00fa3566",
+  "file": "00fa3566.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "broken mirror",
+  "creator": "darkwood67",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/14904390@N05/4572553896",
+  "plate": 33,
+  "scene": "mirror",
+  "lum": [
+   0.0058,
+   0.124,
+   0.5158
+  ]
+ },
+ "a9cbd15a": {
+  "id": "a9cbd15a",
+  "file": "a9cbd15a.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "hole in shattered glass pane",
+  "creator": "Mr Thinktank",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/34621580@N00/4047887309",
+  "plate": 34,
+  "scene": "mirror",
+  "lum": [
+   0.0334,
+   0.3147,
+   0.7959
+  ]
+ },
+ "c3f76051": {
+  "id": "c3f76051",
+  "file": "c3f76051.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Shattered glass",
+  "creator": "aubergene",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/39387762@N00/1243228048",
+  "plate": 35,
+  "scene": "mirror",
+  "lum": [
+   0.0646,
+   0.2184,
+   0.6676
+  ]
+ },
+ "b9d92c2a": {
+  "id": "b9d92c2a",
+  "file": "b9d92c2a.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "How many mirrors?",
+  "creator": "Colby Stopa",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/93057803@N06/13505166013",
+  "plate": 36,
+  "scene": "mirror",
+  "lum": [
+   0.0006,
+   0.0944,
+   0.5616
+  ]
+ },
+ "cma151352": {
+  "id": "cma151352",
+  "file": "cma151352.jpg",
+  "w": 967,
+  "h": 1600,
+  "title": "Caryatid Mirror",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1983.196",
+  "plate": 37,
+  "scene": "mirror",
+  "lum": [
+   0.0052,
+   0.1431,
+   0.3999
+  ]
+ },
+ "cma159102": {
+  "id": "cma159102",
+  "file": "cma159102.jpg",
+  "w": 1600,
+  "h": 1366,
+  "title": "TLV Mirror with Multiple Nipples",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1995.298",
+  "plate": 38,
+  "scene": "mirror",
+  "lum": [
+   0.0158,
+   0.1971,
+   0.552
+  ]
+ },
+ "633bf87a": {
+  "id": "633bf87a",
+  "file": "633bf87a.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Brydekirk",
+  "creator": "TrotterFechan",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/89786933@N02/32046341981",
+  "plate": 39,
+  "scene": "bridge",
+  "lum": [
+   0.0128,
+   0.3934,
+   0.6744
+  ]
+ },
+ "cma103244": {
+  "id": "cma103244",
+  "file": "cma103244.jpg",
+  "w": 1075,
+  "h": 1600,
+  "title": "Sudden Shower over Shin-\u014chashi Bridge and Atake, from One Hundred Famous Views of Edo",
+  "creator": "Utagawa Hiroshige (Japanese, 1797\u20131858)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1921.318",
+  "plate": 40,
+  "scene": "bridge",
+  "lum": [
+   0.0248,
+   0.2791,
+   0.8305
+  ]
+ },
+ "cma122351": {
+  "id": "cma122351",
+  "file": "cma122351.jpg",
+  "w": 1600,
+  "h": 1188,
+  "title": "The Burning of the Houses of Lords and Commons, 16 October 1834",
+  "creator": "Joseph Mallord William Turner (British, 1775\u20131851)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1942.647",
+  "plate": 41,
+  "scene": "bridge",
+  "lum": [
+   0.0219,
+   0.1637,
+   0.4322
+  ]
+ },
+ "9f2efb79": {
+  "id": "9f2efb79",
+  "file": "9f2efb79.jpg",
+  "w": 1023,
+  "h": 685,
+  "title": "Wildfire",
+  "creator": "USFWS/Southeast",
+  "license": "pdm",
+  "license_name": "Public Domain Mark 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/41464593@N02/4971832860",
+  "plate": 42,
+  "scene": "bridge",
+  "lum": [
+   0.0005,
+   0.0052,
+   0.8994
+  ]
+ },
+ "b104f970": {
+  "id": "b104f970",
+  "file": "b104f970.jpg",
+  "w": 1023,
+  "h": 682,
+  "title": "Shooting Stars",
+  "creator": "Joe Martin Photography",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/54246483@N02/11935338326",
+  "plate": 43,
+  "scene": "bridge",
+  "lum": [
+   0.0,
+   0.0581,
+   0.5416
+  ]
+ },
+ "3e61f6ff": {
+  "id": "3e61f6ff",
+  "file": "3e61f6ff.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "High Trestle Trail Bridge @ Night",
+  "creator": "Phil Roeder",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/88876166@N00/6091260729",
+  "plate": 44,
+  "scene": "bridge",
+  "lum": [
+   0.0,
+   0.0,
+   0.483
+  ]
+ },
+ "65d44a67": {
+  "id": "65d44a67",
+  "file": "65d44a67.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "This is Beirut... #16",
+  "creator": "Thomas Leuthard",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/41346951@N05/8189348499",
+  "plate": 45,
+  "scene": "names",
+  "lum": [
+   0.0,
+   0.0065,
+   0.956
+  ]
+ },
+ "8e88db11": {
+  "id": "8e88db11",
+  "file": "8e88db11.jpg",
+  "w": 1024,
+  "h": 687,
+  "title": "Untitled",
+  "creator": "Thomas Leuthard",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/41346951@N05/14259204835",
+  "plate": 46,
+  "scene": "names",
+  "lum": [
+   0.0027,
+   0.1195,
+   0.402
+  ]
+ },
+ "c328d75c": {
+  "id": "c328d75c",
+  "file": "c328d75c.jpg",
+  "w": 1024,
+  "h": 937,
+  "title": "Photographer, Camera and Tripod: Shadow Self Portrait, Spirit Within",
+  "creator": "Dominic's pics",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/64097751@N00/4759829140",
+  "plate": 47,
+  "scene": "names",
+  "lum": [
+   0.001,
+   0.0768,
+   0.464
+  ]
+ },
+ "8e245a54": {
+  "id": "8e245a54",
+  "file": "8e245a54.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Candles 4",
+  "creator": "ElTico68",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/31506745@N03/9428040664",
+  "plate": 48,
+  "scene": "names",
+  "lum": [
+   0.0,
+   0.0011,
+   0.4663
+  ]
+ },
+ "0bf6489d": {
+  "id": "0bf6489d",
+  "file": "0bf6489d.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Match Flame",
+  "creator": "Julian Boed",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/121308049@N03/27535647145",
+  "plate": 49,
+  "scene": "names",
+  "lum": [
+   0.0103,
+   0.402,
+   0.816
+  ]
+ },
+ "fcbb40f9": {
+  "id": "fcbb40f9",
+  "file": "fcbb40f9.jpg",
+  "w": 681,
+  "h": 1024,
+  "title": "Match flame, background photo",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/6037923/photo-image-background-light-public-domain",
+  "plate": 50,
+  "scene": "names",
+  "lum": [
+   0.0009,
+   0.0016,
+   0.7537
+  ]
+ },
+ "a62d9d4f": {
+  "id": "a62d9d4f",
+  "file": "a62d9d4f.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "41/365 Burning Brightly",
+  "creator": "byJoeLodge",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/93223484@N00/5443919748",
+  "plate": 51,
+  "scene": "names",
+  "lum": [
+   0.0074,
+   0.0453,
+   0.526
+  ]
+ },
+ "9ba4c00f": {
+  "id": "9ba4c00f",
+  "file": "9ba4c00f.jpg",
+  "w": 1023,
+  "h": 685,
+  "title": "Candle smoke",
+  "creator": "The Ewan",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/16168774@N00/5002629108",
+  "plate": 52,
+  "scene": "names",
+  "lum": [
+   0.0006,
+   0.0009,
+   0.3023
+  ]
+ },
+ "259f07b1": {
+  "id": "259f07b1",
+  "file": "259f07b1.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Cave at Blagaj",
+  "creator": "watchsmart",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/7741046@N06/2059056240",
+  "plate": 53,
+  "scene": "names",
+  "lum": [
+   0.0009,
+   0.0685,
+   0.5549
+  ]
+ },
+ "cma133655": {
+  "id": "cma133655",
+  "file": "cma133655.jpg",
+  "w": 1141,
+  "h": 1600,
+  "title": "When Day Breaks We Will Be Off, Plate 71",
+  "creator": "Francisco de Goya (Spanish, 1746\u20131828)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1956.274",
+  "plate": 54,
+  "scene": "names",
+  "lum": [
+   0.0221,
+   0.5884,
+   0.7116
+  ]
+ },
+ "cma171329": {
+  "id": "cma171329",
+  "file": "cma171329.jpg",
+  "w": 1048,
+  "h": 1600,
+  "title": "They Spin Finely, Plate 44",
+  "creator": "Francisco de Goya (Spanish, 1746\u20131828)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2014.15",
+  "plate": 55,
+  "scene": "names",
+  "lum": [
+   0.0372,
+   0.1126,
+   0.774
+  ]
+ },
+ "cma133653": {
+  "id": "cma133653",
+  "file": "cma133653.jpg",
+  "w": 1141,
+  "h": 1600,
+  "title": "They Have Flown, Plate 61",
+  "creator": "Francisco de Goya (Spanish, 1746\u20131828)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1956.272",
+  "plate": 56,
+  "scene": "names",
+  "lum": [
+   0.0452,
+   0.5991,
+   0.6928
+  ]
+ },
+ "cma160085": {
+  "id": "cma160085",
+  "file": "cma160085.jpg",
+  "w": 1224,
+  "h": 1600,
+  "title": "A Bad Night, Plate 36",
+  "creator": "Francisco de Goya (Spanish, 1746\u20131828)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1997.54",
+  "plate": 57,
+  "scene": "names",
+  "lum": [
+   0.0309,
+   0.6387,
+   0.8658
+  ]
+ },
+ "cma143143": {
+  "id": "cma143143",
+  "file": "cma143143.jpg",
+  "w": 1134,
+  "h": 1600,
+  "title": "Blow, Plate 69",
+  "creator": "Francisco de Goya (Spanish, 1746\u20131828)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1967.128",
+  "plate": 58,
+  "scene": "names",
+  "lum": [
+   0.0562,
+   0.5581,
+   0.697
+  ]
+ },
+ "cma104485": {
+  "id": "cma104485",
+  "file": "cma104485.jpg",
+  "w": 1048,
+  "h": 1600,
+  "title": "Out Hunting for Teeth, Plate 12",
+  "creator": "Francisco de Goya (Spanish, 1746\u20131828)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1922.607",
+  "plate": 59,
+  "scene": "names",
+  "lum": [
+   0.0645,
+   0.6127,
+   0.8303
+  ]
+ },
+ "cma133657": {
+  "id": "cma133657",
+  "file": "cma133657.jpg",
+  "w": 1182,
+  "h": 1600,
+  "title": "It is Better to be Lazy, Plate 73",
+  "creator": "Francisco de Goya (Spanish, 1746\u20131828)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1956.276",
+  "plate": 60,
+  "scene": "names",
+  "lum": [
+   0.0798,
+   0.5855,
+   0.6857
+  ]
+ },
+ "cma128842": {
+  "id": "cma128842",
+  "file": "cma128842.jpg",
+  "w": 1303,
+  "h": 1600,
+  "title": "Saint Peter Repentant",
+  "creator": "Georges de La Tour (French, 1593\u20131652)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1951.454",
+  "plate": 61,
+  "scene": "names",
+  "lum": [
+   0.007,
+   0.0152,
+   0.1298
+  ]
+ },
+ "cma149107": {
+  "id": "cma149107",
+  "file": "cma149107.jpg",
+  "w": 1600,
+  "h": 1592,
+  "title": "Scenes of Witchcraft: Evening",
+  "creator": "Salvator Rosa (Italian, 1615\u20131673)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1977.37.3",
+  "plate": 62,
+  "scene": "names",
+  "lum": [
+   0.0,
+   0.005,
+   0.0577
+  ]
+ },
+ "cma166783": {
+  "id": "cma166783",
+  "file": "cma166783.jpg",
+  "w": 1376,
+  "h": 1600,
+  "title": "The Death of Sophonisba",
+  "creator": "Pierre Gu\u00e9rin (French, 1774\u20131833)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2008.71",
+  "plate": 63,
+  "scene": "names",
+  "lum": [
+   0.0116,
+   0.0165,
+   0.1831
+  ]
+ },
+ "a63b97dd": {
+  "id": "a63b97dd",
+  "file": "a63b97dd.jpg",
+  "w": 1024,
+  "h": 682,
+  "title": "People running silhouette clipart, health",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/6431710/vector-sticker-public-domain-black",
+  "plate": 64,
+  "scene": "chorus",
+  "lum": [
+   0.0,
+   0.9222,
+   0.9653
+  ]
+ },
+ "726cadf5": {
+  "id": "726cadf5",
+  "file": "726cadf5.jpg",
+  "w": 1024,
+  "h": 682,
+  "title": "People running silhouette clipart, health",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/6481396/vector-sticker-public-domain-black",
+  "plate": 65,
+  "scene": "chorus",
+  "lum": [
+   0.0409,
+   0.9222,
+   0.9393
+  ]
+ },
+ "d5a72013": {
+  "id": "d5a72013",
+  "file": "d5a72013.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Free man running road image",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/5924555/photo-image-public-domain-person-free",
+  "plate": 66,
+  "scene": "chorus",
+  "lum": [
+   0.0,
+   0.0134,
+   0.5459
+  ]
+ },
+ "470fef0b": {
+  "id": "470fef0b",
+  "file": "470fef0b.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Running in the dark",
+  "creator": "Kimmo R\u00e4is\u00e4nen",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/78756325@N06/22956605732",
+  "plate": 67,
+  "scene": "chorus",
+  "lum": [
+   0.0048,
+   0.013,
+   0.9131
+  ]
+ },
+ "e15504b2": {
+  "id": "e15504b2",
+  "file": "e15504b2.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Emily's Track Meet",
+  "creator": "Jim, the Photographer",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/72744295@N00/8648949145",
+  "plate": 68,
+  "scene": "chorus",
+  "lum": [
+   0.0244,
+   0.2231,
+   0.8821
+  ]
+ },
+ "e4011a9a": {
+  "id": "e4011a9a",
+  "file": "e4011a9a.jpg",
+  "w": 1024,
+  "h": 680,
+  "title": "Blade Runner",
+  "creator": "kBandara",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/28792061@N05/7958164006",
+  "plate": 69,
+  "scene": "chorus",
+  "lum": [
+   0.02,
+   0.1386,
+   0.8527
+  ]
+ },
+ "70dd7f22": {
+  "id": "70dd7f22",
+  "file": "70dd7f22.jpg",
+  "w": 1024,
+  "h": 707,
+  "title": "Gatton Hall 10K Run - July 2011 - The Twins Arrive Together... almost",
+  "creator": "Gareth1953 All Right Now",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/40837632@N05/6012290797",
+  "plate": 70,
+  "scene": "chorus",
+  "lum": [
+   0.0021,
+   0.262,
+   0.8196
+  ]
+ },
+ "6b6e739e": {
+  "id": "6b6e739e",
+  "file": "6b6e739e.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Project 365 #200: 190713 The Finishing Line",
+  "creator": "comedy_nose",
+  "license": "pdm",
+  "license_name": "Public Domain Mark 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/23408922@N07/9320845849",
+  "plate": 71,
+  "scene": "chorus",
+  "lum": [
+   0.1259,
+   0.1614,
+   0.5488
+  ]
+ },
+ "8f9db33c": {
+  "id": "8f9db33c",
+  "file": "8f9db33c.jpg",
+  "w": 1067,
+  "h": 1600,
+  "title": "Person walking away on a rainy beach with the arms open to the side and their reflection visible on the shore.",
+  "creator": "annezazu",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "wordpress",
+  "landing": "https://wordpress.org/photos/photo/82865232e6/",
+  "plate": 72,
+  "scene": "chorus",
+  "lum": [
+   0.0232,
+   0.2704,
+   0.7317
+  ]
+ },
+ "473e66d5": {
+  "id": "473e66d5",
+  "file": "473e66d5.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "person silhouette sunset jump skate log wood",
+  "creator": "mono_ram",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/165372774@N07/51713256610",
+  "plate": 73,
+  "scene": "chorus",
+  "lum": [
+   0.0003,
+   0.0376,
+   0.3906
+  ]
+ },
+ "1beeaf74": {
+  "id": "1beeaf74",
+  "file": "1beeaf74.jpg",
+  "w": 1600,
+  "h": 1200,
+  "title": "Crepuscular rays with clouds and high contrast fg FL",
+  "creator": "Spiralz",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=477945",
+  "plate": 74,
+  "scene": "chorus",
+  "lum": [
+   0.003,
+   0.2165,
+   0.9617
+  ]
+ },
+ "2c314b82": {
+  "id": "2c314b82",
+  "file": "2c314b82.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Divine Light...",
+  "creator": "Geert Orye",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/11741671@N03/3914541471",
+  "plate": 75,
+  "scene": "chorus",
+  "lum": [
+   0.0048,
+   0.106,
+   1.0
+  ]
+ },
+ "b3c52bf4": {
+  "id": "b3c52bf4",
+  "file": "b3c52bf4.jpg",
+  "w": 1023,
+  "h": 685,
+  "title": "Tunnel",
+  "creator": "DavidMartynHunt",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/35395389@N00/3047596241",
+  "plate": 76,
+  "scene": "chorus",
+  "lum": [
+   0.0077,
+   0.2001,
+   1.0
+  ]
+ },
+ "938a08c9": {
+  "id": "938a08c9",
+  "file": "938a08c9.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "my tunnel vision (CC)",
+  "creator": "marfis75",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/45409431@N00/6898020292",
+  "plate": 77,
+  "scene": "chorus",
+  "lum": [
+   0.0,
+   0.0013,
+   0.9911
+  ]
+ },
+ "452abf93": {
+  "id": "452abf93",
+  "file": "452abf93.jpg",
+  "w": 1024,
+  "h": 789,
+  "title": "The Light at the End of the Tunnel",
+  "creator": "C.P.Storm",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/45541705@N00/170047842",
+  "plate": 78,
+  "scene": "chorus",
+  "lum": [
+   0.0001,
+   0.0058,
+   0.9837
+  ]
+ },
+ "c6e86ad1": {
+  "id": "c6e86ad1",
+  "file": "c6e86ad1.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Sun",
+  "creator": "mripp",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/56218409@N03/15224699013",
+  "plate": 79,
+  "scene": "chorus",
+  "lum": [
+   0.0004,
+   0.0805,
+   0.698
+  ]
+ },
+ "6f07fcb2": {
+  "id": "6f07fcb2",
+  "file": "6f07fcb2.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Sun Rays",
+  "creator": "Lenny K Photography",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/57527070@N06/24913018683",
+  "plate": 80,
+  "scene": "chorus",
+  "lum": [
+   0.0038,
+   0.048,
+   0.739
+  ]
+ },
+ "8da33c9c": {
+  "id": "8da33c9c",
+  "file": "8da33c9c.jpg",
+  "w": 1024,
+  "h": 737,
+  "title": "Dreamy Beams",
+  "creator": "puliarf",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/11418908@N07/7685214498",
+  "plate": 81,
+  "scene": "chorus",
+  "lum": [
+   0.0006,
+   0.004,
+   0.2026
+  ]
+ },
+ "b089d6b4": {
+  "id": "b089d6b4",
+  "file": "b089d6b4.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Crepuscular Rays Over Iceberg Notch",
+  "creator": "GlacierNPS",
+  "license": "pdm",
+  "license_name": "Public Domain Mark 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/43288043@N04/28920700955",
+  "plate": 82,
+  "scene": "chorus",
+  "lum": [
+   0.0066,
+   0.2683,
+   0.9911
+  ]
+ },
+ "56aa2962": {
+  "id": "56aa2962",
+  "file": "56aa2962.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "The Light from the Dark",
+  "creator": "The Wandering Angel",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/86518301@N00/1702213953",
+  "plate": 83,
+  "scene": "chorus",
+  "lum": [
+   0.0,
+   0.0003,
+   0.191
+  ]
+ },
+ "66159111": {
+  "id": "66159111",
+  "file": "66159111.jpg",
+  "w": 1024,
+  "h": 680,
+  "title": "WRONG WAY",
+  "creator": "CarbonNYC [in SF!]",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/15923063@N00/7777982086",
+  "plate": 84,
+  "scene": "chorus",
+  "lum": [
+   0.0635,
+   0.2268,
+   1.0
+  ]
+ },
+ "92852d3d": {
+  "id": "92852d3d",
+  "file": "92852d3d.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Wrong Way",
+  "creator": "KungPaoCajun",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/70205452@N00/243996426",
+  "plate": 85,
+  "scene": "chorus",
+  "lum": [
+   0.0003,
+   0.0199,
+   0.9944
+  ]
+ },
+ "29335d30": {
+  "id": "29335d30",
+  "file": "29335d30.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Going this way?",
+  "creator": "Richard Elzey",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/54602205@N00/6610113411",
+  "plate": 86,
+  "scene": "chorus",
+  "lum": [
+   0.0003,
+   0.0265,
+   0.8087
+  ]
+ },
+ "6d2ad4d3": {
+  "id": "6d2ad4d3",
+  "file": "6d2ad4d3.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "The fork in the road",
+  "creator": "i_yudai",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/94471921@N00/2330044065",
+  "plate": 87,
+  "scene": "chorus",
+  "lum": [
+   0.0116,
+   0.1594,
+   0.9128
+  ]
+ },
+ "c74d162c": {
+  "id": "c74d162c",
+  "file": "c74d162c.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Fork in the road, decision tree, September, Discovery Park, Seattle, Washington, USA",
+  "creator": "Wonderlane",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/71401718@N00/13067014944",
+  "plate": 88,
+  "scene": "chorus",
+  "lum": [
+   0.0011,
+   0.0761,
+   0.9712
+  ]
+ },
+ "cma423521": {
+  "id": "cma423521",
+  "file": "cma423521.jpg",
+  "w": 1600,
+  "h": 1002,
+  "title": "Nuova pianta di Roma data in luce da Giambattista Nolli l\u2019anno MDCCXLVII, known as La Pianta Grande di Roma",
+  "creator": "Giovanni Battista Nolli (Italian, 1701\u20131756); Carlo Nolli (Italian, 1690\u20131790); Rocco Pozzi (Italian, 1701\u20131774); Pietro Campana de Soriano (Italian, 1725\u2013c. 1779); Stefano Pozzi (Italian, 1699\u20131768)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2020.276.11",
+  "plate": 89,
+  "scene": "chorus",
+  "lum": [
+   0.1479,
+   0.4092,
+   0.615
+  ]
+ },
+ "cma423516": {
+  "id": "cma423516",
+  "file": "cma423516.jpg",
+  "w": 1600,
+  "h": 1042,
+  "title": "Nuova pianta di Roma data in luce da Giambattista Nolli l\u2019anno MDCCXLVII, known as La Pianta Grande di Roma",
+  "creator": "Giovanni Battista Nolli (Italian, 1701\u20131756); Carlo Nolli (Italian, 1690\u20131790); Rocco Pozzi (Italian, 1701\u20131774); Pietro Campana de Soriano (Italian, 1725\u2013c. 1779); Stefano Pozzi (Italian, 1699\u20131768)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2020.276.8",
+  "plate": 90,
+  "scene": "chorus",
+  "lum": [
+   0.1312,
+   0.3424,
+   0.6512
+  ]
+ },
+ "cma423523": {
+  "id": "cma423523",
+  "file": "cma423523.jpg",
+  "w": 1600,
+  "h": 1007,
+  "title": "Nuova pianta di Roma data in luce da Giambattista Nolli l\u2019anno MDCCXLVII, known as La Pianta Grande di Roma",
+  "creator": "Giovanni Battista Nolli (Italian, 1701\u20131756); Carlo Nolli (Italian, 1690\u20131790); Rocco Pozzi (Italian, 1701\u20131774); Pietro Campana de Soriano (Italian, 1725\u2013c. 1779); Stefano Pozzi (Italian, 1699\u20131768)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2020.276.12",
+  "plate": 91,
+  "scene": "chorus",
+  "lum": [
+   0.1503,
+   0.4295,
+   0.579
+  ]
+ },
+ "cma110180": {
+  "id": "cma110180",
+  "file": "cma110180.jpg",
+  "w": 1600,
+  "h": 1263,
+  "title": "The Race Track (Death on a Pale Horse)",
+  "creator": "Albert Pinkham Ryder (American, 1847\u20131917)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1928.8",
+  "plate": 92,
+  "scene": "chorus",
+  "lum": [
+   0.0056,
+   0.0178,
+   0.1607
+  ]
+ },
+ "cma141637": {
+  "id": "cma141637",
+  "file": "cma141637.jpg",
+  "w": 1244,
+  "h": 1600,
+  "title": "Knight, Death, and the Devil",
+  "creator": "Albrecht D\u00fcrer (German, 1471\u20131528)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1965.231",
+  "plate": 93,
+  "scene": "chorus",
+  "lum": [
+   0.0306,
+   0.1401,
+   0.9911
+  ]
+ },
+ "bc3176b9": {
+  "id": "bc3176b9",
+  "file": "bc3176b9.jpg",
+  "w": 960,
+  "h": 960,
+  "title": "Charlie Munger 2 (cropped)",
+  "creator": "Nick Webb",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=141601404",
+  "plate": 94,
+  "scene": "munger",
+  "lum": [
+   0.0,
+   0.0193,
+   0.8803
+  ]
+ },
+ "662f586b": {
+  "id": "662f586b",
+  "file": "662f586b.jpg",
+  "w": 1000,
+  "h": 750,
+  "title": "Handwriting In Old Diary",
+  "creator": "Taylor Liberato",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/60247182@N02/5590283650",
+  "plate": 95,
+  "scene": "ledger",
+  "lum": [
+   0.161,
+   0.3733,
+   0.4828
+  ]
+ },
+ "a741b0f4": {
+  "id": "a741b0f4",
+  "file": "a741b0f4.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Handwritten notes in an old diary",
+  "creator": "ShebleyCL",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/25636851@N03/51915448145",
+  "plate": 96,
+  "scene": "ledger",
+  "lum": [
+   0.0912,
+   0.4143,
+   0.6092
+  ]
+ },
+ "2eb0c521": {
+  "id": "2eb0c521",
+  "file": "2eb0c521.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "typewriter",
+  "creator": "Ak~i",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/48578760@N08/6213123497",
+  "plate": 97,
+  "scene": "ledger",
+  "lum": [
+   0.0169,
+   0.0264,
+   0.956
+  ]
+ },
+ "c08d2032": {
+  "id": "c08d2032",
+  "file": "c08d2032.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Olivetti Typewriter",
+  "creator": "plindberg",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/35237094214@N01/84795",
+  "plate": 98,
+  "scene": "ledger",
+  "lum": [
+   0.0008,
+   0.0571,
+   0.8212
+  ]
+ },
+ "1df6a1cd": {
+  "id": "1df6a1cd",
+  "file": "1df6a1cd.jpg",
+  "w": 1023,
+  "h": 618,
+  "title": "Underwood 11 Typewriter",
+  "creator": "alexkerhead",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/26354629@N02/2783532178",
+  "plate": 99,
+  "scene": "ledger",
+  "lum": [
+   0.0102,
+   0.1888,
+   0.9994
+  ]
+ },
+ "cma423526": {
+  "id": "cma423526",
+  "file": "cma423526.jpg",
+  "w": 1600,
+  "h": 1024,
+  "title": "Nuova pianta di Roma data in luce da Giambattista Nolli l\u2019anno MDCCXLVII, known as La Pianta Grande di Roma",
+  "creator": "Giovanni Battista Nolli (Italian, 1701\u20131756); Carlo Nolli (Italian, 1690\u20131790); Rocco Pozzi (Italian, 1701\u20131774); Pietro Campana de Soriano (Italian, 1725\u2013c. 1779); Stefano Pozzi (Italian, 1699\u20131768)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2020.276.15",
+  "plate": 100,
+  "scene": "ledger",
+  "lum": [
+   0.3067,
+   0.4765,
+   0.6196
+  ]
+ },
+ "5eee55ca": {
+  "id": "5eee55ca",
+  "file": "5eee55ca.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Old bottles",
+  "creator": "Smabs Sputzer (1956-2017)",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/10413717@N08/5697535638",
+  "plate": 101,
+  "scene": "ledger",
+  "lum": [
+   0.0021,
+   0.0483,
+   0.9308
+  ]
+ },
+ "368b5944": {
+  "id": "368b5944",
+  "file": "368b5944.jpg",
+  "w": 1024,
+  "h": 674,
+  "title": "Remedies",
+  "creator": "Glen Bledsoe",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/22501424@N00/5861880368",
+  "plate": 102,
+  "scene": "ledger",
+  "lum": [
+   0.0032,
+   0.1169,
+   0.6082
+  ]
+ },
+ "0c4ba8a8": {
+  "id": "0c4ba8a8",
+  "file": "0c4ba8a8.jpg",
+  "w": 960,
+  "h": 1280,
+  "title": "My Old Medicine bottle jar collection (309391023)",
+  "creator": "aussiegall from sydney, Australia",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=24661302",
+  "plate": 103,
+  "scene": "ledger",
+  "lum": [
+   0.001,
+   0.0843,
+   0.5998
+  ]
+ },
+ "4aa338b5": {
+  "id": "4aa338b5",
+  "file": "4aa338b5.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Pills 2",
+  "creator": "e-MagineArt.com",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/50382026@N06/4741452663",
+  "plate": 104,
+  "scene": "ledger",
+  "lum": [
+   0.007,
+   0.8388,
+   0.9647
+  ]
+ },
+ "48f3abc0": {
+  "id": "48f3abc0",
+  "file": "48f3abc0.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Magic Pills",
+  "creator": "Jonathan Silverberg",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/53011234@N00/9194590737",
+  "plate": 105,
+  "scene": "ledger",
+  "lum": [
+   0.004,
+   0.0407,
+   0.8963
+  ]
+ },
+ "8c66f376": {
+  "id": "8c66f376",
+  "file": "8c66f376.jpg",
+  "w": 908,
+  "h": 1024,
+  "title": "Apothecary Jars - Shells, Shells, & More Shells",
+  "creator": "YourCastlesDecor",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/101592688@N07/10303752986",
+  "plate": 106,
+  "scene": "ledger",
+  "lum": [
+   0.0008,
+   0.2587,
+   0.9994
+  ]
+ },
+ "cma105835": {
+  "id": "cma105835",
+  "file": "cma105835.jpg",
+  "w": 1242,
+  "h": 1600,
+  "title": "Pilgrim Bottle",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1923.914",
+  "plate": 107,
+  "scene": "ledger",
+  "lum": [
+   0.0232,
+   0.063,
+   0.5529
+  ]
+ },
+ "cma128834": {
+  "id": "cma128834",
+  "file": "cma128834.jpg",
+  "w": 1219,
+  "h": 1600,
+  "title": "Pilgrim Bottle",
+  "creator": "Meissen Porcelain Factory (German, est. c. 1710)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1951.451",
+  "plate": 108,
+  "scene": "ledger",
+  "lum": [
+   0.0076,
+   0.089,
+   0.4851
+  ]
+ },
+ "5953f9f0": {
+  "id": "5953f9f0",
+  "file": "5953f9f0.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Spiral Staircase, Vatican",
+  "creator": "Dimitry B",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/61533954@N00/2420762006",
+  "plate": 109,
+  "scene": "descent",
+  "lum": [
+   0.0066,
+   0.1742,
+   0.9755
+  ]
+ },
+ "60f10c51": {
+  "id": "60f10c51",
+  "file": "60f10c51.jpg",
+  "w": 1023,
+  "h": 681,
+  "title": "Spiral Staircase ~ Arc de Triomphe",
+  "creator": "Dusty J",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/55608722@N06/13181596964",
+  "plate": 110,
+  "scene": "descent",
+  "lum": [
+   0.0026,
+   0.017,
+   0.1084
+  ]
+ },
+ "d95e51a2": {
+  "id": "d95e51a2",
+  "file": "d95e51a2.jpg",
+  "w": 1023,
+  "h": 685,
+  "title": "Spiral staircase underside",
+  "creator": "quinet",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/91994044@N00/6346153987",
+  "plate": 111,
+  "scene": "descent",
+  "lum": [
+   0.0172,
+   0.1011,
+   0.4401
+  ]
+ },
+ "dddb9cf6": {
+  "id": "dddb9cf6",
+  "file": "dddb9cf6.jpg",
+  "w": 1024,
+  "h": 634,
+  "title": "Spiral Staircase - 11/52",
+  "creator": "Phil Roeder",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/88876166@N00/5546598342",
+  "plate": 112,
+  "scene": "descent",
+  "lum": [
+   0.0002,
+   0.2167,
+   0.9913
+  ]
+ },
+ "edcf6a1d": {
+  "id": "edcf6a1d",
+  "file": "edcf6a1d.jpg",
+  "w": 1024,
+  "h": 680,
+  "title": "Alley Gria",
+  "creator": "Number Six (6)",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/74891468@N00/4393160599",
+  "plate": 113,
+  "scene": "descent",
+  "lum": [
+   0.0,
+   0.011,
+   0.6144
+  ]
+ },
+ "b91198a3": {
+  "id": "b91198a3",
+  "file": "b91198a3.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "Original public domain image Wikimedia",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/3304537/free-photo-image-abyss-apparel-blur-background",
+  "plate": 114,
+  "scene": "descent",
+  "lum": [
+   0.0057,
+   0.0871,
+   0.8064
+  ]
+ },
+ "cma441006": {
+  "id": "cma441006",
+  "file": "cma441006.jpg",
+  "w": 1213,
+  "h": 1600,
+  "title": "Washerwomen Descending a Quai Staircase",
+  "creator": "Alexandre Lunois (French, 1863\u20131916); Honor\u00e9 Daumier (French, 1808\u20131879)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/2021.141",
+  "plate": 115,
+  "scene": "descent",
+  "lum": [
+   0.0282,
+   0.3707,
+   0.9255
+  ]
+ },
+ "cma149998": {
+  "id": "cma149998",
+  "file": "cma149998.jpg",
+  "w": 1111,
+  "h": 1600,
+  "title": "Outer Staircase of a Gothic Ruin",
+  "creator": "Domenico Quaglio (German, 1787\u20131837)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1980.218",
+  "plate": 116,
+  "scene": "descent",
+  "lum": [
+   0.0347,
+   0.1264,
+   0.8393
+  ]
+ },
+ "cma108829": {
+  "id": "cma108829",
+  "file": "cma108829.jpg",
+  "w": 1063,
+  "h": 1600,
+  "title": "Vaulted Staircase",
+  "creator": "Hubert Robert (French, 1733\u20131808)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1926.504",
+  "plate": 117,
+  "scene": "descent",
+  "lum": [
+   0.0595,
+   0.311,
+   0.6041
+  ]
+ },
+ "cma142697": {
+  "id": "cma142697",
+  "file": "cma142697.jpg",
+  "w": 1173,
+  "h": 1600,
+  "title": "I Saw a Flash of Light, Large and Pale",
+  "creator": "Odilon Redon (French, 1840\u20131916); Auguste Clot (French, 1858\u20131936)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1966.413.3",
+  "plate": 129,
+  "scene": "lightbox",
+  "lum": [
+   0.0138,
+   0.0508,
+   0.9461
+  ]
+ },
+ "fba082d7": {
+  "id": "fba082d7",
+  "file": "fba082d7.jpg",
+  "w": 1024,
+  "h": 785,
+  "title": "Sloth (Desidia), series Seven Deadly",
+  "creator": "themet",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/9328449/image-art-vintage-woman",
+  "plate": 119,
+  "scene": "descent",
+  "lum": [
+   0.056,
+   0.3489,
+   0.84
+  ]
+ },
+ "cma123964": {
+  "id": "cma123964",
+  "file": "cma123964.jpg",
+  "w": 1237,
+  "h": 1600,
+  "title": "Adam and Eve",
+  "creator": "Albrecht D\u00fcrer (German, 1471\u20131528)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1944.473",
+  "plate": 120,
+  "scene": "descent",
+  "lum": [
+   0.0297,
+   0.1583,
+   0.6825
+  ]
+ },
+ "ee726e64": {
+  "id": "ee726e64",
+  "file": "ee726e64.jpg",
+  "w": 987,
+  "h": 829,
+  "title": "06-069",
+  "creator": "rutger_vos",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/18212786@N03/4683231541",
+  "plate": 121,
+  "scene": "descent",
+  "lum": [
+   0.0131,
+   0.1515,
+   0.9155
+  ]
+ },
+ "53d9e256": {
+  "id": "53d9e256",
+  "file": "53d9e256.jpg",
+  "w": 989,
+  "h": 825,
+  "title": "07-079",
+  "creator": "rutger_vos",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/18212786@N03/4683860846",
+  "plate": 122,
+  "scene": "descent",
+  "lum": [
+   0.0191,
+   0.362,
+   0.8951
+  ]
+ },
+ "32990092": {
+  "id": "32990092",
+  "file": "32990092.jpg",
+  "w": 989,
+  "h": 785,
+  "title": "05-047",
+  "creator": "rutger_vos",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/18212786@N03/4683227215",
+  "plate": 123,
+  "scene": "descent",
+  "lum": [
+   0.0065,
+   0.0517,
+   0.9479
+  ]
+ },
+ "770ae1af": {
+  "id": "770ae1af",
+  "file": "770ae1af.jpg",
+  "w": 977,
+  "h": 828,
+  "title": "01-005",
+  "creator": "rutger_vos",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/18212786@N03/4683849768",
+  "plate": 124,
+  "scene": "descent",
+  "lum": [
+   0.012,
+   0.1959,
+   0.948
+  ]
+ },
+ "be1c5d0b": {
+  "id": "be1c5d0b",
+  "file": "be1c5d0b.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "IMG_0256",
+  "creator": "mamnaimie piotr",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/11005463@N02/15160229633",
+  "plate": 125,
+  "scene": "descent",
+  "lum": [
+   0.004,
+   0.9987,
+   1.0
+  ]
+ },
+ "38036c70": {
+  "id": "38036c70",
+  "file": "38036c70.jpg",
+  "w": 1023,
+  "h": 773,
+  "title": "fit for a Princess",
+  "creator": "Muffet",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/53133240@N00/282246695",
+  "plate": 126,
+  "scene": "descent",
+  "lum": [
+   0.0,
+   0.0846,
+   0.7138
+  ]
+ },
+ "cma106457": {
+  "id": "cma106457",
+  "file": "cma106457.jpg",
+  "w": 1600,
+  "h": 1284,
+  "title": "The Inferno According to Dante, after the Fresco in the Campo Santo at Pisa",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1924.527",
+  "plate": 127,
+  "scene": "descent",
+  "lum": [
+   0.0948,
+   0.2796,
+   0.9256
+  ]
+ },
+ "a5cc0eb7": {
+  "id": "a5cc0eb7",
+  "file": "a5cc0eb7.jpg",
+  "w": 1024,
+  "h": 839,
+  "title": "X-Ray",
+  "creator": "Adrian Barnes",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/96902042@N00/222098051",
+  "plate": 128,
+  "scene": "lightbox",
+  "lum": [
+   0.0033,
+   0.4342,
+   0.956
+  ]
+ },
+ "cma108601": {
+  "id": "cma108601",
+  "file": "cma108601.jpg",
+  "w": 1173,
+  "h": 1600,
+  "title": "Light",
+  "creator": "Odilon Redon (French, 1840\u20131916); Becquet (French)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1926.296",
+  "plate": 130,
+  "scene": "lightbox",
+  "lum": [
+   0.026,
+   0.1088,
+   0.7688
+  ]
+ },
+ "6466389a": {
+  "id": "6466389a",
+  "file": "6466389a.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "#prism #light #color",
+  "creator": "Filipe D\u00e2maso Saraiva",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/94974069@N00/21398918734",
+  "plate": 131,
+  "scene": "lightbox",
+  "lum": [
+   0.0043,
+   0.201,
+   0.7494
+  ]
+ },
+ "36ff4aa0": {
+  "id": "36ff4aa0",
+  "file": "36ff4aa0.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "NightWatch for FlickrFriday",
+  "creator": "Horosho.Gromko.",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/76958872@N05/51678649116",
+  "plate": 132,
+  "scene": "lightbox",
+  "lum": [
+   0.0009,
+   0.0058,
+   0.0873
+  ]
+ },
+ "6f61cfca": {
+  "id": "6f61cfca",
+  "file": "6f61cfca.jpg",
+  "w": 1024,
+  "h": 680,
+  "title": "Latvian and U.S. soldier showing solidarity",
+  "creator": "U.S. Army Europe",
+  "license": "pdm",
+  "license_name": "Public Domain Mark 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/37585279@N03/15570896047",
+  "plate": 133,
+  "scene": "lightbox",
+  "lum": [
+   0.0006,
+   0.0013,
+   0.5121
+  ]
+ },
+ "cma135706": {
+  "id": "cma135706",
+  "file": "cma135706.jpg",
+  "w": 1600,
+  "h": 1358,
+  "title": "Christ Crucified Between the Two Thieves: 'The Three Crosses'",
+  "creator": "Rembrandt van Rijn (Dutch, 1606\u20131669)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1959.241",
+  "plate": 134,
+  "scene": "lightbox",
+  "lum": [
+   0.0191,
+   0.0648,
+   0.8744
+  ]
+ },
+ "be25a8b0": {
+  "id": "be25a8b0",
+  "file": "be25a8b0.jpg",
+  "w": 1024,
+  "h": 691,
+  "title": "Milf Parry",
+  "creator": "darkday.",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/99649389@N02/14370570212",
+  "plate": 135,
+  "scene": "lightbox",
+  "lum": [
+   0.0009,
+   0.0309,
+   0.6044
+  ]
+ },
+ "cma143142": {
+  "id": "cma143142",
+  "file": "cma143142.jpg",
+  "w": 1600,
+  "h": 1114,
+  "title": "Battle of the Nudes",
+  "creator": "Antonio del Pollaiuolo (Italian, 1431/32\u20131498)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1967.127",
+  "plate": 136,
+  "scene": "lightbox",
+  "lum": [
+   0.1344,
+   0.2941,
+   0.7148
+  ]
+ },
+ "cma92937": {
+  "id": "cma92937",
+  "file": "cma92937.jpg",
+  "w": 1600,
+  "h": 1196,
+  "title": "Stag at Sharkey's",
+  "creator": "George Bellows (American, 1882\u20131925)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1922.1133",
+  "plate": 137,
+  "scene": "lightbox",
+  "lum": [
+   0.0044,
+   0.0096,
+   0.4263
+  ]
+ },
+ "2be192a8": {
+  "id": "2be192a8",
+  "file": "2be192a8.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "New Boxing Gloves",
+  "creator": "markhillary",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/56087830@N00/917242384",
+  "plate": 138,
+  "scene": "lightbox",
+  "lum": [
+   0.0172,
+   0.1681,
+   0.9886
+  ]
+ },
+ "ea8bb3cb": {
+  "id": "ea8bb3cb",
+  "file": "ea8bb3cb.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Triumphal Arch, Bucharest, Romania",
+  "creator": "Cost3l",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/11473706@N03/12132067153",
+  "plate": 139,
+  "scene": "glory",
+  "lum": [
+   0.0018,
+   0.0847,
+   0.3521
+  ]
+ },
+ "15a9a1ad": {
+  "id": "15a9a1ad",
+  "file": "15a9a1ad.jpg",
+  "w": 960,
+  "h": 1174,
+  "title": "File:Barcelona. Triumphal Arch of the Exposition.jpg",
+  "creator": "Cornell University Library",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=7309432",
+  "plate": 140,
+  "scene": "glory",
+  "lum": [
+   0.0527,
+   0.3556,
+   0.6242
+  ]
+ },
+ "00347f18": {
+  "id": "00347f18",
+  "file": "00347f18.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Triumphal Arch",
+  "creator": "D-Stanley",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/79721788@N00/38201643864",
+  "plate": 141,
+  "scene": "glory",
+  "lum": [
+   0.0107,
+   0.2888,
+   0.8084
+  ]
+ },
+ "6b9d9cfc": {
+  "id": "6b9d9cfc",
+  "file": "6b9d9cfc.jpg",
+  "w": 1600,
+  "h": 1600,
+  "title": "File:Golden laurel wreath T HL 04 Kerameikos Athens.png",
+  "creator": "Jebulon",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=46701128",
+  "plate": 142,
+  "scene": "glory",
+  "lum": [
+   0.0,
+   0.0,
+   0.2982
+  ]
+ },
+ "2cb3e797": {
+  "id": "2cb3e797",
+  "file": "2cb3e797.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Victory Statue in Union Square",
+  "creator": "Averain",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/27749836@N02/7762536580",
+  "plate": 143,
+  "scene": "glory",
+  "lum": [
+   0.0035,
+   0.2426,
+   0.3449
+  ]
+ },
+ "5eed1c55": {
+  "id": "5eed1c55",
+  "file": "5eed1c55.jpg",
+  "w": 1023,
+  "h": 715,
+  "title": "Commomorating Anzac Day 25th April - Australian Military Service Medals WW2",
+  "creator": "Aussie~mobs",
+  "license": "pdm",
+  "license_name": "Public Domain Mark 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/70994841@N07/6946441394",
+  "plate": 144,
+  "scene": "glory",
+  "lum": [
+   0.0234,
+   0.5302,
+   0.6364
+  ]
+ },
+ "cma104349": {
+  "id": "cma104349",
+  "file": "cma104349.jpg",
+  "w": 1376,
+  "h": 1600,
+  "title": "The Virgin in Glory",
+  "creator": "Master of the Die (Italian, active about 1530\u201360); Raphael (Italian, 1483\u20131520)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1922.484",
+  "plate": 145,
+  "scene": "glory",
+  "lum": [
+   0.0384,
+   0.3601,
+   0.7602
+  ]
+ },
+ "41f21dfc": {
+  "id": "41f21dfc",
+  "file": "41f21dfc.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "family cemetery",
+  "creator": "paparutzi",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/28396605@N00/2086181325",
+  "plate": 146,
+  "scene": "glory",
+  "lum": [
+   0.0065,
+   0.0742,
+   1.0
+  ]
+ },
+ "50762a57": {
+  "id": "50762a57",
+  "file": "50762a57.jpg",
+  "w": 1024,
+  "h": 734,
+  "title": "Arlington National Cemetery Graves (Burial Criteria)",
+  "creator": "Tony Fischer Photography",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/22714323@N06/4093805689",
+  "plate": 147,
+  "scene": "glory",
+  "lum": [
+   0.0329,
+   0.1779,
+   0.6148
+  ]
+ },
+ "63a0a3fc": {
+  "id": "63a0a3fc",
+  "file": "63a0a3fc.jpg",
+  "w": 1023,
+  "h": 685,
+  "title": "Memorial Day Ceremony - North Africa American Cemetery and Memorial - May 31, 2010",
+  "creator": "US Army Africa",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/36281822@N08/4659752170",
+  "plate": 148,
+  "scene": "glory",
+  "lum": [
+   0.0082,
+   0.2103,
+   0.7231
+  ]
+ },
+ "fba37fe8": {
+  "id": "fba37fe8",
+  "file": "fba37fe8.jpg",
+  "w": 1024,
+  "h": 778,
+  "title": "Grave angel",
+  "creator": "uitdragerij",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/27485522@N04/4406389191",
+  "plate": 149,
+  "scene": "glory",
+  "lum": [
+   0.0059,
+   0.1375,
+   0.8737
+  ]
+ },
+ "eb0ca1c1": {
+  "id": "eb0ca1c1",
+  "file": "eb0ca1c1.jpg",
+  "w": 1024,
+  "h": 736,
+  "title": "The Peace Hat and President Chester Arthur, 1829 - 1886",
+  "creator": "Tony Fischer Photography",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/22714323@N06/3435827496",
+  "plate": 150,
+  "scene": "glory",
+  "lum": [
+   0.002,
+   0.2543,
+   0.9911
+  ]
+ },
+ "1cd3257d": {
+  "id": "1cd3257d",
+  "file": "1cd3257d.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Angel face",
+  "creator": "Tim Green aka atoach",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/93416311@N00/2608771012",
+  "plate": 151,
+  "scene": "glory",
+  "lum": [
+   0.0108,
+   0.1625,
+   0.7724
+  ]
+ },
+ "05022270": {
+  "id": "05022270",
+  "file": "05022270.jpg",
+  "w": 1024,
+  "h": 973,
+  "title": "Miserere",
+  "creator": "The Wandering Angel",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/86518301@N00/1823657557",
+  "plate": 152,
+  "scene": "glory",
+  "lum": [
+   0.0,
+   0.0119,
+   0.9096
+  ]
+ },
+ "c025eb2e": {
+  "id": "c025eb2e",
+  "file": "c025eb2e.jpg",
+  "w": 1024,
+  "h": 688,
+  "title": "The mourning statue",
+  "creator": "Abhinav Asokh",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/49179037@N08/5594832671",
+  "plate": 153,
+  "scene": "glory",
+  "lum": [
+   0.0,
+   0.008,
+   0.9216
+  ]
+ },
+ "cma145168": {
+  "id": "cma145168",
+  "file": "cma145168.jpg",
+  "w": 945,
+  "h": 1600,
+  "title": "Mater Dolorosa (Mourning Mother)",
+  "creator": "George Romney (British, 1734\u20131802)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1970.338",
+  "plate": 154,
+  "scene": "glory",
+  "lum": [
+   0.0251,
+   0.6855,
+   0.7666
+  ]
+ },
+ "cma112176": {
+  "id": "cma112176",
+  "file": "cma112176.jpg",
+  "w": 856,
+  "h": 1600,
+  "title": "Mourning Virgin",
+  "creator": "Unknown",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1930.621.2",
+  "plate": 155,
+  "scene": "glory",
+  "lum": [
+   0.0079,
+   0.1001,
+   0.2995
+  ]
+ },
+ "cma145570": {
+  "id": "cma145570",
+  "file": "cma145570.jpg",
+  "w": 1600,
+  "h": 1096,
+  "title": "The Seven Deadly Sins",
+  "creator": "James Ensor (Belgian, 1860\u20131949)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1971.108",
+  "plate": 156,
+  "scene": "glory",
+  "lum": [
+   0.0455,
+   0.412,
+   0.6615
+  ]
+ },
+ "101aad9d": {
+  "id": "101aad9d",
+  "file": "101aad9d.jpg",
+  "w": 960,
+  "h": 719,
+  "title": "Footprints Sand",
+  "creator": "Sergei Gussev",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "stocksnap",
+  "landing": "https://stocksnap.io/photo/footprints-sand-GBUFTJIRSS",
+  "plate": 157,
+  "scene": "glory",
+  "lum": [
+   0.0908,
+   0.2718,
+   0.9579
+  ]
+ },
+ "2cb6e60b": {
+  "id": "2cb6e60b",
+  "file": "2cb6e60b.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "footprints, sand, ocean, rocks, sunset.",
+  "creator": "sderle",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/47535825@N02/4938661516",
+  "plate": 158,
+  "scene": "glory",
+  "lum": [
+   0.026,
+   0.125,
+   0.9501
+  ]
+ },
+ "dba2a6bb": {
+  "id": "dba2a6bb",
+  "file": "dba2a6bb.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Sunup footprints Sand Dunes National Park Colorado",
+  "creator": "amanderson2",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/49399018@N00/51592520224",
+  "plate": 159,
+  "scene": "glory",
+  "lum": [
+   0.0039,
+   0.0547,
+   0.9326
+  ]
+ },
+ "84cabb10": {
+  "id": "84cabb10",
+  "file": "84cabb10.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Curve and footprints Sand Dunes National Park Colorado",
+  "creator": "amanderson2",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/49399018@N00/51592079168",
+  "plate": 160,
+  "scene": "glory",
+  "lum": [
+   0.0228,
+   0.151,
+   0.921
+  ]
+ },
+ "e99f458e": {
+  "id": "e99f458e",
+  "file": "e99f458e.jpg",
+  "w": 1600,
+  "h": 1068,
+  "title": "A person walking away on Earls Court Road (49961513171)",
+  "creator": "Sanshiro KUBOTA from London, UK",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=121626224",
+  "plate": 161,
+  "scene": "glory",
+  "lum": [
+   0.0047,
+   0.0737,
+   0.6685
+  ]
+ },
+ "712c27e3": {
+  "id": "712c27e3",
+  "file": "712c27e3.jpg",
+  "w": 1024,
+  "h": 775,
+  "title": "Angle affects undertone.",
+  "creator": "Simon Matzinger",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/107922203@N04/13484734923",
+  "plate": 162,
+  "scene": "glory",
+  "lum": [
+   0.0082,
+   0.1745,
+   0.8083
+  ]
+ },
+ "9b3132d0": {
+  "id": "9b3132d0",
+  "file": "9b3132d0.jpg",
+  "w": 1024,
+  "h": 684,
+  "title": "Path at Kasteel de Wittenburg",
+  "creator": "*rboed*",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/92082510@N04/22282849871",
+  "plate": 163,
+  "scene": "glory",
+  "lum": [
+   0.0044,
+   0.0467,
+   0.3095
+  ]
+ },
+ "f2f80676": {
+  "id": "f2f80676",
+  "file": "f2f80676.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "A lone figure against the elements",
+  "creator": "kewl",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/58411470@N00/54270522880",
+  "plate": 164,
+  "scene": "glory",
+  "lum": [
+   0.0054,
+   0.1247,
+   0.7439
+  ]
+ },
+ "de5288b0": {
+  "id": "de5288b0",
+  "file": "de5288b0.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "A walk among the vines",
+  "creator": "kewl",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/58411470@N00/54245858178",
+  "plate": 165,
+  "scene": "glory",
+  "lum": [
+   0.0386,
+   0.1795,
+   0.782
+  ]
+ },
+ "cma154698": {
+  "id": "cma154698",
+  "file": "cma154698.jpg",
+  "w": 1218,
+  "h": 1600,
+  "title": "Road in the Forest",
+  "creator": "Eug\u00e8ne Cuvelier (French, 1837\u20131900)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1989.29",
+  "plate": 166,
+  "scene": "glory",
+  "lum": [
+   0.0945,
+   0.2403,
+   0.6862
+  ]
+ },
+ "9892f864": {
+  "id": "9892f864",
+  "file": "9892f864.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "2024 Solar Eclipse Corona",
+  "creator": "jimvajda",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/97021683@N05/53640206947",
+  "plate": 167,
+  "scene": "eclipse",
+  "lum": [
+   0.0022,
+   0.0095,
+   0.7991
+  ]
+ },
+ "38685c27": {
+  "id": "38685c27",
+  "file": "38685c27.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "2024 Solar Eclipse - Corona",
+  "creator": "SCP - Appreciator of felines",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/193732385@N04/53646364019",
+  "plate": 168,
+  "scene": "eclipse",
+  "lum": [
+   0.0,
+   0.0028,
+   0.514
+  ]
+ },
+ "b4c9d3b0": {
+  "id": "b4c9d3b0",
+  "file": "b4c9d3b0.jpg",
+  "w": 1024,
+  "h": 1024,
+  "title": "2024 Solar Eclipse - Corona & Solar Flare",
+  "creator": "SCP - Appreciator of felines",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/193732385@N04/53646364054",
+  "plate": 169,
+  "scene": "eclipse",
+  "lum": [
+   0.0,
+   0.0003,
+   0.0626
+  ]
+ },
+ "de736aee": {
+  "id": "de736aee",
+  "file": "de736aee.jpg",
+  "w": 1600,
+  "h": 1600,
+  "title": "2024 Solar Eclipse Corona (53640206947)",
+  "creator": "Jim Vajda from Oxford, Ohio, USA",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "wikimedia",
+  "landing": "https://commons.wikimedia.org/w/index.php?curid=147328672",
+  "plate": 170,
+  "scene": "eclipse",
+  "lum": [
+   0.0022,
+   0.0095,
+   0.7991
+  ]
+ },
+ "e18c7f12": {
+  "id": "e18c7f12",
+  "file": "e18c7f12.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Pipe organ @ Evang. Luth. Christmas Church_1693",
+  "creator": "hoyasmeg",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/62126383@N00/507901861",
+  "plate": 171,
+  "scene": "eclipse",
+  "lum": [
+   0.0103,
+   0.2522,
+   0.9247
+  ]
+ },
+ "2ca7d804": {
+  "id": "2ca7d804",
+  "file": "2ca7d804.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Pipe Organ",
+  "creator": "seabamirum",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/59323989@N00/2846048819",
+  "plate": 172,
+  "scene": "eclipse",
+  "lum": [
+   0.0023,
+   0.0638,
+   0.6901
+  ]
+ },
+ "b68346b4": {
+  "id": "b68346b4",
+  "file": "b68346b4.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "La Cathedrale St-Sauveur - Aix-en-Provence - pipe organ",
+  "creator": "ell brown",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/39415781@N06/5788074196",
+  "plate": 173,
+  "scene": "eclipse",
+  "lum": [
+   0.0055,
+   0.1438,
+   0.5395
+  ]
+ },
+ "10b6a2c4": {
+  "id": "10b6a2c4",
+  "file": "10b6a2c4.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Mom G-stylin' it on the pipe organ",
+  "creator": "juhansonin",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/38869431@N00/8264616214",
+  "plate": 174,
+  "scene": "eclipse",
+  "lum": [
+   0.0013,
+   0.0092,
+   0.4558
+  ]
+ },
+ "d1d2a5ab": {
+  "id": "d1d2a5ab",
+  "file": "d1d2a5ab.jpg",
+  "w": 1023,
+  "h": 681,
+  "title": "Stained glass windows, pipe organ, pulpet, dome, lamps, gold details, columns, stage, chairs, St. James Cathedral, First Hill, Seattle, Washington, USA",
+  "creator": "Wonderlane",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/71401718@N00/7273040258",
+  "plate": 175,
+  "scene": "eclipse",
+  "lum": [
+   0.0096,
+   0.1431,
+   0.5057
+  ]
+ },
+ "00919cb2": {
+  "id": "00919cb2",
+  "file": "00919cb2.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Ohhhhh Cello",
+  "creator": "firepile",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/17643132@N00/2365342778",
+  "plate": 176,
+  "scene": "eclipse",
+  "lum": [
+   0.0028,
+   0.0784,
+   0.9956
+  ]
+ },
+ "7b8ee3f8": {
+  "id": "7b8ee3f8",
+  "file": "7b8ee3f8.jpg",
+  "w": 1024,
+  "h": 791,
+  "title": "cello players",
+  "creator": "zoetnet",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/13286453@N00/4851408566",
+  "plate": 177,
+  "scene": "eclipse",
+  "lum": [
+   0.0013,
+   0.0526,
+   0.5889
+  ]
+ },
+ "540c089f": {
+  "id": "540c089f",
+  "file": "540c089f.jpg",
+  "w": 1024,
+  "h": 683,
+  "title": "Snare drum",
+  "creator": "YannickWhee",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/143309222@N07/28915068650",
+  "plate": 178,
+  "scene": "eclipse",
+  "lum": [
+   0.0027,
+   0.0068,
+   0.7105
+  ]
+ },
+ "257b60b4": {
+  "id": "257b60b4",
+  "file": "257b60b4.jpg",
+  "w": 1024,
+  "h": 726,
+  "title": "snare drum",
+  "creator": "Vladimir Morozov",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/27429206@N02/4124370796",
+  "plate": 179,
+  "scene": "eclipse",
+  "lum": [
+   0.0048,
+   0.05,
+   0.8358
+  ]
+ },
+ "7e0bc1c4": {
+  "id": "7e0bc1c4",
+  "file": "7e0bc1c4.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "WWI military drum",
+  "creator": "quinet",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/91994044@N00/15271307086",
+  "plate": 180,
+  "scene": "eclipse",
+  "lum": [
+   0.0044,
+   0.3235,
+   0.7317
+  ]
+ },
+ "cma160743": {
+  "id": "cma160743",
+  "file": "cma160743.jpg",
+  "w": 1102,
+  "h": 1600,
+  "title": "Interior of St. Stephen's Cathedral in Vienna",
+  "creator": "Karl Friedrich Schinkel (German, 1781\u20131841)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1998.8",
+  "plate": 181,
+  "scene": "eclipse",
+  "lum": [
+   0.0264,
+   0.1601,
+   0.8666
+  ]
+ },
+ "cma135116": {
+  "id": "cma135116",
+  "file": "cma135116.jpg",
+  "w": 1139,
+  "h": 1600,
+  "title": "Lincoln Cathedral, Interior",
+  "creator": "Herbert Gordon Warlow (British, 1885\u20131942)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1958.153",
+  "plate": 182,
+  "scene": "eclipse",
+  "lum": [
+   0.0273,
+   0.1665,
+   0.6201
+  ]
+ },
+ "cma145450": {
+  "id": "cma145450",
+  "file": "cma145450.jpg",
+  "w": 1383,
+  "h": 1600,
+  "title": "Interior of a Church",
+  "creator": "Emanuel de Witte (Dutch, c. 1617\u20131692)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1971.1",
+  "plate": 183,
+  "scene": "eclipse",
+  "lum": [
+   0.0209,
+   0.0688,
+   0.4129
+  ]
+ },
+ "cma119725": {
+  "id": "cma119725",
+  "file": "cma119725.jpg",
+  "w": 1113,
+  "h": 1600,
+  "title": "Interior of a Cathedral",
+  "creator": "Samuel Prout (British, 1783\u20131852)",
+  "license": "cc0",
+  "license_name": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Cleveland Museum of Art Open Access",
+  "landing": "https://clevelandart.org/art/1940.560",
+  "plate": 184,
+  "scene": "eclipse",
+  "lum": [
+   0.0331,
+   0.1016,
+   0.8936
+  ]
+ },
+ "288bef9b": {
+  "id": "288bef9b",
+  "file": "288bef9b.jpg",
+  "w": 1024,
+  "h": 682,
+  "title": "Church of The Assumption, Ufford Suffolk",
+  "creator": "Brokentaco",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/92024986@N00/7305122812",
+  "plate": 185,
+  "scene": "eclipse",
+  "lum": [
+   0.0051,
+   0.0666,
+   0.2688
+  ]
+ },
+ "585722b7": {
+  "id": "585722b7",
+  "file": "585722b7.jpg",
+  "w": 900,
+  "h": 980,
+  "title": "Franciscan Monastery, Rothenburg, Germany",
+  "creator": "Harry Pherson",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/32559259@N06/8569834723",
+  "plate": 186,
+  "scene": "eclipse",
+  "lum": [
+   0.0,
+   0.02,
+   0.3203
+  ]
+ },
+ "924f4147": {
+  "id": "924f4147",
+  "file": "924f4147.jpg",
+  "w": 1023,
+  "h": 683,
+  "title": "Another Bosque Sunrise",
+  "creator": "snowpeak",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/53986933@N00/11809389036",
+  "plate": 187,
+  "scene": "final",
+  "lum": [
+   0.0135,
+   0.0593,
+   0.4226
+  ]
+ },
+ "f38736df": {
+  "id": "f38736df",
+  "file": "f38736df.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "Sunrise",
+  "creator": "Gunnarmex",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/81831148@N00/3197366589",
+  "plate": 188,
+  "scene": "final",
+  "lum": [
+   0.0003,
+   0.0346,
+   0.507
+  ]
+ },
+ "be34d858": {
+  "id": "be34d858",
+  "file": "be34d858.jpg",
+  "w": 1024,
+  "h": 768,
+  "title": "sunrise",
+  "creator": "SFB579 Namaste",
+  "license": "by",
+  "license_name": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/50826080@N00/2066411336",
+  "plate": 189,
+  "scene": "final",
+  "lum": [
+   0.0002,
+   0.1169,
+   0.4314
+  ]
+ }
+}

@@ -38,3 +38,7 @@ videos/bones/analysis/.venv/
 videos/bones/analysis/.cache/
 videos/bones/analysis/stems/
 videos/bones/analysis/work/
+# the-other-side-of-light: dependencies and analysis intermediates
+videos/the-other-side-of-light/app/node_modules/
+videos/the-other-side-of-light/analysis/.venv/
+videos/the-other-side-of-light/analysis/stems/
