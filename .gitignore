@@ -48,3 +48,5 @@ videos/dominoes/analysis/.venv/
 videos/dominoes/analysis/.cache/
 videos/dominoes/analysis/stems/
 videos/dominoes/analysis/work/
+# maps-territory-v2: dependencies
+videos/maps-territory-v2/app/node_modules/
