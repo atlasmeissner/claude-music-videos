@@ -4,7 +4,7 @@ A generative, code-rendered music video with word-synced karaoke typography for 
 *Maps & Territory*), in the style of [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video): every frame is a
 deterministic function of song time, rendered in headless Chromium (TypeScript + three.js) and encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:00, 295 MB) is in [`render/`](render/), split into four parts (GitHub's
+**Watch / download:** the 1080p30 render (3:00, 312 MB) is in [`render/`](render/), split into four parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat free-fall_1080p30.mp4.part0 … free-fall_1080p30.mp4.part3 > free-fall_1080p30.mp4`.
 
@@ -51,8 +51,9 @@ song's own notes: [`docs/SONG.md`](docs/SONG.md).
   `windows.py` (plate windows for segment renders).
 - `data/lyrics.json`, `data/audio.json` — word-level lyric timings and the music analysis.
 - `app/` — the renderer (bun + Vite + three.js). `src/engine/` is the forked engine; `src/scenes/_story.ts` is the story kit
-  (the person's poses, the ledge world with its fear-scaled drop, the door, the camera, DAYS ON THE LEDGE) on top of
-  `_ff.ts` (the pictogram figure, karaoke, the hook typography helpers); one module per plate in `src/scenes/`; `src/timeline.ts` anchors the plates to lyric lines and beats.
+  (the person resting under gravity, the ledge world with its fear-scaled drop, the door, the camera, DAYS ON THE
+  LEDGE) on top of `_body.ts` (the body: kinematics, poses, distance-phased walk and run cycles, ballistic jumps and
+  hops, choreography tracks) and `_ff.ts` (karaoke, the hook typography helpers); one module per plate in `src/scenes/`; `src/timeline.ts` anchors the plates to lyric lines and beats.
 - `docs/` — `TREATMENT.md` (the plan), `ENGINE.md` (the engine, the scene API and the kit), `SONG.md`.
 
 ## Render
@@ -70,7 +71,7 @@ scripts/assemble.sh                          # joins the plates and muxes the so
 ```
 
 `scripts/render.ts` launches the Chromium bundled with Playwright under SwiftShader (`CHROME_PATH` overrides it). The
-published render was made in a CPU-only cloud container (SwiftShader, about 3 s per frame, 4.4 hours for the song), hence 30 fps and one
+published render was made in a CPU-only cloud container (SwiftShader, about 3.3 s per frame, 4.9 hours for the song), hence 30 fps and one
 sample per frame. On a GPU machine, `render.ts video --samples auto --fps 60` renders a single 60 fps file with motion
 blur.
 
@@ -83,7 +84,10 @@ Made with Claude (Opus 5.5) in conversation: the stem separation and lyric align
 plates, the contact-sheet reviews and the renders. Three cuts: a cobalt-blue first draft (dropped: off pdoom's
 palette); a second, literal one — "plates from a treatise on leaping", one diagram per lyric line (in git history);
 and this one, after the note "too literal — show a person procrastinating who just has to jump off the ledge, which
-isn't as high as it looks, to get to the goal".
+isn't as high as it looks, to get to the goal". Then a pass on the movement, after "the people are still a bit
+scruffy — work on the way they respond to gravity and their movement; it should look more natural": the pictogram
+was rebuilt as a body that rests on whatever it touches, walks and runs on keyframed cycles without foot-skate, and
+jumps, lands, stumbles, hops and falls under gravity.
 
 ## Credits
 

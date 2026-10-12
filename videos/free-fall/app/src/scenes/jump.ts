@@ -15,12 +15,12 @@ import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import type { Line, Word } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse, TAU } from '../engine/util';
-import { cachedLayout, drawKaraoke, mixPose, mono, poseKeys, runPose, wordColor, type Pose } from './_ff';
+import { cachedLayout, drawKaraoke, mono, wordColor } from './_ff';
+import { bodyKeys, crowdHop, flutter, jumpState, track, type Body } from './_body';
 import { applyCam, breath, camKeys, drawCounter, drawWorld, DOOR_X, M, person, S, SP, toScreen, TRUE_DROP, type Cam } from './_story';
 import { stamp } from './ledger-kit';
 
 const FAM = F.archivo(125, 900);
-type P2 = { x: number; y: number };
 
 export default class Jump extends Scene {
   L = new Layer2D();
@@ -41,34 +41,42 @@ export default class Jump extends Scene {
     this.tIn = w(4, 3);
   }
 
-  /** The person's feet and pose at t. */
-  me(t: number, beat: number): { p: P2; pose: Pose; rot: number; dir: 1 | -1; sitting: boolean } {
+  /**
+   * The person at t. The jump is real physics in slow motion (×9): take-off at the edge at full run, a parabola
+   * under constant gravity, arms out against the air. The landing carries the run's momentum: knees give, the body
+   * pitches forward — a stumble — caught on the hands, rolled down to sitting. Then: laughing; up on one knee; up;
+   * arms up; a look back at the ledge; a run to the door; a wave from the doorway; in.
+   */
+  me(t: number): { x: number; y: number; pose: Body; rot: number; dir: 1 | -1; air: boolean; lift: number } {
     const D = TRUE_DROP;
-    if (t < this.tLand) {
-      const u = prog(t, this.tLeap, this.tLand);
-      const x = lerp(-30, 230, u), y = lerp(0, D, u) - 4 * 120 * u * (1 - u);
-      const pose = poseKeys(u, [[0, SP.leap], [0.18, SP.star], [0.85, SP.star], [1, SP.land]], 0.12);
-      return { p: { x, y }, pose, rot: 0.15 * Math.sin(u * Math.PI), dir: 1, sitting: false };
-    }
+    const air = this.tLand - this.tLeap;
+    const j = jumpState(t, {
+      tTake: this.tLeap, air, from: { x: -14, y: 0 }, to: { x: 236, y: D }, apex: 72,
+      airPose: (u) => flutter(bodyKeys(u, [[0, SP.takeoff], [0.2, SP.leap], [0.45, SP.star], [0.78, SP.star], [1, SP.reach]], 0.18), t / 9, 0.6 * Math.sin(Math.PI * u)),
+    });
+    if (j.mode === 'air') return { x: j.x, y: j.y, pose: j.pose, rot: 0.12 * Math.sin(Math.PI * j.x / 250), dir: 1, air: true, lift: 0 };
+    const v = t - this.tLand;
     if (t < this.tUp) {
-      const k = prog(t, this.tLand, this.tLand + 0.7, ease.outCubic);
-      const pose = poseKeys(t, [[0, SP.land], [this.tLand + 0.12, SP.stumble], [this.tLand + 0.6, SP.tuck], [this.tLand + 1.0, SP.sit]], 0.15);
-      return { p: { x: 230 + 90 * k, y: D }, pose, rot: t < this.tLand + 0.7 ? -k * TAU * 0.9 : 0, dir: 1, sitting: t > this.tLand + 0.9 };
+      // the stumble: momentum carries the hips on as the knees give
+      const x = 236 + 104 * ease.outCubic(clamp(v / 0.8));
+      let pose = bodyKeys(v, [[0, SP.reach], [0.09, SP.land], [0.32, SP.stumble], [0.56, SP.fours], [1.3, SP.sitGround]], 0.22);
+      // laughing: little shakes of the shoulders and head
+      const laugh = prog(v, 1.3, 1.6) * (1 - prog(t, this.tUp - 0.2, this.tUp));
+      pose = { ...pose, torso: pose.torso + laugh * 0.07 * Math.sin(v * 21), head: pose.head - laugh * (0.25 + 0.12 * Math.sin(v * 21 + 1)) };
+      return { x, y: D, pose, rot: 0, dir: 1, air: false, lift: 0 };
     }
-    if (t < this.tRun) {
-      const pose = poseKeys(t, [[0, SP.sit], [this.tUp + 0.5, SP.stand], [this.tUp + 1.2, SP.cheer], [this.tTall - 0.6, SP.stand]], 0.35);
-      return { p: { x: 320, y: D }, pose: breath(pose, t), rot: 0, dir: t > this.tUp + 1.6 ? -1 : 1, sitting: t < this.tUp + 0.4 };
-    }
-    if (t < this.tOpen + 0.4) {
-      const k = prog(t, this.tRun, this.tOpen + 0.3, ease.inOutQuad);
-      return { p: { x: lerp(320, DOOR_X - 90, k), y: D }, pose: k < 1 ? runPose(beat, 0.3) : SP.stand, rot: 0, dir: 1, sitting: false };
-    }
-    if (t < this.tIn) {
-      const pose = poseKeys(t, [[0, SP.stand], [this.tTurn, SP.wave], [this.tIn - 0.4, SP.wave], [this.tIn, SP.stand]], 0.3);
-      return { p: { x: DOOR_X - 90, y: D }, pose: breath(pose, t), rot: 0, dir: t > this.tTurn - 0.2 && t < this.tIn - 0.2 ? -1 : 1, sitting: false };
-    }
-    const k = prog(t, this.tIn, this.ctx.end, ease.inOutQuad);
-    return { p: { x: lerp(DOOR_X - 90, DOOR_X + 0.47 * M, k), y: D }, pose: k < 1 ? mixPose(SP.stand, runPose(beat / 2, 0.05), 0.4) : SP.stand, rot: 0, dir: 1, sitting: false };
+    const tr = track(t, [
+      { at: this.tUp, pose: SP.kneelUp, x: 330, blend: 0.6 },
+      { at: this.tUp + 0.55, pose: SP.stand, x: 336, blend: 0.6 },
+      { at: this.tUp + 1.15, pose: SP.cheer, blend: 0.4 },
+      { at: this.tTall - 0.9, pose: SP.lookBack, face: -1, blend: 0.6 },
+      { at: this.tRun, run: DOOR_X - 90, dur: this.tOpen + 0.3 - this.tRun, face: 1 },
+      { at: this.tTurn - 0.1, pose: SP.wave, face: -1, blend: 0.55 },
+      { at: this.tIn - 0.45, pose: SP.stand, face: 1, blend: 0.5 },
+      { at: this.tIn, walk: DOOR_X + 0.47 * M, dur: this.ctx.end - this.tIn },
+    ], S, 340, SP.sitGround);
+    const pose = tr.moving ? tr.pose : breath(tr.pose, t, 0.6);
+    return { x: tr.x, y: D, pose, rot: 0, dir: tr.dir, air: false, lift: tr.lift };
   }
 
   slam(c: CanvasRenderingContext2D, s: string, w: Word, x: number, base: number, size: number, col: string, t: number) {
@@ -86,7 +94,7 @@ export default class Jump extends Scene {
     const t = f.t, end = this.ctx.end;
     clearRT(renderer, out, LIN.ink);
     const L = this.L, c = L.ctx; L.clear();
-    const me = this.me(t, f.beat);
+    const me = this.me(t);
     const open = prog(t, this.tOpen - 0.05, this.tOpen + 0.6, ease.outBack);
     const acid = pulse(t, this.tOpen, 0.35) * (t > this.tOpen ? 1 : 0);
     // camera: on the leaper (slow-mo), then the two-shot of ground + ledge, then tracking the run, then the door
@@ -112,8 +120,9 @@ export default class Jump extends Scene {
       const bx = DOOR_X - 520 + ((i + 0.5) / 12) * 1300 + (hash(i, 1) - 0.5) * 40;
       const part = t > this.tRun ? prog(t, this.tRun + 0.8, this.tOpen, ease.inOutCubic) : 0;
       const x = bx + (bx < DOOR_X - 80 ? -1 : 1) * 160 * part * (Math.abs(bx - (DOOR_X - 80)) < 260 ? 1 : 0);
-      const h = Math.max(0, Math.sin(Math.PI * clamp(f.beatPhase * 1.6))) * 12 * (0.5 + hash(i, 3) * 0.5);
-      person(c, x, TRUE_DROP - h, S * (0.58 + 0.17 * hash(i, 4)), t > this.tLand ? SP.cheer : SP.jump, { color: rgba('ash', 0.8), dir: hash(i, 7) > 0.5 ? 1 : -1 });
+      const h = S * (0.58 + 0.17 * hash(i, 4));
+      const hp = crowdHop(t, f.beat, i, h, t > this.tLand ? SP.cheer : SP.standFront, this.ctx.audio.timeOfBeat.bind(this.ctx.audio));
+      person(c, x, TRUE_DROP, h, hp.pose, { color: rgba('ash', 0.8), lift: hp.lift });
     }
     // the statue of the one who stayed, on the ledge: crumbles on "tall"
     const sa = prog(t, this.tUp + 0.6, this.tUp + 1.2);
@@ -129,7 +138,7 @@ export default class Jump extends Scene {
       }
     }
     // the person
-    person(c, me.p.x, me.p.y, S, me.pose, { rot: me.rot, dir: me.dir, sitting: me.sitting, color: t > this.tIn ? rgba('ink', 1 - prog(t, end - 0.8, end)) : rgba('bone', 1) });
+    person(c, me.x, me.y, S, me.pose, { rot: me.rot, dir: me.dir, air: me.air, lift: me.lift, support: (wx) => (wx <= 0 ? 0 : TRUE_DROP), color: t > this.tIn ? rgba('ink', 1 - prog(t, end - 0.8, end)) : rgba('bone', 1) });
     // the acid light from the door, one moment
     if (acid > 0.01) {
       for (let i = 0; i < 30; i++) {

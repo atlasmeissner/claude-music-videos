@@ -11,8 +11,9 @@ import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse } from '../engine/util';
-import { drawKaraoke, mono, poseKeys, wordColor } from './_ff';
-import { applyCam, breath, camKeys, drawCounter, drawWorld, dropAt, M, person, S, SP, TRUE_DROP, type Cam } from './_story';
+import { drawKaraoke, mono, wordColor } from './_ff';
+import { track } from './_body';
+import { applyCam, breath, camKeys, drawCounter, drawWorld, dropAt, ledgeTop, M, person, S, SP, TRUE_DROP, type Cam } from './_story';
 import { stamp } from './ledger-kit';
 
 export default class Reveal extends Scene {
@@ -51,15 +52,18 @@ export default class Reveal extends Scene {
     c.beginPath(); c.moveTo(30, 0); c.lineTo(30, D); c.stroke();
     c.fillStyle = rgba('signal', 1); c.fillRect(16, -22, 28, 22);
     // the person: kneeling at the edge → stands up → (dawn) breathes in, chin up
-    const KNEEL = { torso: 0.62, head: 0.65, a1: 0.05, a2: 0.0, b1: -0.25, b2: 0.25, l1: 1.55, l2: -0.85, m1: 1.3, m2: -1.25, hip: 0.2 };
-    const pose = poseKeys(t, [[0, KNEEL], [tSh + 0.6, SP.peer], [this.tB + 0.2, SP.stand], [w3[5]!.start + 0.2, SP.breathe]], 0.45);
-    person(c, -60, 0, S, breath(pose, t, 0.5));
+    // (kneeling at the edge → sits up on one knee, looking down at it → stands → breathes in, chin up)
+    const tr = track(t, [
+      { at: tSh + 0.1, pose: SP.kneelUp, x: -92, blend: 0.7 },
+      { at: this.tB - 0.35, pose: SP.stand, x: -104, blend: 0.75 },
+      { at: w3[5]!.start - 0.2, pose: SP.breathe, blend: 0.6 },
+    ], S, -64, SP.kneelTape);
+    person(c, tr.x, 0, S, breath(tr.pose, t, 0.6), { support: ledgeTop(D) });
     // the outline on the lower ground: the drop is shoulder-high
     const ok = prog(t, tSh - 0.1, tSh + 0.4, ease.outCubic);
     if (ok > 0) {
       c.save(); c.globalAlpha = ok * (1 - 0.6 * dawn);
-      person(c, 110, D, S, SP.stand, { color: rgba('ash', 0.9) });
-      person(c, 110, D, S * 0.97, SP.stand, { color: rgba('ink', 1) });
+      person(c, 110, D, S, SP.stand, { outline: rgba('ash', 0.9) });
       // shoulder line and dimension
       c.setLineDash([8, 6]); c.strokeStyle = rgba('signal', 1); c.lineWidth = 2 / cam.z;
       c.beginPath(); c.moveTo(-40, 0); c.lineTo(200, 0); c.stroke(); c.setLineDash([]);

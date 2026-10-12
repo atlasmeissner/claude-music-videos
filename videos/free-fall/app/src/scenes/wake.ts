@@ -9,7 +9,7 @@ import { F, font } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, hash, lerp, prog, pulse, TAU } from '../engine/util';
 import { mono, wordColor } from './_ff';
-import { applyCam, breath, camKeys, daysAt, drawCounter, drawWorld, person, S, SP, toScreen, type Cam } from './_story';
+import { applyCam, breath, camKeys, daysAt, drawCounter, drawPhone, drawWorld, person, S, SP, toScreen, type Cam } from './_story';
 
 export default class Wake extends Scene {
   L = new Layer2D();
@@ -25,9 +25,10 @@ export default class Wake extends Scene {
     const cam: Cam = camKeys(t, [[s0, { x: 200, y: 120, z: 0.95 }], [end, { x: 240, y: 330, z: 0.8 }]]);
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear: 1, door: 0.2, glow: 1.1, stars: 1 });
-    const head = person(c, -150, 0, S, breath(SP.write, t, 0.5), { sitting: true });
-    c.fillStyle = rgba('ember', 0.9); c.fillRect(head.x + 0.2 * S, head.y + 0.3 * S, 0.07 * S, 0.11 * S);
-    c.fillStyle = rgba('signal', 0.18); c.beginPath(); c.arc(head.x + 0.23 * S, head.y + 0.35 * S, 0.12 * S, 0, TAU); c.fill();
+    // still sitting on the rock, knees up, the phone in both hands (a start at the cut: the daydream breaking)
+    const jolt = Math.exp(-Math.max(0, t - s0) * 5) * Math.sin(Math.max(0, t - s0) * 14);
+    const me = person(c, -190, 0, S, { ...breath(SP.huddle, t, 0.5), torso: SP.huddle.torso - 0.12 * jolt, head: SP.huddle.head - 0.4 * jolt });
+    drawPhone(c, me);
     // calendar pages: one torn off per beat, fluttering down into the dark
     const b0 = this.ctx.audio.beatAt(s0);
     const nb = Math.floor(this.ctx.audio.beatAt(t) - b0);

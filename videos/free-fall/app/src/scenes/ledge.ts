@@ -11,8 +11,9 @@ import { Layer2D, clearRT } from '../engine/gl';
 import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import { clamp, ease, frameIdx, hash, prog, pulse } from '../engine/util';
-import { bigWord, mono, poseKeys } from './_ff';
-import { applyCam, breath, camKeys, drawCounter, drawWorld, dropAt, person, S, SP, walkPose, type Cam } from './_story';
+import { bigWord, mono } from './_ff';
+import { track } from './_body';
+import { applyCam, breath, camKeys, drawCounter, drawPhone, drawWorld, dropAt, ledgeTop, person, S, SP, type Cam } from './_story';
 
 export default class Ledge extends Scene {
   L = new Layer2D();
@@ -49,35 +50,25 @@ export default class Ledge extends Scene {
     c.globalAlpha = fadeIn;
     applyCam(c, cam);
     drawWorld(c, cam, { t, fear: 1, door: 0.25, glow: 1.2, dawn: 0, stars: 1 });
-    // ---- the person: sitting → head in hands → stands → walks to the edge → peers → recoils → sits, phone
+    // ---- the person: sitting on the edge → head in hands → up onto one knee → stands → walks to the edge → peers →
+    // recoils, steps back → sits down on the rock, away from the edge, and takes out the phone
     const bt = (i: number) => db[i]!;
-    let px = -40, sitting = true;
-    let pose = breath(SP.sit, t);
-    if (t >= bt(5) - 0.3) pose = poseKeys(t, [[0, SP.sit], [bt(5), SP.hunch]], 0.4);
-    if (t >= bt(6) - 0.4) { sitting = false; px = -170; pose = poseKeys(t, [[0, SP.hunch], [bt(6), SP.stand]], 0.4); }
-    if (t >= bt(7)) { // walk to the edge
-      const k = prog(t, bt(7), bt(7) + 1.4, ease.inOutQuad);
-      px = -170 + 140 * k;
-      pose = k < 1 ? walkPose(f.beat / 2) : poseKeys(t, [[0, SP.stand], [bt(7) + 1.6, SP.peer]], 0.35);
-    }
-    if (t >= tC - 0.2) { px = -30; pose = SP.peer; }
-    if (t >= tD) { // recoil, step back
-      const k = prog(t, tD, tD + 0.6, ease.outCubic);
-      px = -30 - 150 * k;
-      pose = poseKeys(t, [[0, SP.peer], [tD + 0.12, SP.recoil], [tD + 1.2, SP.stand]], 0.2);
-    }
-    if (t >= bt(10) - 0.2) { sitting = true; px = -150; pose = poseKeys(t, [[0, SP.stand], [bt(10), SP.write]], 0.5); }
-    if (t >= tE) { px = -150; sitting = true; pose = breath(SP.write, t, 0.6); }
-    const sitY = 0;
-    const head = person(c, px, sitY, S, pose, { sitting });
-    // the phone, lit, in the lap
-    if (t >= bt(10)) {
-      const ph = prog(t, bt(10) + 0.2, bt(10) + 0.6);
-      c.fillStyle = rgba('ember', 0.9 * ph);
-      c.fillRect(head.x + 0.2 * S, head.y + 0.3 * S, 0.07 * S, 0.11 * S);
-      c.fillStyle = rgba('signal', 0.18 * ph);
-      c.beginPath(); c.arc(head.x + 0.23 * S, head.y + 0.35 * S, 0.12 * S, 0, Math.PI * 2); c.fill();
-    }
+    const tr = track(t, [
+      { at: bt(5) - 0.5, pose: SP.hunch, blend: 0.7 },
+      { at: bt(6) - 1.1, pose: SP.kneelUp, x: -96, blend: 0.8 },
+      { at: bt(6) - 0.2, pose: SP.stand, x: -112, blend: 0.7 },
+      { at: bt(6) + 0.25, walk: -236, dur: 1.3, face: -1 }, // pacing
+      { at: bt(7), walk: -34, dur: 1.2, face: 1 },
+      { at: bt(7) + 1.15, pose: SP.peer, blend: 0.45 },
+      { at: tD, pose: SP.recoil, blend: 0.14 },
+      { at: tD + 0.22, walk: -190, dur: 0.85, back: true, face: 1, end: SP.stand },
+      { at: bt(10) - 0.75, pose: SP.squat, blend: 0.45 },
+      { at: bt(10) - 0.3, pose: SP.huddle, blend: 0.55 },
+    ], S, -18, SP.sit);
+    const pose = breath(tr.pose, t, tr.moving ? 0 : 0.6);
+    const me = person(c, tr.x, 0, S, pose, { dir: tr.dir, support: ledgeTop(D), lift: tr.lift });
+    // the phone, lit, in the hands
+    if (t >= bt(10)) drawPhone(c, me, prog(t, bt(10) + 0.2, bt(10) + 0.6));
     c.restore();
     // ---- deadpan annotation in the wide shot, the POV readout
     if (t < tB) mono(c, 'THE GOAL', 960 + (900 - cam.x) * cam.z, 540 + (dropAt(1) - 380 - cam.y) * cam.z, { size: 12, color: rgba('ash', 0.8 * fadeIn * prog(t, 4, 5)), track: 5 });

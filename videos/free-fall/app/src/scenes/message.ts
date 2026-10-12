@@ -13,8 +13,9 @@ import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse, TAU } from '../engine/util';
-import { drawKaraoke, mono, poseKeys } from './_ff';
-import { applyCam, breath, camKeys, daysAt, drawCounter, drawWorld, DOOR_X, dropAt, M, person, S, SP, type Cam } from './_story';
+import { drawKaraoke, mono } from './_ff';
+import { bodyKeys } from './_body';
+import { applyCam, breath, camKeys, daysAt, drawCounter, drawWorld, DOOR_X, dropAt, ledgeTop, M, person, S, SP, type Cam } from './_story';
 import { drawPlane } from './letter-planes';
 import { stamp } from './ledger-kit';
 
@@ -48,28 +49,28 @@ export default class Message extends Scene {
       const cam: Cam = camKeys(t, [[this.cuts[1]!, { x: 560, y: 220, z: 0.55 }], [this.ctx.end, { x: 520, y: 200, z: 0.58 }]]);
       c.save(); applyCam(c, cam);
       drawWorld(c, cam, { t, fear: FEAR, door: 0.2, glow: 1.3 * (1 - 0.75 * dim), stars: 1 });
-      // the person
+      // the person (standing now, a few steps from the edge): three throws — wind-up, release, follow-through;
+      // the whisper; then sits back down, head on the arms
       const tl = this.ls[1]!.words;
-      let pose = breath(SP.write, t, 0.5), sitting = true;
+      const throws = [tl[1]!.start, tl[3]!.start, tl[5]!.start];
+      const PX = -60;
+      let pose = breath(SP.stand, t, 0.6);
       if (k === 1) {
-        // a throw on each of three beats
-        const throws = [tl[1]!.start, tl[3]!.start, tl[5]!.start];
-        sitting = false;
-        pose = SP.stand;
-        for (const tt of throws) if (t > tt - 0.25 && t < tt + 0.35) pose = poseKeys(t, [[0, SP.stand], [tt - 0.05, SP.recoil], [tt + 0.2, SP.peer]], 0.12);
-        // the planes: thrown toward the door, they arc, stall and spiral into the dark
+        for (const tt of throws) if (t > tt - 0.45 && t < tt + 0.75) pose = bodyKeys(t, [[tt - 0.45, SP.stand], [tt - 0.12, SP.throwBack], [tt + 0.06, SP.throwFwd], [tt + 0.7, SP.stand]], 0.26);
+        // the planes: released from the hand toward the door, they arc, stall and spiral into the dark
         throws.forEach((tt, i) => {
           const u = t - tt;
           if (u < 0) return;
-          const x = -40 + 300 * u + 40 * Math.sin(u * 3 + i);
-          const y = -0.6 * S - 160 * u + 0.5 * 520 * u * u;
+          const x = PX + 86 + 300 * u + 40 * Math.sin(u * 3 + i) * clamp(u * 2);
+          const y = -1.0 * S - 160 * u + 0.5 * 520 * u * u;
           c.save(); c.globalAlpha = 1 - prog(u, 2.6, 3.2);
           drawPlane(c, x, y, 100, Math.atan2(-160 + 520 * u, 300) * 0.9 + Math.sin(u * 6) * 0.2);
           c.restore();
         });
       }
+      if (k === 2) pose = breath(bodyKeys(t, [[0, SP.stand], [line.words[1]!.start, SP.breathe]], 0.5), t, 0.6);
+      if (k === 3) pose = breath(bodyKeys(t, [[0, SP.stand], [this.cuts[3]! + 0.45, SP.squat], [this.cuts[3]! + 1.1, SP.huddleHunch]], 0.5), t, 0.4);
       if (k === 2) {
-        sitting = false; pose = poseKeys(t, [[0, SP.stand], [line.words[1]!.start, SP.breathe]], 0.3);
         // the whisper: a small "hi" floating across the gap, reaching the door
         const tw = line.words[2]!.start;
         const u = prog(t, tw, line.words[5]!.start + 0.2, ease.inOutCubic);
@@ -80,8 +81,8 @@ export default class Message extends Scene {
           for (let i = 1; i < 6; i++) { const uu = Math.max(0, u - i * 0.03); c.fillStyle = rgba('bone', 0.12); c.fillText('hi', lerp(40, DOOR_X - 20, uu), lerp(-0.85 * S, D - 1.6 * M, uu) - Math.sin(uu * Math.PI) * 140); }
         }
       }
-      if (k === 3) { sitting = true; pose = breath(SP.hunch, t, 0.4); }
-      person(c, -150 + (sitting ? 0 : 100), 0, S, pose, { sitting });
+      const back = k === 3 ? 40 * ease.inOutCubic(prog(t, this.cuts[3]! + 0.05, this.cuts[3]! + 0.75)) : 0; // sitting down, the weight goes back
+      person(c, PX - back, 0, S, pose, { support: ledgeTop(D) });
       c.restore();
       if (k === 2) {
         const tc = line.words[3]!.start; // "costs"

@@ -18,8 +18,9 @@ import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import type { Line, Word } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse, TAU } from '../engine/util';
-import { cachedLayout, drawKaraoke, mono, poseKeys, runPose, wordColor, type Pose } from './_ff';
-import { applyCam, breath, camKeys, daysAt, drawCounter, drawWorld, person, S, SP, type Cam } from './_story';
+import { cachedLayout, drawKaraoke, mono, wordColor } from './_ff';
+import { bodyKeys, flutter, idle, mixBody, track, type Move } from './_body';
+import { applyCam, breath, camKeys, daysAt, drawCounter, drawWorld, dropAt, ledgeTop, person, S, SP, type Cam } from './_story';
 import { stamp } from './ledger-kit';
 
 const FAM = F.archivo(125, 900);
@@ -115,8 +116,9 @@ export default class Dream extends Scene {
     const cam: Cam = { x: px + 120, y: py - 40, z: 1.0 - 0.15 * prog(t, t0, this.tA) };
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear: 1, door: 0.2, glow: 1.2, stars: 1 });
-    const pose = u < 0.35 ? SP.leap : SP.star;
-    person(c, px, py + S * 0.5, S, pose, { rot: 0.3 * Math.sin(u * 1.3) });
+    // take-off → arms out (a star), limbs fluttering in the rushing air, slowly turning
+    const pose = flutter(bodyKeys(u, [[0, SP.leap], [0.6, SP.star]], 0.5), t, prog(u, 0.4, 1.2));
+    person(c, px, py + S * 0.5, S, pose, { rot: 0.3 * Math.sin(u * 1.3), air: true });
     c.restore();
     mono(c, 'A DAYDREAM', W - 104, 96, { size: 13, color: rgba('ash', 0.75), track: 6, align: 'right' });
     return this.words(c, t, false);
@@ -129,10 +131,19 @@ export default class Dream extends Scene {
     const cam: Cam = camKeys(t, [[t0, { x: -560, y: 0, z: 0.9 }], [this.tA, { x: -520, y: 40, z: 1.0 }]]);
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear: 1, door: 0.2, glow: 1.2, stars: 1 });
-    let px: number, pose: Pose;
-    if (t < tFreeze) { const k = prog(t, t0 - 0.05, tFreeze, ease.inQuad); px = lerp(-520, -26, k); pose = runPose(f.beat, 0.35); }
-    else { px = -26; pose = { ...SP.freeze, a1: SP.freeze.a1 + Math.sin(t * 18) * 0.9, b1: SP.freeze.b1 + Math.sin(t * 18 + 1.5) * 0.9, a2: SP.freeze.a2 + Math.sin(t * 18) * 0.9, b2: SP.freeze.b2 + Math.sin(t * 18 + 1.5) * 0.9 }; }
-    person(c, px, 0, S, pose);
+    // the run (from the doorway's set), braking hard into the edge: the stop throws the body forward over the toes,
+    // the arms windmill backwards to pull it back, and the wobble dies away
+    const tr = track(t, [{ at: t0 - 0.05, run: -30, dur: tFreeze - t0 + 0.05, end: SP.freeze }], S, -520, SP.set);
+    let pose = tr.pose;
+    if (t > tFreeze - 0.1) {
+      const v = Math.max(0, t - tFreeze + 0.1), damp = Math.exp(-v * 1.6);
+      const spin = -13 * (1 - Math.exp(-v * 1.1)) / 1.1; // the arms circle backwards, slowing
+      const near = (a: number, ref: number) => a - TAU * Math.round((a - ref) / TAU);
+      const F = SP.freeze;
+      pose = { ...pose, torso: pose.torso + 0.16 * Math.sin(v * 7) * damp, a1: near(-1.5 + spin, F.a1), a2: near(-1.2 + spin, F.a2), b1: near(0.5 + spin, F.b1), b2: near(0.8 + spin, F.b2) };
+      pose = mixBody(pose, F, prog(v, 1.8, 3.0, ease.inOutCubic));
+    }
+    person(c, tr.x, 0, S, pose, { lift: tr.lift, support: ledgeTop(dropAt(1)) });
     c.restore();
     if (t > tFreeze) mono(c, 'STOPPED AT THE EDGE', W - 104, 96, { size: 13, color: rgba('signal', 0.9), track: 5, align: 'right' });
     return this.words(c, t, true);
@@ -144,16 +155,10 @@ export default class Dream extends Scene {
     const tFly = w[2]!.start, tWall = w[w.length - 1]!.start;
     const WX = 1500 * scale + ox;
     // the flier: crosses the frame toward the wall, hits it on "wall", bounces back tumbling
-    let x: number, y: number, rot = Math.PI / 2, pose: Pose = SP.cheer;
     const base = 520 * scale + oy;
-    if (t < tWall) {
-      const k = prog(t, this.tA - 0.1, tWall, (q) => q * q * (3 - 2 * q) * 0.4 + q * 0.6);
-      x = lerp(-200 * scale + ox, WX - 140 * scale, k); y = base + Math.sin(t * 3) * 18 * scale;
-    } else {
-      const u = t - tWall;
-      x = WX - 140 * scale - 520 * scale * (1 - Math.exp(-u * 2.5)); y = base + 260 * scale * (1 - Math.exp(-u * 2)) * Math.min(1, u * 2);
-      rot = Math.PI / 2 - u * 7; pose = SP.tuck;
-    }
+    const floor = base + 330 * scale; // the floor of the dream, appearing with the wall
+    const fl = this.flight(t, tWall, WX, base, floor, scale, ox);
+    const { x, y } = fl;
     // speed lines behind the flier
     if (t < tWall) for (let i = 0; i < 9; i++) {
       const ly = y + (i - 4) * 16 * scale, len = (120 + 160 * hash(i, 3)) * scale;
@@ -176,7 +181,14 @@ export default class Dream extends Scene {
       c.lineWidth = 2; c.strokeRect(WX, top, 240 * scale, bot - top);
       c.restore();
     }
-    person(c, x, y + S * 0.5 * scale, S * scale, pose, { rot });
+    if (wk > 0) {
+      c.strokeStyle = rgba('bone', 0.85 * clamp(wk)); c.lineWidth = 2;
+      c.beginPath(); c.moveTo(ox - 400 * scale, floor); c.lineTo(WX, floor); c.stroke();
+      c.lineWidth = 1;
+      for (let xx = ox - 400 * scale; xx < WX; xx += 26 * scale) { c.beginPath(); c.moveTo(xx, floor); c.lineTo(xx - 16 * scale, floor + 16 * scale); c.stroke(); }
+    }
+    if (fl.ground) person(c, x, floor, S * scale, fl.pose, { rot: fl.rot });
+    else person(c, x, y + fl.low * scale, S * scale, fl.pose, { rot: fl.rot, air: true });
     // stars of the bonk
     if (t > tWall && t < tWall + 0.8) for (let i = 0; i < 6; i++) {
       const a = (i / 6) * TAU + t * 4, r = 60 * scale * (1 + (t - tWall));
@@ -184,11 +196,38 @@ export default class Dream extends Scene {
       c.beginPath(); c.arc(WX - 30 * scale + Math.cos(a) * r, base + Math.sin(a) * r * 0.6, 5 * scale, 0, TAU); c.fill();
     }
     if (scale === 1) {
-      stamp(c, 1180, 860, ['DAMAGE:', 'ONE (1) BRUISE'], t, tWall + 0.25, { size: 26, rot: -0.1 });
+      stamp(c, 560, 640, ['DAMAGE:', 'ONE (1) BRUISE'], t, tWall + 0.6, { size: 26, rot: -0.1 });
       drawKaraoke(c, this.la, 104, 170, t, { family: F.archivo(112.5, 900), size: 80, tracking: -2, sung: rgba('bone', 1), unsung: rgba('bone', 0.18), active: rgba('signal', 1), lead: 0.4 });
       mono(c, 'A DAYDREAM', W - 104, 96, { size: 13, color: rgba('ash', 0.75), track: 6, align: 'right' });
     }
     return pulse(t, tWall, 0.08) * 1.3;
+  }
+
+  /** The flier: arms-first flight (rotated 90°) → impact → thrown back and up, tumbling, under gravity → lands on the
+   * floor, skids, rolls up to sitting, dazed. Returns the body centre (x, y), or the ground state. */
+  flight(t: number, tWall: number, WX: number, base: number, floor: number, scale: number, ox: number) {
+    if (t < tWall) {
+      const k = prog(t, this.tA - 0.1, tWall, (q) => q * q * (3 - 2 * q) * 0.4 + q * 0.6);
+      const pose = flutter(SP.cheer, t, 0.5);
+      return { x: lerp(-200 * scale + ox, WX - 140 * scale, k), y: base + Math.sin(t * 3) * 18 * scale, low: S * 0.5, rot: Math.PI / 2, pose, ground: false };
+    }
+    const u = t - tWall;
+    const g = 3400 * scale, vx = -620 * scale, vy = -520 * scale;
+    // the lowest point of the tumbling body is ~0.3 S below its centre; it reaches the floor at uL
+    const c0 = base + 0.3 * S * scale, need = floor - c0;
+    const uL = (-vy + Math.sqrt(vy * vy + 2 * g * need)) / g;
+    if (u < uL) {
+      const pose = bodyKeys(u, [[0, SP.cheer], [0.15, SP.tuck]], 0.15);
+      return { x: WX - 140 * scale + vx * u, y: base + vy * u + 0.5 * g * u * u, low: 0.3 * S, rot: Math.PI / 2 - u * 9, pose, ground: false };
+    }
+    // on the floor: the slide dies out with friction, the roll unwinds into sitting up
+    const v = u - uL, xL = WX - 140 * scale + vx * uL;
+    const slide = (vx * 0.45) * (1 - Math.exp(-v * 4)) / 4;
+    const r0 = Math.PI / 2 - uL * 9;
+    const rk = ease.outCubic(clamp(v / 0.5));
+    const rot = lerp(((r0 % TAU) + TAU) % TAU > Math.PI ? (((r0 % TAU) + TAU) % TAU) - TAU : ((r0 % TAU) + TAU) % TAU, 0, rk);
+    const pose = idle(bodyKeys(v, [[0, SP.tuck], [0.5, SP.sitGround]], 0.45), t * 1.6, 1.4);
+    return { x: xL + slide, y: floor, low: 0, rot, pose, ground: true };
   }
 
   // ---------------------------------------------------------------- v2 A: the same flight, in a thought bubble over the frozen person
@@ -196,7 +235,7 @@ export default class Dream extends Scene {
     const cam: Cam = { x: 380, y: 0, z: 1.0 };
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear: 1, door: 0.2, glow: 1.2, stars: 1 });
-    person(c, -26, 0, S, breath(SP.freeze, t, 1.5));
+    person(c, -30, 0, S, breath(SP.freeze, t, 1.5), { support: ledgeTop(dropAt(1)) });
     c.restore();
     // the bubble (dashed ellipse) with the flight inside, rendered small
     const bx = 1240, by = 330, rx = 520, ry = 250;
@@ -223,23 +262,22 @@ export default class Dream extends Scene {
     const day = 0.5 - 0.5 * Math.cos(TAU * u * 0.9); // the days cycling past
     const v2 = this.v === 2;
     const tag = this.tag;
-    const grey = v2 ? prog(t, t0, lc.start + 1.0) * (tag ? 1 - prog(t, tag.words[1]!.start, tag.words[1]!.start + 0.5) : 1) : 1;
+    const grey = v2 ? prog(t, t0, lc.start + 1.0) * (tag ? 1 - prog(t, tag.words[0]!.start, tag.words[0]!.start + 0.5) : 1) : 1;
     const cam: Cam = camKeys(t, [[t0, { x: v2 ? -40 : -120, y: -140, z: 1.25 }], [end, { x: v2 ? -60 : -160, y: -160, z: 1.45 }]]);
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear: 0.6, door: 0.2, glow: 1.0, dawn: day * 0.85, stars: 1 - day });
     // the figure: colour fades to graphite (the statue); dust settles on head and shoulders; v2's tag: steps back, sits
     const col = `rgba(${lerp(238, 94, grey).toFixed(0)},${lerp(233, 91, grey).toFixed(0)},${lerp(223, 87, grey).toFixed(0)},1)`;
-    let px = v2 ? -26 : -120, pose: Pose = SP.statue, sitting = false;
-    if (v2) pose = poseKeys(t, [[0, SP.freeze], [t0 + 0.8, SP.statue]], 0.6);
-    if (tag && t > tag.words[1]!.start) {
-      const k = prog(t, tag.words[1]!.start, tag.words[1]!.start + 0.9, ease.inOutCubic);
-      px = lerp(-26, -170, k);
-      pose = poseKeys(t, [[0, SP.statue], [tag.words[1]!.start + 0.5, SP.stand], [tag.words[1]!.start + 1.1, SP.hunch]], 0.4);
-      sitting = t > tag.words[1]!.start + 0.8;
+    // (v1: the statue. v2: frozen at the edge, stiffening into the statue; on the tag: steps back, turns, sits down)
+    const moves: Move[] = v2 ? [{ at: t0 + 0.2, pose: SP.statue, blend: 0.9 }] : [];
+    if (tag) {
+      const tt = tag.words[0]!.start + 0.1;
+      moves.push({ at: tt, walk: -160, dur: 0.75, back: true, face: 1, end: SP.stand }, { at: tt + 0.8, pose: SP.squat, blend: 0.4 }, { at: tt + 1.2, pose: SP.huddleHunch, blend: 0.55 });
     }
-    const head = person(c, px, 0, S, pose, { color: col, sitting });
+    const tr = track(t, moves, S, v2 ? -30 : -120, v2 ? SP.freeze : SP.statue);
+    const head = person(c, tr.x, 0, S, tr.moving ? tr.pose : breath(tr.pose, t, 0.3 * (1 - grey)), { color: col, dir: tr.dir, support: ledgeTop(dropAt(0.6)) });
     // dust and a cobweb from the shoulder to the ground
-    const dust = clamp(u / 6) * (1 - (tag && t > tag.words[1]!.start ? 1 : 0));
+    const dust = clamp(u / 6) * (1 - (tag && t > tag.words[0]!.start ? 1 : 0));
     for (let i = 0; i < 40 * dust; i++) {
       c.fillStyle = rgba('ash', 0.7);
       c.fillRect(head.x - 22 + hash(i, 1) * 44, head.y - 21 - hash(i, 2) * 3, 2.2, 2.2);

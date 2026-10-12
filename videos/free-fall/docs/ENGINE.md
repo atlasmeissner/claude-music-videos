@@ -104,18 +104,29 @@ What this asks of scenes:
 
 ## The story kit (`app/src/scenes/_story.ts`) and the base kit (`_ff.ts`)
 
-- **The person**: `person(ctx2d, x, footY, height, pose, { color, dir, rot, alpha, sitting })` draws the pictogram
-  figure with its feet at (x, footY) (`sitting`: the hip sits on footY). Poses: `SP.stand, sit, hunch, write, phone,
-  peer, recoil, freeze, breathe, set, statue, wave` plus `_ff`'s `leap, star, tuck, stumble, land, cheer, jump`;
-  `walkPose(φ)`, `runPose(φ)` (lock to the beat), `breath(pose, t)`, `mixPose`, `poseKeys(t, [[t0, pose], …])`.
-  Ghosts are drawn twice (a colour, then ink at 0.965 scale) for a hairline outline.
+- **The person**: `person(ctx2d, x, footY, height, body, { support, air, lift, color, outline, dir, rot, alpha })`
+  draws the body at x resting under gravity: it settles onto whatever its lowest point touches (feet, knees, hands,
+  seat) on the ground `support(wx)` (default flat at footY; `ledgeTop(drop)` is the ledge top up to the edge, then
+  the drop, so sitting on the edge with the legs hanging over it is just resting on the seat). `air: true` puts the
+  lowest point at footY instead (flight); `lift` raises it by a fraction of the height (a run's flight, a hop).
+  `outline` draws a hairline ghost. Returns the head, hands and hip in canvas space (the phone, `drawPhone`, is held
+  in the hands). `SP` = `_body`'s `BP` poses; `breath(body, t)` = `idle`.
+- **The body** (`_body.ts`): a skeleton with forward kinematics (arms in the torso's frame, legs in the world frame,
+  feet), poses `BP.*` (standing, edge-sitting, ground-sitting, kneeling, squat, peer, recoil, freeze, throw, the jump
+  phases, stumble, fours, sitGround, the front-view crowd poses). `mixBody`, `bodyKeys(t, [[t, body], …])`.
+  Walk and run are keyframed cycles (contact · down · passing · up; the run with a flight phase), phased by distance
+  travelled so the feet don't skate. `track(t, moves, S, x0, pose0, dir0)` is the choreography: pose holds (a facing
+  change turns through the front view), walks (eased start/stop; `back` for stepping backwards; `ph0` for single
+  steps) and runs (`accel` to arrive at speed). `jumpState` = anticipation crouch, take-off, a parabola under
+  constant gravity, an absorbing landing with a spring recovery; `hopState`/`crowdHop` = crowd hops at real gravity
+  for the figure's height; `flutter` = air drag on the limbs in a long fall.
 - **The world**: world px with the origin at the ledge's top edge (x right, y down); `S` = the person's height,
   `M` px per metre, `TRUE_DROP` = 1.40 m, `dropAt(fear)` = how deep the drop is drawn (fear 0..1), `DOOR_X`.
   `applyCam(ctx2d, {x, y, z})`, `camKeys(t, [[t, cam], …])`, `toScreen`; `drawWorld(ctx2d, cam, { t, fear, door,
   glow, dawn, stars })` draws sky, dawn, lower ground, the door (`drawDoor`) and the ledge with its strata and mist.
 - **The counter**: `daysAt(t)`, `drawCounter(ctx2d, t, { label, value })` — DAYS ON THE LEDGE.
 - `_ff.ts`: `drawKaraoke(… mode 'wipe' | 'reveal' | 'slam')`, `wordColor`, `bigWord`, `mono`, `cachedLayout`,
-  `drawNo`, `drawFigure`/`POSES`; `ledger-kit.ts`: `stamp`, `dimV`; `letter-planes.ts`: `drawPlane`.
+  `drawNo`, the old `drawFigure`/`POSES` (unused by the story); `ledger-kit.ts`: `stamp`, `dimV`; `letter-planes.ts`: `drawPlane`.
 
 Palette: pdoom-video's, unchanged. Post defaults are pdoom's except `bloomThreshold 0.9 / bloomKnee 0.2`, so bone
 stays crisp and only the orange blooms.

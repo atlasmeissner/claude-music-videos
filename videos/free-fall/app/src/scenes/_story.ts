@@ -1,6 +1,6 @@
 // The story kit (revision 3): one person, one ledge, one door.
-//  - THE PERSON: the pictogram figure from _ff.ts with a story's worth of extra poses (sitting on the edge, head in
-//    hands, on the phone, peering down, recoiling, frozen at the edge, writing), drawn bone on ink.
+//  - THE PERSON: the body from _body.ts, drawn bone on ink, resting under gravity on the ground it touches (the
+//    ledge top, the edge, the lower ground) — see person().
 //  - THE WORLD: a ledge in elevation (origin at the edge's top, x right, y down, px), the lower ground, and the goal
 //    — a doorway in a low wall across the gap, spilling orange light. The DROP is drawn the way it feels: `fear`
 //    (0..1) pushes the lower ground down into a hatched abyss; at fear 0 it is its true height, 1.40 m — shoulder-high.
@@ -8,7 +8,8 @@
 //  - THE COUNTER: DAYS ON THE LEDGE, the running number (staged in-world, like pdoom's P(doom)).
 import { rgba } from '../engine/palette';
 import { clamp, ease, hash, lerp, noise1, prog, TAU } from '../engine/util';
-import { drawFigure, mixPose, mono, POSES, runPose, type Pose } from './_ff';
+import { mono } from './_ff';
+import { BP, drawBody, idle, lowestHipY, restHipY, walkCycle, type Body, type BodyStyle } from './_body';
 
 // ------------------------------------------------------------------ scale
 /** The person's height in world px; metres → px. */
@@ -21,50 +22,49 @@ export const FEAR_DROP = 2600;
 export const dropAt = (fear: number) => TRUE_DROP + FEAR_DROP * fear;
 /** The goal: the doorway's x on the lower ground. */
 export const DOOR_X = 760;
-export const HIP_H = 0.53 * S; // hip height above the feet, standing
 
-// ------------------------------------------------------------------ poses (profile, facing +x unless noted)
-const P = (torso: number, head: number, a1: number, a2: number, b1: number, b2: number, l1: number, l2: number, m1: number, m2: number, hip = 0): Pose =>
-  ({ torso, head, a1, a2, b1, b2, l1, l2, m1, m2, hip });
-export const SP = {
-  ...POSES,
-  /** sitting on the edge, legs over it (hip on the ledge top: draw with hip at y = -0.05 S) */
-  sit: P(0.12, 0.3, 0.75, 1.15, 0.6, 1.0, 1.45, -0.02, 1.35, 0.06),
-  /** sitting, elbows on knees, head in hands */
-  hunch: P(0.6, 0.45, 0.4, 2.2, 0.3, 2.1, 0.97, -0.5, 0.9, -0.42),
-  /** sitting with a notebook or phone on the knees, writing */
-  write: P(0.35, 0.55, 1.05, 1.75, 0.85, 1.6, 1.22, -0.25, 1.12, -0.2),
-  /** standing, looking at a phone */
-  phone: P(0.04, 0.5, 0.35, 2.45, -0.1, -0.05, 0.05, 0.04, -0.05, -0.04),
-  /** leaning over the edge, peering down */
-  peer: P(0.42, 0.55, -0.55, -0.4, -0.7, -0.55, -0.42, -0.42, -0.3, -0.5),
-  /** recoiling from the edge, a hand up */
-  recoil: P(-0.22, -0.25, 1.7, 2.3, -0.6, -0.3, 0.25, 0.05, -0.45, -0.62),
-  /** frozen at the edge, arms windmilling back */
-  freeze: P(0.25, 0.35, -1.5, -1.3, -1.9, -1.6, -0.25, -0.25, -0.35, -0.45),
-  /** a deep breath, shoulders up, chin up */
-  breathe: P(-0.06, -0.3, 0.25, 0.2, -0.25, -0.2, 0.08, 0.05, -0.08, -0.05),
-  /** crouched, ready to run (facing +x) */
-  set: P(0.7, -0.2, -0.9, -0.4, 0.9, 1.5, 1.2, -0.35, -0.6, -1.4, 0.12),
-  /** standing tall and still (the statue) */
-  statue: P(0, 0, 0.14, 0.12, -0.14, -0.12, 0.05, 0.04, -0.05, -0.04),
-  /** a wave (front-ish): one arm up */
-  wave: P(0, -0.1, 2.6, 3.0, -0.25, -0.2, 0.1, 0.08, -0.1, -0.08),
-} satisfies Record<string, Pose>;
+// ------------------------------------------------------------------ the person (see _body.ts)
+/** Poses: the body kit's (profile, facing +x unless noted). */
+export const SP = { ...BP, jump: BP.takeoff } satisfies Record<string, Body>;
 export type PoseName = keyof typeof SP;
+export type { Body };
 
-/** A gentle walk at phase φ. */
-export const walkPose = (phi: number) => mixPose(SP.stand, runPose(phi, 0.06), 0.42);
-/** Idle breathing on any pose: a tiny torso/head sway. */
-export function breath(p: Pose, t: number, k = 1): Pose {
-  const s = Math.sin(t * 2.1) * 0.025 * k;
-  return { ...p, torso: p.torso + s, head: p.head + s * 0.8 };
+/** A walk at phase φ (prefer track(): it phases the legs by distance). */
+export const walkPose = (phi: number) => walkCycle(phi);
+/** Idle breathing and a slow weight shift on any pose. */
+export const breath = (p: Body, t: number, k = 1) => idle(p, t, k);
+/** Ground under the person on the ledge: the ledge top (y = top) up to its edge (x = 0), then the drop. */
+export const ledgeTop = (drop: number, top = 0) => (wx: number) => (wx <= 0 ? top : top + drop);
+
+export interface PersonStyle extends BodyStyle {
+  /** ground height at world x (default: flat at footY) */
+  support?: (wx: number) => number;
+  /** airborne: footY is where the lowest point of the body is (no support) */
+  air?: boolean;
+  /** lifted off the support by this fraction of the height (a run's flight, a hop) */
+  lift?: number;
+  /** legacy flag, ignored: sitting is just resting on the seat */
+  sitting?: boolean;
+}
+/**
+ * Draw the person at x, resting under gravity on the ground (flat at footY, or `support`): the body settles onto
+ * whatever its lowest point touches — feet, knees, hands or seat. Returns the head (x, y) and the hands and hip.
+ */
+export function person(c: CanvasRenderingContext2D, x: number, footY: number, h: number, p: Body, o: PersonStyle = {}) {
+  const st: BodyStyle = { color: o.color ?? rgba('bone', 1), dir: o.dir ?? 1, rot: o.rot ?? 0, alpha: o.alpha ?? 1, outline: o.outline, far: o.far };
+  const hipY = (o.air ? lowestHipY(p, h, footY, st) : restHipY(x, p, h, o.support ?? (() => footY), st)) - (o.lift ?? 0) * h;
+  const j = drawBody(c, x, hipY, h, p, st);
+  return { x: j.head.x, y: j.head.y, head: j.head, handN: j.handN, handF: j.handF, hip: j.hip };
 }
 
-/** Draw the person with feet on the ground at (x, footY) (world or screen px), height `h` px. */
-export function person(c: CanvasRenderingContext2D, x: number, footY: number, h: number, p: Pose, o: { color?: string; dir?: 1 | -1; rot?: number; alpha?: number; sitting?: boolean } = {}) {
-  const hipY = o.sitting ? footY - 0.04 * h : footY - 0.53 * h;
-  return drawFigure(c, x, hipY, h, p, { color: o.color ?? rgba('bone', 1), dir: o.dir ?? 1, rot: o.rot ?? 0, alpha: o.alpha ?? 1 });
+/** The phone, lit, held in both hands (call with person()'s result). */
+export function drawPhone(c: CanvasRenderingContext2D, me: { handN: { x: number; y: number }; handF: { x: number; y: number } }, a = 1, h = S) {
+  const hx = (me.handN.x + me.handF.x) / 2, hy = (me.handN.y + me.handF.y) / 2;
+  c.fillStyle = rgba('signal', 0.18 * a);
+  c.beginPath(); c.arc(hx, hy - 0.03 * h, 0.12 * h, 0, TAU); c.fill();
+  c.save(); c.translate(hx, hy); c.rotate(-0.5);
+  c.fillStyle = rgba('ember', 0.9 * a); c.fillRect(-0.035 * h, -0.1 * h, 0.07 * h, 0.11 * h);
+  c.restore();
 }
 
 // ------------------------------------------------------------------ camera

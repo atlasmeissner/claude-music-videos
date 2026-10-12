@@ -28,8 +28,9 @@ wide. The last shot pulls back to show how small it all was: DROP 1.40 m · TIME
 - pdoom-video's palette, unchanged: ink `#0A0A0B`, bone `#EEE9DF`, hazard orange `#FF4D12` (the door's light, the
   sung word, the dawn), ember, blood, graphite, ash; one rare acid `#D8FF3C` moment — the light bursting from the door
   as it swings wide. "The sky is screaming blue" is drawn as an engraved orange dawn: the video has no blue.
-- The person is the pictogram figure (round head, thick round-capped limbs, no face), bone on ink, with a story's
-  worth of poses: sitting on the edge, head in hands, writing, on the phone, peering over, recoiling, frozen with arms
+- The person is the pictogram figure (round head, thick round-capped limbs, short feet, no face), bone on ink, the far
+  limbs a shade darker. It moves like a body: it rests on whatever touches the ground, walks and runs without
+  foot-skate, and jumps, lands, stumbles and hops under real gravity (revision 3.1). A story's worth of poses: sitting on the edge, head in hands, writing, on the phone, peering over, recoiling, frozen with arms
   windmilling, running, leaping, free fall, stumbling, cheering. Imagined versions of them are hairline ghosts (ash
   for the worst case, ember for the best); the version that never jumps is a graphite statue.
 - The world is one ledge in elevation, hatched in section, its strata densening with depth; the lower ground; the

@@ -11,8 +11,9 @@ import { LIN, rgba } from '../engine/palette';
 import { F } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse } from '../engine/util';
-import { drawKaraoke, mono, poseKeys, runPose } from './_ff';
-import { applyCam, breath, camKeys, drawCounter, drawWorld, dropAt, M, person, S, SP, walkPose, type Cam } from './_story';
+import { drawKaraoke, mono } from './_ff';
+import { track, type Move } from './_body';
+import { applyCam, breath, camKeys, drawCounter, drawWorld, dropAt, M, person, S, SP, type Cam } from './_story';
 
 export default class Decide extends Scene {
   L = new Layer2D();
@@ -42,23 +43,21 @@ export default class Decide extends Scene {
     const last = this.lines[3]!;
     const build = prog(t, last.start, end, ease.inQuad);
     // the run-up: a step back on every clap (up to 9), then crouch, then run on the last beat
-    const n = this.claps.filter((x) => x <= t).length;
-    const steps = Math.min(n, 9);
-    const lastClap = this.claps.filter((x) => x <= t).pop() ?? -9;
-    const stepK = prog(t, lastClap, lastClap + 0.22, ease.outCubic);
-    const px0 = -40 - Math.max(0, steps - 1) * 52 - (steps > 0 ? 52 * stepK : 0);
-    const tSet = end - 1.4, tRun = end - 0.45;
-    let px = px0, pose = steps > 0 && stepK < 1 ? walkPose(-f.beat) : breath(SP.breathe, t, 1.2);
-    let dir: 1 | -1 = 1;
-    if (t > tSet) pose = poseKeys(t, [[0, SP.breathe], [tSet + 0.3, SP.set]], 0.3);
-    if (t > tRun) { px = lerp(px0, px0 + 240, prog(t, tRun, end, ease.inQuad)); pose = runPose(f.beat, 0.35); }
-    if (steps > 0 && stepK < 1 && t < tSet) dir = 1;
+    // one step back per clap: the weight goes back, the front foot lifts and is placed behind (legs alternating)
+    const STEP = 0.3 * S, tSet = end - 1.4, tRun = end - 0.45;
+    const claps = this.claps.slice(0, 9).filter((x) => x < tSet - 0.3);
+    const moves: Move[] = claps.map((x, i) => ({ at: x - 0.04, walk: -40 - (i + 1) * STEP, dur: 0.42, back: true, face: 1, ph0: i % 2 ? 0.25 : 0.75, end: SP.breathe }));
+    const xSet = -40 - claps.length * STEP;
+    moves.push({ at: tSet, pose: SP.set, blend: 0.5 }, { at: tRun, run: xSet + 340, dur: end - tRun + 0.12, accel: true });
+    const tr = track(t, moves, S, -40, SP.breathe);
+    const steps = claps.filter((x) => x <= t).length;
+    const pose = tr.moving ? tr.pose : breath(tr.pose, t, 1.2);
     const cam: Cam = camKeys(t, [[this.ctx.start, { x: -120, y: -40, z: 0.95 }], [last.start, { x: -260, y: 20, z: 0.8 }], [end, { x: -220, y: -60, z: 1.05 }]]);
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear, door: 0.3, glow: 1.2 + build, dawn: build * 0.85, stars: 1 - build });
-    person(c, px, 0, S, pose, { dir });
+    person(c, tr.x, 0, S, pose, { dir: tr.dir, lift: tr.lift });
     // the footprints of the run-up
-    for (let i = 0; i < steps; i++) { c.fillStyle = rgba('signal', 0.7); c.fillRect(-40 - i * 52 - 6, -3, 12, 3); }
+    for (let i = 0; i < steps; i++) { c.fillStyle = rgba('signal', 0.7); c.fillRect(-40 - (i + 1) * STEP + 0.04 * S, -3, 14, 3); }
     c.restore();
     // readouts
     if (steps > 0) mono(c, `RUN-UP  STEP ${steps}`, W - 104, 96, { size: 14, color: rgba('signal', 0.95), track: 4, align: 'right', weight: 500 });

@@ -10,10 +10,9 @@ import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse } from '../engine/util';
-import { drawKaraoke, mono, poseKeys, type Pose } from './_ff';
-import { applyCam, breath, camKeys, drawCounter, drawWorld, M, person, S, SP, type Cam } from './_story';
+import { drawKaraoke, mono } from './_ff';
+import { applyCam, breath, camKeys, drawCounter, drawWorld, dropAt, ledgeTop, M, person, S, SP, type Cam } from './_story';
 
-const KNEEL: Pose = { torso: 0.62, head: 0.65, a1: 0.05, a2: 0.0, b1: -0.25, b2: 0.25, l1: 1.55, l2: -0.85, m1: 1.3, m2: -1.25, hip: 0.2 };
 const COSTS = ['COULD FALL', 'COULD LOOK STUPID', 'WHAT WILL THEY SAY', 'BAD TIMING', 'NOT READY YET', 'IT’S LATE', 'MAYBE TOMORROW', 'ONE MORE LIST'];
 
 export default class Measure extends Scene {
@@ -49,8 +48,15 @@ export default class Measure extends Scene {
       const cam: Cam = camKeys(t, [[this.ctx.start, { x: -120, y: -110, z: 1.9 }], [this.tB, { x: -90, y: -120, z: 2.1 }]]);
       c.save(); applyCam(c, cam);
       drawWorld(c, cam, { t, fear: 1, door: 0.25, glow: 1.2 });
-      const head = person(c, -150, 0, S, breath(SP.write, t, 0.5), { sitting: true });
-      c.fillStyle = rgba('bone', 0.9); c.fillRect(head.x + 0.14 * S, head.y + 0.3 * S, 0.16 * S, 0.1 * S); // the notebook
+      // sitting on the rock, knees up, writing on them (the pencil hand moves on every word)
+      const wd = this.l0.words.filter((x) => x.start <= t).pop();
+      const scrib = wd ? Math.sin(clamp((t - wd.start) / 0.25) * Math.PI) * 0.25 : 0;
+      const pose = { ...breath(SP.huddle, t, 0.5), a1: SP.huddle.a1 + 0.12 + scrib * 0.4, a2: SP.huddle.a2 - 0.1 - scrib, head: SP.huddle.head + 0.12 };
+      const me = person(c, -190, 0, S, pose);
+      // the notebook, propped on the knees
+      c.save(); c.translate(me.handF.x, me.handF.y); c.rotate(-1.0);
+      c.fillStyle = rgba('bone', 0.9); c.fillRect(-0.02 * S, -0.13 * S, 0.035 * S, 0.17 * S);
+      c.restore();
       c.restore();
       // the card
       const w = this.l0.words;
@@ -81,9 +87,11 @@ export default class Measure extends Scene {
       const cam: Cam = camKeys(t, [[this.tB, { x: 40, y: -60, z: 1.4 }], [this.tB + 1.4, { x: 140, y: 420, z: 0.8 }], [end, { x: 160, y: 1500, z: 0.62 }]]);
       c.save(); applyCam(c, cam);
       drawWorld(c, cam, { t, fear: 1, door: 0.25, glow: 1.2 });
-      person(c, -60, 0, S, KNEEL, {});
-      // the case at the hand, the tape down the face
-      const hx = 26, hy = -12;
+      // kneeling at the edge, leaning over it, an arm straight down; the tape hangs from the hand
+      const reel = t > this.l1.words[1]!.start && t < this.l1.words[1]!.start + 0.5 ? 0.35 : 0; // reeling in: the arm comes up
+      const pose = breath({ ...SP.kneelTape, a1: SP.kneelTape.a1 + reel, a2: SP.kneelTape.a2 + reel * 2 }, t, 0.6);
+      const me = person(c, -64, 0, S, pose, { support: ledgeTop(dropAt(1)) });
+      const hx = me.handN.x - 4, hy = me.handN.y + 4;
       c.fillStyle = rgba('signal', 1); c.fillRect(hx - 14, hy - 10, 28, 22);
       c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 3 / cam.z;
       c.beginPath(); c.moveTo(hx + 4, hy + 12); c.lineTo(hx + 4 + Math.sin(t * 2) * 3, hy + 12 + len); c.stroke();

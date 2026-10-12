@@ -10,27 +10,15 @@ import { LIN, rgba } from '../engine/palette';
 import { F } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse } from '../engine/util';
-import { drawKaraoke, mono, poseKeys, runPose } from './_ff';
-import { applyCam, breath, camKeys, drawCounter, drawWorld, DOOR_X, person, S, SP, TRUE_DROP, walkPose, type Cam } from './_story';
-
-type P2 = { x: number; y: number };
+import { drawKaraoke, mono } from './_ff';
+import { bodyKeys, jumpState, track, type Body } from './_body';
+import { applyCam, breath, camKeys, drawCounter, drawWorld, DOOR_X, person, S, SP, TRUE_DROP, type Cam } from './_story';
 
 export default class Runup extends Scene {
   L = new Layer2D();
   l4!: Line; l5!: Line;
 
   override init() { const ly = this.ctx.lyrics; this.l4 = ly.lines[4]!; this.l5 = ly.lines[5]!; }
-
-  /** A ghost's jump launched at t0 from the edge, landing at x1 on the lower ground after T s; feet position. */
-  ghost(tb: number, t0: number, x1: number, T = 0.55): P2 & { u: number } {
-    const u = (tb - t0) / T;
-    const x0 = -10;
-    if (u <= 0) return { x: x0, y: 0, u };
-    if (u >= 1) return { x: x1, y: TRUE_DROP, u };
-    const h = 120; // apex above the edge
-    const y = lerp(0, TRUE_DROP, u) - 4 * h * u * (1 - u);
-    return { x: lerp(x0, x1, u), y, u };
-  }
 
   render(f: Frame, out: THREE.WebGLRenderTarget): PostOverrides {
     const { renderer, comp } = this.ctx;
@@ -43,43 +31,53 @@ export default class Runup extends Scene {
     const cam: Cam = camKeys(t, [[this.ctx.start, { x: 230, y: 20, z: 0.95 }], [end - 1.0, { x: 180, y: -10, z: 1.0 }], [end, { x: 60, y: -40, z: 1.25 }]]);
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear: 0, door: 0.25 + 0.75 * open * (1 - prog(t, tBe + 1.0, tBe + 1.4)), glow: 1.4 + open, dawn: 1, stars: 0 });
-    // ghost 1: the worst — jumps on "is a", lands, trips on "stumble", sits
-    const g1t = w4[4]!.start;
-    if (t > g1t - 0.3 && t < w5[0]!.start + 0.3) {
-      const a = prog(t, g1t - 0.3, g1t) * (1 - prog(t, w5[0]!.start - 0.2, w5[0]!.start + 0.3));
-      const g = this.ghost(t, g1t, 230, tSt - g1t);
-      const pose = g.u <= 0 ? SP.set : g.u < 1 ? SP.leap : poseKeys(t, [[0, SP.land], [tSt + 0.15, SP.stumble], [tSt + 0.6, SP.sit]], 0.15);
-      const roll = g.u >= 1 ? prog(t, tSt + 0.05, tSt + 0.5, ease.outCubic) * 50 : 0;
+    const ghostAt = (x: number, y: number, pose: Body, col: string, a: number, dir: 1 | -1 = 1) => {
       c.save(); c.globalAlpha = a;
-      person(c, g.x + roll, g.y, S, pose, { color: rgba('ash', 0.9), sitting: t > tSt + 0.5 });
-      person(c, g.x + roll, g.y, S * 0.965, pose, { color: rgba('ink', 1), sitting: t > tSt + 0.5 });
+      person(c, x, y, S, pose, { outline: col, dir, support: (wx) => (wx <= 0 ? 0 : TRUE_DROP) });
       c.restore();
-      if (g.u >= 1) mono(c, 'WORST CASE: −1 (A STUMBLE)', g.x + roll - 40, TRUE_DROP + 40, { size: 13, color: rgba('ash', 0.9 * a), track: 3 });
+    };
+    const ghostAir = (x: number, y: number, pose: Body, col: string, a: number) => {
+      c.save(); c.globalAlpha = a; person(c, x, y, S, pose, { outline: col, air: true }); c.restore();
+    };
+    // ghost 1: the worst — jumps, lands, the momentum carries on: a stumble, caught on the hands, sat down
+    const g1t = w4[4]!.start;
+    const air1 = clamp(tSt - g1t, 0.45, 0.66), take1 = tSt - air1;
+    if (t > take1 - 0.7 && t < w5[0]!.start + 0.3) {
+      const a = prog(t, take1 - 0.7, take1 - 0.4) * (1 - prog(t, w5[0]!.start - 0.2, w5[0]!.start + 0.3));
+      const j = jumpState(t, { tTake: take1, air: air1, from: { x: -16, y: 0 }, to: { x: 214, y: TRUE_DROP }, apex: 36, crouch: 0.3 });
+      if (j.mode === 'air') ghostAir(j.x, j.y, j.pose, rgba('ash', 0.9), a);
+      else if (j.landed <= 0) ghostAt(j.x, 0, j.pose, rgba('ash', 0.9), a);
+      else {
+        const v = j.landed;
+        const pose = bodyKeys(v, [[0, SP.reach], [0.08, SP.land], [0.3, SP.stumble], [0.52, SP.fours], [1.25, SP.sitGround]], 0.2);
+        const x = 214 + 96 * ease.outCubic(clamp(v / 0.75));
+        ghostAt(x, TRUE_DROP, pose, rgba('ash', 0.9), a);
+        mono(c, 'WORST CASE: −1 (A STUMBLE)', x - 60, TRUE_DROP + 40, { size: 13, color: rgba('ash', 0.9 * a * prog(v, 0.3, 0.6)), track: 3 });
+      }
     }
     // ghost 2: the best — jumps on "best", lands clean, walks into the light
     const g2t = w5[1]!.start;
-    if (t > g2t - 0.3) {
-      const a = prog(t, g2t - 0.3, g2t) * (1 - prog(t, end - 1.0, end - 0.6));
-      const g = this.ghost(t, g2t, 300, 0.6);
-      let x = g.x;
-      let pose = g.u <= 0 ? SP.set : g.u < 1 ? SP.leap : SP.land;
-      if (g.u >= 1 && t > g2t + 0.85) { const k = prog(t, g2t + 0.85, tBe + 0.6); x = lerp(300, DOOR_X + 40, k); pose = k < 1 ? walkPose(f.beat / 2) : SP.cheer; }
-      c.save(); c.globalAlpha = a;
-      person(c, x, g.y, S, pose, { color: rgba('ember', 0.95) });
-      person(c, x, g.y, S * 0.965, pose, { color: rgba('ink', 1) });
-      c.restore();
+    if (t > g2t - 0.7) {
+      const a = prog(t, g2t - 0.7, g2t - 0.4) * (1 - prog(t, end - 1.0, end - 0.6));
+      const j = jumpState(t, { tTake: g2t, air: 0.6, from: { x: -16, y: 0 }, to: { x: 300, y: TRUE_DROP }, apex: 70, crouch: 0.3 });
+      if (j.mode === 'air') ghostAir(j.x, j.y, j.pose, rgba('ember', 0.95), a);
+      else if (j.landed <= 0) ghostAt(j.x, 0, j.pose, rgba('ember', 0.95), a);
+      else {
+        const tw = g2t + 0.6 + 0.55;
+        const tr = track(t, [{ at: tw, walk: DOOR_X + 40, dur: Math.max(0.8, tBe + 0.5 - tw), end: SP.cheer }], S, 300, j.pose);
+        ghostAt(tr.x, TRUE_DROP, t < tw ? j.pose : tr.pose, rgba('ember', 0.95), a, tr.dir);
+      }
       if (open > 0) mono(c, 'BEST CASE: SOMETHING BEAUTIFUL', DOOR_X - 120, TRUE_DROP + 40, { size: 13, color: rgba('signal', open * a), track: 3 });
     }
-    // the person: walks back from the edge (on the first line), watches, then sets and runs at the end
-    const tSet = end - 1.25, tRun = end - 0.7;
-    let px = -60, pose = SP.stand;
-    const back = prog(t, this.ctx.start + 0.1, w4[3]!.start, ease.inOutQuad);
-    px = lerp(-60, -560, back);
-    if (back > 0 && back < 1) { pose = walkPose(-f.beat / 2); }
-    else pose = breath(SP.stand, t, 0.6);
-    if (t > tSet) pose = poseKeys(t, [[0, SP.stand], [tSet + 0.25, SP.set]], 0.25);
-    if (t > tRun) { const k = prog(t, tRun, end, ease.inQuad); px = lerp(-560, -40, k); pose = runPose(f.beat, 0.35); }
-    person(c, px, 0, S, pose, { dir: back > 0 && back < 1 ? -1 : 1 });
+    // the person: turns and walks back from the edge (on the first line), turns, watches; then sets, and runs
+    const tSet = end - 1.35, tRun = end - 0.85;
+    const tr = track(t, [
+      { at: this.ctx.start + 0.1, walk: -560, dur: w4[3]!.start - this.ctx.start - 0.1, face: -1 },
+      { at: w4[3]!.start + 0.15, pose: SP.stand, face: 1, blend: 0.5 },
+      { at: tSet, pose: SP.set, blend: 0.4 },
+      { at: tRun, run: -40, dur: end - tRun, accel: true },
+    ], S, -104, SP.breathe);
+    person(c, tr.x, 0, S, breath(tr.pose, t, tr.moving ? 0 : 0.6), { dir: tr.dir, lift: tr.lift });
     c.restore();
     // the lyric
     const st = { family: F.archivo(112.5, 900), size: 74, tracking: -2, sung: rgba('bone', 1), unsung: rgba('bone', 0.18), active: rgba('signal', 1), lead: 0.4 } as const;

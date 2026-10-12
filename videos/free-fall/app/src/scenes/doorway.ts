@@ -12,8 +12,9 @@ import { LIN, rgba } from '../engine/palette';
 import { F } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse } from '../engine/util';
-import { drawKaraoke, drawNo, mono, poseKeys } from './_ff';
-import { applyCam, breath, camKeys, drawCounter, drawWorld, DOOR_X, dropAt, M, person, S, SP, walkPose, type Cam } from './_story';
+import { drawKaraoke, drawNo, mono } from './_ff';
+import { track, type Body } from './_body';
+import { applyCam, breath, camKeys, drawCounter, drawWorld, DOOR_X, dropAt, ledgeTop, M, person, S, SP, type Cam } from './_story';
 import { stamp } from './ledger-kit';
 
 const FEAR = 0.3;
@@ -35,25 +36,26 @@ export default class Doorway extends Scene {
     const split = prog(t, this.l16.start - 0.15, this.l16.start + 0.25, ease.inOutCubic) * (1 - prog(t, tSide + 1.0, tSide + 1.6, ease.inOutCubic));
     // the person on the ledge: watching; after the split, walks back for the run-up and sets
     const tBack = tSide + 1.3, tSet = end - 0.7;
-    const personAt = (): { x: number; pose: ReturnType<typeof breath>; dir: 1 | -1 } => {
-      if (t < tBack) return { x: -40, pose: breath(t > tSide ? SP.breathe : SP.stand, t, 0.6), dir: 1 };
-      const k = prog(t, tBack, tSet, ease.inOutQuad);
-      if (k < 1) return { x: lerp(-40, -520, k), pose: walkPose(-f.beat / 2), dir: -1 };
-      return { x: -520, pose: poseKeys(t, [[0, SP.stand], [tSet + 0.3, SP.set]], 0.3), dir: 1 };
+    const personAt = () => {
+      const tr = track(t, [
+        { at: tSide - 0.2, pose: SP.breathe, blend: 0.6 },
+        { at: tBack, walk: -520, dur: tSet - tBack, face: -1 },
+        { at: tSet, pose: SP.set, face: 1, blend: 0.55 },
+      ], S, -40, SP.stand);
+      return { x: tr.x, pose: tr.moving ? tr.pose : breath(tr.pose, t, 0.6), dir: tr.dir, lift: tr.lift };
     };
     const pa = personAt();
     // one view of the world with a given door state and ghost
-    const view = (cam: Cam, open: number, noSign: number, ghost: { x: number; pose: ReturnType<typeof breath>; a: number } | null) => {
+    const view = (cam: Cam, open: number, noSign: number, ghost: { x: number; pose: Body; a: number; dir: 1 | -1 } | null) => {
       c.save(); applyCam(c, cam);
       drawWorld(c, cam, { t, fear: FEAR, door: open, glow: 0.4 + 1.2 * open + 0.5 * (1 - noSign), stars: 1 });
       if (noSign > 0) drawNo(c, DOOR_X + 0.47 * M, D - 1.2 * M, 0.38 * M * noSign, 1);
       if (ghost && ghost.a > 0) {
         c.save(); c.globalAlpha = ghost.a;
-        person(c, ghost.x, D, S, ghost.pose, { color: rgba('ember', 0.95) });
-        person(c, ghost.x, D, S * 0.965, ghost.pose, { color: rgba('ink', 1) });
+        person(c, ghost.x, D, S, ghost.pose, { outline: rgba('ember', 0.95), dir: ghost.dir });
         c.restore();
       }
-      person(c, pa.x, 0, S, pa.pose, { dir: pa.dir });
+      person(c, pa.x, 0, S, pa.pose, { dir: pa.dir, lift: pa.lift, support: ledgeTop(D) });
       c.restore();
     };
     if (split < 0.001) {
@@ -70,10 +72,11 @@ export default class Doorway extends Scene {
         const x0 = side === 0 ? 0 : half + (1 - split) * half, x1 = side === 0 ? half - (1 - split) * half : W;
         c.beginPath(); c.rect(x0, 0, x1 - x0, H); c.clip();
         c.translate(side === 0 ? -half / 2 * split : half / 2 * split, 0);
-        const gk = prog(t, w16[0]!.start, w16[2]!.start, ease.outCubic);
-        const gx = side === 0 ? lerp(140, DOOR_X - 140, gk) : lerp(140, DOOR_X + 40, prog(t, w16[0]!.start, tSide, ease.inOutCubic));
-        const gpose = side === 0 ? (gk < 1 ? walkPose(f.beat / 2) : breath(SP.stand, t)) : (prog(t, w16[0]!.start, tSide) < 1 ? walkPose(f.beat / 2) : SP.cheer);
-        view(cam, side === 0 ? 0 : 1, side === 0 ? 1 : 0, { x: gx, pose: gpose, a: prog(t, w16[0]!.start - 0.2, w16[0]!.start + 0.2) });
+        // the ghost on the far side: walks up to the shut door and waits / walks through the open one and cheers
+        const g = track(t, side === 0
+          ? [{ at: w16[0]!.start, walk: DOOR_X - 140, dur: w16[2]!.start - w16[0]!.start + 0.6 }]
+          : [{ at: w16[0]!.start, walk: DOOR_X + 40, dur: tSide - w16[0]!.start, end: SP.cheer }], S, 140, SP.stand);
+        view(cam, side === 0 ? 0 : 1, side === 0 ? 1 : 0, { x: g.x, pose: g.moving ? g.pose : breath(g.pose, t, 0.6), dir: g.dir, a: prog(t, w16[0]!.start - 0.2, w16[0]!.start + 0.2) });
         c.restore();
         mono(c, side === 0 ? 'IF THE DOOR SAYS NO' : 'IF IT SWINGS WIDE', side === 0 ? 104 : half + 60, 300, { size: 15, color: rgba(side === 0 ? 'ash' : 'signal', 0.9 * split), track: 5 });
       }

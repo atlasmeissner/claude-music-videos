@@ -11,7 +11,8 @@ import { F, font } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, hash, lerp, prog, pulse } from '../engine/util';
 import { bigWord, mono, wordColor } from './_ff';
-import { applyCam, camKeys, drawWorld, DOOR_X, M, person, S, SP, TRUE_DROP, type Cam } from './_story';
+import { crowdHop } from './_body';
+import { applyCam, breath, camKeys, drawWorld, DOOR_X, M, person, S, SP, TRUE_DROP, type Cam } from './_story';
 
 export default class Through extends Scene {
   L = new Layer2D();
@@ -39,10 +40,11 @@ export default class Through extends Scene {
     for (let i = 0; i < 12; i++) {
       const bx = DOOR_X - 520 + ((i + 0.5) / 12) * 1300 + (hash(i, 1) - 0.5) * 40;
       if (Math.abs(bx - (DOOR_X + 0.47 * M)) < 90) continue;
-      const h = Math.max(0, Math.sin(Math.PI * clamp(f.beatPhase * 1.6))) * 10 * hash(i, 3);
-      person(c, bx, TRUE_DROP - h, S * (0.58 + 0.17 * hash(i, 4)), SP.cheer, { color: rgba('ash', 0.8), dir: hash(i, 7) > 0.5 ? 1 : -1 });
+      const h = S * (0.58 + 0.17 * hash(i, 4));
+      const hp = crowdHop(t, f.beat, i, h, SP.cheer, this.ctx.audio.timeOfBeat.bind(this.ctx.audio));
+      person(c, bx, TRUE_DROP, h, hp.pose, { color: rgba('ash', 0.8), lift: hp.lift });
     }
-    person(c, DOOR_X + 0.47 * M, TRUE_DROP, S, SP.cheer, { color: rgba('ink', 1) });
+    person(c, DOOR_X + 0.47 * M, TRUE_DROP, S, breath(SP.cheer, t, 0.8), { color: rgba('ink', 1) });
     // the dimension of the drop, drawn in as the ledge comes into view
     const dk = prog(t, D[2]!, D[2]! + 0.8, ease.outCubic);
     if (dk > 0) {
