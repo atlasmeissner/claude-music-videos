@@ -5,69 +5,69 @@
    "section": "verse1",
    "text": "I pulled a thread and felt the building shake",
    "start": 16.678,
-   "end": 19.187,
+   "end": 19.175,
    "words": [
     {
      "w": "I",
      "start": 16.678,
      "end": 16.893,
-     "conf": 0.01,
+     "conf": 0.0,
      "src": "ctc+onset"
     },
     {
      "w": "pulled",
      "start": 16.893,
-     "end": 17.1,
-     "conf": 0.1,
+     "end": 17.281,
+     "conf": 0.15,
      "src": "ctc+onset"
     },
     {
      "w": "a",
-     "start": 17.1,
-     "end": 17.281,
-     "conf": 0.1,
-     "src": "whisper"
-    },
-    {
-     "w": "thread",
      "start": 17.281,
-     "end": 17.563,
+     "end": 17.361,
      "conf": 0.01,
      "src": "ctc+onset"
     },
     {
+     "w": "thread",
+     "start": 17.361,
+     "end": 17.607,
+     "conf": 0.0,
+     "src": "ctc+onset"
+    },
+    {
      "w": "and",
-     "start": 17.563,
+     "start": 17.607,
      "end": 17.728,
-     "conf": 0.03,
+     "conf": 0.01,
      "src": "ctc"
     },
     {
      "w": "felt",
      "start": 17.728,
      "end": 17.943,
-     "conf": 0.02,
+     "conf": 0.1,
      "src": "ctc+onset"
     },
     {
      "w": "the",
      "start": 17.943,
      "end": 18.141,
-     "conf": 0.16,
+     "conf": 0.31,
      "src": "ctc+onset"
     },
     {
      "w": "building",
      "start": 18.141,
-     "end": 18.797,
-     "conf": 0.26,
+     "end": 18.576,
+     "conf": 0.35,
      "src": "ctc+onset"
     },
     {
      "w": "shake",
-     "start": 18.797,
-     "end": 19.187,
-     "conf": 0.31,
+     "start": 18.576,
+     "end": 19.175,
+     "conf": 0.44,
      "src": "ctc+onset"
     }
    ]
@@ -77,61 +77,61 @@
    "section": "verse1",
    "text": "Moved a stone and watched the river break",
    "start": 19.998,
-   "end": 22.107,
+   "end": 22.12,
    "words": [
     {
      "w": "Moved",
      "start": 19.998,
-     "end": 20.23,
+     "end": 20.428,
      "conf": 0.26,
      "src": "ctc+onset"
     },
     {
      "w": "a",
-     "start": 20.23,
-     "end": 20.31,
-     "conf": 0.03,
+     "start": 20.428,
+     "end": 20.609,
+     "conf": 0.45,
      "src": "ctc+onset"
     },
     {
      "w": "stone",
-     "start": 20.31,
-     "end": 20.904,
-     "conf": 0.37,
-     "src": "ctc+onset"
+     "start": 20.609,
+     "end": 20.932,
+     "conf": 0.17,
+     "src": "ctc"
     },
     {
      "w": "and",
-     "start": 20.904,
-     "end": 21.044,
-     "conf": 0.32,
+     "start": 20.932,
+     "end": 21.012,
+     "conf": 0.13,
      "src": "ctc"
     },
     {
      "w": "watched",
-     "start": 21.044,
+     "start": 21.012,
      "end": 21.264,
-     "conf": 0.14,
+     "conf": 0.13,
      "src": "ctc"
     },
     {
      "w": "the",
      "start": 21.264,
-     "end": 21.519,
-     "conf": 0.08,
+     "end": 21.435,
+     "conf": 0.0,
      "src": "ctc+onset"
     },
     {
      "w": "river",
-     "start": 21.519,
+     "start": 21.435,
      "end": 21.867,
-     "conf": 0.36,
-     "src": "ctc+onset"
+     "conf": 0.3,
+     "src": "ctc"
     },
     {
      "w": "break",
      "start": 21.867,
-     "end": 22.107,
+     "end": 22.12,
      "conf": 0.0,
      "src": "ctc+onset"
     }
@@ -141,57 +141,57 @@
    "i": 2,
    "section": "verse1",
    "text": "Said one word on an ordinary night",
-   "start": 23.313,
-   "end": 26.658,
+   "start": 23.197,
+   "end": 26.458,
    "words": [
     {
      "w": "Said",
-     "start": 23.313,
-     "end": 23.609,
-     "conf": 0.28,
+     "start": 23.197,
+     "end": 23.522,
+     "conf": 0.24,
      "src": "ctc+onset"
     },
     {
      "w": "one",
-     "start": 23.609,
-     "end": 23.689,
-     "conf": 0.46,
+     "start": 23.522,
+     "end": 23.609,
+     "conf": 0.44,
      "src": "ctc+onset"
     },
     {
      "w": "word",
-     "start": 23.689,
+     "start": 23.609,
      "end": 24.329,
-     "conf": 0.44,
+     "conf": 0.35,
      "src": "ctc+onset"
     },
     {
      "w": "on",
      "start": 24.329,
      "end": 24.584,
-     "conf": 0.4,
+     "conf": 0.28,
      "src": "ctc+onset"
     },
     {
      "w": "an",
      "start": 24.584,
      "end": 24.764,
-     "conf": 0.41,
+     "conf": 0.29,
      "src": "ctc+onset"
     },
     {
      "w": "ordinary",
      "start": 24.764,
-     "end": 25.936,
-     "conf": 0.3,
+     "end": 25.84,
+     "conf": 0.24,
      "src": "ctc+onset"
     },
     {
      "w": "night",
-     "start": 26.221,
-     "end": 26.658,
-     "conf": 0.29,
-     "src": "ctc+onset"
+     "start": 25.84,
+     "end": 26.458,
+     "conf": 0.08,
+     "src": "whisper"
     }
    ]
   },
@@ -199,49 +199,49 @@
    "i": 3,
    "section": "verse1",
    "text": "And set a stranger's world alight",
-   "start": 26.658,
-   "end": 30.006,
+   "start": 26.579,
+   "end": 29.974,
    "words": [
     {
      "w": "And",
-     "start": 26.658,
-     "end": 27.04,
-     "conf": 0.04,
+     "start": 26.579,
+     "end": 26.72,
+     "conf": 0.1,
      "src": "ctc"
     },
     {
      "w": "set",
      "start": 27.04,
-     "end": 27.574,
-     "conf": 0.29,
+     "end": 27.429,
+     "conf": 0.26,
      "src": "ctc+onset"
     },
     {
      "w": "a",
-     "start": 27.574,
-     "end": 27.781,
-     "conf": 0.27,
+     "start": 27.429,
+     "end": 27.609,
+     "conf": 0.29,
      "src": "ctc+onset"
     },
     {
      "w": "stranger's",
-     "start": 27.781,
+     "start": 27.609,
      "end": 28.7,
-     "conf": 0.4,
-     "src": "ctc"
+     "conf": 0.38,
+     "src": "ctc+onset"
     },
     {
      "w": "world",
      "start": 28.7,
-     "end": 29.425,
-     "conf": 0.41,
+     "end": 29.372,
+     "conf": 0.33,
      "src": "ctc+onset"
     },
     {
      "w": "alight",
-     "start": 29.425,
-     "end": 30.006,
-     "conf": 0.25,
+     "start": 29.372,
+     "end": 29.974,
+     "conf": 0.2,
      "src": "ctc"
     }
    ]
@@ -250,56 +250,56 @@
    "i": 4,
    "section": "pre1",
    "text": "Nothing stops where you think it ends",
-   "start": 30.743,
-   "end": 33.307,
+   "start": 30.569,
+   "end": 33.278,
    "words": [
     {
      "w": "Nothing",
-     "start": 30.743,
-     "end": 31.173,
-     "conf": 0.01,
+     "start": 30.569,
+     "end": 30.952,
+     "conf": 0.07,
      "src": "ctc+onset"
     },
     {
      "w": "stops",
-     "start": 31.173,
+     "start": 30.952,
      "end": 31.591,
-     "conf": 0.34,
+     "conf": 0.36,
      "src": "ctc+onset"
     },
     {
      "w": "where",
      "start": 31.591,
      "end": 31.991,
-     "conf": 0.13,
+     "conf": 0.2,
      "src": "ctc+onset"
     },
     {
      "w": "you",
      "start": 31.991,
-     "end": 32.212,
-     "conf": 0.08,
+     "end": 32.151,
+     "conf": 0.02,
      "src": "ctc+onset"
     },
     {
      "w": "think",
-     "start": 32.212,
+     "start": 32.151,
      "end": 32.403,
-     "conf": 0.31,
-     "src": "ctc+onset"
+     "conf": 0.4,
+     "src": "ctc"
     },
     {
      "w": "it",
      "start": 32.403,
      "end": 32.81,
-     "conf": 0.19,
+     "conf": 0.39,
      "src": "ctc+onset"
     },
     {
      "w": "ends",
      "start": 32.81,
-     "end": 33.307,
-     "conf": 0.26,
+     "end": 33.278,
+     "conf": 0.34,
      "src": "ctc+onset"
     }
    ]
@@ -309,48 +309,48 @@
    "section": "pre1",
    "text": "Every line you draw just bends",
    "start": 33.82,
-   "end": 36.936,
+   "end": 36.96,
    "words": [
     {
      "w": "Every",
      "start": 33.82,
-     "end": 34.493,
-     "conf": 0.28,
+     "end": 34.184,
+     "conf": 0.37,
      "src": "ctc+onset"
     },
     {
      "w": "line",
      "start": 34.493,
      "end": 34.894,
-     "conf": 0.28,
+     "conf": 0.24,
      "src": "ctc+onset"
     },
     {
      "w": "you",
      "start": 34.894,
-     "end": 35.312,
-     "conf": 0.34,
+     "end": 35.225,
+     "conf": 0.41,
      "src": "ctc+onset"
     },
     {
      "w": "draw",
-     "start": 35.312,
+     "start": 35.225,
      "end": 35.712,
-     "conf": 0.29,
+     "conf": 0.32,
      "src": "ctc+onset"
     },
     {
      "w": "just",
      "start": 35.712,
      "end": 36.136,
-     "conf": 0.21,
+     "conf": 0.24,
      "src": "ctc+onset"
     },
     {
      "w": "bends",
      "start": 36.136,
-     "end": 36.936,
-     "conf": 0.08,
+     "end": 36.96,
+     "conf": 0.14,
      "src": "ctc+onset"
     }
    ]
@@ -360,21 +360,21 @@
    "section": "chorus1",
    "text": "Dominoes, dominoes",
    "start": 37.169,
-   "end": 39.943,
+   "end": 39.878,
    "words": [
     {
      "w": "Dominoes,",
      "start": 37.169,
-     "end": 38.279,
-     "conf": 0.07,
+     "end": 38.228,
+     "conf": 0.05,
      "src": "ctc+onset"
     },
     {
      "w": "dominoes",
-     "start": 38.638,
-     "end": 39.943,
-     "conf": 0.11,
-     "src": "ctc+onset"
+     "start": 38.872,
+     "end": 39.878,
+     "conf": 0.05,
+     "src": "ctc"
     }
    ]
   },
@@ -383,48 +383,48 @@
    "section": "chorus1",
    "text": "Every touch becomes a thousand echoes",
    "start": 40.054,
-   "end": 43.752,
+   "end": 43.698,
    "words": [
     {
      "w": "Every",
      "start": 40.054,
-     "end": 40.484,
-     "conf": 0.3,
+     "end": 40.414,
+     "conf": 0.34,
      "src": "ctc+onset"
     },
     {
      "w": "touch",
-     "start": 40.484,
+     "start": 40.414,
      "end": 40.885,
-     "conf": 0.3,
+     "conf": 0.23,
      "src": "ctc+onset"
     },
     {
      "w": "becomes",
      "start": 40.885,
-     "end": 41.703,
-     "conf": 0.37,
+     "end": 41.477,
+     "conf": 0.47,
      "src": "ctc+onset"
     },
     {
      "w": "a",
-     "start": 41.703,
-     "end": 41.935,
-     "conf": 0.1,
+     "start": 41.477,
+     "end": 41.627,
+     "conf": 0.15,
      "src": "ctc+onset"
     },
     {
      "w": "thousand",
      "start": 41.935,
      "end": 42.777,
-     "conf": 0.13,
+     "conf": 0.09,
      "src": "ctc+onset"
     },
     {
      "w": "echoes",
      "start": 42.777,
-     "end": 43.752,
-     "conf": 0.15,
+     "end": 43.698,
+     "conf": 0.2,
      "src": "ctc+onset"
     }
    ]
@@ -434,20 +434,20 @@
    "section": "chorus1",
    "text": "Dominoes, dominoes",
    "start": 44.26,
-   "end": 46.504,
+   "end": 46.701,
    "words": [
     {
      "w": "Dominoes,",
      "start": 44.26,
-     "end": 44.903,
-     "conf": 0.01,
+     "end": 45.674,
+     "conf": 0.04,
      "src": "whisper"
     },
     {
      "w": "dominoes",
      "start": 45.674,
-     "end": 46.504,
-     "conf": 0.06,
+     "end": 46.701,
+     "conf": 0.07,
      "src": "whisper+onset"
     }
    ]
@@ -456,63 +456,63 @@
    "i": 9,
    "section": "chorus1",
    "text": "You never see how far the falling goes",
-   "start": 46.504,
-   "end": 50.236,
+   "start": 46.701,
+   "end": 50.155,
    "words": [
     {
      "w": "You",
-     "start": 46.504,
-     "end": 46.701,
-     "conf": 0.41,
+     "start": 46.701,
+     "end": 46.781,
+     "conf": 0.01,
      "src": "ctc+onset"
     },
     {
      "w": "never",
-     "start": 46.701,
-     "end": 47.119,
-     "conf": 0.42,
+     "start": 46.781,
+     "end": 46.904,
+     "conf": 0.21,
      "src": "ctc+onset"
     },
     {
      "w": "see",
-     "start": 47.119,
+     "start": 46.904,
      "end": 47.433,
-     "conf": 0.49,
+     "conf": 0.46,
      "src": "ctc+onset"
     },
     {
      "w": "how",
      "start": 47.433,
-     "end": 47.932,
-     "conf": 0.34,
+     "end": 47.865,
+     "conf": 0.14,
      "src": "ctc+onset"
     },
     {
      "w": "far",
-     "start": 47.932,
-     "end": 48.392,
-     "conf": 0.22,
-     "src": "ctc+onset"
+     "start": 47.865,
+     "end": 48.327,
+     "conf": 0.24,
+     "src": "ctc"
     },
     {
      "w": "the",
-     "start": 48.392,
-     "end": 48.553,
-     "conf": 0.02,
+     "start": 48.327,
+     "end": 48.488,
+     "conf": 0.01,
      "src": "ctc"
     },
     {
      "w": "falling",
-     "start": 48.553,
-     "end": 49.511,
-     "conf": 0.4,
-     "src": "ctc+onset"
+     "start": 48.488,
+     "end": 49.395,
+     "conf": 0.26,
+     "src": "ctc"
     },
     {
      "w": "goes",
-     "start": 49.511,
-     "end": 50.236,
-     "conf": 0.22,
+     "start": 49.395,
+     "end": 50.155,
+     "conf": 0.23,
      "src": "ctc+onset"
     }
    ]
@@ -521,64 +521,64 @@
    "i": 10,
    "section": "verse2",
    "text": "I chose the left road on a whim",
-   "start": 61.72,
-   "end": 65.47,
+   "start": 62.822,
+   "end": 65.398,
    "words": [
     {
      "w": "I",
-     "start": 61.72,
-     "end": 63.263,
-     "conf": 0.38,
-     "src": "whisper"
+     "start": 62.822,
+     "end": 63.031,
+     "conf": 0.03,
+     "src": "manual+onset"
     },
     {
      "w": "chose",
-     "start": 63.263,
-     "end": 63.483,
-     "conf": 0.33,
-     "src": "ctc+onset"
+     "start": 63.031,
+     "end": 63.263,
+     "conf": 0.29,
+     "src": "manual+onset"
     },
     {
      "w": "the",
-     "start": 63.483,
-     "end": 63.706,
+     "start": 63.263,
+     "end": 63.483,
      "conf": 0.0,
-     "src": "ctc+onset"
+     "src": "manual+onset"
     },
     {
      "w": "left",
-     "start": 63.706,
+     "start": 63.483,
      "end": 64.087,
-     "conf": 0.3,
-     "src": "ctc"
+     "conf": 0.09,
+     "src": "manual+onset"
     },
     {
      "w": "road",
      "start": 64.087,
-     "end": 64.702,
+     "end": 64.27,
      "conf": 0.31,
-     "src": "ctc+onset"
+     "src": "manual+onset"
     },
     {
      "w": "on",
-     "start": 64.702,
-     "end": 64.917,
-     "conf": 0.38,
-     "src": "ctc+onset"
+     "start": 64.27,
+     "end": 64.453,
+     "conf": 0.34,
+     "src": "manual"
     },
     {
      "w": "a",
-     "start": 64.917,
-     "end": 65.12,
-     "conf": 0.42,
-     "src": "ctc+onset"
+     "start": 64.453,
+     "end": 64.702,
+     "conf": 0.4,
+     "src": "manual+onset"
     },
     {
      "w": "whim",
-     "start": 65.12,
-     "end": 65.47,
-     "conf": 0.23,
-     "src": "ctc+onset"
+     "start": 64.702,
+     "end": 65.398,
+     "conf": 0.24,
+     "src": "manual+onset"
     }
    ]
   },
@@ -586,64 +586,64 @@
    "i": 11,
    "section": "verse2",
    "text": "And missed a war and found a hymn",
-   "start": 66.453,
-   "end": 69.039,
+   "start": 65.521,
+   "end": 68.847,
    "words": [
     {
      "w": "And",
-     "start": 66.453,
-     "end": 66.612,
-     "conf": 0.19,
-     "src": "ctc"
+     "start": 65.521,
+     "end": 66.485,
+     "conf": 0.05,
+     "src": "whisper+onset"
     },
     {
      "w": "missed",
-     "start": 66.612,
+     "start": 66.485,
      "end": 66.757,
-     "conf": 0.17,
-     "src": "ctc+onset"
+     "conf": 0.15,
+     "src": "ctc"
     },
     {
      "w": "a",
      "start": 66.757,
      "end": 67.001,
-     "conf": 0.19,
+     "conf": 0.03,
      "src": "ctc+onset"
     },
     {
      "w": "war",
      "start": 67.001,
-     "end": 67.555,
-     "conf": 0.43,
+     "end": 67.47,
+     "conf": 0.34,
      "src": "ctc+onset"
     },
     {
      "w": "and",
-     "start": 67.555,
-     "end": 67.796,
-     "conf": 0.38,
+     "start": 67.47,
+     "end": 67.628,
+     "conf": 0.35,
      "src": "ctc"
     },
     {
      "w": "found",
-     "start": 67.796,
-     "end": 68.365,
-     "conf": 0.48,
+     "start": 67.628,
+     "end": 68.22,
+     "conf": 0.36,
      "src": "ctc+onset"
     },
     {
      "w": "a",
-     "start": 68.365,
-     "end": 68.538,
-     "conf": 0.03,
+     "start": 68.22,
+     "end": 68.365,
+     "conf": 0.07,
      "src": "ctc+onset"
     },
     {
      "w": "hymn",
-     "start": 68.538,
-     "end": 69.039,
-     "conf": 0.24,
-     "src": "ctc"
+     "start": 68.365,
+     "end": 68.847,
+     "conf": 0.25,
+     "src": "ctc+onset"
     }
    ]
   },
@@ -651,56 +651,56 @@
    "i": 12,
    "section": "verse2",
    "text": "Held a door for someone passing through",
-   "start": 69.457,
-   "end": 72.969,
+   "start": 68.847,
+   "end": 72.898,
    "words": [
     {
      "w": "Held",
-     "start": 69.457,
-     "end": 69.892,
-     "conf": 0.3,
-     "src": "ctc+onset"
+     "start": 68.847,
+     "end": 69.724,
+     "conf": 0.03,
+     "src": "whisper+onset"
     },
     {
      "w": "a",
-     "start": 69.892,
-     "end": 70.089,
-     "conf": 0.15,
+     "start": 69.724,
+     "end": 70.043,
+     "conf": 0.04,
      "src": "ctc+onset"
     },
     {
      "w": "door",
-     "start": 70.089,
-     "end": 70.705,
-     "conf": 0.18,
+     "start": 70.043,
+     "end": 70.56,
+     "conf": 0.1,
      "src": "ctc+onset"
     },
     {
      "w": "for",
-     "start": 70.705,
+     "start": 70.56,
      "end": 70.914,
-     "conf": 0.14,
+     "conf": 0.06,
      "src": "ctc+onset"
     },
     {
      "w": "someone",
      "start": 70.914,
      "end": 71.709,
-     "conf": 0.48,
+     "conf": 0.45,
      "src": "ctc+onset"
     },
     {
      "w": "passing",
      "start": 71.709,
-     "end": 72.557,
-     "conf": 0.48,
+     "end": 72.446,
+     "conf": 0.42,
      "src": "ctc+onset"
     },
     {
      "w": "through",
-     "start": 72.557,
-     "end": 72.969,
-     "conf": 0.44,
+     "start": 72.446,
+     "end": 72.898,
+     "conf": 0.27,
      "src": "ctc+onset"
     }
    ]
@@ -709,63 +709,63 @@
    "i": 13,
    "section": "verse2",
    "text": "Who held a door that led to you",
-   "start": 73.11,
-   "end": 76.137,
+   "start": 72.928,
+   "end": 76.016,
    "words": [
     {
      "w": "Who",
-     "start": 73.11,
-     "end": 73.23,
-     "conf": 0.47,
-     "src": "ctc"
+     "start": 72.928,
+     "end": 73.08,
+     "conf": 0.01,
+     "src": "ctc+onset"
     },
     {
      "w": "held",
-     "start": 73.538,
-     "end": 74.012,
-     "conf": 0.36,
+     "start": 73.41,
+     "end": 73.884,
+     "conf": 0.3,
      "src": "ctc+onset"
     },
     {
      "w": "a",
-     "start": 74.012,
+     "start": 73.884,
      "end": 74.182,
-     "conf": 0.32,
+     "conf": 0.06,
      "src": "ctc"
     },
     {
      "w": "door",
      "start": 74.182,
      "end": 74.629,
-     "conf": 0.2,
+     "conf": 0.16,
      "src": "ctc+onset"
     },
     {
      "w": "that",
      "start": 74.629,
      "end": 75.053,
-     "conf": 0.23,
+     "conf": 0.09,
      "src": "ctc+onset"
     },
     {
      "w": "led",
      "start": 75.053,
      "end": 75.401,
-     "conf": 0.41,
+     "conf": 0.35,
      "src": "ctc+onset"
     },
     {
      "w": "to",
      "start": 75.401,
-     "end": 75.696,
-     "conf": 0.45,
+     "end": 75.574,
+     "conf": 0.36,
      "src": "ctc+onset"
     },
     {
      "w": "you",
-     "start": 75.997,
-     "end": 76.137,
-     "conf": 0.38,
+     "start": 75.875,
+     "end": 76.016,
+     "conf": 0.26,
      "src": "ctc"
     }
    ]
@@ -774,50 +774,50 @@
    "i": 14,
    "section": "pre2",
    "text": "The second step is never seen",
-   "start": 76.42,
-   "end": 79.54,
+   "start": 76.62,
+   "end": 79.458,
    "words": [
     {
      "w": "The",
-     "start": 76.42,
-     "end": 76.904,
-     "conf": 0.0,
-     "src": "whisper"
+     "start": 76.62,
+     "end": 76.842,
+     "conf": 0.04,
+     "src": "ctc"
     },
     {
      "w": "second",
-     "start": 76.904,
+     "start": 76.842,
      "end": 77.299,
-     "conf": 0.0,
-     "src": "ctc+onset"
+     "conf": 0.27,
+     "src": "ctc"
     },
     {
      "w": "step",
      "start": 77.299,
-     "end": 77.78,
-     "conf": 0.01,
-     "src": "whisper+onset"
+     "end": 77.915,
+     "conf": 0.26,
+     "src": "ctc+onset"
     },
     {
      "w": "is",
-     "start": 77.78,
-     "end": 78.18,
-     "conf": 0.01,
-     "src": "whisper"
+     "start": 77.915,
+     "end": 78.15,
+     "conf": 0.35,
+     "src": "ctc+onset"
     },
     {
      "w": "never",
-     "start": 78.18,
-     "end": 78.78,
-     "conf": 0.0,
-     "src": "whisper"
+     "start": 78.572,
+     "end": 79.116,
+     "conf": 0.16,
+     "src": "ctc"
     },
     {
      "w": "seen",
-     "start": 78.78,
-     "end": 79.54,
-     "conf": 0.01,
-     "src": "whisper+onset"
+     "start": 79.116,
+     "end": 79.458,
+     "conf": 0.28,
+     "src": "ctc"
     }
    ]
   },
@@ -825,42 +825,42 @@
    "i": 15,
    "section": "pre2",
    "text": "Until it's everywhere you've been",
-   "start": 79.54,
-   "end": 83.16,
+   "start": 79.981,
+   "end": 83.138,
    "words": [
     {
      "w": "Until",
-     "start": 79.54,
-     "end": 80.237,
-     "conf": 0.05,
-     "src": "whisper"
+     "start": 79.981,
+     "end": 80.457,
+     "conf": 0.24,
+     "src": "ctc+onset"
     },
     {
      "w": "it's",
-     "start": 80.237,
-     "end": 81.01,
-     "conf": 0.1,
-     "src": "whisper+onset"
+     "start": 80.457,
+     "end": 80.766,
+     "conf": 0.48,
+     "src": "ctc+onset"
     },
     {
      "w": "everywhere",
-     "start": 81.01,
-     "end": 81.62,
-     "conf": 0.06,
-     "src": "ctc"
+     "start": 81.241,
+     "end": 82.032,
+     "conf": 0.21,
+     "src": "ctc+onset"
     },
     {
      "w": "you've",
-     "start": 81.62,
+     "start": 82.032,
      "end": 82.477,
-     "conf": 0.07,
-     "src": "whisper"
+     "conf": 0.29,
+     "src": "ctc"
     },
     {
      "w": "been",
      "start": 82.477,
-     "end": 83.16,
-     "conf": 0.02,
+     "end": 83.138,
+     "conf": 0.13,
      "src": "ctc+onset"
     }
    ]
@@ -870,20 +870,20 @@
    "section": "chorus2",
    "text": "Dominoes, dominoes",
    "start": 83.16,
-   "end": 86.343,
+   "end": 86.218,
    "words": [
     {
      "w": "Dominoes,",
      "start": 83.16,
-     "end": 84.679,
-     "conf": 0.0,
+     "end": 84.527,
+     "conf": 0.03,
      "src": "whisper"
     },
     {
      "w": "dominoes",
      "start": 84.944,
-     "end": 86.343,
-     "conf": 0.06,
+     "end": 86.218,
+     "conf": 0.05,
      "src": "ctc+onset"
     }
    ]
@@ -892,49 +892,49 @@
    "i": 17,
    "section": "chorus2",
    "text": "Every touch becomes a thousand echoes",
-   "start": 86.628,
-   "end": 90.0,
+   "start": 86.396,
+   "end": 90.039,
    "words": [
     {
      "w": "Every",
-     "start": 86.628,
-     "end": 86.837,
-     "conf": 0.21,
+     "start": 86.396,
+     "end": 86.75,
+     "conf": 0.18,
      "src": "ctc+onset"
     },
     {
      "w": "touch",
-     "start": 86.837,
+     "start": 86.75,
      "end": 87.243,
-     "conf": 0.28,
+     "conf": 0.08,
      "src": "ctc+onset"
     },
     {
      "w": "becomes",
      "start": 87.243,
-     "end": 88.062,
-     "conf": 0.4,
+     "end": 87.905,
+     "conf": 0.28,
      "src": "ctc+onset"
     },
     {
      "w": "a",
-     "start": 88.062,
-     "end": 88.282,
+     "start": 87.905,
+     "end": 88.025,
      "conf": 0.29,
      "src": "ctc+onset"
     },
     {
      "w": "thousand",
      "start": 88.282,
-     "end": 89.333,
-     "conf": 0.13,
+     "end": 89.112,
+     "conf": 0.09,
      "src": "ctc+onset"
     },
     {
      "w": "echoes",
-     "start": 89.333,
-     "end": 90.0,
-     "conf": 0.16,
+     "start": 89.112,
+     "end": 90.039,
+     "conf": 0.17,
      "src": "ctc+onset"
     }
    ]
@@ -943,22 +943,22 @@
    "i": 18,
    "section": "chorus2",
    "text": "Dominoes, dominoes",
-   "start": 90.0,
-   "end": 92.939,
+   "start": 90.146,
+   "end": 92.96,
    "words": [
     {
      "w": "Dominoes,",
-     "start": 90.0,
-     "end": 91.315,
-     "conf": 0.1,
-     "src": "whisper"
+     "start": 90.146,
+     "end": 91.167,
+     "conf": 0.09,
+     "src": "ctc+onset"
     },
     {
      "w": "dominoes",
      "start": 91.591,
-     "end": 92.939,
-     "conf": 0.15,
-     "src": "ctc+onset"
+     "end": 92.96,
+     "conf": 0.06,
+     "src": "whisper+onset"
     }
    ]
   },
@@ -966,63 +966,63 @@
    "i": 19,
    "section": "chorus2",
    "text": "You never see how far the falling goes",
-   "start": 92.959,
-   "end": 96.52,
+   "start": 92.96,
+   "end": 96.057,
    "words": [
     {
      "w": "You",
-     "start": 92.959,
+     "start": 92.96,
      "end": 93.048,
-     "conf": 0.39,
+     "conf": 0.0,
      "src": "ctc"
     },
     {
      "w": "never",
      "start": 93.048,
-     "end": 93.46,
-     "conf": 0.34,
+     "end": 93.257,
+     "conf": 0.12,
      "src": "ctc+onset"
     },
     {
      "w": "see",
-     "start": 93.46,
-     "end": 93.982,
-     "conf": 0.44,
+     "start": 93.257,
+     "end": 93.768,
+     "conf": 0.16,
      "src": "ctc+onset"
     },
     {
      "w": "how",
-     "start": 93.982,
-     "end": 94.285,
-     "conf": 0.31,
-     "src": "ctc"
+     "start": 93.768,
+     "end": 94.064,
+     "conf": 0.1,
+     "src": "ctc+onset"
     },
     {
      "w": "far",
-     "start": 94.285,
-     "end": 94.824,
-     "conf": 0.29,
+     "start": 94.064,
+     "end": 94.689,
+     "conf": 0.13,
      "src": "ctc+onset"
     },
     {
      "w": "the",
-     "start": 94.824,
+     "start": 94.689,
      "end": 94.906,
-     "conf": 0.22,
+     "conf": 0.01,
      "src": "ctc"
     },
     {
      "w": "falling",
      "start": 94.906,
-     "end": 95.858,
-     "conf": 0.21,
+     "end": 95.742,
+     "conf": 0.15,
      "src": "ctc+onset"
     },
     {
      "w": "goes",
-     "start": 95.858,
-     "end": 96.52,
-     "conf": 0.2,
+     "start": 95.742,
+     "end": 96.057,
+     "conf": 0.15,
      "src": "ctc+onset"
     }
    ]
@@ -1031,57 +1031,57 @@
    "i": 20,
    "section": "bridge",
    "text": "And somewhere now because of something small",
-   "start": 96.52,
-   "end": 102.602,
+   "start": 98.215,
+   "end": 102.439,
    "words": [
     {
      "w": "And",
-     "start": 96.52,
-     "end": 98.458,
-     "conf": 0.08,
-     "src": "whisper"
+     "start": 98.215,
+     "end": 98.319,
+     "conf": 0.3,
+     "src": "ctc+onset"
     },
     {
      "w": "somewhere",
-     "start": 98.458,
+     "start": 98.319,
      "end": 99.277,
-     "conf": 0.19,
+     "conf": 0.32,
      "src": "ctc+onset"
     },
     {
      "w": "now",
      "start": 99.277,
-     "end": 99.863,
-     "conf": 0.21,
+     "end": 99.701,
+     "conf": 0.5,
      "src": "ctc+onset"
     },
     {
      "w": "because",
-     "start": 99.863,
-     "end": 100.778,
-     "conf": 0.18,
+     "start": 99.701,
+     "end": 100.571,
+     "conf": 0.37,
      "src": "ctc+onset"
     },
     {
      "w": "of",
-     "start": 100.778,
-     "end": 100.955,
-     "conf": 0.48,
-     "src": "ctc"
+     "start": 100.571,
+     "end": 100.838,
+     "conf": 0.49,
+     "src": "ctc+onset"
     },
     {
      "w": "something",
-     "start": 100.955,
-     "end": 101.78,
-     "conf": 0.48,
+     "start": 100.838,
+     "end": 101.808,
+     "conf": 0.49,
      "src": "ctc+onset"
     },
     {
      "w": "small",
-     "start": 102.061,
-     "end": 102.602,
-     "conf": 0.48,
-     "src": "ctc"
+     "start": 101.808,
+     "end": 102.439,
+     "conf": 0.5,
+     "src": "ctc+onset"
     }
    ]
   },
@@ -1089,50 +1089,50 @@
    "i": 21,
    "section": "bridge",
    "text": "Something I won't remember at all",
-   "start": 104.316,
-   "end": 107.207,
+   "start": 104.13,
+   "end": 107.116,
    "words": [
     {
      "w": "Something",
-     "start": 104.316,
-     "end": 105.157,
-     "conf": 0.48,
+     "start": 104.13,
+     "end": 104.623,
+     "conf": 0.28,
      "src": "ctc+onset"
     },
     {
      "w": "I",
-     "start": 105.157,
-     "end": 105.268,
-     "conf": 0.48,
-     "src": "ctc+onset"
+     "start": 104.623,
+     "end": 105.157,
+     "conf": 0.0,
+     "src": "whisper+onset"
     },
     {
      "w": "won't",
-     "start": 105.268,
-     "end": 105.924,
-     "conf": 0.09,
+     "start": 105.157,
+     "end": 105.769,
+     "conf": 0.17,
      "src": "ctc+onset"
     },
     {
      "w": "remember",
-     "start": 105.924,
+     "start": 105.769,
      "end": 106.278,
-     "conf": 0.47,
+     "conf": 0.43,
      "src": "ctc"
     },
     {
      "w": "at",
      "start": 106.278,
-     "end": 107.047,
-     "conf": 0.09,
+     "end": 106.783,
+     "conf": 0.0,
      "src": "whisper+onset"
     },
     {
      "w": "all",
-     "start": 107.047,
-     "end": 107.207,
-     "conf": 0.04,
-     "src": "ctc"
+     "start": 106.783,
+     "end": 107.116,
+     "conf": 0.0,
+     "src": "ctc+onset"
     }
    ]
   },
@@ -1140,35 +1140,35 @@
    "i": 22,
    "section": "bridge",
    "text": "A life is changing",
-   "start": 108.484,
-   "end": 110.446,
+   "start": 108.263,
+   "end": 110.56,
    "words": [
     {
      "w": "A",
-     "start": 108.484,
-     "end": 108.564,
+     "start": 108.263,
+     "end": 108.484,
      "conf": 0.48,
      "src": "ctc+onset"
     },
     {
      "w": "life",
-     "start": 108.564,
-     "end": 109.363,
-     "conf": 0.46,
+     "start": 108.484,
+     "end": 109.151,
+     "conf": 0.49,
      "src": "ctc+onset"
     },
     {
      "w": "is",
-     "start": 109.363,
-     "end": 109.784,
-     "conf": 0.48,
-     "src": "ctc"
+     "start": 109.151,
+     "end": 109.703,
+     "conf": 0.49,
+     "src": "ctc+onset"
     },
     {
      "w": "changing",
-     "start": 109.784,
-     "end": 110.446,
-     "conf": 0.16,
+     "start": 109.703,
+     "end": 110.56,
+     "conf": 0.25,
      "src": "ctc+onset"
     }
    ]
@@ -1178,13 +1178,13 @@
    "section": "final",
    "text": "Dominoes",
    "start": 110.8,
-   "end": 112.785,
+   "end": 112.615,
    "words": [
     {
      "w": "Dominoes",
      "start": 110.8,
-     "end": 112.785,
-     "conf": 0.09,
+     "end": 112.615,
+     "conf": 0.15,
      "src": "manual"
     }
    ]
@@ -1194,13 +1194,13 @@
    "section": "final",
    "text": "Dominoes",
    "start": 114.96,
-   "end": 116.164,
+   "end": 115.993,
    "words": [
     {
      "w": "Dominoes",
      "start": 114.96,
-     "end": 116.164,
-     "conf": 0.0,
+     "end": 115.993,
+     "conf": 0.18,
      "src": "manual"
     }
    ]
@@ -1210,13 +1210,13 @@
    "section": "final",
    "text": "Dominoes",
    "start": 118.3,
-   "end": 119.543,
+   "end": 119.344,
    "words": [
     {
      "w": "Dominoes",
      "start": 118.3,
-     "end": 119.543,
-     "conf": 0.0,
+     "end": 119.344,
+     "conf": 0.19,
      "src": "manual"
     }
    ]
@@ -1226,20 +1226,20 @@
    "section": "final",
    "text": "Dominoes, dominoes",
    "start": 124.08,
-   "end": 126.206,
+   "end": 126.28,
    "words": [
     {
      "w": "Dominoes,",
      "start": 124.08,
-     "end": 124.943,
-     "conf": 0.01,
+     "end": 124.767,
+     "conf": 0.04,
      "src": "manual"
     },
     {
      "w": "dominoes",
      "start": 125.196,
-     "end": 126.206,
-     "conf": 0.01,
+     "end": 126.28,
+     "conf": 0.02,
      "src": "manual+onset"
     }
    ]
@@ -1248,50 +1248,50 @@
    "i": 27,
    "section": "final",
    "text": "Every life becomes a thousand echoes",
-   "start": 126.88,
+   "start": 126.688,
    "end": 129.771,
    "words": [
     {
      "w": "Every",
-     "start": 126.88,
-     "end": 127.106,
-     "conf": 0.37,
+     "start": 126.688,
+     "end": 127.044,
+     "conf": 0.35,
      "src": "ctc+onset"
     },
     {
      "w": "life",
-     "start": 127.106,
-     "end": 127.629,
-     "conf": 0.47,
-     "src": "ctc+onset"
-    },
-    {
-     "w": "becomes",
-     "start": 127.629,
-     "end": 128.337,
-     "conf": 0.22,
+     "start": 127.044,
+     "end": 127.478,
+     "conf": 0.42,
      "src": "ctc"
     },
     {
+     "w": "becomes",
+     "start": 127.478,
+     "end": 128.145,
+     "conf": 0.11,
+     "src": "ctc+onset"
+    },
+    {
      "w": "a",
-     "start": 128.337,
-     "end": 128.546,
-     "conf": 0.14,
+     "start": 128.145,
+     "end": 128.265,
+     "conf": 0.06,
      "src": "ctc+onset"
     },
     {
      "w": "thousand",
      "start": 128.546,
-     "end": 129.173,
+     "end": 129.416,
      "conf": 0.16,
      "src": "ctc+onset"
     },
     {
      "w": "echoes",
-     "start": 129.173,
+     "start": 129.416,
      "end": 129.771,
-     "conf": 0.02,
-     "src": "whisper+onset"
+     "conf": 0.07,
+     "src": "ctc+onset"
     }
    ]
   },
@@ -1300,20 +1300,20 @@
    "section": "final",
    "text": "Dominoes, dominoes",
    "start": 129.771,
-   "end": 132.882,
+   "end": 132.638,
    "words": [
     {
      "w": "Dominoes,",
      "start": 129.771,
-     "end": 130.517,
-     "conf": 0.06,
+     "end": 131.44,
+     "conf": 0.03,
      "src": "manual+onset"
     },
     {
      "w": "dominoes",
      "start": 131.44,
-     "end": 132.882,
-     "conf": 0.01,
+     "end": 132.638,
+     "conf": 0.04,
      "src": "manual"
     }
    ]
@@ -1322,70 +1322,70 @@
    "i": 29,
    "section": "final",
    "text": "And now I see how far the falling goes",
-   "start": 133.341,
-   "end": 137.371,
+   "start": 133.114,
+   "end": 137.3,
    "words": [
     {
      "w": "And",
-     "start": 133.341,
-     "end": 133.501,
-     "conf": 0.31,
+     "start": 133.114,
+     "end": 133.341,
+     "conf": 0.04,
      "src": "ctc+onset"
     },
     {
      "w": "now",
-     "start": 133.501,
-     "end": 133.741,
-     "conf": 0.34,
-     "src": "ctc"
+     "start": 133.341,
+     "end": 133.567,
+     "conf": 0.27,
+     "src": "ctc+onset"
     },
     {
      "w": "I",
-     "start": 133.741,
-     "end": 133.821,
+     "start": 133.567,
+     "end": 133.647,
      "conf": 0.0,
      "src": "ctc+onset"
     },
     {
      "w": "see",
-     "start": 133.821,
-     "end": 134.323,
-     "conf": 0.47,
+     "start": 133.647,
+     "end": 134.078,
+     "conf": 0.29,
      "src": "ctc+onset"
     },
     {
      "w": "how",
-     "start": 134.323,
-     "end": 134.583,
-     "conf": 0.39,
-     "src": "ctc"
+     "start": 134.078,
+     "end": 134.403,
+     "conf": 0.24,
+     "src": "ctc+onset"
     },
     {
      "w": "far",
-     "start": 134.583,
-     "end": 135.094,
-     "conf": 0.32,
+     "start": 134.403,
+     "end": 135.018,
+     "conf": 0.25,
      "src": "ctc+onset"
     },
     {
      "w": "the",
-     "start": 135.094,
-     "end": 135.227,
+     "start": 135.018,
+     "end": 135.098,
      "conf": 0.03,
      "src": "ctc+onset"
     },
     {
      "w": "falling",
-     "start": 135.227,
+     "start": 135.098,
      "end": 135.56,
-     "conf": 0.14,
+     "conf": 0.08,
      "src": "ctc+onset"
     },
     {
      "w": "goes",
      "start": 135.56,
-     "end": 137.371,
-     "conf": 0.09,
+     "end": 137.3,
+     "conf": 0.08,
      "src": "manual"
     }
    ]
@@ -1395,20 +1395,20 @@
    "section": "final2",
    "text": "Dominoes, dominoes",
    "start": 150.26,
-   "end": 152.947,
+   "end": 152.96,
    "words": [
     {
      "w": "Dominoes,",
      "start": 150.26,
-     "end": 151.66,
-     "conf": 0.02,
+     "end": 151.369,
+     "conf": 0.08,
      "src": "manual"
     },
     {
      "w": "dominoes",
      "start": 151.66,
-     "end": 152.947,
-     "conf": 0.01,
+     "end": 152.96,
+     "conf": 0.05,
      "src": "manual"
     }
    ]
@@ -1418,20 +1418,20 @@
    "section": "final2",
    "text": "Dominoes, dominoes",
    "start": 153.06,
-   "end": 156.268,
+   "end": 156.28,
    "words": [
     {
      "w": "Dominoes,",
      "start": 153.06,
      "end": 154.78,
-     "conf": 0.09,
+     "conf": 0.12,
      "src": "manual"
     },
     {
      "w": "dominoes",
      "start": 154.78,
-     "end": 156.268,
-     "conf": 0.04,
+     "end": 156.28,
+     "conf": 0.11,
      "src": "manual"
     }
    ]
@@ -1446,15 +1446,15 @@
     {
      "w": "Dominoes,",
      "start": 156.38,
-     "end": 156.962,
-     "conf": 0.02,
+     "end": 156.826,
+     "conf": 0.01,
      "src": "manual"
     },
     {
      "w": "dominoes",
      "start": 158.1,
      "end": 158.163,
-     "conf": 0.05,
+     "conf": 0.04,
      "src": "manual"
     }
    ]
@@ -1464,20 +1464,20 @@
    "section": "final2",
    "text": "And now I see how far the falling goes",
    "start": 158.163,
-   "end": 164.315,
+   "end": 164.58,
    "words": [
     {
      "w": "And",
      "start": 158.163,
      "end": 158.999,
-     "conf": 0.04,
+     "conf": 0.13,
      "src": "manual+onset"
     },
     {
      "w": "now",
      "start": 158.999,
      "end": 160.015,
-     "conf": 0.19,
+     "conf": 0.26,
      "src": "manual+onset"
     },
     {
@@ -1491,14 +1491,14 @@
      "w": "see",
      "start": 160.241,
      "end": 160.444,
-     "conf": 0.31,
+     "conf": 0.29,
      "src": "manual+onset"
     },
     {
      "w": "how",
      "start": 160.444,
      "end": 160.868,
-     "conf": 0.36,
+     "conf": 0.38,
      "src": "manual+onset"
     },
     {
@@ -1512,21 +1512,21 @@
      "w": "the",
      "start": 161.292,
      "end": 161.75,
-     "conf": 0.12,
+     "conf": 0.11,
      "src": "manual+onset"
     },
     {
      "w": "falling",
      "start": 161.75,
      "end": 163.02,
-     "conf": 0.16,
+     "conf": 0.17,
      "src": "manual+onset"
     },
     {
      "w": "goes",
      "start": 163.02,
-     "end": 164.315,
-     "conf": 0.1,
+     "end": 164.58,
+     "conf": 0.19,
      "src": "manual"
     }
    ]

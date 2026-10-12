@@ -94,28 +94,19 @@ class CTC:
         self.bundle = b
 
     @torch.inference_mode()
-    def emissions(self, wav):
-        # chunked to bound memory: 20 s windows with 1 s context each side
-        win, ctx = 20 * SR, 1 * SR
-        outs = []
-        frames_per_sample = None
-        pos = 0
-        n = wav.shape[1]
-        while pos < n:
-            a, b = max(0, pos - ctx), min(n, pos + win + ctx)
-            em, _ = self.model(wav[:, a:b])
-            fr = em.shape[1] / (b - a)
-            frames_per_sample = fr
-            s = int(round((pos - a) * fr))
-            e = s + int(round(min(win, n - pos) * fr))
-            outs.append(em[:, s:e])
-            pos += win
-        em = torch.cat(outs, dim=1)
-        return torch.log_softmax(em, dim=-1), frames_per_sample
+    def emissions(self, wav, t0, t1):
+        """Log-probabilities for wav[t0:t1] alone, and the exact seconds per frame of that segment.
 
-    def align(self, em, fps, t0, t1, words):
-        a, b = int(t0 * SR * fps), int(t1 * SR * fps)
-        seg = em[:, a:b]
+        (Each line is aligned on its own segment. An earlier version computed emissions for the whole
+        song in 20 s chunks and indexed them with one global frame rate; the per-chunk rounding made the
+        word times drift later through the song, ~0.1 s in verse 1 and ~0.3 s by the second verse.)
+        """
+        a, b = int(round(t0 * SR)), int(round(t1 * SR))
+        em, _ = self.model(wav[:, a:b])
+        return torch.log_softmax(em, dim=-1), (b - a) / SR / em.shape[1]
+
+    def align(self, wav, t0, t1, words):
+        seg, sec = self.emissions(wav, t0, t1)
         toks = [[self.dict[c] for c in norm(w).replace("'", "") if c in self.dict] for w in words]
         # a <star> token between words absorbs held vowels, breaths and backing vocals
         star = self.dict["*"]
@@ -129,7 +120,6 @@ class CTC:
         spans = torchaudio.functional.merge_tokens(labels[0], scores[0].exp())
         spans = [sp for sp in spans if sp.token != star]
         out, k = [], 0
-        sec = 1.0 / (SR * fps)
         for w, tk in zip(words, toks):
             ws = spans[k:k + len(tk)]
             k += len(tk)
@@ -170,7 +160,6 @@ def main():
     wav, sr = torchaudio.load(a.vocals)
     wav = torchaudio.functional.resample(wav.mean(0, keepdim=True), sr, SR)
     ctc = CTC()
-    em, fps = ctc.emissions(wav)
 
     out_lines = []
     for i, (l, e) in enumerate(zip(lines, est)):
@@ -181,7 +170,7 @@ def main():
         else:
             t0 = max(prev_end - 0.1, e["start"] - 0.6)
             t1 = min(nxt + 0.3, e["end"] + 1.0)
-        words = ctc.align(em, fps, t0, t1, l["words"])
+        words = ctc.align(wav, t0, t1, l["words"])
         out_lines.append({"i": i, "section": l["section"], "text": l["text"],
                           "start": words[0]["start"], "end": words[-1]["end"], "words": words,
                           "whisper": [e["start"], e["end"]]})

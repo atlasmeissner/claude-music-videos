@@ -5,7 +5,7 @@ Suno), the closing track of the album *Maps & Territory*: a song about second-or
 rippling outward in ways you never fully see. Every frame is a deterministic function of song time, drawn with
 Canvas 2D (Skia via `@napi-rs/canvas` offline, the browser's canvas in the preview) and encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:07, 133 MB) is in [`render/`](render/), split into two parts (GitHub's 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+**Watch / download:** the 1080p30 render (3:07, 134 MB) is in [`render/`](render/), split into two parts (GitHub's 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat dominoes_1080p30.mp4.part0 dominoes_1080p30.mp4.part1 > dominoes_1080p30.mp4`.
 
 It is made in the style of [pdoom-video](https://github.com/mexicat/pdoom-video) (MIT): the same ink, bone and
@@ -55,7 +55,9 @@ Full concept, palette, type and the station list: [`docs/TREATMENT.md`](docs/TRE
   onsets of the mix and of the stems, loudness envelopes), `align.py` (Whisper medium.en on the Demucs vocal stem
   for line placement, then MMS CTC forced alignment of each line with a star token for held vowels),
   `whisper_run.py` (Whisper large-v3 as a second opinion), `refine.py` (merges the estimates, snaps word starts to
-  vocal-stem onsets; the repeated "Dominoes" chants are placed from large-v3 runs on short excerpts).
+  vocal-stem onsets; the repeated "Dominoes" chants are placed from large-v3 runs on short excerpts), `notes.py`
+  (pYIN note segmentation of the vocal stem, for checking word starts against the sung notes; "I chose the left
+  road on a whim" is pinned to its notes this way, using verse 1's identical melody as the reference).
 - `data/lyrics.json`, `data/audio.json` — word-level lyric timings and the music analysis.
 - `app/` — the renderer (bun + Vite, TypeScript, Canvas 2D):
   - `src/engine/` — camera (log-zoom keyframes, follow cameras, impact shake), drawing context with hairlines that
@@ -89,7 +91,7 @@ bun scripts/render.ts video --samples 3 --workers 2 --out ../out/dominoes.mp4
 Preview keys: space play/pause, ←/→ seek 1 s (shift: 5 s), `,` / `.` one frame, `h` hide the UI.
 
 The published render was made in a CPU-only cloud container: 1080p, 30 fps, three motion-blur sub-frames per frame
-(up to sixteen during the rewind), about 0.3 s per frame with two workers, 24 minutes for the song.
+(up to sixteen during the rewind), about 0.3 s per frame with two workers, 25 minutes for the song.
 `--fps 60 --scale 2` gives a 4K60 file from the same code.
 
 ## Regenerate the timing data
@@ -99,6 +101,7 @@ cd analysis
 uv sync
 uv run python -m demucs --two-stems=vocals -n htdemucs -o work/stems ../audio/dominoes.mp3
 uv run python align.py --vocals work/stems/htdemucs/dominoes/vocals.wav --whisper-cache work/whisper.json --out work/lyrics_ctc.json
+uv run python notes.py work/stems/htdemucs/dominoes/vocals.wav 61 69.5     # sung notes in a window, to check word starts
 uv run python whisper_run.py work/stems/htdemucs/dominoes/vocals.wav large-v3 work/whisper_large.json
 # vocal onsets for refine.py: librosa onset_detect on the vocal stem, saved as work/vocal_onsets.npy
 uv run python refine.py --ctc work/lyrics_ctc.json --whisper work/whisper.json --onsets work/vocal_onsets.npy

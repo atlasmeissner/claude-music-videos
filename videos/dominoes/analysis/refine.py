@@ -22,6 +22,10 @@ import numpy as np
 
 # (line index, word index) -> start, from large-v3 on excerpts (110-126 s, 146-160 s, 108-138 s)
 MANUAL_LINES = {
+    # "I chose the left road on a whim": pinned to the sung notes (notes.py). Verse 2 has verse 1's melody:
+    # the raspy, unpitched "I chose" from 62.85, F4 notes on "the" and "left", then A#3 / A3 / A#3 on
+    # "road on a whim" as on verse 1's "and felt the building shake". CTC ran 0.2-0.45 s late here.
+    10: [62.85, 63.02, 63.26, 63.46, 64.05, 64.27, 64.42, 64.67],
     23: [110.80],
     24: [114.96],
     25: [118.30],

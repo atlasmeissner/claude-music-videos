@@ -146,7 +146,9 @@ export function makeMap(x0: number, entry: { t: number }) {
 
   // the travelling dot (plan view position)
   function dotPos(r: R, t: number): V2 & { ghost?: boolean } {
-    if (t < W10[4]!.start) return rIn.path.at(rIn.dotS(r, t, entry.t, W10[4]!.start));
+    // the dot stays with the words to the end of the line, reaching the fork as "whim" ends
+    const tFk = W10[7]!.end + 0.1;
+    if (t < tFk) return rIn.path.at(rIn.dotS(r, t, entry.t, tFk));
     if (t < tHymn) return left.at(rLeft.dotS(r, t, W10[7]!.end + 0.1, tHymn));
     if (t < tHeld) return rDoor.path.at(rDoor.dotS(r, t, tHymn + 0.1, tHeld));
     return D1;
@@ -196,12 +198,12 @@ export function makeMap(x0: number, entry: { t: number }) {
       fn: (r, t) => {
         // follow whichever dot is the impulse, smoothed over ±0.4 s, looking a little ahead
         let sx = 0, sy = 0, n = 0;
-        for (let d = -0.4; d <= 0.6; d += 0.1) {
+        for (let d = -1.0; d <= 1.0; d += 0.1) {
           const tt = t + d;
           const q = tt < tHeld ? dotPos(r, tt) : tt < tWho ? { x: D1.x - 150, y: D1.y + 40 } : tt < tOpen2 ? (someonePos(tt) ?? D1) : tt < tYou ? rYou.at(rYou.length * clamp((tt - tOpen2) / (tYou - tOpen2))) : YOU;
           sx += q.x; sy += q.y; n++;
         }
-        const coin = t > tFork - 0.5 && t < W10[4]!.start + 0.3 ? 1 : 0;
+        const coin = t > tFork - 0.5 && t < W10[7]!.end + 0.3 ? 1 : 0;
         return { x: sx / n - 40, y: sy / n - 60 - coin * 60, z: t > tYou - 0.6 ? 0.92 : 0.95 };
       },
     },
