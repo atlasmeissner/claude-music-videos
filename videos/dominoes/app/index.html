@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dominoes — Joburgalex</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0a0a0b; color: #9c978f; font: 13px/1.4 "IBM Plex Mono", ui-monospace, monospace; }
+      #wrap { position: fixed; inset: 0; display: grid; place-items: center; }
+      canvas { width: min(100vw, 177.78vh); height: auto; display: block; }
+      #ui { position: fixed; left: 12px; bottom: 10px; right: 12px; display: flex; gap: 16px; align-items: center; }
+      #ui.hidden { display: none; }
+      #bar { flex: 1; height: 4px; background: #262524; cursor: pointer; position: relative; }
+      #fill { position: absolute; inset: 0 auto 0 0; background: #ff4d12; width: 0; }
+      #start { position: fixed; inset: 0; display: grid; place-items: center; background: #0a0a0bcc; color: #eee9df; cursor: pointer; font-size: 15px; letter-spacing: .08em; }
+    </style>
+  </head>
+  <body>
+    <div id="wrap"><canvas id="c" width="1920" height="1080"></canvas></div>
+    <div id="ui"><span id="time">00:00.00</span><div id="bar"><div id="fill"></div></div><span>space play · ←/→ seek · ,/. frame · h hide</span></div>
+    <div id="start">CLICK TO START (SOUND ON)</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

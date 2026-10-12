@@ -42,3 +42,9 @@ videos/bones/analysis/work/
 videos/the-other-side-of-light/app/node_modules/
 videos/the-other-side-of-light/analysis/.venv/
 videos/the-other-side-of-light/analysis/stems/
+# dominoes: dependencies and analysis intermediates
+videos/dominoes/app/node_modules/
+videos/dominoes/analysis/.venv/
+videos/dominoes/analysis/.cache/
+videos/dominoes/analysis/stems/
+videos/dominoes/analysis/work/

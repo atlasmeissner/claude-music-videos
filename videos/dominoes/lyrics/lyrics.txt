@@ -1,0 +1,45 @@
+# Dominoes — Joburgalex. Lines as sung (the final chorus is extended).
+# Optional "| start end" hints give the aligner a search window (seconds); otherwise Whisper's estimate is used.
+[verse1]
+I pulled a thread and felt the building shake
+Moved a stone and watched the river break
+Said one word on an ordinary night
+And set a stranger's world alight
+[pre1]
+Nothing stops where you think it ends
+Every line you draw just bends
+[chorus1]
+Dominoes, dominoes
+Every touch becomes a thousand echoes
+Dominoes, dominoes
+You never see how far the falling goes
+[verse2]
+I chose the left road on a whim
+And missed a war and found a hymn
+Held a door for someone passing through
+Who held a door that led to you
+[pre2]
+The second step is never seen
+Until it's everywhere you've been
+[chorus2]
+Dominoes, dominoes
+Every touch becomes a thousand echoes
+Dominoes, dominoes
+You never see how far the falling goes
+[bridge]
+And somewhere now because of something small | 96.4 102.8
+Something I won't remember at all | 104.1 107.8
+A life is changing | 108.1 110.6
+[final]
+Dominoes | 110.6 113.3
+Dominoes | 114.6 116.8
+Dominoes | 118.1 123.9
+Dominoes, dominoes | 123.9 126.3
+Every life becomes a thousand echoes | 126.2 129.8
+Dominoes, dominoes | 129.7 133.0
+And now I see how far the falling goes | 132.9 137.4
+[final2]
+Dominoes, dominoes | 150.0 153.0
+Dominoes, dominoes | 153.0 156.3
+Dominoes, dominoes | 156.3 158.2
+And now I see how far the falling goes | 158.1 164.6
