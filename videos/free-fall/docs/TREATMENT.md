@@ -1,76 +1,58 @@
-# Free Fall — treatment & style bible
+# Free Fall — treatment & style bible (revision 3: the story)
 
 Song: "Free Fall" by Joburgalex (album *Maps & Territory*). Video: a generative, code-rendered music video in the
-style of [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video), on its engine (MIT) and under its style bible:
-every frame is a deterministic function of song time, the lyrics are word-synced karaoke typography, cuts land on the
-beat grid, and the look is pdoom's — ink, bone and one hazard orange, hairlines, engraving, bone-paper bureaucracy,
-deadpan mono footnotes, grain and halation.
+style of [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video), on its engine (MIT): every frame is a
+deterministic function of song time, the lyrics are word-synced karaoke typography, cuts land on the beat grid, and
+the look is pdoom's — ink, bone line art and one hazard orange, hatching, deadpan mono readouts, grain and halation.
 
-## The idea in one paragraph
+Revision history: the first cut was a set of literal "plates from a treatise on leaping" (diagrams of each lyric
+line). Feedback: too literal — show a person procrastinating about something who just has to jump off the ledge
+(which isn't as high as it looks) to get to the goal. Revision 3 is that story.
 
-The video is presented as **plates from an illustrated treatise on leaping**: each set piece has its own instrument,
-idiom and dry humour, and argues one clause of the song's case for *asymmetric risk* (the downside of a leap is small
-and capped, the upside is huge and open-ended). Running through the whole video is **the spark** — pdoom's orange
-point of light dragging a hairline — cast here as the falling body of a physics textbook: it walks the ground out to a
-cliff edge, draws the payoff curve, flies the parabola into a wall, falls through a vacuum tube beside a feather, and
-lands, at the end, with a stumble. The running number, staged in-world like P(doom), is **THE ODDS** (upside :
-downside), which climb every time the singer starts a "Free fall": 1 : 1 → 3 → 10 → 40 → 100 → 1,000 → 1,000,000 →
-∞ : 1. The subjects are concrete things (warning signs, an adding-machine tape, a levelling staff, a spectrometer, a
-payoff chart, a brick wall, a plinth, a seismograph, a vacuum tube, an envelope, a door in plan, a stadium seating
-chart, a rubber stamp) treated as visual puns, never as literal storyboard illustrations of each line.
+## The story in one paragraph
 
-## Tone
+A person sits on a ledge at night. Below and across the gap, a doorway glows orange: the goal. The drop looks
+bottomless, because that is how fear draws it — and the video draws it that way too: the lower ground sinks into a
+hatched abyss whenever they doubt, and rises back to its true height, 1.40 m, shoulder-high, whenever they see
+clearly. They make lists of reasons not to, lower a tape measure that never finds the bottom, daydream the jump
+(the first chorus), wake up still sitting there, write messages they never send, run at the edge and freeze (the
+second chorus) while the days race past. A crowd gathers at the door and chants them down. In the stripped bridge
+they decide: one step back per handclap, the abyss losing a quarter of its depth on every line. The final chorus is
+the real jump — 0.53 seconds in the air, stretched to a whole line in slow motion — and the worst thing happens: a
+stumble. They get up laughing; the statue of the one who stayed crumbles; the ground finally moves; the door swings
+wide. The last shot pulls back to show how small it all was: DROP 1.40 m · TIME IN THE AIR 0.53 s · TIME ON THE LEDGE
+412 DAYS.
 
-- Pure adrenaline, the track's festival energy: something is always moving, and big changes land **on the beat**
-  (cuts on downbeats, hits on kicks and handclaps, camera moves easing into downbeats). Strong eases, holds, snaps.
-- Impressive, not cute: precise hairlines, high-contrast typography, restraint in colour, bloom only on the signal.
-- Funny the way a straight-faced scientist is funny: deadpan captions, footnotes, stamps, measurements that keep
-  coming out absurdly small (DROP 1.40 m · COST €0.00 · REPLIES 0 · DAMAGE: ONE (1) BRUISE).
-- Not slop: no neon, no lens-flare soup, no particle nebulae, no stock "inspirational" imagery, no mascots, no faces.
-  People appear only as the pictograms printed on safety signs and as hairline scale figures in technical drawings.
+## Look
 
-## Palette (pdoom-video's, unchanged — `app/src/engine/palette.ts`)
-
-ink `#0A0A0B` · ink2 `#151517` · graphite `#5E5B57` · ash `#9C978F` · bone `#EEE9DF` · **signal** `#FF4D12` (the spark,
-the odds, the upside, the sung word) · ember `#FF8A3D` · blood `#C21D0B` · one rare accent **acid** `#D8FF3C`, owned by
-one moment (the wall breaking in the final chorus, ~2 s). No other hues: "the sky is screaming blue" is measured, not
-shown. Some plates invert to **bone paper with ink lines** (the ledger, the letter, the door's blueprint, chorus 2).
-
-## Typography
-
-Archivo (lyrics: big, tight, confident; width and weight animate), IBM Plex Mono (instruments, labels, footnotes,
-forms), Cormorant Garamond italic (rare: the vacuum, the bridge's asides, the end card), single-stroke fonts for text
-written by the spark. Kerned, typographic punctuation, no outlined or haloed type. Lyrics stay title-safe.
-
-## Karaoke rules
-
-Every sung line is readable and synced per word; highlighting never runs ahead of the voice; each plate integrates
-the lyric graphically and differently (printed on a tape, riding a curve, stamped, typed into a form, falling).
-
-## Motifs
-
-1. **The spark and its line** — the falling body.
-2. **THE ODDS** — upside : downside, staged in each plate's own idiom; the hooks blow it up full-screen.
-3. **The hook** — "FREE / FALL, FREE / FALL": one full-frame slam per sung word, the letters of FALL obeying gravity;
-   it escalates each time (1: bone on ink, clean · 2: ink on a signal field · 3: maximal — strobes, stacked repeats).
-4. **The payoff curve** — the hockey stick: a floor at "a stumble", a line that leaves the chart.
-5. **Signage** — CAUTION / MIND THE DROP / COUNT THE COST: the voice of "they said".
+- pdoom-video's palette, unchanged: ink `#0A0A0B`, bone `#EEE9DF`, hazard orange `#FF4D12` (the door's light, the
+  sung word, the dawn), ember, blood, graphite, ash; one rare acid `#D8FF3C` moment — the light bursting from the door
+  as it swings wide. "The sky is screaming blue" is drawn as an engraved orange dawn: the video has no blue.
+- The person is the pictogram figure (round head, thick round-capped limbs, no face), bone on ink, with a story's
+  worth of poses: sitting on the edge, head in hands, writing, on the phone, peering over, recoiling, frozen with arms
+  windmilling, running, leaping, free fall, stumbling, cheering. Imagined versions of them are hairline ghosts (ash
+  for the worst case, ember for the best); the version that never jumps is a graphite statue.
+- The world is one ledge in elevation, hatched in section, its strata densening with depth; the lower ground; the
+  door in a low hatched wall. Deadpan mono readouts staged in the frame: DAYS ON THE LEDGE (the running number, like
+  pdoom's P(doom)), REASONS NOT TO, TAPE OUT · NO BOTTOM, DROP, COST: €0.00, THE COST OF SILENCE, RUN-UP STEP n,
+  TIME IN THE AIR, OUTCOME: −1 · A STUMBLE.
+- Typography: Archivo (lyrics; the choruses' FREE / FALL slam full-frame, the letters of FALL dropping in under
+  gravity), IBM Plex Mono (readouts), Cormorant italic for the whisper. Every line on screen, word-synced.
 
 ## Plates
 
-| id | lyric | idea |
+| id | lyric | what happens |
 |---|---|---|
-| `edge` | intro | Crop-marked sheet. The spark draws the ground out to a cliff edge; on every downbeat a safety sign slams in until the edge is a thicket of warnings. With the stomps the title lands (FREE · FALL · JOBURGALEX) and knocks the signs off; the frame flies out on the cut. |
-| `ledger` | They said count the cost… / Measure twice… | Bone paper: an adding-machine tape prints the cost of leaping, item by item; the total stays absurdly small. Then the drop is measured twice: 1.40 m, 1.40 m, stamped. |
-| `cliff` | But the cliff is only shoulder-high / And the sky is screaming blue | Engraved elevation: the cliff against a levelling staff and an anthropometric scale (shoulder 1.40 m). "Screaming blue": a spectrometer whose trace spikes at 470 nm and off the chart (in orange: the only colour we have). |
-| `payoff` | The worst… a stumble / The best is something beautiful | The payoff chart: the spark draws the floor (A STUMBLE) and the kink, then the line climbs off the chart (SOMETHING BEAUTIFUL); the lyric rides the curve; the spark leaves the frame on the chorus downbeat. |
-| `hook` ×3 | Free fall, free fall | The hook (see Motifs), then THE ODDS full-frame rolling to the new value with a deadpan footnote. |
-| `fly` ×2 (+ `final`) | I'd rather fly and hit a wall / Than spend forever standing tall / On ground that never moves at all (+ Free fall) | A ballistics plate: the spark flies a parabola (velocity vectors, dashed prediction) and hits an engraved brick wall — DAMAGE: ONE (1) BRUISE. A free-body diagram of a body standing tall forever (ΣF = 0, Δx = 0, t → ∞). A seismograph of the ground: 0.000 mm, flat. Chorus 2 is the same plate in bone paper, faster. |
-| `vacuum` | Free fall, free fall (tail) | Half-time: an engraved vacuum tube, a feather and the spark released together; they fall alike, and so do the words. *In vacuo, all bodies fall alike.* |
-| `letter` | They said what if nobody answers… / And silence is the only cost | Bone paper: a letter typed into a form; REPLIES 0; the words get lost (they peel off as paper planes); a price tag WHISPER €0.00; the ledger again: SILENCE — the only cost. |
-| `door` | The door says no or the door swings wide / Either way I'm on the other side | Blueprint on bone paper: a door in plan with its swing arc; a NO stamp, then the leaf swings wide; a decision tree whose two branches both end OTHER SIDE; the spark walks through. |
-| `chant` | (yeah, yeah — oh, oh…) | A stadium seating chart, top-down: hundreds of dots; every "oh" a wave through the stands; JUMPED: 0 → 1,000s as the dots leave the ground and become sparks. |
-| `bridge` | Every great thing started with a jump / … / risked the shame | Stripped to handclaps and stomps: black; a register of firsts stamped on the claps (№ 1 A JUMP · № 2 A NAME · № 3 A LIFE WORTH TELLING · № 4 THE SHAME), building into the final chorus. |
-| `final` (the `fly` module, v3) | I'd rather fly and hit the wall / … / Free fall, free fall | The maximal ballistics plate: a thousand sparks fly; the wall breaks (the acid moment); the flat seismograph erupts into the payoff curve and leaves the chart on the held "all". |
-| `hook` (4) | Free fall, free fall (the last call) | The hook once more, bone on ink: THE ODDS are rounded up to ∞ : 1. |
-| `outro` | outro | The spark falls one last time and lands: a stumble (−1). End card: E[leap] = ∞, *Free fall isn't reckless. It's rational.* The frame closes back in on the first frame, so the video loops. |
+| `ledge` | intro | Crop-marked bookend. Wide: a tiny person on a huge cliff, a tiny light far below. Close: head in hands, stands, walks to the edge, peers — POV down the abyss (DROP (ESTIMATED) 47 m?) — recoils, sits, takes out the phone. The stomps land the title. |
+| `measure` | They said count the cost… / Measure twice… | A card of REASONS NOT TO fills, one per word. Then the tape measure into the dark: no bottom; reeled in on "twice", dropped again, longer. |
+| `reveal` | But the cliff is only shoulder-high / And the sky is screaming blue | The abyss collapses: the ground rises to 1.40 m, an outline of the person on it has the ledge at their shoulder. Dawn ignites; BLUE held huge. |
+| `runup` | The worst… a stumble / The best is something beautiful | They walk back for a run-up and imagine both outcomes: an ash ghost jumps and stumbles (−1); an ember ghost lands clean and the door swings wide. Then they run — |
+| `dream` (1) | Free fall… / I'd rather fly and hit a wall / Than spend forever standing tall / On ground that never moves at all | — but it's a daydream: a slow fall through the abyss, FREE / FALL; flying arms-out into a brick wall (DAMAGE: ONE (1) BRUISE); the alternative, a grey statue on the ledge while the days cycle past. |
+| `wake` | Free fall, free fall (tail) | Snap back: still sitting there at night. Calendar pages and the sung words fall into the dark instead of them. |
+| `message` | They said what if nobody answers / … / And silence is the only cost | Drafts typed and deleted on the phone; paper planes thrown at the door, all falling short; a whispered "hi" that would reach the door (COST: €0.00) — unsent; the days race, the door's light dims. |
+| `doorway` | The door says no or the door swings wide / Either way I'm on the other side | NO on the door, then the leaf swings wide; split screen of both outcomes, the ghost on the far side in each: OTHER SIDE. They walk back for a run-up — |
+| `dream` (2) | Free fall… / … standing tall / … at all / Free fall | — and freeze at the edge, arms windmilling; the letters fall, they don't. The flight plays in a thought bubble; frozen while the days race past, they turn statue-grey; on "Free fall" they step back and sit down. |
+| `crowd` | (yeah, yeah — oh, oh…) | People gather at the door and chant; every syllable a wave of jumps through them. The person looks up, stands, bounces with them, arms up. A year passes. |
+| `decide` | Every great thing started with a jump / … / risked the shame | Stripped to handclaps: one step back per clap; each line's last word takes a quarter of the abyss away; dawn returns; they set — and run. |
+| `jump` | Free fall… / I'd rather fly and hit the wall / Than spend a life just standing tall / On ground that never moves at all / Free fall, free fall | The real jump, in slow motion ×9 (0.53 s real). Landing: a stumble. Up, laughing; the statue on the ledge crumbles; they run, the ground moving under them, the crowd parting; on "all" the door swings wide (acid light). They wave from the doorway and walk in. |
+| `through` | Free fall, free fall · outro | Inside the light, then a long pull-back: the whole place, small. DROP 1.40 m · TIME IN THE AIR 0.53 s · TIME ON THE LEDGE 412 DAYS · WORTH IT YES. Title. The frame closes back in on the first frame, so the video loops. |

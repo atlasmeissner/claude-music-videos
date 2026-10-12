@@ -4,41 +4,39 @@ A generative, code-rendered music video with word-synced karaoke typography for 
 *Maps & Territory*), in the style of [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video): every frame is a
 deterministic function of song time, rendered in headless Chromium (TypeScript + three.js) and encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:00, 297 MB) is in [`render/`](render/), split into four parts (GitHub's
+**Watch / download:** the 1080p30 render (3:00, 295 MB) is in [`render/`](render/), split into four parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat free-fall_1080p30.mp4.part0 … free-fall_1080p30.mp4.part3 > free-fall_1080p30.mp4`.
 
-The renderer is a fork of the pdoom-video engine (MIT) by way of this repo's `one-degree`, and the video follows
-pdoom-video's style bible: its palette (ink, bone, one hazard orange, one rare acid accent), its grain and halation,
-its spark, its plates-from-a-treatise structure, its escalating typographic hook and its crop-marked bookends that
-make the video loop.
+The renderer is a fork of the pdoom-video engine (MIT) by way of this repo's `one-degree`, and the video keeps
+pdoom-video's look: its palette (ink, bone, one hazard orange, one rare acid moment), its grain and halation, its
+full-frame typographic hook, its deadpan in-world readouts and its crop-marked bookends that make the video loop.
 
-## The idea
+## The story
 
-**Plates from an illustrated treatise on leaping.** The song argues for asymmetric risk (the downside of a leap is
-small and capped, the upside is huge and open-ended); each plate argues one clause of it in its own idiom, with
-straight-faced measurements that keep coming out absurdly small. **The spark** — pdoom's orange point dragging a
-hairline — is cast as the falling body of a physics textbook: it walks the ground out to a cliff edge, draws the
-payoff curve, flies the parabola into a wall, falls through a vacuum tube beside a feather, and lands, at the end,
-with a stumble. The running number, staged in-world like P(doom), is **THE ODDS** (upside : downside), which climb on
-every "Free fall": 1 : 1 → 3 → 10 → 40 → 100 → 1,000 → 1,000,000 → ∞ : 1. Full concept, palette, type and plate list:
-[`docs/TREATMENT.md`](docs/TREATMENT.md); the song's own notes: [`docs/SONG.md`](docs/SONG.md).
+**A person procrastinates on a ledge for 412 days. The drop looks bottomless. It is 1.40 m.** Below and across the
+gap, a doorway glows: the goal. Fear draws the drop deep — the lower ground sinks into a hatched abyss whenever they
+doubt and rises back to its true height, shoulder-high, whenever they see clearly. They list reasons not to, lower a
+tape measure that never finds the bottom, daydream the jump, wake up still sitting there, write messages they never
+send, run at the edge and freeze, while DAYS ON THE LEDGE counts up. A crowd gathers at the door and chants them
+down; in the stripped bridge they take one step back per handclap; the final chorus is the real jump — 0.53 s in the
+air, a stumble on landing, the door swinging wide. Full treatment: [`docs/TREATMENT.md`](docs/TREATMENT.md); the
+song's own notes: [`docs/SONG.md`](docs/SONG.md).
 
-| Plate | Lyric | Idiom |
+| Plate | Lyric | What happens |
 |---|---|---|
-| `edge` | intro | crop-marked sheet: the spark draws the ground to a cliff edge; a safety sign slams in on every downbeat; the stomps land the title and knock the signs off |
-| `ledger` | They said count the cost… / Measure twice… | bone paper: an adding-machine tape prices the leap (€0.18); the drop measured twice, 1.40 m both times |
-| `cliff` | But the cliff is only shoulder-high / And the sky is screaming blue | engraved elevation with a levelling staff and an anthropometric outline; then a spectrometer whose 470 nm peak screams off the chart (in orange: this video has no blue) |
-| `payoff` | The worst… a stumble / The best is something beautiful | the payoff chart: the spark draws the floor and the kink and climbs off the chart; the lyric rides the curve |
-| `hook` ×4 | Free fall, free fall | FREE / FALL slams, the letters of FALL obeying gravity; THE ODDS take the frame and roll up; escalating: bone on ink → ink on signal → strobes and stacks → rounded up to ∞ |
-| `fly` ×2 | I'd rather fly and hit a wall / … standing tall / … never moves at all | ballistics (parabola, stroboscopic ghosts, a brick wall: DAMAGE ONE (1) BRUISE); statics (a column standing forever, ΣF = 0); a seismograph flatline. Chorus 2 on bone paper; its tag drops the trace off the paper |
-| `vacuum` | Free fall, free fall (tail) | a feather and the spark in an engraved vacuum tube, falling alike, half-time; the tube turned over like an hourglass |
-| `letter` | They said what if nobody answers… | bone paper: a cold email typed into a form; REPLIES 0; the words fly off as paper planes; WHISPER €0.00; SILENCE — the only cost |
-| `door` | The door says no or the door swings wide… | a blueprint door in plan: NO, then the swing arc; a decision tree whose branches both end OTHER SIDE; the sheet floods orange into hook 2 |
-| `chant` | (yeah, yeah — oh, oh…) | a festival site plan: hundreds of dots, a wave from the stage per chanted syllable; JUMPED counts; they lift off as sparks |
-| `bridge` | Every great thing started with a jump… | stripped to claps: a register of firsts stamped on black (№ 1 A JUMP … № 4 THE SHAME, RISKED); a handclap tally |
-| `final` | I'd rather fly and hit the wall… / Free fall, free fall | the `fly` plate, maximal: a fan of sparks, the wall breaks (the one acid moment), the column topples, the flat ground erupts into the payoff curve and leaves the chart |
-| `outro` | outro | the spark lands: OUTCOME −1, A STUMBLE; E[leap] = p · (−1) + (1 − p) · ∞ = ∞; *Free fall isn't reckless. It's rational.*; title; the frame closes back in on the first frame |
+| `ledge` | intro | a tiny person on a huge cliff, a tiny light far below; head in hands, peers over the edge, recoils, sits back down; the title on the stomps |
+| `measure` | They said count the cost… / Measure twice… | a card of REASONS NOT TO fills up; a tape measure lowered into the dark finds no bottom, twice |
+| `reveal` | But the cliff is only shoulder-high / And the sky is screaming blue | the abyss collapses to 1.40 m — shoulder-high; dawn ignites (in orange: this video has no blue) |
+| `runup` | The worst… a stumble / The best… beautiful | a run-up; ghosts of both outcomes: a stumble, and the door swinging wide |
+| `dream` ×2 | the choruses | 1: a daydreamed jump, a flight into a brick wall, a grey statue standing forever; 2: running at the edge and freezing there while the days race past |
+| `wake` | Free fall, free fall (tail) | still on the ledge; calendar pages fall into the dark instead |
+| `message` | They said what if nobody answers… | drafts typed and deleted, paper planes falling short, a whispered "hi" that costs €0.00 — unsent |
+| `doorway` | The door says no or the door swings wide… | both outcomes, split screen: OTHER SIDE either way |
+| `crowd` | (yeah, yeah — oh, oh…) | people at the door chanting them down, a wave of jumps per syllable |
+| `decide` | Every great thing started with a jump… | handclaps: one step back each; the abyss shrinks line by line |
+| `jump` | the final chorus | the real jump in slow motion, a stumble, the statue crumbles, the ground moves, the door swings wide |
+| `through` | outro | the pull-back: DROP 1.40 m · TIME IN THE AIR 0.53 s · TIME ON THE LEDGE 412 DAYS; title; loop |
 
 ## Layout
 
@@ -52,9 +50,9 @@ every "Free fall": 1 : 1 → 3 → 10 → 40 → 100 → 1,000 → 1,000,000 →
   `analyze.py` (143.64 BPM constant grid, downbeats, sections, envelopes, kick/snare/hat/vocal onsets),
   `windows.py` (plate windows for segment renders).
 - `data/lyrics.json`, `data/audio.json` — word-level lyric timings and the music analysis.
-- `app/` — the renderer (bun + Vite + three.js). `src/engine/` is the forked engine; `src/scenes/_ff.ts` is the shared
-  kit (THE ODDS, the payoff curve, signage, karaoke, the spark from `_motifs.ts`); one module per plate in
-  `src/scenes/`; `src/timeline.ts` anchors the plates to lyric lines and beats.
+- `app/` — the renderer (bun + Vite + three.js). `src/engine/` is the forked engine; `src/scenes/_story.ts` is the story kit
+  (the person's poses, the ledge world with its fear-scaled drop, the door, the camera, DAYS ON THE LEDGE) on top of
+  `_ff.ts` (the pictogram figure, karaoke, the hook typography helpers); one module per plate in `src/scenes/`; `src/timeline.ts` anchors the plates to lyric lines and beats.
 - `docs/` — `TREATMENT.md` (the plan), `ENGINE.md` (the engine, the scene API and the kit), `SONG.md`.
 
 ## Render
@@ -67,12 +65,12 @@ bun install
 bunx vite                                    # preview at http://localhost:5173 (?t=44 to start at a time)
 bun scripts/render.ts stills --t 44.3,138.8 --out ../out/stills
 python3 ../analysis/windows.py               # (from the video folder) plate windows → out/windows.json
-scripts/segments.sh edge ledger cliff …      # each plate → out/seg/<id>.mp4 (1080p30, no audio)
+scripts/segments.sh ledge measure reveal …   # each plate → out/seg/<id>.mp4 (1080p30, no audio)
 scripts/assemble.sh                          # joins the plates and muxes the song → out/free-fall.mp4
 ```
 
 `scripts/render.ts` launches the Chromium bundled with Playwright under SwiftShader (`CHROME_PATH` overrides it). The
-published render was made in a CPU-only cloud container (SwiftShader, about 1.5 s per frame, 2.3 hours for the song), hence 30 fps and one
+published render was made in a CPU-only cloud container (SwiftShader, about 3 s per frame, 4.4 hours for the song), hence 30 fps and one
 sample per frame. On a GPU machine, `render.ts video --samples auto --fps 60` renders a single 60 fps file with motion
 blur.
 
@@ -81,10 +79,11 @@ Analysis environment: `uv venv analysis/.venv` and `uv pip install torch torchau
 
 ## How it was made
 
-Made with Claude (Opus 5.5) in conversation: the stem separation and lyric alignment, the treatment, the kit, the
-plates (a first pass of three of them by parallel scene agents), the contact-sheet reviews and the render. A first
-draft drifted into a cobalt-blue, pictogram-hero look; on review it was rebuilt to follow pdoom-video's style bible
-(no blues, no mascots, the spark as the protagonist, the escalating hook, the in-world running number).
+Made with Claude (Opus 5.5) in conversation: the stem separation and lyric alignment, the treatment, the kits, the
+plates, the contact-sheet reviews and the renders. Three cuts: a cobalt-blue first draft (dropped: off pdoom's
+palette); a second, literal one — "plates from a treatise on leaping", one diagram per lyric line (in git history);
+and this one, after the note "too literal — show a person procrastinating who just has to jump off the ledge, which
+isn't as high as it looks, to get to the goal".
 
 ## Credits
 

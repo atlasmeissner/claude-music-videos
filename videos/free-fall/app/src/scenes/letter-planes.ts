@@ -1,4 +1,4 @@
-// Folded-paper line drawings for the letter plate (the words that fly away). A paper plane in three-quarter view: two wing panels and the keel, paper fill, ink folds.
+// Folded-paper line drawings: the drafts thrown in the message plate. A paper plane in three-quarter view: two wing panels and the keel, paper fill, ink folds.
 import { rgba } from '../engine/palette';
 
 /**

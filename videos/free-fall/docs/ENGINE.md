@@ -102,28 +102,20 @@ What this asks of scenes:
 - Masked tiles keep what the last sub-frame drew there. That is safe for `out` and the engine's own targets. A scene's own target keeps being drawn in full (and costs full price) unless the scene lists it in `tileMasked`: only a target with a depth buffer whose texels are read back at their own screen position or within a few px of it (`margin: 1` widens the mask by a tile), like shoggoth's half-res G-buffer, or, with `moving: true`, one read through a zoom or pan that the scene gives before each sub-frame's draws with `ctx.mapTileMask(rt, map)`, like the room at the bottom of loom's dive (`null` while it is read through the spiral). A target read through a warp or a wide blur must not be listed.
 - A draw into a masked target whose material asks for its own depth test (3D with a depth buffer) can't use the mask: the engine draws that sub-frame again unmasked and keeps drawing that scene unmasked.
 
-## The Free Fall kit (`app/src/scenes/_ff.ts`)
+## The story kit (`app/src/scenes/_story.ts`) and the base kit (`_ff.ts`)
 
-Use these so the recurring motifs look identical across plates (read the file: every export is documented):
+- **The person**: `person(ctx2d, x, footY, height, pose, { color, dir, rot, alpha, sitting })` draws the pictogram
+  figure with its feet at (x, footY) (`sitting`: the hip sits on footY). Poses: `SP.stand, sit, hunch, write, phone,
+  peer, recoil, freeze, breathe, set, statue, wave` plus `_ff`'s `leap, star, tuck, stumble, land, cheer, jump`;
+  `walkPose(φ)`, `runPose(φ)` (lock to the beat), `breath(pose, t)`, `mixPose`, `poseKeys(t, [[t0, pose], …])`.
+  Ghosts are drawn twice (a colour, then ink at 0.965 scale) for a hairline outline.
+- **The world**: world px with the origin at the ledge's top edge (x right, y down); `S` = the person's height,
+  `M` px per metre, `TRUE_DROP` = 1.40 m, `dropAt(fear)` = how deep the drop is drawn (fear 0..1), `DOOR_X`.
+  `applyCam(ctx2d, {x, y, z})`, `camKeys(t, [[t, cam], …])`, `toScreen`; `drawWorld(ctx2d, cam, { t, fear, door,
+  glow, dawn, stars })` draws sky, dawn, lower ground, the door (`drawDoor`) and the ledge with its strata and mist.
+- **The counter**: `daysAt(t)`, `drawCounter(ctx2d, t, { label, value })` — DAYS ON THE LEDGE.
+- `_ff.ts`: `drawKaraoke(… mode 'wipe' | 'reveal' | 'slam')`, `wordColor`, `bigWord`, `mono`, `cachedLayout`,
+  `drawNo`, `drawFigure`/`POSES`; `ledger-kit.ts`: `stamp`, `dimV`; `letter-planes.ts`: `drawPlane`.
 
-- **The spark** (pdoom-video's, unchanged, from `_motifs.ts`, re-exported): `sparkHead(lineBatch, x, y, t, scale,
-  intensity)` + `sparkParticles(lineBatch, t, headAt, opts)` into a 2D additive `LineBatch`. On bone paper the
-  additive head vanishes: draw a solid signal dot under it on the canvas layer.
-- **THE ODDS**: `odds(lyrics)` → `Odds` with `value(t)` (log-rolling between steps), `flash(t)`, `stepTime(n)`;
-  steps on the last "fall" of lines 6, 10, 17, 21, 26, 30, 31 → 3, 10, 40, 100, 1,000, 1,000,000, ∞. `fmtOdds(v)`,
-  `drawOdds(ctx2d, x, y, v, { scale, ink, hot, dim, flash })` (the cameo instrument).
-- **The payoff curve**: `drawPayoff(ctx2d, { x, y, w, h, draw, pos, overshoot, labels, ink, hot, dim, title })`,
-  `payoffY(x)`, `payoffXY(style, x, y)`; KINK / FLOOR / SLOPE. The floor is bone/ink, the upside is signal.
-- **Signage**: `drawWarning(ctx2d, x, y, side, 'bang' | 'fall')`, `drawNo(ctx2d, x, y, r, slash)`,
-  `drawPanel(ctx2d, x, y, w, h, { fill, ink, text: [...], border, size })`; `drawFigure` / `POSES` / `runPose` draw the
-  ISO-7001-style pictogram that appears **only** on signs and as a hollow anthropometric outline (no mascots).
-- **Falls**: `fallTimes(lyrics)`, `fallCount`, `fallJolt`, `fallScroll`.
-- **Type**: `drawKaraoke(ctx2d, line, x, baselineY, t, { family, size, tracking, sung, unsung, active, lead, mode:
-  'wipe' | 'reveal' | 'slam', align, text })`, `wordColor(word, t)`, `bigWord(...)`, `mono(...)`, `readout(...)`,
-  `wordBoxes`, `cachedLayout`, `mixCss`.
-- `ledger-kit.ts`: `karaokeRows`, `dimV` / `witness` (architect's dimension lines), `stamp` (a rubber stamp slammed
-  at t0) — shared by several plates.
-
-Palette: pdoom-video's, unchanged (ink, ink2, graphite, ash, bone, signal, ember, blood, acid — acid only for the
-wall breaking in the final chorus). Post defaults are pdoom's except `bloomThreshold 0.9 / bloomKnee 0.2`, so bone
-type stays crisp and only the signal blooms.
+Palette: pdoom-video's, unchanged. Post defaults are pdoom's except `bloomThreshold 0.9 / bloomKnee 0.2`, so bone
+stays crisp and only the orange blooms.

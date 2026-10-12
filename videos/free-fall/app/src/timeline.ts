@@ -22,47 +22,40 @@ export function bounds(ly: Lyrics, au: AudioData) {
   };
   const sec = (name: string) => au.sections.find((x) => x.name === name)!.start;
   return {
-    ledger: cut(0),
-    cliff: cut(2),
-    payoff: cut(4),
-    hook1: cut(6),
-    fly1: cut(7),
-    vacuum: cut(10),
-    letter: cut(11),
-    door: cut(15),
-    hook2: cut(17),
-    fly2: cut(18),
-    chant: sec('chant'),
-    bridge: cut(22),
-    hook3: cut(26),
-    final: cut(27),
-    hook4: sec('tail2'),
-    outro: sec('outro'),
+    measure: cut(0),
+    reveal: cut(2),
+    runup: cut(4),
+    dream1: cut(6),
+    wake: cut(10),
+    message: cut(11),
+    doorway: cut(15),
+    dream2: cut(17),
+    crowd: sec('chant'),
+    decide: cut(22),
+    jump: cut(26),
+    through: sec('tail2'),
     end: au.duration,
   };
 }
 
+// Revision 3: one story. A person procrastinates on a ledge for 412 days; the drop looks bottomless; it is 1.40 m.
 export function makeTimeline(ly: Lyrics, au: AudioData): TimelineEntry[] {
   const b = bounds(ly, au);
   const E = (id: string, file: string, start: number, end: number, extra: Partial<TimelineEntry> = {}): TimelineEntry =>
     ({ id, load: scene(file), start, end, ...extra, ...(id !== file ? { file } : {}) }) as TimelineEntry;
   return [
-    E('edge', 'edge', 0, b.ledger),
-    E('ledger', 'ledger', b.ledger, b.cliff),
-    E('cliff', 'cliff', b.cliff, b.payoff),
-    E('payoff', 'payoff', b.payoff, b.hook1),
-    E('hook1', 'hook', b.hook1, b.fly1, { params: { n: 1, line: 6 } }),
-    E('fly1', 'fly', b.fly1, b.vacuum, { params: { v: 1, lines: [7, 8, 9] } }),
-    E('vacuum', 'vacuum', b.vacuum, b.letter),
-    E('letter', 'letter', b.letter, b.door),
-    E('door', 'door', b.door, b.hook2),
-    E('hook2', 'hook', b.hook2, b.fly2, { params: { n: 2, line: 17 } }),
-    E('fly2', 'fly', b.fly2, b.chant, { params: { v: 2, lines: [18, 19, 20], tag: 21 } }),
-    E('chant', 'chant', b.chant, b.bridge),
-    E('bridge', 'bridge', b.bridge, b.hook3),
-    E('hook3', 'hook', b.hook3, b.final, { params: { n: 3, line: 26 } }),
-    E('final', 'fly', b.final, b.hook4, { params: { v: 3, lines: [27, 28, 29], tag: 30 } }),
-    E('hook4', 'hook', b.hook4, b.outro, { params: { n: 4, line: 31 } }),
-    E('outro', 'outro', b.outro, b.end),
+    E('ledge', 'ledge', 0, b.measure),
+    E('measure', 'measure', b.measure, b.reveal),
+    E('reveal', 'reveal', b.reveal, b.runup),
+    E('runup', 'runup', b.runup, b.dream1),
+    E('dream1', 'dream', b.dream1, b.wake, { params: { v: 1, hook: 6, lines: [7, 8, 9] } }),
+    E('wake', 'wake', b.wake, b.message),
+    E('message', 'message', b.message, b.doorway),
+    E('doorway', 'doorway', b.doorway, b.dream2),
+    E('dream2', 'dream', b.dream2, b.crowd, { params: { v: 2, hook: 17, lines: [18, 19, 20], tag: 21 } }),
+    E('crowd', 'crowd', b.crowd, b.decide),
+    E('decide', 'decide', b.decide, b.jump),
+    E('jump', 'jump', b.jump, b.through),
+    E('through', 'through', b.through, b.end),
   ];
 }

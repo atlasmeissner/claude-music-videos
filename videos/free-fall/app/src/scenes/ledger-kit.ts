@@ -1,4 +1,4 @@
-// Helpers shared by the verse-1 / pre-chorus plates (ledger, cliff, payoff):
+// Small drawing helpers (from the first cut's ledger plate), still used by the story plates:
 //  - karaokeRows: a lyric line set over several rows (explicit word ranges), per-word reveal, kerned within a row;
 //  - dimV / witness: architect-style dimension lines (arrowheads, witness lines, the label in a gap), drawn on;
 //  - stamp: a rubber stamp (rounded box, tracked mono caps) that slams on.
