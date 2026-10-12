@@ -17,9 +17,9 @@ for s in $(seq 0 20 240); do
   done
 done
 echo "$(date +%T) all segments done"
-ls ../out/seg/*.mp4 | sed "s#^#file '#; s#\$#'#" > ../out/seg/list.txt
+(cd ../out/seg && ls seg_*.mp4 | sed "s#^#file '#; s#\$#'#" > list.txt)
 ffmpeg -y -loglevel error -f concat -safe 0 -i ../out/seg/list.txt -i ../audio/other-side-of-light.mp3 \
-  -map 0:v -map 1:a -c:v libx264 -preset slow -crf 18 -tune grain -pix_fmt yuv420p \
+  -map 0:v -map 1:a -c:v libx264 -preset medium -crf 19 -tune grain -pix_fmt yuv420p \
   -color_primaries bt709 -color_trc bt709 -colorspace bt709 -af apad -c:a aac -b:a 320k -shortest -movflags +faststart \
-  ../out/the-other-side-of-light.mp4
+  ../out/the-other-side-of-light_1080p30.mp4
 echo "$(date +%T) FINAL DONE"

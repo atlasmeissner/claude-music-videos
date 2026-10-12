@@ -2,6 +2,8 @@
 
 Every picture in the video is a Creative Commons licensed or CC0 / public-domain image, shown as a numbered plate (PL.) of the atlas. All were processed (cropped, recoloured into the video's palette, inverted, engraved, animated). Licences: CC BY (attribution), CC0 (public domain dedication) and the Public Domain Mark. No NC or ND licences were used.
 
+*Revision 2:* the chorus' running shots now use an animated runner drawn in code instead of photographs of runners, so plates 64, 65 and 67–70 now appear only as thumbnails in the outro's index sheet (they stay listed, and the plate numbers do not change).
+
 | PL. | Title | Creator | Licence | Source |
 |---|---|---|---|---|
 | 1 | Typus orbis terrarum | Norman B. Leventhal Map Center at the BPL | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | [flickr](https://www.flickr.com/photos/24528911@N05/2710792122) |

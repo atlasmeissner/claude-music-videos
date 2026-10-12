@@ -19,11 +19,12 @@ import { F, font, measure } from '../engine/type';
 import { Lyrics, type Word } from '../engine/lyrics';
 import { ease, prog, clamp, lerp, hash, frameIdx } from '../engine/util';
 import { sparkHead, sparkParticles } from './_motifs';
+import { drawRunner, runPhase, echoAlpha } from './_runner';
 import { PlateDrawer, loadImages, caption, LIN, rgba, W, H, kc, LOOK, kb, karaoke, beatsIn, slot, routeLine, xMark, chaikin, along, mixC, Cam, type Line, type PlateOpts } from './_kit';
 
-const RUN = ['d5a72013', 'e4011a9a', '470fef0b', 'e15504b2', '70dd7f22', '6b6e739e', '8f9db33c', '473e66d5'];
+// empty roads and tracks: the animated runner is the only runner in the shot
+const RUN = ['6b6e739e', 'de5288b0', 'f2f80676', '9b3132d0', 'dba2a6bb', '712c27e3', '6f07fcb2', '101aad9d'];
 const LIGHT = ['b3c52bf4', '452abf93', '938a08c9', '2c314b82', '1beeaf74', 'c6e86ad1', '6f07fcb2', '8da33c9c', 'b089d6b4', '56aa2962'];
-const STRIP = ['a63b97dd', '726cadf5'];
 const MAPS = ['cma423521', 'cma423516', 'cma423523'];
 const SIGNS = ['66159111', '92852d3d', '29335d30'];
 const FORK = ['6d2ad4d3', 'c74d162c', '8f9db33c'];
@@ -66,7 +67,7 @@ export default class Chorus extends Scene {
     this.tD = beatBefore(this.ld.words[0]!.start);
     this.cutsA = [start, ...beatsIn(au, start + 0.1, this.tB, n === 1 ? 2 : 1)];
     this.cutsD = beatsIn(au, this.tD, end, 2);
-    const ids = [...RUN, ...LIGHT, ...STRIP, MAPS[n - 1]!, ...SIGNS, ...FORK, ...FEAR[n]!];
+    const ids = [...RUN, ...LIGHT, MAPS[n - 1]!, ...SIGNS, ...FORK, ...FEAR[n]!];
     await loadImages(ids);
     // the map route: a main path with wrong turns branching off and ending in crosses
     const main = [{ x: 140, y: 900 }, { x: 420, y: 760 }, { x: 600, y: 800 }, { x: 860, y: 600 }, { x: 1080, y: 640 }, { x: 1280, y: 430 }, { x: 1520, y: 380 }, { x: 1800, y: 180 }];
@@ -105,7 +106,7 @@ export default class Chorus extends Scene {
       const t0 = this.cutsA[k]!, t1 = this.cutsA[k + 1] ?? this.tB;
       if (t < tLight - 0.05) {
         const id = RUN[(k + n * 3) % RUN.length]!;
-        this.plates.draw(renderer, out, id, { x: -40, y: -30, w: W + 80, h: H + 60, ...kb(t, t0, t1, 1.08, 1.2, (k % 2) * 0.8 - 0.4, 0), ...NEG(0.6), redKey: id === 'd5a72013' ? 1 : 0, seed: k });
+        this.plates.draw(renderer, out, id, { x: -40, y: -30, w: W + 80, h: H + 60, ...kb(t, t0, t1, 1.08, 1.2, (k % 2) * 0.8 - 0.4, 0), ...NEG(0.6), redKey: 0, seed: k });
         caption(c, id, 96, H - 52, { color: ink(0.6) });
       } else {
         // LIGHT: the tunnel's light printed as its own negative (a black sun at the end of a white tunnel)
@@ -116,17 +117,28 @@ export default class Chorus extends Scene {
         caption(c, id, 96, H - 52, { color: ink(0.6) });
         exposure = 1 + 0.15 * Math.pow(0.5, tl / 0.4);
       }
-      // the chronophotograph strip: runners crossing the frame
-      const sp = prog(t, f.start, tLight, ease.linear);
-      const sid = STRIP[n % 2]!;
-      const sw = 1500, sh = 380;
-      this.plates.draw(renderer, out, sid, { x: lerp(-sw, W, sp), y: 560, w: sw, h: sh, ...POS(1), dark: LIN.ink, light: LIN.bone, alpha: t < tLight ? 0.9 : 0, paper: 0 });
-      // the lamp runs ahead of the strip, a route behind it
-      const lx = lerp(-200, W + 300, prog(t, f.start, tLight + 0.4, ease.inQuad)), ly = 540;
-      if (lx > -50 && lx < W + 50) {
-        routeLine(this.lb, [{ x: -10, y: ly }, { x: lx, y: ly }], { w: 3, I: 1.6 });
-        sparkHead(this.lb, lx, ly, t, 1.3, 1.3);
-        sparkParticles(this.lb, t, (tb) => ({ x: lerp(-200, W + 300, prog(tb, f.start, tLight + 0.4, ease.inQuad)), y: ly }), { rate: 120, speed: 200, life: 0.4 });
+      // the runner: an animated ink figure crossing the frame, one footfall per beat, with a chronophotograph
+      // trail of its earlier poses; the lamp runs ahead of it and the route trails behind
+      const rx = (tt: number) => lerp(-260, W + 260, prog(tt, f.start, tLight + 0.35, ease.linear));
+      const ground = 930;
+      const ph = (tt: number) => runPhase(au.beatAt(tt));
+      if (rx(t) < W + 240) {
+        c.fillStyle = ink(0.35); c.fillRect(0, ground + 2, W, 1.5);
+        for (let e = 3; e >= 1; e--) {
+          const te = t - e * 0.11;
+          if (te < f.start) continue;
+          c.globalAlpha = echoAlpha(e, 3) * 0.8;
+          drawRunner(c, rx(te), ground, ph(te), { size: 460, near: rgba('ink', 1), far: rgba('graphite', 1) });
+        }
+        c.globalAlpha = 1;
+        drawRunner(c, rx(t), ground, ph(t), { size: 460, near: rgba('ink', 1), far: rgba('graphite', 1) });
+      }
+      const lampAt = (tt: number) => ({ x: rx(tt) + 260, y: ground - 300 + Math.sin(ph(tt) * 2) * 6 });
+      const lp = lampAt(t);
+      if (lp.x > -50 && lp.x < W + 50) {
+        routeLine(this.lb, [{ x: -10, y: lp.y }, { x: lp.x, y: lp.y }], { w: 3, I: 1.6 });
+        sparkHead(this.lb, lp.x, lp.y, t, 1.3, 1.3);
+        sparkParticles(this.lb, t, (tb) => (tb < f.start ? null : lampAt(tb)), { rate: 120, speed: 200, life: 0.4 });
       }
       // type: two lines of slams, then LIGHT
       const nW = w.length;

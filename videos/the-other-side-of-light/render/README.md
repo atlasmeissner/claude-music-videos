@@ -1,6 +1,6 @@
 # The Other Side of Light — the render
 
-`the-other-side-of-light_1080p30.mp4` (1920×1080, 30 fps, 4:04 including the List of Plates, H.264 + AAC, 645 MB)
+`the-other-side-of-light_1080p30.mp4` (1920×1080, 30 fps, 4:04 including the List of Plates, H.264 + AAC, 651 MB)
 split into seven pieces, because GitHub caps files at 100 MB. Download all seven parts into one folder, then join them:
 
 **macOS / Linux**
@@ -16,7 +16,7 @@ copy /b the-other-side-of-light_1080p30.mp4.part0 + the-other-side-of-light_1080
 ```
 
 Check the result (optional) — the SHA-256 must be
-`573767320e1ef817fece91cec3614bd193df95aa3d91398c487c27e7fbfc540d`:
+`422432e5f96017e37f529b7b2fe3b24df2ef540c4a562aaf5bf33ee76efcd128`:
 
 ```sh
 shasum -a 256 the-other-side-of-light_1080p30.mp4        # macOS (Linux: sha256sum the-other-side-of-light_1080p30.mp4)
