@@ -40,14 +40,14 @@ export function makeTimeline(ly: Lyrics, au: AudioData): TimelineEntry[] {
   const E = (id: string, start: number, end: number, extra: Partial<TimelineEntry> = {}): TimelineEntry =>
     ({ id, load: scene(id), start, end, ...extra });
   const W_ = (id: string, start: number, end: number, part: string): TimelineEntry =>
-    ({ id, load: scene('world'), start, end, params: { part } });
+    ({ id, load: scene('island'), start, end, params: { part } });
 
   return [
     E('dawn', 0, b.ground),
     E('ground', b.ground, b.days),
     E('days', b.days, b.river),
     E('river', b.river, b.turn),
-    // the little world (scenes/world.ts, one module, a shot list per part)
+    // the island (scenes/island.ts, one module, a shot list per part)
     W_('turn', b.turn, b.bending, 'c1a'),
     W_('bending', b.bending, b.pages, 'c1b'),
     E('pages', b.pages, b.night),

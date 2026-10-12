@@ -4,7 +4,7 @@ A generative, code-rendered music video with word-synced karaoke typography for 
 Suno): a quiet song about change too small to see. Every frame is a deterministic function of song time, rendered in
 headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:39, 311 MB) is in [`render/`](render/), split into five parts (GitHub's
+**Watch / download:** the 1080p30 render (3:39, 422 MB) is in [`render/`](render/), split into five parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat one-degree_1080p30.mp4.part0 … one-degree_1080p30.mp4.part4 > one-degree_1080p30.mp4`.
 
@@ -14,15 +14,15 @@ post-processing, typography and export pipeline, with a dawn palette, a small ki
 ## The idea
 
 Built on the song's subject, the compound effect: small, consistent changes that look like nothing at first and
-change everything over time. **The choruses and the ending are the little world**: one small planet whose axis
-tilts by exactly one degree on every sung "degree", from 0° at the first chorus to 24° on the last word. That is a hair
-more than Earth's 23.4°, the tilt that gives Earth its seasons, and the song sings "degree" exactly 24 times. The
-frame never tilts; the planet does. Shots cut on the beat between the planet turning and the village at 50°N that
-lives on it: one degree of planet is a season's difference down there. The noon sun climbs, the ice line retreats
-289 km, the river thaws, the trees leaf, the windows light, and a ledger names what each degree did ("+4° THE RIVER
-CRACKS", "+14° THE ICE LINE PASSES THE VILLAGE"). **The verses are an atlas of slow change**: instruments that
-measure something too small to notice, with a compounding counter (×1.01ⁿ over the song's year) running through
-them. Full concept, palette, type and plate list: [`docs/TREATMENT.md`](docs/TREATMENT.md).
+change everything over time. **The choruses and the ending are the island**: the whole world is one small flat island
+balanced on the point of the needle. It starts level, with a still lake, dry dead land and two people. On the first
+sung "degree" it tips by exactly one degree, and that is its only tilt for the rest of the song (a spirit level on its
+edge shows what the eye can't). One degree is enough for the lake to spill. Every later "degree" sends a surge down
+the river it set running, and the land comes alive behind the water: grass, trees, fields, villages, people, lights.
+By "the whole world's different now" the dry half is a country; on "one degree was all I need" the river reaches the
+edge and falls off the world. **The verses are an atlas of slow change**: instruments that measure something too
+small to notice, with a compounding counter (×1.01ⁿ over the song's year) running through them. Full concept,
+palette, type and plate list: [`docs/TREATMENT.md`](docs/TREATMENT.md).
 
 | Plate | Lyric | Idiom |
 |---|---|---|
@@ -30,18 +30,18 @@ them. Full concept, palette, type and plate list: [`docs/TREATMENT.md`](docs/TRE
 | `ground` | One step… / One word… | a seismograph (MAGNITUDE 0.0); a sound-level meter pinned at −∞ dB |
 | `days` | One day… / Nothing worth remembering yet | a year of identical crossed-off days; "1% better each day" creeps from ×1.00; on "yet", day one turns orange |
 | `river` | But the river… / It's carving… | a survey cross-section in geological map symbols; the river cuts a canyon; the words label the layers |
-| `turn` | One degree, one degree / Turn so slow… | the little world, frozen at 0°; each "degree" tilts its axis a degree, then the village |
-| `bending` | But the whole world's bending / one degree ×3 | the axis leaning from the vertical; turn / village; the break at dusk |
+| `turn` | One degree, one degree / Turn so slow… | the level island tips one degree on the needle; the lake spills; the spirit level sees it |
+| `bending` | But the whole world's bending / one degree ×3 | the river bends its way across the dry land, a surge per "degree" |
 | `pages` | One page… / One glance… | a book's fore-edge growing a page per eighth note; a stopwatch: a second is 1.000 s |
 | `night` | One night… / something's gathering | star trails closing into rings and gathering on the pole star |
 | `snow` | And the mountain… / falling snow | flakes settle into strata that stack into an engraved mountain |
-| `ice` | One degree ×4 / Turn so slow… / bending | four degrees in six seconds; the ice line closing on the village |
-| `whoa` | One degree, whoa ×3 + break | turn / village on each "whoa"; dusk, the windows coming on |
+| `ice` | One degree ×4 / Turn so slow… / bending | trees, fields, the first village and its people |
+| `whoa` | One degree, whoa ×3 + break | more villages; dusk, the windows coming on |
 | `quiet` | I almost gave up… / But I was changing | whispered: a wall of tally marks, each a hair steeper; the pull-back shows the turn |
-| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | the ice line passes the village; "different now": the village in full summer |
-| `lights` | tag | the planet's night side filling with lights |
-| `coda` | One degree… was all I need | the last six degrees, quietly: 24°, next to Earth's 23.4° |
-| `outro` | — | the little world at 24° above the title card |
+| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | still one degree; the whole island alive; the river falls off the edge |
+| `lights` | tag | night on the island: everyone's windows |
+| `coda` | One degree… was all I need | the last surges, into the morning: "one degree, once" |
+| `outro` | — | the island on its needle above the title card |
 
 ## Layout
 
@@ -56,8 +56,8 @@ them. Full concept, palette, type and plate list: [`docs/TREATMENT.md`](docs/TRE
   windows for segment renders).
 - `data/lyrics.json`, `data/audio.json` — word-level lyric timings and the music analysis.
 - `app/` — the renderer (bun + Vite + three.js). `src/engine/` is the forked engine; `src/scenes/_od.ts` is the
-  shared kit (the degree count, the compounding counter, the needle, karaoke and text-on-arc helpers); `_world.ts`
-  is the little world (the planet shader, the village, what each degree does) and `world.ts` its shot lists for the
+  shared kit (the degree count, the compounding counter, the needle, karaoke and text-on-arc helpers); `_island.ts`
+  is the island (its geometry, the river, what grows where and when) and `island.ts` its shot lists for the
   choruses and the ending; one module per other plate in `src/scenes/`; `src/timeline.ts` anchors the plates to lyric lines and beats.
 - `docs/` — `TREATMENT.md` (the plan), `ENGINE.md` (the pdoom-video engine and scene API).
 
@@ -91,7 +91,9 @@ Made with Claude (Opus 5.5) in conversation, by a single agent: the concept and 
 lyric alignment (the sung lyrics differ from the sheet, so the line list was rebuilt from two Whisper runs, the
 vocal map and the pitch track), the kit, all sixteen plates, the contact-sheet reviews and the renders. The first cut
 rolled the whole frame one degree per "degree"; revision 2 dropped that and added the compounding counter; revision
-3 turned the choruses and the ending into the little world, whose axis tilts instead, and redrew the river's strata.
+3 turned the choruses and the ending into a little planet whose axis tilted instead, and redrew the river's strata;
+revision 4 replaced the planet with the island, which tips one degree, once, so the consequences can be seen
+rather than explained.
 
 ## Credits
 

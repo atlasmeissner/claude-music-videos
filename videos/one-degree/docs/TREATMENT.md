@@ -20,13 +20,13 @@ The verses are **an atlas of slow change**: instruments that measure something t
 that does not register a footstep, a sound meter pinned at −∞ dB, a year of identical days, a river cutting a canyon,
 a book growing a page at a time, star trails, snow becoming a mountain, a wall of tally marks), with the
 **compounding counter** (×1.01ⁿ over the song's year) running through them. The choruses and the ending are
-**the little world**: one small planet whose axis tilts by exactly one degree on every sung "degree", 0° at the
-first chorus, 24° at the last word. That is a hair more than Earth's 23.4°, the tilt that gives Earth its seasons, and
-the song happens to sing "degree" exactly 24 times. The frame never tilts; the planet does. The shots cut on the beat
-between the planet turning and the village at 50°N that lives on it. Each degree is one degree of planet and a
-season's difference down there: the noon sun climbs, the ice line retreats 289 km, the river thaws, the trees leaf,
-the windows light. A ledger in the village names what each degree did ("+4° THE RIVER CRACKS", "+14° THE ICE LINE
-PASSES THE VILLAGE"). At 24°: a world with seasons.
+**the island**: the whole world is one small flat island balanced on the point of the needle, seen from a little
+above. It starts level: a still lake, dry dead land, two people. On the first sung "degree" it tips by exactly one
+degree, and that is its only tilt for the rest of the song (a spirit level on its front edge shows what the eye can't).
+One degree is enough for the lake to spill. Every later "degree" sends a surge down the river it set running, and
+the land comes alive behind the water: grass, trees, fields, then villages and the people in them, then lights.
+By "the whole world's different now" the dry half is a country; on "one degree was all I need" the river reaches the
+edge and falls off the world. The readout stays deadpan: TILT 1.0°, THE RIVER n KM, LIVING HERE n.
 
 ## Tone
 
@@ -62,21 +62,24 @@ then revealed on their start), the word being sung in signal, cooling to bone. N
 | `ground` | One step… / One word… | Seismograph drum (MAGNITUDE 0.0), then a sound-level meter pinned at −∞ dB. |
 | `days` | One day… / Nothing worth remembering yet | Bone paper: a year of identical day cells crossed off faster and faster; "1% better each day" creeps from ×1.00; on "yet" the first day after the year turns orange. |
 | `river` | But the river… / It's carving… | A survey cross-section in geological map symbols (sandstone dots, limestone brickwork, shale dashes, schist waves, granite crosses); the orange river cuts a canyon; each word labels the layer it has reached. |
-| `turn` | One degree, one degree / Turn so slow… | The little world, frozen, at 0°; each "degree" tilts its axis one degree (the arc from the vertical, +1°), then cuts to the village; "Turn so slow": a slow push in. |
-| `bending` | But the whole world's bending / one degree ×3 / break | The axis leaning from the vertical; three more degrees, turn / village; the break at the village as the light goes. |
+| `turn` | One degree, one degree / Turn so slow… | The level island; on the first "degree" it tips one degree on the needle; the lake spills; "you can't see": the spirit level can. |
+| `bending` | But the whole world's bending / one degree ×3 / break | The river bends its way across the dry land, a surge per "degree"; grass and trees follow it. |
 | `pages` | One page… / One glance… | A book's fore-edge growing a page per eighth note; a stopwatch: a second is 1.000 s. |
 | `night` | One night… / something's gathering | Star trails over a horizon: each night an arc, the years close them into rings that gather on the pole star. |
 | `snow` | And the mountain… / falling snow | Snowflakes settle into strata that stack into an engraved mountain. |
-| `ice` | One degree ×4 / Turn so slow… / bending | Four degrees in six seconds, planet / village / planet / village; the ice line closing on the village (ICE n KM FROM THE VILLAGE). |
-| `whoa` | One degree, whoa ×3 + break | Turn / village on each "whoa"; the break at dusk, the windows coming on. |
+| `ice` | One degree ×4 / Turn so slow… / bending | Four surges; trees, fields, the first village and its people. |
+| `whoa` | One degree, whoa ×3 + break | More villages; dusk, the windows coming on. |
 | `quiet` | I almost gave up… / But I was changing | Whispered: a wall of tally marks, each a hair steeper than the last; close up every one looks upright; the pull-back shows the turn. |
-| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | The ice line passes the village (+14°); "different now" cuts to the village in full summer. |
-| `lights` | tag | The planet's night side, filling with the lights of the people on it. |
-| `coda` | One degree… was all I need | The last six degrees, quietly, on the planet alone: 18° → 24°, EARTH: 23.4°; "twenty-four degrees: a world with seasons". |
-| `outro` | — | The little world at 24° above the title card. |
+| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | The level again (still one degree); "different now": the whole island alive; the river reaches the edge and falls off the world. |
+| `lights` | tag | Night on the island: the lit windows of everyone living there. |
+| `coda` | One degree… was all I need | The last surges, quietly, into the morning; "one degree, once". |
+| `outro` | — | The island on its needle above the title card. |
 
 ## Revisions
 
+- **4:** the island. The planet's axial tilt needed explaining; now the whole world is a small island that tips one
+  degree, once, and the consequences are plain to see: the lake spills, the river runs, the land and its people come
+  alive (`scenes/_island.ts`, `scenes/island.ts`). The planet, the village and the per-degree ledger were dropped.
 - **3:** the little world. The choruses and the ending became one small planet tilting a degree per "degree" and the
   village that lives on it (`scenes/_world.ts`, `scenes/world.ts`); the curve, the then/now pairs, the sunflower and
   the protractor coda were dropped. The river's hatching (read as noise) became geological map symbols.
