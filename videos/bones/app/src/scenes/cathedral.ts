@@ -38,7 +38,7 @@ export default class Cathedral extends Scene {
     let eye: V3, tgt: V3, roll = 0;
     switch (shot) {
       case 0: { const a = lerp(0.55, 0.8, u); eye = [Math.sin(a) * 52, lerp(34, 40, u), 10 + Math.cos(a) * 30]; tgt = [0, 8, -22]; break; }
-      case 1: eye = [0.01, 1.6, lerp(-6, -14, u)]; tgt = [0, 40, -24 - u * 4]; roll = lerp(0, 0.5, ease.inOutQuad(u)); break;
+      case 1: eye = [0.01, lerp(10, 11, u), lerp(38, 31, ease.inOutQuad(u))]; tgt = [0, 12, -20]; break;
       case 2: eye = [-48, lerp(4, 30, ease.inOutCubic(u)), lerp(-12, -24, u)]; tgt = [0, lerp(12, 14, u), -22]; break;
       default: eye = [0, lerp(7, 9, u), lerp(12, -6, ease.inOutQuad(u))]; tgt = [0, lerp(27, 34, u), -48];
     }
@@ -46,7 +46,7 @@ export default class Cathedral extends Scene {
     const lb = this.lb; lb.clear();
     for (let x = -28; x <= 28; x += 4) lb.seg(x, 0, 10, x, 0, -52, 0.6, LIN.graphite[0], LIN.graphite[1], LIN.graphite[2], 0.3);
     for (let z = 10; z >= -52; z -= 4) lb.seg(-28, 0, z, 28, 0, z, 0.6, LIN.graphite[0], LIN.graphite[1], LIN.graphite[2], 0.3);
-    const built = drawNave(lb, this.cam, audio, t, { bone: scaleRGB(LIN.bone, 1.0), hot: scaleRGB(LIN.signal, 2.4), near: 14, far: 95 });
+    const built = drawNave(lb, this.cam, audio, t, { bone: scaleRGB(LIN.bone, 1.0), hot: scaleRGB(LIN.signal, 2.4), near: 14, far: 95, interior: shot === 3 ? 1 : 0 });
     lb.render(renderer, out, this.cam);
     // the keystone: the boss of the apse vault, set on the last "bones"
     const lp = this.lp; lp.clear();

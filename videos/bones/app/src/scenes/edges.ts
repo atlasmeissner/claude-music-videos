@@ -1,16 +1,17 @@
 // edges — verse 1, "But I've been pulling at the edges" / "And the whole thing bends", then the strings come in
-// and the voice sings a wordless "oh". Here the façade is not a drawing but a building: solid, floodlit stone
-// (see _facadePaint, _fracture), cut along hidden fracture lines.
+// and the voice sings a wordless "oh". The façade, still an engraving, but cut along hidden fracture lines into
+// stones (_fracture: Voronoi cells grouped into large fragments) that move rigidly, so it breaks rather than bends.
 // A: the point walks to the top-right corner and pulls. The corner tears away from the wall in one piece, the
-//    crack running jagged through the courses, dust and chips coming off its edges. On "bends" the whole
-//    building gives: the middle settles into the ground, the wings lean out, every fracture opens at once and
-//    the loose stones fall and pile at the foot. The lyric bends with it.
+//    crack running jagged through the courses, chips and stippled dust coming off its edges. On "bends" the whole
+//    building gives: the middle settles into the ground, the wings lean out, every fracture opens at once and the
+//    loose stones fall as cut, hatched blocks and pile at the foot. The faint structural grid it was set out on
+//    stays where it was. The lyric bends with it.
 // B: the strings enter (the boom): close on the torn corner as it jolts and sheds.
 // C: the "oh"s: each one is a tremor that grinds the blocks against each other and shakes more stone loose.
 //    The point walks back down to the foot of the building, under all of it.
 import * as THREE from 'three';
 import { Scene, type Frame } from '../engine/scene';
-import { FSPass, Layer2D, clearRT, W } from '../engine/gl';
+import { Layer2D, clearRT, W } from '../engine/gl';
 import { LineBatch } from '../engine/lines';
 import { F } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
@@ -18,8 +19,10 @@ import type { Line } from '../engine/lyrics';
 import { clamp, ease, hash, lerp, prog, springStep } from '../engine/util';
 import { drawFlow, drawLedger, drawWarpedLine, mono, point, titleBlock } from './_bones';
 import { Fracture, type Pose, type P2 } from './_fracture';
+import { FACADE, GRID_X } from './_facade';
 
 const CORNER: P2 = [770, -540];
+const LEVELS = [0, -42, -270, -470, -540, -600, -770];
 const G = 1180; // gravity, façade units (≈ cm) per s²
 const H2 = 540;
 
@@ -27,9 +30,7 @@ interface Fall { t0: number; p0: Pose; vx: number; spin: number; tl: number; dro
 
 export default class Edges extends Scene {
   fr!: Fracture;
-  // night sky: a faint warm glow low behind the building, from the floodlights
-  sky = new FSPass(`void main() { vec2 p = FRAG_PX; float g = exp(-pow(length((p - vec2(960.0, 200.0)) / vec2(1100.0, 520.0)), 2.0)); fragColor = vec4(C_INK + vec3(0.006, 0.005, 0.004) * g, 1.0); }`);
-  lb = new LineBatch(3000, { blend: 'normal' });
+  lb = new LineBatch(70000, { blend: 'max' });
   lp = new LineBatch(300);
   text = new Layer2D();
   l2!: Line; l3!: Line;
@@ -38,6 +39,7 @@ export default class Edges extends Scene {
   falls: (Fall | null)[] = [];
   cellCracks: number[][] = [];
   fragR: [number, number, number, number][] = [];
+  pieces: { a: P2; b: P2; w: number; gold: boolean; cell: number }[] = [];
 
   override init() {
     const { lyrics, audio, start, end } = this.ctx;
@@ -52,6 +54,23 @@ export default class Edges extends Scene {
     this.fr = new Fracture(34, 230, 7);
     const fr = this.fr;
     this.fragR = fr.frags.map((_, i) => [hash(i, 21), hash(i, 22), hash(i, 23), hash(i, 24)]);
+    // the line drawing cut into pieces (≤ 14 units), each belonging to the stone cell it lies in
+    const cellOf = (x: number, y: number) => {
+      let best = -1, bd = 1e18;
+      for (let ci = 0; ci < fr.cells.length; ci++) { const q = fr.cells[ci]!.site; const d = (q[0] - x) ** 2 + (q[1] - y) ** 2; if (d < bd) { bd = d; best = ci; } }
+      return best;
+    };
+    for (const m of FACADE) {
+      if (m.layer === 'frame' || m.layer === 'found') continue;
+      for (let k = 1; k < m.pts.length; k++) {
+        const [x0, y0] = m.pts[k - 1]!, [x1, y1] = m.pts[k]!;
+        const n = Math.max(1, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 14));
+        for (let j = 0; j < n; j++) {
+          const a: P2 = [x0 + (x1 - x0) * (j / n), y0 + (y1 - y0) * (j / n)], b: P2 = [x0 + (x1 - x0) * ((j + 1) / n), y0 + (y1 - y0) * ((j + 1) / n)];
+          this.pieces.push({ a, b, w: m.w, gold: m.layer === 'gold', cell: cellOf((a[0] + b[0]) / 2, (a[1] + b[1]) / 2) });
+        }
+      }
+    }
     this.cellCracks = fr.cells.map(() => []);
     fr.cracks.forEach((e, k) => { this.cellCracks[e.cell]!.push(k); this.cellCracks[e.other]!.push(k); });
     // which border stones come loose, and when: the first time the crack beside them opens wider than they
@@ -153,7 +172,6 @@ export default class Edges extends Scene {
     const { renderer, comp, lyrics, audio } = this.ctx;
     const t = f.t, s0 = this.ctx.start, end = this.ctx.end;
     clearRT(renderer, out, LIN.ink);
-    this.sky.render(renderer, out);
     const fr = this.fr;
     const poses = fr.frags.map((_, fi) => this.fragPose(fi, t));
     const shot = t < this.tBoom ? 'A' : t < this.tC ? 'B' : 'C';
@@ -176,55 +194,82 @@ export default class Edges extends Scene {
       const down = ease.inOutCubic(prog(t, this.tHome, end));
       oy = lerp(880, 640, down); s = lerp(s, 0.7, down);
     }
-    const view = { ox, oy, s };
     const toS = (p: P2): P2 => [ox + p[0] * s, oy + p[1] * s];
-    // crack openings per cell (for the broken-edge lip)
     const open = fr.cracks.map((_, k) => this.opening(k, poses));
-    const cellOpen = fr.cells.map((_, ci) => { let m = 0; for (const k of this.cellCracks[ci]!) m = Math.max(m, open[k]!); return m; });
     let down = 0;
-    fr.update(view,
-      (ci) => {
-        const fl = this.falls[ci];
-        if (fl && t >= fl.t0) { down++; return [this.fallPose(fl, t, fr.cells[ci]!.c), 1]; }
-        return [poses[fr.cells[ci]!.frag]!, 1];
-      },
-      (ci) => clamp(cellOpen[ci]! / 6),
-      (ci) => {
-        const fl = this.falls[ci];
-        const rot = fl && t >= fl.t0 ? this.fallPose(fl, t, fr.cells[ci]!.c).rot : poses[fr.cells[ci]!.frag]!.rot;
-        return clamp(1 - rot * 1.6, 0.62, 1.18) * (fl && t >= fl.t0 + fl.tl ? 0.72 : 1);
-      },
-      0.95);
-    fr.render(renderer, out);
-    // crack lines: the dark gap along every opened fragment border, drawn on both lips
+    const cellPose = fr.cells.map((cl, ci) => {
+      const fl = this.falls[ci];
+      if (fl && t >= fl.t0) { down++; return this.fallPose(fl, t, cl.c); }
+      return poses[cl.frag]!;
+    });
     const lb = this.lb; lb.clear();
+    // the reference: the structural grid it was set out on, unbroken, faint — the building breaks away from it
+    const ga = 0.35 * prog(t, s0 + 0.2, s0 + 1.2);
+    for (const x of GRID_X) for (let y = 60; y > -1080; y -= 22) { const p0 = toS([x, y]), p1 = toS([x, y - 15]); lb.seg2(p0[0], p0[1], p1[0], p1[1], 0.8, LIN.ash, ga); }
+    for (const y of LEVELS) for (let x = -880; x < 880; x += 22) { const p0 = toS([x, y]), p1 = toS([x + 15, y]); lb.seg2(p0[0], p0[1], p1[0], p1[1], 0.8, LIN.ash, ga * 0.8); }
+    // the façade: every line piece moves with the stone it is cut into
+    const wk = Math.max(0.7, Math.min(1.5, s * 1.6));
+    for (const pc of this.pieces) {
+      const q = cellPose[pc.cell]!;
+      const A = toS(Fracture.apply(pc.a, q)), Bp = toS(Fracture.apply(pc.b, q));
+      lb.seg2(A[0], A[1], Bp[0], Bp[1], pc.w * wk, pc.gold ? LIN.gold : LIN.bone, pc.gold ? 0.95 : 0.66);
+    }
+    // the fracture: an engraved hairline on both lips of every opened crack
     fr.cracks.forEach((e, k) => {
       const o = open[k]!;
-      if (o < 0.4) return;
-      const w = Math.min(4, 0.7 + o * s * 0.25), al = clamp((o - 0.4) / 2) * 0.9;
+      if (o < 0.6) return;
+      const al = clamp((o - 0.6) / 3) * 0.85;
       for (const ci of [e.cell, e.other]) {
-        if (this.falls[ci] && t >= this.falls[ci]!.t0) continue;
-        const q = poses[fr.cells[ci]!.frag]!;
-        const a = toS(Fracture.apply(e.a, q)), b = toS(Fracture.apply(e.b, q));
-        lb.seg2(a[0], a[1], b[0], b[1], w, [0.004, 0.0035, 0.003], al);
+        const q = cellPose[ci]!;
+        const A = toS(Fracture.apply(e.a, q)), Bp = toS(Fracture.apply(e.b, q));
+        lb.seg2(A[0], A[1], Bp[0], Bp[1], 1, LIN.bone, al);
       }
     });
-    // chips: small fragments thrown off as each stone comes loose
+    // stones that came loose: drawn as cut blocks — outline and a few hatch strokes — falling and lying at the foot
     fr.cells.forEach((cl, ci) => {
       const fl = this.falls[ci];
-      if (!fl || t < fl.t0 || t > fl.t0 + 1.4) return;
-      const c0 = Fracture.apply(cl.c, fl.p0);
-      for (let j = 0; j < 4; j++) {
-        const u = t - fl.t0 - j * 0.04;
-        if (u < 0) continue;
-        const vx = (hash(ci, j, 31) - 0.5) * 260, vy = -hash(ci, j, 32) * 160;
-        let y = c0[1] + vy * u + 0.5 * G * u * u;
-        if (y > -2) y = -2;
-        const x = c0[0] + vx * u;
-        const p = toS([x, y]);
-        const sz = (1.2 + hash(ci, j, 33) * 2.4) * Math.max(0.6, s * 1.4);
-        lb.seg2(p[0], p[1], p[0] + sz, p[1] + sz * 0.6, sz, [0.32, 0.29, 0.25], clamp(1 - u / 1.4));
+      if (!fl || t < fl.t0) return;
+      const q = cellPose[ci]!;
+      const pts = cl.poly.map((p) => toS(Fracture.apply(p, q)));
+      const landed = t >= fl.t0 + fl.tl;
+      for (let n = 0; n < pts.length; n++) { const A = pts[n]!, Bp = pts[(n + 1) % pts.length]!; lb.seg2(A[0], A[1], Bp[0], Bp[1], 1, LIN.bone, landed ? 0.45 : 0.7); }
+      const c0 = toS(Fracture.apply(cl.c, q));
+      const ang = q.rot + 0.7, r = 10 * s;
+      for (let h = -2; h <= 2; h++) {
+        const ox2 = Math.cos(ang + Math.PI / 2) * h * 3.2 * s, oy2 = Math.sin(ang + Math.PI / 2) * h * 3.2 * s;
+        const L = r * (1 - Math.abs(h) * 0.22);
+        lb.seg2(c0[0] + ox2 - Math.cos(ang) * L, c0[1] + oy2 - Math.sin(ang) * L, c0[0] + ox2 + Math.cos(ang) * L, c0[1] + oy2 + Math.sin(ang) * L, 0.7, LIN.ash, landed ? 0.3 : 0.5);
       }
+    });
+    // chips and dust, stippled: short strokes thrown off, then a drift of fine dots where stones break and land
+    fr.cells.forEach((cl, ci) => {
+      const fl = this.falls[ci];
+      if (!fl || t < fl.t0) return;
+      const c0 = Fracture.apply(cl.c, fl.p0);
+      if (t < fl.t0 + 1.4) {
+        for (let j = 0; j < 4; j++) {
+          const u = t - fl.t0 - j * 0.04;
+          if (u < 0) continue;
+          const vx = (hash(ci, j, 31) - 0.5) * 260, vy = -hash(ci, j, 32) * 160;
+          const y = Math.min(-2, c0[1] + vy * u + 0.5 * G * u * u), x = c0[0] + vx * u;
+          const p = toS([x, y]);
+          const sz = (2 + hash(ci, j, 33) * 4) * Math.max(0.6, s * 1.4);
+          const a2 = hash(ci, j, 34) * 6.28;
+          lb.seg2(p[0], p[1], p[0] + Math.cos(a2) * sz, p[1] + Math.sin(a2) * sz, 1, LIN.bone, 0.8 * clamp(1 - u / 1.4));
+        }
+      }
+      const stipple = (t0: number, at: P2, n: number, life: number, seed: number) => {
+        const u = t - t0;
+        if (u < 0 || u > life) return;
+        for (let j = 0; j < n; j++) {
+          const a2 = hash(ci, j, seed) * 6.28, sp = 20 + 70 * hash(ci, j, seed + 1);
+          const rr = sp * Math.sqrt(u) * 1.6;
+          const p = toS([at[0] + Math.cos(a2) * rr + 25 * u, at[1] + Math.sin(a2) * rr * 0.6 - 22 * u * hash(ci, j, seed + 2)]);
+          lb.seg2(p[0], p[1], p[0] + 0.01, p[1], 1.6, LIN.ash, 0.6 * Math.pow(1 - u / life, 1.3));
+        }
+      };
+      stipple(fl.t0, c0, 7, 1.8, 41);
+      if (cl.r[0] < 0.5) { const c1 = Fracture.apply(cl.c, this.fallPose(fl, fl.t0 + fl.tl, cl.c)); stipple(fl.t0 + fl.tl, [c1[0], -8], 10, 2.4, 51); }
     });
     lb.render(renderer, out);
     // the pull: tether from the corner's rest position, the point at the torn corner
@@ -239,41 +284,14 @@ export default class Edges extends Scene {
     }
     const g0 = toS([0, 0]);
     let px = lerp(ox, cs[0], walk), py = lerp(oy, cs[1], walk);
-    px = lerp(px, g0[0], home); py = lerp(py, g0[1], home);
+    px = lerp(px, g0[0], home); py = lerp(py, g0[1] - 5, home);
     point(lp, px, py, t, shot === 'B' ? 1.2 : 0.9);
     lp.render(renderer, out);
 
     const T = this.text, c = T.ctx; T.clear();
-    // dust: a puff where each stone comes loose and where it lands, drifting and spreading
-    fr.cells.forEach((cl, ci) => {
-      const fl = this.falls[ci];
-      if (!fl || t < fl.t0) return;
-      const puff = (t0: number, at: P2, size: number, life: number, seed: number) => {
-        const u = t - t0;
-        if (u < 0 || u > life) return;
-        for (let j = 0; j < 2; j++) {
-          const r = (size * (0.8 + hash(ci, j, seed)) + 140 * Math.sqrt(u)) * s;
-          const p = toS([at[0] + (hash(ci, j, seed + 1) - 0.5) * 60 * u + 20 * u, at[1] - 30 * u * (0.5 + hash(ci, j, seed + 2))]);
-          const a = 0.045 * Math.pow(1 - u / life, 1.5) * (0.6 + 0.4 * hash(ci, j, seed + 3));
-          const gr = c.createRadialGradient(p[0], p[1], 0, p[0], p[1], r);
-          gr.addColorStop(0, `rgba(176,166,150,${a})`); gr.addColorStop(1, 'rgba(176,166,150,0)');
-          c.fillStyle = gr; c.fillRect(p[0] - r, p[1] - r, r * 2, r * 2);
-        }
-      };
-      puff(fl.t0, Fracture.apply(cl.c, fl.p0), 18, 1.8, 41);
-      const c1 = Fracture.apply(cl.c, this.fallPose(fl, fl.t0 + fl.tl, cl.c));
-      if (cl.r[0] < 0.5) puff(fl.t0 + fl.tl, [c1[0], -8], 30, 2.6, 51);
-    });
-    // a haze of dust hanging at the foot once the building has settled
-    const haze = clamp(down / 120) * 0.1;
-    if (haze > 0.005) {
-      const gr = c.createLinearGradient(0, oy - 260 * s, 0, oy);
-      gr.addColorStop(0, 'rgba(150,140,126,0)'); gr.addColorStop(1, `rgba(150,140,126,${haze})`);
-      c.fillStyle = gr; c.fillRect(0, oy - 260 * s, W, 260 * s);
-    }
     // the ground: whatever settles below it disappears into it
     if (oy < 1080) {
-      c.fillStyle = 'rgb(16,14,12)'; c.fillRect(0, oy, W, 1080 - oy);
+      c.fillStyle = rgba('ink', 1); c.fillRect(0, oy + 0.5, W, 1080 - oy);
       c.strokeStyle = rgba('bone', 0.5); c.lineWidth = 1; c.beginPath(); c.moveTo(0, oy); c.lineTo(W, oy); c.stroke();
       c.strokeStyle = rgba('graphite', 0.35);
       for (let x = -20; x < W; x += 16) { c.beginPath(); c.moveTo(x, oy + 2); c.lineTo(x - 14, oy + 16); c.stroke(); }
@@ -313,7 +331,7 @@ export default class Edges extends Scene {
     }
     const la = 1 - prog(t, end - 0.6, end);
     drawLedger(c, lyrics, audio, 120, 1012, t, { alpha: la });
-    titleBlock(c, shot === 'B' ? 'D-104' : 'D-103', shot === 'B' ? 'DETAIL: THE EDGE' : 'STRUCTURE, FAILING', [['SCALE', 'INHERITED'], ['INSTRUMENTS', t < this.tBoom ? 'PIANO' : 'PIANO + STRINGS']], { alpha: la });
+    titleBlock(c, shot === 'B' ? 'D-104' : 'D-103', shot === 'B' ? 'DETAIL: THE EDGE' : 'GRID, UNDER LOAD', [['SCALE', 'INHERITED'], ['INSTRUMENTS', t < this.tBoom ? 'PIANO' : 'PIANO + STRINGS']], { alpha: la });
     comp.draw(renderer, T.upload(), out);
     const kick = Math.max(0, 1 - (t - this.tBoom) / 0.3) * (t >= this.tBoom ? 1 : 0);
     const bendJolt = Math.max(0, 1 - (t - this.tBend) / 0.5) * (t >= this.tBend ? 1 : 0);

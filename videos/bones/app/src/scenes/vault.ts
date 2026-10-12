@@ -17,7 +17,7 @@ export default class Vault extends Scene {
   lb = new LineBatch(4000, { screen2D: false });
   lp = new LineBatch(3000);
   text = new Layer2D();
-  cam = makeCam(60);
+  cam = makeCam(50);
   l30!: Line;
   nodes: { p: V3; t: number }[] = [];
 
@@ -48,10 +48,10 @@ export default class Vault extends Scene {
     const t = f.t, s0 = this.ctx.start, e = this.ctx.end;
     clearRT(renderer, out, LIN.ink);
     const u = (t - s0) / (e - s0);
-    const z = lerp(8, -20, ease.inOutQuad(u));
-    aim(this.cam, [Math.sin(u * 3) * 0.8, 2.2 + u * 2, z], [0, 24, z - 16], Math.sin(u * 2.2) * 0.08);
+    const z = lerp(10, -16, ease.inOutQuad(u));
+    aim(this.cam, [Math.sin(u * 3) * 0.6, 4.5 + u * 2.5, z], [0, 13 + u * 3, z - 30], Math.sin(u * 2.2) * 0.03);
     const lb = this.lb; lb.clear();
-    drawNave(lb, this.cam, audio, t, { bone: scaleRGB(LIN.bone, 0.85), hot: scaleRGB(LIN.signal, 2.4), near: 10, far: 70, all: true });
+    drawNave(lb, this.cam, audio, t, { bone: scaleRGB(LIN.bone, 0.85), hot: scaleRGB(LIN.signal, 2.4), near: 10, far: 70, all: true, interior: 1 });
     lb.render(renderer, out, this.cam);
     const lp = this.lp; lp.clear();
     let lit = 0;

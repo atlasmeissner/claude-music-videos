@@ -5,7 +5,7 @@ Suno), the opening track of the album *Maps & Territory*: a song about first pri
 to what is actually true, then build up from there. Every frame is a deterministic function of song time,
 rendered in headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:19, 400 MB) is in [`render/`](render/), split into five parts (GitHub's
+**Watch / download:** the 1080p30 render (3:19, 384 MB) is in [`render/`](render/), split into five parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat bones_1080p30.mp4.part0 … bones_1080p30.mp4.part4 > bones_1080p30.mp4`.
 
@@ -34,7 +34,7 @@ is a **drawing sheet** with a deadpan title block (D- sheets for demolition, S- 
 |---|---|---|
 | `note` | intro | the title; every piano note a point that rings out; surveyed into one |
 | `facade` | They built these walls… / Told me this is just the shape of things | pull back to an engraved gilded façade; its plan, the "shape" traced |
-| `edges` | But I've been pulling at the edges / And the whole thing bends | the façade as real, floodlit masonry: the corner torn off, then the building settles, cracks through and sheds its stones |
+| `edges` | But I've been pulling at the edges / And the whole thing bends | the engraved façade cut along hidden fracture lines: the corner torn off, then the building settles, cracks through and drops its stones |
 | `carry` | What if everything I'm carrying / Was never mine to hold | a load take-down; every load stamped NOT MINE; the stack lifts off |
 | `strip` | Take me down to the bones / Strip the gold and the stone | an x-ray scan; the gold falls, the stone falls, the frame stands |
 | `shown` | I don't need what I was shown / Build it up from the bones | ornament specimens struck out; post and lintel from the point |
@@ -64,8 +64,9 @@ is a **drawing sheet** with a deadpan title block (D- sheets for demolition, S- 
 - `data/lyrics.json`, `data/audio.json` — word-level lyric timings and the music analysis.
 - `app/` — the renderer (bun + Vite + three.js). `src/engine/` is the forked engine; `src/scenes/_bones.ts` is the
   shared kit (the point, the ledger, title blocks, karaoke and slam typography), `_facade.ts` the procedural
-  building (gold / stone / frame layers and its plan), `_facadePaint.ts` + `_fracture.ts` the same building as solid,
-  lit stone cut into Voronoi cells and fragments that crack apart (used by `edges`), `_frame3d.ts` the 3D frames (the old building's bones and the
+  building (gold / stone / frame layers and its plan), `_fracture.ts` the same building cut
+  into Voronoi stone cells grouped into fragments that crack apart (used by `edges`; `_facadePaint.ts` paints the
+  silhouette it is cut from), `_frame3d.ts` the 3D frames (the old building's bones and the
   cathedral nave with its build schedule); one module per plate in `src/scenes/`; `src/timeline.ts` anchors the
   plates to lyric lines and beats.
 - `docs/` — `TREATMENT.md` (the plan), `ENGINE.md` (the pdoom-video engine and scene API).

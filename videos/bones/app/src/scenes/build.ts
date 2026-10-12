@@ -47,7 +47,7 @@ export default class Build extends Scene {
     // ground grid, faint
     for (let x = -24; x <= 24; x += 4) lb.seg(x, 0, 8, x, 0, -50, 0.6, LIN.graphite[0], LIN.graphite[1], LIN.graphite[2], 0.35);
     for (let z = 8; z >= -50; z -= 4) lb.seg(-24, 0, z, 24, 0, z, 0.6, LIN.graphite[0], LIN.graphite[1], LIN.graphite[2], 0.35);
-    const built = drawNave(lb, this.cam, audio, t, { bone: scaleRGB(LIN.bone, 0.95), hot: scaleRGB(LIN.signal, 2.2), near: 14, far: 90 });
+    const built = drawNave(lb, this.cam, audio, t, { bone: scaleRGB(LIN.bone, 0.95), hot: scaleRGB(LIN.signal, 2.2), near: 14, far: 90, interior: shot === 3 ? 0.8 : 0 });
     lb.render(renderer, out, this.cam);
     // the point at the foot of the first pier; a ring on each new group
     const lp = this.lp; lp.clear();

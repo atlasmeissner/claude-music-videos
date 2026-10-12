@@ -71,70 +71,95 @@ export function pointed(p: V3, q: V3, rise: number, n = 12): V3[] {
 
 export const NAVE_BAYS = 8, BAY = 5, NW = 5, AW = 10, PIER_H = 11, CLER_H = 19, VAULT_RISE = 7, AISLE_H = 8;
 export const NAVE: Seg3[] = (() => {
+  // every member ends on another member: arches spring from pier lines and close on the string course or the
+  // wall plate, ribs meet at the ridge, flyers land on the nave piers
   const o: Seg3[] = [];
   const zs = Array.from({ length: NAVE_BAYS + 1 }, (_, i) => -i * BAY);
+  const ARC_SPRING = PIER_H - 3.5, ARC_RISE = 3.5;           // nave arcade: apex on the string course
+  const WIN_SPRING = CLER_H - 3.5, WIN_RISE = 3.5;           // clerestory window: apex on the wall plate
+  const AIS_SPRING = AISLE_H - 3, AIS_RISE = 3;              // aisle arches: apex on the aisle plate
+  const FLY = { base: AISLE_H + 6, land: CLER_H - 1 };
   let ord = 0;
-  // stage 0: piers (clustered: four shafts) and aisle wall piers, bay by bay from the entrance
+  // stage 0: piers, aisle piers, buttress piers, bay by bay from the entrance
   zs.forEach((z, i) => {
     for (const s of [-1, 1]) {
-      for (const [dx, dz] of [[-0.35, 0], [0.35, 0], [0, -0.35], [0, 0.35]] as const) pushPoly(o, [[s * NW + dx, 0, z + dz], [s * NW + dx, CLER_H, z + dz]], 1.2, 0, i * 2);
-      pushPoly(o, [[s * AW, 0, z], [s * AW, AISLE_H, z]], 1.4, 0, i * 2 + 1);
-      // buttress pier
-      pushPoly(o, [[s * (AW + 4), 0, z], [s * (AW + 4), AISLE_H + 6, z]], 1.6, 0, i * 2 + 1);
+      pushPoly(o, [[s * NW, 0, z], [s * NW, CLER_H, z]], 1.8, 0, i * 2);
+      pushPoly(o, [[s * AW, 0, z], [s * AW, AISLE_H, z]], 1.5, 0, i * 2 + 1);
+      pushPoly(o, [[s * (AW + 4), 0, z], [s * (AW + 4), FLY.base, z]], 1.6, 0, i * 2 + 1);
     }
   });
   ord = 100;
-  // stage 1: arcades along the nave (arches at PIER_H between piers), aisle arcades, aisle wall plates
+  // stage 1: arcades, string course, clerestory windows and wall plate, aisle arcade, aisle plate, aisle arches,
+  // lean-to rafters, ties from the aisle wall to the buttress
   for (let i = 0; i < NAVE_BAYS; i++) {
+    const za = zs[i]!, zb = zs[i + 1]!;
     for (const s of [-1, 1]) {
-      pushPoly(o, pointed([s * NW, PIER_H - 3, zs[i]!], [s * NW, PIER_H - 3, zs[i + 1]!], 3), 1.6, 1, ord + i);
-      pushPoly(o, pointed([s * NW, CLER_H - 3, zs[i]!], [s * NW, CLER_H - 3, zs[i + 1]!], 2.2), 1.2, 1, ord + i); // clerestory windows
-      pushPoly(o, [[s * NW, PIER_H, zs[i]!], [s * NW, PIER_H, zs[i + 1]!]], 1, 1, ord + i);
-      pushPoly(o, pointed([s * AW, AISLE_H - 2.5, zs[i]!], [s * AW, AISLE_H - 2.5, zs[i + 1]!], 2.5), 1.2, 1, ord + i);
-      // aisle transverse arches
-      pushPoly(o, pointed([s * NW, AISLE_H - 2, zs[i]!], [s * AW, AISLE_H - 2, zs[i]!], 2), 1.2, 1, ord + i);
+      pushPoly(o, pointed([s * NW, ARC_SPRING, za], [s * NW, ARC_SPRING, zb], ARC_RISE), 1.6, 1, ord + i);
+      pushPoly(o, [[s * NW, PIER_H, za], [s * NW, PIER_H, zb]], 1.1, 1, ord + i);
+      pushPoly(o, pointed([s * NW, WIN_SPRING, za], [s * NW, WIN_SPRING, zb], WIN_RISE), 1.2, 1, ord + i);
+      pushPoly(o, [[s * NW, CLER_H, za], [s * NW, CLER_H, zb]], 1.3, 1, ord + i);
+      pushPoly(o, pointed([s * AW, AIS_SPRING, za], [s * AW, AIS_SPRING, zb], AIS_RISE), 1.2, 1, ord + i);
+      pushPoly(o, [[s * AW, AISLE_H, za], [s * AW, AISLE_H, zb]], 1.1, 1, ord + i);
     }
   }
+  zs.forEach((z, i) => {
+    for (const s of [-1, 1]) {
+      pushPoly(o, pointed([s * NW, AIS_SPRING, z], [s * AW, AIS_SPRING, z], AIS_RISE), 1.2, 1, ord + Math.min(i, NAVE_BAYS - 1));
+      pushPoly(o, [[s * AW, AISLE_H, z], [s * NW, AISLE_H + 2.5, z]], 1, 1, ord + Math.min(i, NAVE_BAYS - 1));
+      pushPoly(o, [[s * AW, AISLE_H, z], [s * (AW + 4), AISLE_H, z]], 1, 1, ord + Math.min(i, NAVE_BAYS - 1));
+    }
+  });
   ord = 200;
-  // stage 2: nave vault: transverse arches, diagonal ribs, ridge
-  for (let i = 0; i <= NAVE_BAYS; i++) pushPoly(o, pointed([-NW, CLER_H, zs[i]!], [NW, CLER_H, zs[i]!], VAULT_RISE - 2), 1.8, 2, ord + i);
+  // stage 2: the vault — transverse arches and diagonal ribs all closing at the ridge height, and the ridge
+  const top = CLER_H + VAULT_RISE;
+  for (let i = 0; i <= NAVE_BAYS; i++) pushPoly(o, pointed([-NW, CLER_H, zs[i]!], [NW, CLER_H, zs[i]!], VAULT_RISE), 1.8, 2, ord + i);
   for (let i = 0; i < NAVE_BAYS; i++) {
     const zc = (zs[i]! + zs[i + 1]!) / 2;
-    const apex: V3 = [0, CLER_H + VAULT_RISE, zc];
     for (const [x, z] of [[-NW, zs[i]!], [NW, zs[i]!], [-NW, zs[i + 1]!], [NW, zs[i + 1]!]] as const) {
       const p: V3[] = [];
-      for (let k = 0; k <= 14; k++) { const u = k / 14; p.push([x + (0 - x) * u, CLER_H + VAULT_RISE * Math.sin((u * Math.PI) / 2), z + (zc - z) * u]); }
+      for (let k = 0; k <= 14; k++) { const u = k / 14; p.push([x * (1 - u), CLER_H + VAULT_RISE * Math.sin((u * Math.PI) / 2), z + (zc - z) * u]); }
       pushPoly(o, p, 1.4, 2, ord + i + 0.5);
     }
-    pushPoly(o, [[0, CLER_H + VAULT_RISE - 2 + 2, zs[i]!], apex, [0, CLER_H + VAULT_RISE, zs[i + 1]!]], 1, 2, ord + i + 0.6);
+    pushPoly(o, [[0, top, zs[i]!], [0, top, zs[i + 1]!]], 1.1, 2, ord + i + 0.6);
   }
   ord = 300;
-  // stage 3: flying buttresses and pinnacles
+  // stage 3: flying buttresses (from the buttress head to the nave pier) and pinnacles
   zs.forEach((z, i) => {
     for (const s of [-1, 1]) {
       const p: V3[] = [];
-      for (let k = 0; k <= 12; k++) { const u = k / 12; p.push([s * (AW + 4 - (AW + 4 - NW - 0.5) * u), AISLE_H + 6 + (CLER_H - 2 - AISLE_H - 6) * u + 3 * Math.sin(u * Math.PI), z]); }
+      for (let k = 0; k <= 12; k++) { const u = k / 12; p.push([s * (AW + 4 + (NW - AW - 4) * u), FLY.base + (FLY.land - FLY.base) * u + 2.5 * Math.sin(u * Math.PI), z]); }
       pushPoly(o, p, 1.4, 3, ord + i);
-      pushPoly(o, [[s * (AW + 4), AISLE_H + 6, z], [s * (AW + 4), AISLE_H + 9.5, z]], 1.2, 3, ord + i);
+      pushPoly(o, [[s * (AW + 4), FLY.base, z], [s * (AW + 4), FLY.base + 3.5, z]], 1.2, 3, ord + i);
     }
   });
-  // stage 3: apse (half ring of piers and ribs to a boss) and the west rose
+  // stage 3: the apse — piers on a half ring, its arcade, string course and wall plate, ribs to the boss
   const zA = zs[NAVE_BAYS]!;
-  const boss: V3 = [0, CLER_H + VAULT_RISE, zA - 3];
+  const boss: V3 = [0, top, zA - 3];
+  const ap: [number, number][] = [];
+  for (let k = 0; k <= 6; k++) { const a = Math.PI + (k / 6) * Math.PI; ap.push([Math.cos(a) * NW, zA + Math.sin(a) * NW * 1.2]); }
+  for (let k = 1; k < 6; k++) pushPoly(o, [[ap[k]![0], 0, ap[k]![1]], [ap[k]![0], CLER_H, ap[k]![1]]], 1.6, 3, ord + 20 + k);
+  for (let k = 0; k < 6; k++) {
+    const a: V3 = [ap[k]![0], ARC_SPRING, ap[k]![1]], b: V3 = [ap[k + 1]![0], ARC_SPRING, ap[k + 1]![1]];
+    pushPoly(o, pointed(a, b, ARC_RISE), 1.4, 3, ord + 20 + k);
+    pushPoly(o, [[a[0], PIER_H, a[2]], [b[0], PIER_H, b[2]]], 1, 3, ord + 20 + k);
+    pushPoly(o, [[a[0], CLER_H, a[2]], [b[0], CLER_H, b[2]]], 1.2, 3, ord + 20 + k);
+  }
   for (let k = 0; k <= 6; k++) {
-    const a = Math.PI + (k / 6) * Math.PI;
-    const px = Math.cos(a) * NW, pz = zA + Math.sin(a) * NW * 1.2;
-    pushPoly(o, [[px, 0, pz], [px, CLER_H, pz]], 1.4, 3, ord + 20 + k);
+    const [px, pz] = ap[k]!;
     const p: V3[] = [];
     for (let j = 0; j <= 12; j++) { const u = j / 12; p.push([px + (boss[0] - px) * u, CLER_H + VAULT_RISE * Math.sin((u * Math.PI) / 2), pz + (boss[2] - pz) * u]); }
-    pushPoly(o, p, 1.2, 3, ord + 20 + k);
+    pushPoly(o, p, 1.3, 3, ord + 27);
   }
-  const rose: V3[] = [];
-  const rc: V3 = [0, CLER_H - 1, 0.2], rr = 3.2;
-  for (let k = 0; k <= 48; k++) { const a = (k / 48) * Math.PI * 2; rose.push([rc[0] + Math.cos(a) * rr, rc[1] + Math.sin(a) * rr, rc[2]]); }
-  pushPoly(o, rose, 1.4, 3, ord + 30);
-  for (let k = 0; k < 12; k++) { const a = (k / 12) * Math.PI * 2; pushPoly(o, [[rc[0] + Math.cos(a) * 0.8, rc[1] + Math.sin(a) * 0.8, rc[2]], [rc[0] + Math.cos(a) * rr, rc[1] + Math.sin(a) * rr, rc[2]]], 1, 3, ord + 30); }
-  // floor: the setting-out lines (stage 0, drawn first)
+  pushPoly(o, [[0, top, zA], boss], 1.1, 3, ord + 27);
+  // stage 3: the west front — a lintel across at the string course, the rose sitting on it, tied to the piers
+  const rr = 3.6, rc: V3 = [0, PIER_H + rr, 0];
+  pushPoly(o, [[-NW, PIER_H, 0], [NW, PIER_H, 0]], 1.3, 3, ord + 30);
+  const rose: V3[] = [], inner: V3[] = [];
+  for (let k = 0; k <= 48; k++) { const a = (k / 48) * Math.PI * 2; rose.push([Math.cos(a) * rr, rc[1] + Math.sin(a) * rr, 0]); inner.push([Math.cos(a) * 0.9, rc[1] + Math.sin(a) * 0.9, 0]); }
+  pushPoly(o, rose, 1.4, 3, ord + 31); pushPoly(o, inner, 1.1, 3, ord + 31);
+  for (let k = 0; k < 12; k++) { const a = (k / 12) * Math.PI * 2; pushPoly(o, [[Math.cos(a) * 0.9, rc[1] + Math.sin(a) * 0.9, 0], [Math.cos(a) * rr, rc[1] + Math.sin(a) * rr, 0]], 1, 3, ord + 31); }
+  pushPoly(o, [[-NW, rc[1], 0], [-rr, rc[1], 0]], 1.1, 3, ord + 31); pushPoly(o, [[rr, rc[1], 0], [NW, rc[1], 0]], 1.1, 3, ord + 31);
+  // floor: the setting-out lines (drawn first)
   pushPoly(o, [[0, 0, 4], [0, 0, zA - 6]], 1, -1, 0);
   for (const s of [-1, 1]) pushPoly(o, [[s * NW, 0, 2], [s * NW, 0, zA]], 0.8, -1, 0);
   return o;
@@ -189,7 +214,7 @@ export function buildTimes(au: AudioData): number[] {
   return s;
 }
 /** Draw the nave as built at t into a 3D LineBatch: each group draws on over `rise` s with a hot tip. */
-export function drawNave(lb: LineBatch, cam: THREE.Camera, au: AudioData, t: number, o: { rise?: number; bone: V3; hot: V3; near?: number; far?: number; alpha?: number; all?: boolean }) {
+export function drawNave(lb: LineBatch, cam: THREE.Camera, au: AudioData, t: number, o: { rise?: number; bone: V3; hot: V3; near?: number; far?: number; alpha?: number; all?: boolean; interior?: number }) {
   const T = buildTimes(au);
   const rise = o.rise ?? 0.35;
   let built = 0;
@@ -210,7 +235,17 @@ export function drawNave(lb: LineBatch, cam: THREE.Camera, au: AudioData, t: num
         const f = Math.min(1, upto - i);
         const b: V3 = [s.a[0] + (s.b[0] - s.a[0]) * f, s.a[1] + (s.b[1] - s.a[1]) * f, s.a[2] + (s.b[2] - s.a[2]) * f];
         const fo = fog(cam, s.a, b, o.near ?? 12, o.far ?? 80);
-        const al = (0.15 + 0.85 * fo) * (o.alpha ?? 1);
+        // members passing right by the lens fade out instead of sweeping across the frame
+        const mx = (s.a[0] + b[0]) / 2 - cam.position.x, my = (s.a[1] + b[1]) / 2 - cam.position.y, mz = (s.a[2] + b[2]) / 2 - cam.position.z;
+        const dn = Math.sqrt(mx * mx + my * my + mz * mz);
+        const nearK = Math.min(1, Math.max(0, (dn - 3) / 6));
+        // interior views: the aisles dim and what stands outside the walls (buttresses, flyers) goes
+        let ik = 1;
+        if (o.interior) {
+          const ax = Math.max(Math.abs(s.a[0]), Math.abs(s.b[0]));
+          ik = ax <= NW + 0.01 ? 1 : ax <= AW + 0.01 ? 1 - 0.75 * o.interior : 1 - o.interior;
+        }
+        const al = (0.15 + 0.85 * fo) * (o.alpha ?? 1) * nearK * ik;
         const c: V3 = [o.bone[0] + (o.hot[0] - o.bone[0]) * heat, o.bone[1] + (o.hot[1] - o.bone[1]) * heat, o.bone[2] + (o.hot[2] - o.bone[2]) * heat];
         lb.seg(s.a[0], s.a[1], s.a[2], b[0], b[1], b[2], s.w, c[0], c[1], c[2], al);
       }
