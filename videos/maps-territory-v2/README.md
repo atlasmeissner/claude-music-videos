@@ -8,8 +8,9 @@ This is the second version. [Version 1](../maps-territory/) told the idea in twe
 is **one map, one continuous shot**: the plan of a life is drawn, and then a real life walks away from it, event by
 event.
 
-**Watch / download:** the 1080p30 render is in [`render/`](render/), split into parts (GitHub's 100 MB file
-limit); join them with one command, see [`render/README.md`](render/README.md).
+**Watch / download:** the 1080p30 render (5:19, 431 MB) is in [`render/`](render/), split into five parts
+(GitHub's 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+`cat maps-territory-v2_1080p30.mp4.part0 … maps-territory-v2_1080p30.mp4.part4 > maps-territory-v2_1080p30.mp4`.
 
 ## The idea
 
@@ -53,7 +54,8 @@ scripts/segments.sh p01 p02 … p13            # each part → out/seg/<id>.mp4 
 scripts/assemble.sh                          # joins the parts and muxes the song → out/maps-territory-v2.mp4
 ```
 
-Rendered in a CPU-only cloud container (SwiftShader), hence 30 fps and one sample per frame; on a GPU machine
+Rendered in a CPU-only cloud container (SwiftShader, about 2–2.6 s per frame, some six hours for the song), hence
+30 fps and one sample per frame; on a GPU machine
 `render.ts video --samples auto --fps 60` renders a 60 fps file with motion blur.
 
 ## Credits
