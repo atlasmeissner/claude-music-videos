@@ -6,7 +6,7 @@
 //  A "running … light": runners cut on the beat behind word slams; LIGHT blooms.
 //  B "every wrong turn made the right one clear/bright": the lamp walks Nolli's Rome, every wrong turn
 //    ends in a cross; the right path is what is left when they are all crossed out, and it lights up.
-//  C "I'm not chasing (what I want) tonight": a signpost to WANT, struck out; the lamp turns its back.
+//  C "I'm not chasing (what I want) tonight": the lamp turns its back on what it wanted and walks the other way.
 //  D "I'm just leaving what I fear / I just left behind the fight": the frightening plates of the
 //    verses recede into the distance while a deadpan meter counts the distance.
 // n = 1, 2, 3 escalate: more cuts, more plates, and the third (the final chorus) breaks down to
@@ -29,8 +29,7 @@ const BURST = ['6b6e739e', '1478fd3b', 'de5288b0', '633bf87a', 'f2f80676', 'b9d9
 const RUN = ['6b6e739e', 'de5288b0', 'f2f80676', '9b3132d0', 'dba2a6bb', '712c27e3', '6f07fcb2', '101aad9d'];
 const LIGHT = ['b3c52bf4', '452abf93', '938a08c9', '2c314b82', '1beeaf74', 'c6e86ad1', '6f07fcb2', '8da33c9c', 'b089d6b4', '56aa2962'];
 const MAPS = ['cma423521', 'cma423516', 'cma423523'];
-const SIGNS = ['66159111', '92852d3d', '29335d30'];
-const FORK = ['6d2ad4d3', 'c74d162c', '8f9db33c'];
+const FORK = ['c74d162c', 'f2f80676', '8f9db33c'];
 const FEAR: Record<number, string[]> = {
   1: ['cma110180', 'cma133655', '034991cc', 'cma122351', '00fa3566', 'cma141637'],
   2: ['cma141637', 'b0150c56', '9f2efb79', 'cma149107', 'cma106564', 'cma110180'],
@@ -70,7 +69,7 @@ export default class Chorus extends Scene {
     this.tD = beatBefore(this.ld.words[0]!.start);
     this.cutsA = [start, ...beatsIn(au, start + 0.1, this.tB, n === 1 ? 2 : 1)];
     this.cutsD = beatsIn(au, this.tD, end, 2);
-    const ids = [...RUN, ...PAST, ...BURST, ...LIGHT, MAPS[n - 1]!, ...SIGNS, ...FORK, ...FEAR[n]!];
+    const ids = [...RUN, ...PAST, ...BURST, ...LIGHT, MAPS[n - 1]!, ...FORK, ...FEAR[n]!];
     await loadImages(ids);
     // the map route: a main path with wrong turns branching off and ending in crosses
     const main = [{ x: 140, y: 900 }, { x: 420, y: 760 }, { x: 600, y: 800 }, { x: 860, y: 600 }, { x: 1080, y: 640 }, { x: 1280, y: 430 }, { x: 1520, y: 380 }, { x: 1800, y: 180 }];
@@ -190,17 +189,6 @@ export default class Chorus extends Scene {
         routeLine(this.lb, full, { w: 7 + (whisper ? 0 : 4) * reveal, I: 2.2 + reveal * (whisper ? 6 : 2.5) });
       }
       sparkHead(this.lb, lamp.x, lamp.y, t, 1.2, 1.2);
-      // a WRONG WAY sign stamped on "wrong" (and on "turn" in the louder choruses)
-      const ww = w.find((x) => /wrong/i.test(x.w))!, wtn = w.find((x) => /turn/i.test(x.w))!;
-      [ww, wtn].forEach((word, i) => {
-        if (whisper && i === 1) return;
-        const k = prog(t, word.start, word.start + 0.14, ease.outBack) * (1 - reveal);
-        if (k <= 0) return;
-        const id = SIGNS[(i + n) % SIGNS.length]!;
-        const R = { x: 1180 + i * 260, y: 120 + i * 210, w: 400, h: 280 };
-        this.plates.draw(renderer, out, id, { ...R, rot: (i ? -0.08 : 0.06), ...POS(1), dark: LIN.ink, redKey: 1, border: 1, alpha: k, paper: 0.8 });
-        caption(c, id, R.x, R.y + R.h + 22, { short: true, size: 11, color: ink(0.6 * k) });
-      });
       // type
       const half = Math.ceil(w.length / 2.2);
       const size = whisper ? 96 : 128;
@@ -221,23 +209,7 @@ export default class Chorus extends Scene {
       const id = FORK[(n - 1) % FORK.length]!;
       this.plates.draw(renderer, out, id, { x: -40, y: -30, w: W + 80, h: H + 60, ...kb(t, this.tC, this.tD, 1.05, 1.25, 0, 0, 0.2, -0.1), ...NEG(0.55) });
       caption(c, id, 96, H - 52, { color: ink(0.6) });
-      // the signpost: WANT → (to the right, up the road), struck out; the lamp walks the other way (left).
-      // (the final chorus, "not chasing anymore", has no sign: nothing left to chase)
-      const wantW = w.find((x) => /want/i.test(x.w));
-      if (wantW) {
-        const sk = prog(t, this.tC + 0.1, this.tC + 0.35, ease.outBack);
-        const px = 1240, py = 330;
-        c.save(); c.translate(px, py); c.rotate(-0.04); c.globalAlpha = sk;
-        c.fillStyle = ink(1);
-        c.beginPath(); c.moveTo(0, 0); c.lineTo(440, 0); c.lineTo(520, 70); c.lineTo(440, 140); c.lineTo(0, 140); c.closePath(); c.fill();
-        c.fillRect(30, 140, 14, 520);
-        c.font = font(F.archivo(100, 900), 96); c.fillStyle = rgba('bone', 1);
-        c.fillText('WANT', 40, 108);
-        c.restore();
-        const strike = prog(t, wantW.start, wantW.start + 0.25, ease.outCubic);
-        if (strike > 0) this.lb.seg2(px - 20, py + 130, px - 20 + 560 * strike, py + 10 - 60 * strike, 14, kc(2, LIN.signal), 1);
-      }
-      // the lamp walks left, away from the sign
+      // the lamp walks left: it turns its back on what it wanted
       const lx = lerp(1100, 160, prog(t, this.tC, this.tD + 0.4, ease.inOutQuad)), ly = 640 + Math.sin(t * 9) * 4;
       routeLine(this.lb, [{ x: 1180, y: 640 }, { x: lx, y: ly }], { w: 3, I: 1.5, dash: 12 });
       sparkHead(this.lb, lx, ly, t, 1.2, 1.2);

@@ -1,10 +1,10 @@
 // GLORY — the bridge, whispered: "They said go find the path to glory / I just found every path to
 // grief / And walked the other way."
-// Almost nothing on a black sheet: a fingerpost in hairlines, the lamp, small type. Glory is hung
+// Almost nothing on a black sheet: the lamp and small type. Glory is hung
 // like a museum wall of small framed plates (arches, laurels, a victory). On "every path to grief"
 // each frame turns, one by one, into a grave, and the lamp's single path splits into a fan of
-// routes, one to each. On "walked the other way" the footprints in the sand turn around, the
-// fingerpost spins, and the lamp walks left out of the atlas, into the climb.
+// routes, one to each. On "walked the other way" the footprints in the sand turn around and the
+// lamp walks left out of the atlas, into the climb.
 import type * as THREE from 'three';
 import { Scene, type Frame, type PostOverrides } from '../engine/scene';
 import { Layer2D, clearRT } from '../engine/gl';
@@ -43,13 +43,8 @@ export default class Glory extends Scene {
     const tx = (s: string, x: number, y: number, a: number, sz = 15) => { c.font = font(F.mono(500), sz); c.letterSpacing = '3px'; c.fillStyle = rgba('bone', a); c.fillText(s, x, y); c.letterSpacing = '0px'; };
     let fade = 1 - prog(t, f.start, f.start + 1.2);
     if (t < tWalk) {
-      // the fingerpost
       const pk = prog(t, f.start + 0.5, f.start + 1.5, ease.outCubic);
-      const B = kc(0.75 * pk, LIN.bone);
-      this.lb.seg2(POST.x, POST.y + 300, POST.x, POST.y - 260 * pk, 2, B);
-      this.lb.seg2(POST.x, POST.y - 220, POST.x + 260 * pk, POST.y - 220, 2, B); this.lb.seg2(POST.x + 260 * pk, POST.y - 220, POST.x + 290 * pk, POST.y - 190, 2, B);
-      this.lb.seg2(POST.x, POST.y - 160, POST.x + 260 * pk, POST.y - 160, 2, B); this.lb.seg2(POST.x + 260 * pk, POST.y - 160, POST.x + 290 * pk, POST.y - 190, 2, B);
-      tx('GLORY', POST.x + 30, POST.y - 182, 0.85 * pk, 20);
+      tx('GLORY', 900, 140, 0.85 * prog(t, this.hang[0]! - 0.2, this.hang[0]! + 0.2), 20);
       tx('SHEET XII · THE CROSSROADS', 96, 96, 0.6 * pk);
       // glory, hung in small frames, one per two beats from "find"
       let ends: { x: number; y: number }[] = [];

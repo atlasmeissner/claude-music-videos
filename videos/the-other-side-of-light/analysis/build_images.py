@@ -42,16 +42,4 @@ with open(f'{ROOT}/CREDITS.md', 'w') as f:
 print(len(man), 'images;', sum(os.path.getsize(f'{out}/{m["file"]}') for m in man.values()) / 1e6, 'MB')
 from collections import Counter; print(Counter(m['license'] for m in man.values()))
 
-# the atlas sheet: every plate in one texture (16 x 12 cells of 240 x 160), in plate order, for the outro's mosaic
-from PIL import ImageOps
-CW, CH, COLS, ROWS = 240, 160, 16, 12
-sheet = Image.new('RGB', (CW * COLS, CH * ROWS), (20, 20, 20))
-for i, (k, m) in enumerate(man.items()):
-    if i >= COLS * ROWS: break
-    im = Image.open(f"{out}/{m['file']}").convert('RGB')
-    im = ImageOps.fit(im, (CW, CH), Image.LANCZOS)
-    sheet.paste(im, ((i % COLS) * CW, (i // COLS) * CH))
-sheet.save(f'{out}/atlas.jpg', quality=88)
-man_atlas = {'cols': COLS, 'rows': ROWS, 'n': min(len(man), COLS * ROWS)}
-json.dump(man_atlas, open(f'{out}/atlas.json', 'w'))
-print('atlas', man_atlas)
+# the atlas sheet (outro index) is built by build_atlas.py from manifest.json

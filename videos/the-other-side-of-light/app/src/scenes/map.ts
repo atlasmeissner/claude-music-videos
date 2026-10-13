@@ -1,8 +1,7 @@
 // MAP — "I drew a map of every way to lose"
 // The lamp writes "I drew a map" in a plotter's hand while the sheet behind it lights up only where
 // the lamp has been. "of every way to" cuts through four old maps on the beat, a route on each, every
-// route ending in a cross. On "lose" the last map turns out to be a labyrinth, and a DEAD END sign is
-// pasted into the margin like a specimen.
+// route ending in a cross. On "lose" the last map turns out to be a labyrinth.
 import type * as THREE from 'three';
 import { Scene, type Frame, type PostOverrides } from '../engine/scene';
 import { Layer2D, clearRT } from '../engine/gl';
@@ -15,7 +14,7 @@ import { sparkHead, sparkParticles } from './_motifs';
 import { PlateDrawer, loadImages, caption, charTimesWords, LIN, rgba, W, H, kc, LOOK, kb, wander, along, chaikin, routeLine, xMark, karaoke, beatsIn, slot, type Line } from './_kit';
 
 const MAPS = ['33f4b2d9', 'ca21b201', 'c00ef074', '655e34ab'];
-const IMG = { first: 'cma423518', laby: 'fef8f35c', dead: '4894723b', monster: '6a8854a2' };
+const IMG = { first: 'cma423518', laby: 'fef8f35c', monster: '6a8854a2' };
 
 export default class MapScene extends Scene {
   L = new Layer2D();
@@ -80,9 +79,6 @@ export default class MapScene extends Scene {
       this.plates.draw(renderer, out, IMG.laby, { x: -420, y: -420, w: W + 840, h: H + 840, rot: -kz * 0.25, zoom: 1.05 + kz * 0.5, panX: 0.4, panY: 0, ...LOOK.tone, gamma: 1.6, light: kc(0.42, LIN.bone), glow: 0.5, glowAt: 0.93 });
       const hit = prog(t, tLose + 0.12, tLose + 0.3, ease.outBack);
       if (hit > 0) {
-        const s = lerp(1.6, 1, hit);
-        this.plates.draw(renderer, out, IMG.dead, { x: 1320 - 180 * (s - 1), y: 150 - 140 * (s - 1), w: 430 * s, h: 330 * s, rot: 0.06, ...LOOK.tone, border: 1, paper: 0.8, glow: 0.35, glowAt: 0.8 });
-        caption(c, IMG.dead, 1320, 510, { short: true, color: rgba('bone', 0.6) });
         shake = [Math.sin(t * 90) * 6 * (1 - hit), Math.cos(t * 77) * 6 * (1 - hit)];
       }
       caption(c, IMG.laby, 96, H - 64, { color: rgba('bone', 0.55) });

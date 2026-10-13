@@ -16,7 +16,7 @@ import { sparkHead, sparkParticles } from './_motifs';
 import { PlateDrawer, loadImages, caption, LIN, rgba, W, H, kc, LOOK, routeLine, xMark, chaikin, along, mixC, Cam, type PlateOpts } from './_kit';
 
 const HEROES = ['6ed5a954', 'c00ef074', 'fef8f35c', '034991cc', 'b0150c56', '00fa3566', 'cma103244', 'cma122351', '65d44a67', 'fcbb40f9', 'd5a72013', 'b3c52bf4',
-  '66159111', 'cma110180', 'bc3176b9', '368b5944', '5953f9f0', 'be1c5d0b', 'fba082d7', 'a5cc0eb7', 'cma142697', 'be25a8b0', 'ea8bb3cb', '50762a57',
+  'c74d162c', 'cma110180', 'bc3176b9', '368b5944', '5953f9f0', 'be1c5d0b', 'fba082d7', 'a5cc0eb7', 'cma142697', 'be25a8b0', 'ea8bb3cb', '50762a57',
   'dba2a6bb', '00919cb2', '2ca7d804', '9892f864', 'cma141637', 'cma133655', '8f9db33c', '473e66d5'];
 const ATLAS = '@atlas.jpg';
 const COLS = 16, ROWS = 12, NCELL = 188;
