@@ -16,7 +16,7 @@ copy /b the-other-side-of-light_1080p30.mp4.part0 + the-other-side-of-light_1080
 ```
 
 Check the result (optional) — the SHA-256 must be
-`30385e59d154af48c9e65d9b60a6f3d2701bd4292c3b4eb5e5a1c90d120ffaa3`:
+`cb2dc7b5f27f01af060ed078ee3610d7a589d3caf496968644c66d7f0face179`:
 
 ```sh
 shasum -a 256 the-other-side-of-light_1080p30.mp4        # macOS (Linux: sha256sum the-other-side-of-light_1080p30.mp4)

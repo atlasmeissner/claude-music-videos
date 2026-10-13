@@ -221,19 +221,22 @@ export default class Chorus extends Scene {
       const id = FORK[(n - 1) % FORK.length]!;
       this.plates.draw(renderer, out, id, { x: -40, y: -30, w: W + 80, h: H + 60, ...kb(t, this.tC, this.tD, 1.05, 1.25, 0, 0, 0.2, -0.1), ...NEG(0.55) });
       caption(c, id, 96, H - 52, { color: ink(0.6) });
-      // the signpost: WANT → (to the right, up the road); the lamp walks the other way (left)
-      const wantW = w.find((x) => /want|anymore/i.test(x.w))!;
-      const sk = prog(t, this.tC + 0.1, this.tC + 0.35, ease.outBack);
-      const px = 1240, py = 330;
-      c.save(); c.translate(px, py); c.rotate(-0.04); c.globalAlpha = sk;
-      c.fillStyle = ink(1);
-      c.beginPath(); c.moveTo(0, 0); c.lineTo(440, 0); c.lineTo(520, 70); c.lineTo(440, 140); c.lineTo(0, 140); c.closePath(); c.fill();
-      c.fillRect(30, 140, 14, 520);
-      c.font = font(F.archivo(100, 900), 96); c.fillStyle = rgba('bone', 1);
-      c.fillText(/anymore/i.test(wantW.w) ? 'MORE' : 'WANT', 40, 108);
-      c.restore();
-      const strike = prog(t, wantW.start, wantW.start + 0.25, ease.outCubic);
-      if (strike > 0) this.lb.seg2(px - 20, py + 130, px - 20 + 560 * strike, py + 10 - 60 * strike, 14, kc(2, LIN.signal), 1);
+      // the signpost: WANT → (to the right, up the road), struck out; the lamp walks the other way (left).
+      // (the final chorus, "not chasing anymore", has no sign: nothing left to chase)
+      const wantW = w.find((x) => /want/i.test(x.w));
+      if (wantW) {
+        const sk = prog(t, this.tC + 0.1, this.tC + 0.35, ease.outBack);
+        const px = 1240, py = 330;
+        c.save(); c.translate(px, py); c.rotate(-0.04); c.globalAlpha = sk;
+        c.fillStyle = ink(1);
+        c.beginPath(); c.moveTo(0, 0); c.lineTo(440, 0); c.lineTo(520, 70); c.lineTo(440, 140); c.lineTo(0, 140); c.closePath(); c.fill();
+        c.fillRect(30, 140, 14, 520);
+        c.font = font(F.archivo(100, 900), 96); c.fillStyle = rgba('bone', 1);
+        c.fillText('WANT', 40, 108);
+        c.restore();
+        const strike = prog(t, wantW.start, wantW.start + 0.25, ease.outCubic);
+        if (strike > 0) this.lb.seg2(px - 20, py + 130, px - 20 + 560 * strike, py + 10 - 60 * strike, 14, kc(2, LIN.signal), 1);
+      }
       // the lamp walks left, away from the sign
       const lx = lerp(1100, 160, prog(t, this.tC, this.tD + 0.4, ease.inOutQuad)), ly = 640 + Math.sin(t * 9) * 4;
       routeLine(this.lb, [{ x: 1180, y: 640 }, { x: lx, y: ly }], { w: 3, I: 1.5, dash: 12 });
