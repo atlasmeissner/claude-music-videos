@@ -204,7 +204,7 @@ export function drawDoor(c: CanvasRenderingContext2D, x: number, gy: number, ope
     // a halo in the opening
     const r = c.createRadialGradient(x + dw / 2, gy - dh / 2, 10, x + dw / 2, gy - dh / 2, dh * 1.4);
     r.addColorStop(0, rgba('signal', 0.35 * g)); r.addColorStop(1, rgba('signal', 0));
-    c.fillStyle = r; c.fillRect(x - dh * 1.5, gy - dh * 2, dh * 3 + dw, dh * 2.2);
+    c.fillStyle = r; c.fillRect(x - dh * 1.5, gy - dh * 2, dh * 3 + dw, dh * 2); // (stops at the ground)
   } else {
     c.fillStyle = rgba('ink2', 1); c.fillRect(x, gy - dh, dw, dh);
   }

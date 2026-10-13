@@ -4,7 +4,7 @@ A generative, code-rendered music video with word-synced karaoke typography for 
 *Maps & Territory*), in the style of [mexicat/pdoom-video](https://github.com/mexicat/pdoom-video): every frame is a
 deterministic function of song time, rendered in headless Chromium (TypeScript + three.js) and encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:00, 312 MB) is in [`render/`](render/), split into four parts (GitHub's
+**Watch / download:** the 1080p30 render (3:00, 308 MB) is in [`render/`](render/), split into four parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat free-fall_1080p30.mp4.part0 … free-fall_1080p30.mp4.part3 > free-fall_1080p30.mp4`.
 

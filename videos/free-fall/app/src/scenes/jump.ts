@@ -15,8 +15,8 @@ import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import type { Line, Word } from '../engine/lyrics';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse, TAU } from '../engine/util';
-import { cachedLayout, drawKaraoke, mono, wordColor } from './_ff';
-import { bodyKeys, crowdHop, flutter, jumpState, track, type Body } from './_body';
+import { cachedLayout, drawKaraoke, mixCss, mono, wordColor } from './_ff';
+import { bodyKeys, crowdDance, flutter, hopState, jumpState, track, type Body } from './_body';
 import { applyCam, breath, camKeys, drawCounter, drawWorld, DOOR_X, M, person, S, SP, toScreen, TRUE_DROP, type Cam } from './_story';
 import { stamp } from './ledger-kit';
 
@@ -121,8 +121,11 @@ export default class Jump extends Scene {
       const part = t > this.tRun ? prog(t, this.tRun + 0.8, this.tOpen, ease.inOutCubic) : 0;
       const x = bx + (bx < DOOR_X - 80 ? -1 : 1) * 160 * part * (Math.abs(bx - (DOOR_X - 80)) < 260 ? 1 : 0);
       const h = S * (0.58 + 0.17 * hash(i, 4));
-      const hp = crowdHop(t, f.beat, i, h, t > this.tLand ? SP.cheer : SP.standFront, this.ctx.audio.timeOfBeat.bind(this.ctx.audio));
-      person(c, x, TRUE_DROP, h, hp.pose, { color: rgba('ash', 0.8), lift: hp.lift });
+      // dancing, wilder once the jump has landed; everyone jumps when the door swings wide
+      const dn = crowdDance(t, f.beat, i + 3, h, t > this.tLand ? 1 : 0.55);
+      const hp = hopState(t, this.tOpen + (hash(i, 6) - 0.5) * 0.1, 0.16 * h, h, dn.pose);
+      const lift = Math.max(t > this.tOpen - 0.2 && t < this.tOpen + 0.9 ? 0 : dn.lift, hp.lift / h);
+      person(c, x + dn.dx, TRUE_DROP, h, hp.pose, { color: mixCss(rgba('ink', 1), rgba('ash', 1), 0.8), lift });
     }
     // the statue of the one who stayed, on the ledge: crumbles on "tall"
     const sa = prog(t, this.tUp + 0.6, this.tUp + 1.2);

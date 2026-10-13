@@ -160,11 +160,7 @@ export default class Dream extends Scene {
     const fl = this.flight(t, tWall, WX, base, floor, scale, ox);
     const { x, y } = fl;
     // speed lines behind the flier
-    if (t < tWall) for (let i = 0; i < 9; i++) {
-      const ly = y + (i - 4) * 16 * scale, len = (120 + 160 * hash(i, 3)) * scale;
-      c.strokeStyle = rgba('bone', 0.35); c.lineWidth = 1.2;
-      c.beginPath(); c.moveTo(x - 80 * scale - len, ly); c.lineTo(x - 80 * scale, ly); c.stroke();
-    }
+
     // the wall (engraved bricks), sliding up into place on "hit"
     const wk = prog(t, w[4]!.start - 0.2, w[4]!.start + 0.2, ease.outBack);
     if (wk > 0) {
@@ -188,7 +184,22 @@ export default class Dream extends Scene {
       for (let xx = ox - 400 * scale; xx < WX; xx += 26 * scale) { c.beginPath(); c.moveTo(xx, floor); c.lineTo(xx - 16 * scale, floor + 16 * scale); c.stroke(); }
     }
     if (fl.ground) person(c, x, floor, S * scale, fl.pose, { rot: fl.rot });
-    else person(c, x, y + fl.low * scale, S * scale, fl.pose, { rot: fl.rot, air: true });
+    else if (t < tWall) {
+      // the flight: the body centred on its line of flight (y), arms first; the wind streaming past it, centred on it
+      const me = person(c, x, y, S * scale, fl.pose, { rot: fl.rot, air: true, alpha: 0 });
+      const sx = x - (me.hip.x + me.head.x) / 2, sy = y - (me.hip.y + me.head.y) / 2; // shift: body centre → (x, y)
+      const tail = me.hip.x + sx - 0.5 * S * scale, nose = me.head.x + sx;
+      for (let i = 0; i < 11; i++) {
+        const k = i - 5, ly = y + k * 16 * scale + Math.sin(t * 9 + i) * 2 * scale;
+        const len = (160 + 220 * hash(i, 3)) * scale;
+        const off = (t * 1400 * scale + hash(i, 5) * 300 * scale) % (110 * scale);
+        // close to the body the wind streams off behind the feet; further out it rushes past alongside
+        const x1 = (Math.abs(k) <= 1 ? tail : nose - 40 * scale * Math.abs(k)) - off;
+        c.strokeStyle = rgba('bone', 0.42 - Math.abs(k) * 0.05); c.lineWidth = 1.4;
+        c.beginPath(); c.moveTo(x1 - len, ly); c.lineTo(x1, ly); c.stroke();
+      }
+      person(c, x + sx, y + sy, S * scale, fl.pose, { rot: fl.rot, air: true });
+    } else person(c, x, y + fl.low * scale, S * scale, fl.pose, { rot: fl.rot, air: true });
     // stars of the bonk
     if (t > tWall && t < tWall + 0.8) for (let i = 0; i < 6; i++) {
       const a = (i / 6) * TAU + t * 4, r = 60 * scale * (1 + (t - tWall));
@@ -278,9 +289,13 @@ export default class Dream extends Scene {
     const head = person(c, tr.x, 0, S, tr.moving ? tr.pose : breath(tr.pose, t, 0.3 * (1 - grey)), { color: col, dir: tr.dir, support: ledgeTop(dropAt(0.6)) });
     // dust and a cobweb from the shoulder to the ground
     const dust = clamp(u / 6) * (1 - (tag && t > tag.words[0]!.start ? 1 : 0));
+    // (lying on the crown of the head: specks on its upper arc)
+    const hr = 0.08 * S;
     for (let i = 0; i < 40 * dust; i++) {
-      c.fillStyle = rgba('ash', 0.7);
-      c.fillRect(head.x - 22 + hash(i, 1) * 44, head.y - 21 - hash(i, 2) * 3, 2.2, 2.2);
+      const ang = -Math.PI / 2 + (hash(i, 1) - 0.5) * 1.6;
+      const rr = hr - 1.5 + hash(i, 2) * 1.5;
+      c.fillStyle = rgba('ash', 0.85);
+      c.fillRect(head.x + Math.cos(ang) * rr - 1.1, head.y + Math.sin(ang) * rr - 1.1, 2.2, 2.2);
     }
     c.restore();
     // readouts

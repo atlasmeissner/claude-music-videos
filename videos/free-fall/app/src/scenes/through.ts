@@ -10,8 +10,8 @@ import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import type { Line } from '../engine/lyrics';
 import { clamp, ease, hash, lerp, prog, pulse } from '../engine/util';
-import { bigWord, mono, wordColor } from './_ff';
-import { crowdHop } from './_body';
+import { bigWord, mixCss, mono, wordColor } from './_ff';
+import { crowdDance } from './_body';
 import { applyCam, breath, camKeys, drawWorld, DOOR_X, M, person, S, SP, TRUE_DROP, type Cam } from './_story';
 
 export default class Through extends Scene {
@@ -41,8 +41,8 @@ export default class Through extends Scene {
       const bx = DOOR_X - 520 + ((i + 0.5) / 12) * 1300 + (hash(i, 1) - 0.5) * 40;
       if (Math.abs(bx - (DOOR_X + 0.47 * M)) < 90) continue;
       const h = S * (0.58 + 0.17 * hash(i, 4));
-      const hp = crowdHop(t, f.beat, i, h, SP.cheer, this.ctx.audio.timeOfBeat.bind(this.ctx.audio));
-      person(c, bx, TRUE_DROP, h, hp.pose, { color: rgba('ash', 0.8), lift: hp.lift });
+      const dn = crowdDance(t, f.beat, i + 3, h, 1 - 0.6 * prog(t, end - 6, end));
+      person(c, bx + dn.dx, TRUE_DROP, h, dn.pose, { color: mixCss(rgba('ink', 1), rgba('ash', 1), 0.8), lift: dn.lift });
     }
     person(c, DOOR_X + 0.47 * M, TRUE_DROP, S, breath(SP.cheer, t, 0.8), { color: rgba('ink', 1) });
     // the dimension of the drop, drawn in as the ledge comes into view
@@ -98,7 +98,7 @@ export default class Through extends Scene {
         mono(c, 'MAPS & TERRITORY', 112, 666, { size: 14, color: rgba('ash', 0.9 * ka), track: 6 });
       }
       const kc = prog(t, D[10]!, D[10]! + 0.5, ease.outCubic);
-      if (kc > 0) mono(c, 'VIDEO RENDERED IN CODE · AFTER MEXICAT/PDOOM-VIDEO', 112, 712, { size: 12, color: rgba('ash', 0.7 * kc), track: 4 });
+      if (kc > 0) mono(c, 'VIDEO RENDERED IN CODE', 112, 712, { size: 12, color: rgba('ash', 0.7 * kc), track: 4 });
     }
     c.restore();
     comp.draw(renderer, L.upload(), out);

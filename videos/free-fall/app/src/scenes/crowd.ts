@@ -9,8 +9,8 @@ import { Layer2D, clearRT, W } from '../engine/gl';
 import { LIN, rgba } from '../engine/palette';
 import { F, font } from '../engine/type';
 import { clamp, ease, frameIdx, hash, lerp, prog, pulse, TAU } from '../engine/util';
-import { mono } from './_ff';
-import { BP, gravity, hopState, mixBody, track } from './_body';
+import { mixCss, mono } from './_ff';
+import { BP, crowdDance, gravity, hopState, mixBody, track } from './_body';
 import { applyCam, breath, camKeys, drawCounter, drawWorld, DOOR_X, dropAt, ledgeTop, person, S, type Cam } from './_story';
 
 const FEAR = 0.15;
@@ -44,29 +44,31 @@ export default class Crowd extends Scene {
     const cam: Cam = camKeys(t, [[s0, { x: 560, y: 120, z: 0.6 }], [end - 3, { x: 520, y: 100, z: 0.64 }], [end, { x: 300, y: 20, z: 0.8 }]]);
     c.save(); applyCam(c, cam);
     drawWorld(c, cam, { t, fear: FEAR, door: 0.55, glow: 1.6, stars: 1 });
-    // the crowd: each walks in from behind the door, turns to face the ledge, and grooves — knees dipping on every
-    // beat — and, when a chant wave reaches them, hops (real gravity: crouch, push, flight, soft landing), arms up
+    // the crowd: each walks in from behind the door, turns to face the ledge, and dances — each in their own way
+    // (hopping, fist-pumping, swaying, clapping, side-stepping), loosely in time, more and more as the chant builds —
+    // and, when a chant wave reaches them, everyone jumps (real gravity: crouch, push, flight, soft landing)
     const bp = f.beatPhase;
-    const dip = Math.exp(-bp * 5) * Math.sin(Math.min(1, bp * 3) * Math.PI) * 0.9 + 0.1 * Math.sin(bp * TAU); // the groove
+    const dip = 0.5 + 0.5 * Math.cos(TAU * bp); // the groove (for the person on the ledge)
+    const energy = 0.35 + 0.65 * prog(t, s0 + 2, end - 5, ease.inOutQuad);
     for (const p of this.people) {
       if (t < p.arrive) continue;
       const h = S * p.s;
       const x0 = DOOR_X + 200, dur = Math.abs(p.x - x0) / (0.75 * h);
       const tr = track(t, [{ at: p.arrive, walk: p.x, dur }, { at: p.arrive + dur + 0.1, pose: BP.standFront, face: hash(p.seed, 7) > 0.5 ? 1 : -1, blend: 0.5 }], h, x0, BP.stand, -1);
-      const settled = t > p.arrive + dur + 0.6;
-      const arms = settled ? prog(t, p.arrive + dur + 1 + hash(p.seed, 9) * 3, p.arrive + dur + 2 + hash(p.seed, 9) * 3) : 0;
-      let base = mixBody(BP.standFront, BP.cheer, arms * (0.4 + 0.6 * hash(p.seed, 8)));
-      let lift = 0;
-      if (settled) {
-        base = mixBody(base, BP.hopCrouch, dip * 0.28 * (0.6 + 0.4 * hash(p.seed, 3)));
+      const tIn = p.arrive + dur + 0.5;
+      let pose = tr.pose, lift = 0, dx = 0;
+      if (t > tIn) {
+        const dn = crowdDance(t, f.beat, p.seed, h, energy * prog(t, tIn, tIn + 2.5));
+        const k = ease.inOutCubic(prog(t, tIn, tIn + 0.8));
+        pose = mixBody(tr.pose, dn.pose, k); lift = dn.lift * k; dx = dn.dx * k;
         let tp = -1;
-        const hh = (0.1 + 0.08 * hash(p.seed, 4)) * h, airT = 2 * Math.sqrt((2 * hh) / gravity(h));
-        // a hop per wave, skipping a wave that comes while still in the air from the last one
-        for (const ts of this.sy) { const tt = ts + Math.abs(p.x - DOOR_X) / 1400; if (tt - 0.2 <= t && (tp < 0 || tt > tp + airT + 0.35)) tp = tt; }
-        if (tp > 0) { const hs = hopState(t, tp, hh, h, base); base = hs.pose; lift = hs.lift / h; }
+        const hh = (0.12 + 0.08 * hash(p.seed, 4)) * h, airT = 2 * Math.sqrt((2 * hh) / gravity(h));
+        // a jump per wave, skipping a wave that comes while still in the air from the last one
+        for (const ts of this.sy) { const tt = ts + Math.abs(p.x - DOOR_X) / 1400 + (hash(p.seed, 6) - 0.5) * 0.06; if (tt - 0.2 <= t && (tp < 0 || tt > tp + airT + 0.35)) tp = tt; }
+        if (tp > 0 && t < tp + airT + 0.3) { const hs = hopState(t, tp, hh, h, pose); pose = hs.pose; lift = Math.max(lift * (1 - clamp((t - tp + 0.16) / 0.16)), hs.lift / h); }
       }
-      const a = lerp(0.55, 1, p.depth);
-      person(c, tr.x, D, h, settled ? base : tr.pose, { color: rgba(p.depth > 0.75 ? 'bone' : 'ash', a), dir: tr.dir, lift });
+      const col = mixCss(rgba('ink', 1), rgba(p.depth > 0.75 ? 'bone' : 'ash', 1), lerp(0.55, 1, p.depth));
+      person(c, tr.x + dx, D, h, pose, { color: col, dir: tr.dir, lift });
     }
     // the person on the ledge: head down on the arms → looks up → gets up → walks to the edge → grooves with them,
     // hopping with the last chants, arms up

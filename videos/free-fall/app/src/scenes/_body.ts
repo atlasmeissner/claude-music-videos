@@ -47,9 +47,9 @@ export const BP = {
   star: B(0, 0, 2.05, 2.4, -2.05, -2.4, 0.5, 0.25, -0.5, -0.25, 1),
   // falling over and getting up
   stumble: B(1.05, 0.45, 1.95, 1.95, 1.6, 1.75, 0.62, -0.45, -0.4, -1.15),
-  fours: B(1.5, 0.3, -1.38, -1.38, -1.3, -1.3, 0.45, -1.5, 0.32, -1.55),
-  sitGround: B(-0.18, -0.12, -0.75, -0.7, -0.85, -0.8, 1.45, 1.18, 1.32, 0.95),
-  kneelUp: B(0.15, 0.0, 0.5, 0.9, 0.2, 0.6, 1.5, 0.0, 0.05, -1.5), // one knee down, about to stand
+  fours: B(1.5, 0.3, -1.25, -1.1, -1.2, -1.05, 0.25, -1.5, 0.15, -1.55),
+  sitGround: B(-0.45, 0.3, -0.1, -0.1, -0.15, -0.15, 1.75, 1.36, 1.65, 1.46),
+  kneelUp: B(0.15, 0.0, 0.5, 0.9, 0.2, 0.6, 1.45, 0.0, 0.05, -1.5), // one knee down, about to stand
   // front-view crowd
   cheer: B(0, -0.12, 2.5, 2.65, -2.5, -2.65, 0.09, 0.07, -0.09, -0.07, 1),
   hopCrouch: B(0.12, 0.12, 0.55, 0.35, -0.55, -0.35, 0.55, -0.12, -0.55, 0.12, 1),
@@ -57,13 +57,13 @@ export const BP = {
   // misc
   statue: B(0, 0, 0.12, 0.12, -0.12, -0.12, 0.04, 0.03, -0.04, -0.03),
   wave: B(0.03, -0.05, 2.6, 3.05, -0.06, 0.08, 0.03, 0.0, -0.04, -0.06),
-  set: B(0.85, -0.25, -0.95, -0.45, 0.95, 1.55, 1.3, 0.05, -0.45, -1.45),
+  set: B(0.85, -0.25, -0.95, -0.45, 0.95, 1.55, 1.3, 0.05, -0.3, -1.35),
   // sitting on the ground, knees up: phone in the hands / head down on the arms / looking up
-  huddle: B(0.32, 0.55, 0.62, 1.95, 0.5, 1.85, 2.3, 0.33, 2.15, 0.22),
-  huddleHunch: B(0.72, 0.62, 0.55, 2.55, 0.42, 2.45, 2.3, 0.33, 2.15, 0.22),
-  huddleUp: B(0.08, -0.22, 0.95, 1.45, 0.8, 1.3, 2.3, 0.33, 2.15, 0.22),
+  huddle: B(0.32, 0.55, 0.62, 1.95, 0.5, 1.85, 2.3, 0.75, 2.2, 0.86),
+  huddleHunch: B(0.72, 0.62, 0.55, 2.55, 0.42, 2.45, 2.3, 0.75, 2.2, 0.86),
+  huddleUp: B(0.08, -0.22, 0.95, 1.45, 0.8, 1.3, 2.3, 0.75, 2.2, 0.86),
   // half way down (or up): a deep squat
-  squat: B(0.62, 0.15, 0.85, 1.25, 0.65, 1.05, 1.45, -0.2, 1.3, -0.35),
+  squat: B(0.62, 0.15, 0.85, 1.25, 0.65, 1.05, 1.45, -0.15, 1.3, -0.6),
   // kneeling at the edge, leaning over, an arm straight down (the tape measure)
   kneelTape: B(0.95, 0.45, -0.85, -0.85, -0.55, -0.2, 0.55, -1.55, 0.42, -1.6),
   // a throw: wind-up, release
@@ -163,9 +163,13 @@ export function fk(p: Body, S: number): Joints {
     const [ux, uy] = d(t1), [vx, vy] = d(t2);
     const knee: [number, number] = [ux * DIM.thigh * S, uy * DIM.thigh * S];
     const ankle: [number, number] = [knee[0] + vx * DIM.shin * S, knee[1] + vy * DIM.shin * S];
-    // foot: perpendicular to the shin, toward the front; flattened toward horizontal; front view turns it outward
+    // foot: roughly flat and forward (a little perpendicular to the shin); when the shin lies back (kneeling, the push
+    // of a stride) it points back along the shin, lying flat on its top; front view turns it outward
     const fr = p.front ?? 0;
-    let fx = lerp(Math.cos(t2) * 0.6 + 0.4, sideOut, fr), fy = lerp(-Math.sin(t2) * 0.6, 0, fr);
+    const w = clamp((-t2 - 0.75) / 0.55);
+    let px = Math.cos(t2) * 0.6 + 0.4, py = -Math.sin(t2) * 0.25;
+    const pn = Math.hypot(px, py) || 1; px /= pn; py /= pn;
+    let fx = lerp(lerp(px, Math.sin(t2), w), sideOut, fr), fy = lerp(lerp(py, Math.cos(t2), w), 0, fr);
     const n = Math.hypot(fx, fy) || 1; fx /= n; fy /= n;
     const toe: [number, number] = [ankle[0] + fx * DIM.foot * S, ankle[1] + fy * DIM.foot * S];
     return { knee, ankle, toe };
@@ -188,7 +192,7 @@ function contacts(j: Joints, S: number): [number, number, number][] {
     [j.ankleN[0], j.ankleN[1], r], [j.toeN[0], j.toeN[1], r * 0.85], [j.ankleF[0], j.ankleF[1], r], [j.toeF[0], j.toeF[1], r * 0.85],
     [j.kneeN[0], j.kneeN[1], r], [j.kneeF[0], j.kneeF[1], r],
     [j.handN[0], j.handN[1], DIM.wArm * S / 2], [j.handF[0], j.handF[1], DIM.wArm * S / 2],
-    [0, DIM.seat * S * 0.4, DIM.seat * S], // the seat
+    [0, -0.02 * S, DIM.wTorso * S / 2], // the seat: exactly the drawn bottom of the torso (no hovering when sitting)
     [j.head[0], j.head[1], DIM.head * S],
   ];
 }
@@ -377,17 +381,50 @@ function evalMove(t: number, m: Move, from: TrackState, S: number): TrackState {
   return { x, pose: mixBody(from.pose, target, k), dir: m.face ?? from.dir, lift: 0, moving: false };
 }
 
-/** A cheering crowd member: hops every other beat (staggered by seed), knees dipping on the beats in between.
- * Returns lift as a fraction of the height (as person() takes it). */
-export function crowdHop(t: number, beat: number, seed: number, h: number, base: Body, timeOfBeat: (b: number) => number): { lift: number; pose: Body } {
-  const off = seed % 2, b0 = Math.floor((beat - off) / 2) * 2 + off;
-  const height = (0.07 + 0.06 * (((seed * 7919) % 13) / 13)) * h;
-  // the hop that is in progress (or about to start): from this pair of beats or the next
-  for (const b of [b0 + 2, b0]) {
-    const tb = timeOfBeat(b);
-    const hs = hopState(t, tb, height, h, base);
-    if (hs.lift > 0 || (t > tb - 0.16 && t < tb + 0.8)) return { lift: hs.lift / h, pose: hs.pose }; // lift: fraction of h
+/**
+ * A dancing crowd member (front view), a pure function of the beat. Everyone is loosely in time (a little personal
+ * timing jitter) and moves in their own way, picked by seed:
+ *   0 jumper  — hops on every beat (a real parabola, crouching between), arms flung up in the air
+ *   1 pumper  — knees bouncing, one fist pumping up on the beat, the other hand on the hip
+ *   2 waver   — both arms up, swaying side to side over two beats
+ *   3 clapper — clapping overhead on every beat
+ *   4 stepper — side-steps, weight shifting from foot to foot, arms swinging
+ * `energy` (0..1) scales everything (at 0: a light sway). Returns the pose, the lift (fraction of h) and a sideways
+ * shift (px).
+ */
+export function crowdDance(t: number, beat: number, seed: number, h: number, energy = 1): { pose: Body; lift: number; dx: number } {
+  const hs = (k: number) => { const x = Math.sin(seed * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); };
+  const style = Math.floor(hs(1) * 5);
+  const bt = beat + (hs(2) - 0.5) * 0.14; // personal timing
+  const ph = bt - Math.floor(bt); // 0 on the beat
+  const e = clamp(energy) * (0.75 + 0.25 * hs(3));
+  const dip = (0.5 + 0.5 * Math.cos(TAU * ph)) * (0.45 + 0.55 * e); // knees most bent on the beat
+  const sway = Math.sin(Math.PI * bt + hs(4) * 0.6); // a two-beat side to side
+  const legs = (k: number) => ({ l1: lerp(0.09, 0.55, k), l2: lerp(0.07, -0.12, k), m1: lerp(-0.09, -0.55, k), m2: lerp(-0.07, 0.12, k) });
+  let lift = 0, dx = 0;
+  let p: Body;
+  if (style === 0) {
+    // hop: take-off at ph 0.08, a parabola lasting `af` of the beat, crouch around the landing
+    const af = 0.62, u = (ph - 0.08) / af;
+    const H = (0.05 + 0.05 * hs(5)) * e;
+    lift = u > 0 && u < 1 ? 4 * H * u * (1 - u) : 0;
+    const air = u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0;
+    const crouch = u <= 0 ? 1 - ph / 0.08 * 0.6 : u >= 1 ? clamp((u - 1) * af / (1 - 0.08 - af)) : 0;
+    p = { torso: 0.05 * sway, head: -0.1 * air, a1: lerp(0.5, 2.6, air) + 0.2 * sway, a2: lerp(0.3, 2.8, air), b1: lerp(-0.5, -2.6, air) + 0.2 * sway, b2: lerp(-0.3, -2.8, air), ...legs(0.55 * crouch * e + 0.1 * air), front: 1 };
+  } else if (style === 1) {
+    const pump = Math.exp(-ph * 6) * (0.6 + 0.4 * e);
+    p = { torso: 0.06 * sway, head: 0.1 * sway - 0.12 * pump, a1: 1.7 + 1.15 * pump, a2: 2.0 + 0.9 * pump, b1: -0.55, b2: 0.75, ...legs(0.32 * dip), front: 1 };
+  } else if (style === 2) {
+    const sw = 0.38 * sway * (0.5 + 0.5 * e);
+    p = { torso: 0.12 * sway * e, head: 0.15 * sway, a1: 2.55 + sw, a2: 2.75 + sw * 1.3, b1: -2.55 + sw, b2: -2.75 + sw * 1.3, ...legs(0.18 * dip), front: 1 };
+  } else if (style === 3) {
+    const cl = Math.exp(-ph * 7); // hands together on the beat, apart between
+    p = { torso: 0.04 * sway, head: -0.15 * cl, a1: lerp(2.35, 2.8, cl), a2: lerp(2.0, 3.65, cl), b1: lerp(-2.35, -2.8, cl), b2: lerp(-2.0, -3.65, cl), ...legs(0.25 * dip), front: 1 };
+  } else {
+    const st = Math.sin(Math.PI * bt); // weight on the near foot (+) / far foot (−)
+    dx = 0.08 * h * st * e;
+    const L = legs(0.2 * dip);
+    p = { torso: -0.07 * st * e, head: 0.1 * st, a1: 0.6 + 0.5 * st * e, a2: 1.8 + 0.4 * st, b1: -0.6 + 0.5 * st * e, b2: -1.8 + 0.4 * st, ...L, l1: L.l1 + 0.22 * Math.max(0, -st) * e, m1: L.m1 - 0.22 * Math.max(0, st) * e, front: 1 };
   }
-  const bp = beat - Math.floor(beat);
-  return { lift: 0, pose: mixBody(base, BP.hopCrouch, 0.22 * Math.exp(-bp * 5) * Math.sin(Math.min(1, bp * 3) * Math.PI)) };
+  return { pose: p, lift, dx };
 }

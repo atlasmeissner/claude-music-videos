@@ -118,7 +118,7 @@ What this asks of scenes:
   travelled so the feet don't skate. `track(t, moves, S, x0, pose0, dir0)` is the choreography: pose holds (a facing
   change turns through the front view), walks (eased start/stop; `back` for stepping backwards; `ph0` for single
   steps) and runs (`accel` to arrive at speed). `jumpState` = anticipation crouch, take-off, a parabola under
-  constant gravity, an absorbing landing with a spring recovery; `hopState`/`crowdHop` = crowd hops at real gravity
+  constant gravity, an absorbing landing with a spring recovery; `hopState` = hops at real gravity; `crowdDance` = a crowd member dancing in one of five styles (jumper, fist-pumper, swayer, clapper, side-stepper), loosely in time
   for the figure's height; `flutter` = air drag on the limbs in a long fall.
 - **The world**: world px with the origin at the ledge's top edge (x right, y down); `S` = the person's height,
   `M` px per metre, `TRUE_DROP` = 1.40 m, `dropAt(fear)` = how deep the drop is drawn (fear 0..1), `DOOR_X`.
