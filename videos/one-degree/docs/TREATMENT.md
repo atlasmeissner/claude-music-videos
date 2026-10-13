@@ -21,12 +21,13 @@ that does not register a footstep, a sound meter pinned at −∞ dB, a year of 
 a book growing a page at a time, star trails, snow becoming a mountain, a wall of tally marks), with the
 **compounding counter** (×1.01ⁿ over the song's year) running through them. The choruses and the ending are
 **the island**: the whole world is one small flat island balanced on the point of the needle, seen from a little
-above. It starts level: a still lake, dry dead land, two people. On the first sung "degree" it tips by exactly one
-degree, and that is its only tilt for the rest of the song (a spirit level on its front edge shows what the eye can't).
-One degree is enough for the lake to spill. Every later "degree" sends a surge down the river it set running, and
-the land comes alive behind the water: grass, trees, fields, then villages and the people in them, then lights.
-By "the whole world's different now" the dry half is a country; on "one degree was all I need" the river reaches the
-edge and falls off the world. The readout stays deadpan: TILT 1.0°, THE RIVER n KM, LIVING HERE n.
+above. It starts level: a still lake, dry dead land, two people. On every sung "degree" it tips one degree more (a
+spirit level on its front edge shows the first one, which the eye can't). One degree is enough for the lake to spill.
+Every "degree" sends a surge down the river, and the land comes alive behind the water: grass, trees, fields, then
+villages and the people in them, then lights. The lake drains downhill as it goes, and the weight running downhill is
+what tips the world further: the change feeds itself. By "the whole world's different now" it leans 16°; on the last
+"degree" it reaches 24°, passes the tipping point and falls off the needle. The outro is the needle alone, still warm.
+The readout stays deadpan: TILT, THE RIVER n KM, LIVING HERE n.
 
 ## Tone
 
@@ -62,7 +63,7 @@ then revealed on their start), the word being sung in signal, cooling to bone. N
 | `ground` | One step… / One word… | Seismograph drum (MAGNITUDE 0.0), then a sound-level meter pinned at −∞ dB. |
 | `days` | One day… / Nothing worth remembering yet | Bone paper: a year of identical day cells crossed off faster and faster; "1% better each day" creeps from ×1.00; on "yet" the first day after the year turns orange. |
 | `river` | But the river… / It's carving… | A survey cross-section in geological map symbols (sandstone dots, limestone brickwork, shale dashes, schist waves, granite crosses); the orange river cuts a canyon; each word labels the layer it has reached. |
-| `turn` | One degree, one degree / Turn so slow… | The level island; on the first "degree" it tips one degree on the needle; the lake spills; "you can't see": the spirit level can. |
+| `turn` | One degree, one degree / Turn so slow… | The level island tips one degree on the needle, then another; the lake spills; "you can't see": the spirit level can. |
 | `bending` | But the whole world's bending / one degree ×3 / break | The river bends its way across the dry land, a surge per "degree"; grass and trees follow it. |
 | `pages` | One page… / One glance… | A book's fore-edge growing a page per eighth note; a stopwatch: a second is 1.000 s. |
 | `night` | One night… / something's gathering | Star trails over a horizon: each night an arc, the years close them into rings that gather on the pole star. |
@@ -70,13 +71,15 @@ then revealed on their start), the word being sung in signal, cooling to bone. N
 | `ice` | One degree ×4 / Turn so slow… / bending | Four surges; trees, fields, the first village and its people. |
 | `whoa` | One degree, whoa ×3 + break | More villages; dusk, the windows coming on. |
 | `quiet` | I almost gave up… / But I was changing | Whispered: a wall of tally marks, each a hair steeper than the last; close up every one looks upright; the pull-back shows the turn. |
-| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | The level again (still one degree); "different now": the whole island alive; the river reaches the edge and falls off the world. |
+| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | The level pinned; "different now": the whole island alive at 16°; the river falls off the edge. |
 | `lights` | tag | Night on the island: the lit windows of everyone living there. |
-| `coda` | One degree… was all I need | The last surges, quietly, into the morning; "one degree, once". |
-| `outro` | — | The island on its needle above the title card. |
+| `coda` | One degree… was all I need | The last six degrees, quietly, to 24°; then the tipping point: it falls off the needle. |
+| `outro` | — | The needle alone, where the world stood, above the title card. |
 
 ## Revisions
 
+- **5:** the island tips one more degree on every "degree" (0° → 24°) instead of once, and on the last one it falls
+  off the needle; the outro is the needle alone.
 - **4:** the island. The planet's axial tilt needed explaining; now the whole world is a small island that tips one
   degree, once, and the consequences are plain to see: the lake spills, the river runs, the land and its people come
   alive (`scenes/_island.ts`, `scenes/island.ts`). The planet, the village and the per-degree ledger were dropped.

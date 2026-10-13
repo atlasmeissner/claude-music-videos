@@ -4,7 +4,7 @@ A generative, code-rendered music video with word-synced karaoke typography for 
 Suno): a quiet song about change too small to see. Every frame is a deterministic function of song time, rendered in
 headless Chromium (TypeScript + three.js), encoded with ffmpeg.
 
-**Watch / download:** the 1080p30 render (3:39, 422 MB) is in [`render/`](render/), split into five parts (GitHub's
+**Watch / download:** the 1080p30 render (3:39, 415 MB) is in [`render/`](render/), split into five parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat one-degree_1080p30.mp4.part0 … one-degree_1080p30.mp4.part4 > one-degree_1080p30.mp4`.
 
@@ -15,12 +15,12 @@ post-processing, typography and export pipeline, with a dawn palette, a small ki
 
 Built on the song's subject, the compound effect: small, consistent changes that look like nothing at first and
 change everything over time. **The choruses and the ending are the island**: the whole world is one small flat island
-balanced on the point of the needle. It starts level, with a still lake, dry dead land and two people. On the first
-sung "degree" it tips by exactly one degree, and that is its only tilt for the rest of the song (a spirit level on its
-edge shows what the eye can't). One degree is enough for the lake to spill. Every later "degree" sends a surge down
-the river it set running, and the land comes alive behind the water: grass, trees, fields, villages, people, lights.
-By "the whole world's different now" the dry half is a country; on "one degree was all I need" the river reaches the
-edge and falls off the world. **The verses are an atlas of slow change**: instruments that measure something too
+balanced on the point of the needle. It starts level, with a still lake, dry dead land and two people. On every sung
+"degree" it tips one degree more. One degree is enough for the lake to spill; every "degree" sends a surge down the
+river, and the land comes alive behind the water: grass, trees, fields, villages, people, lights. The lake drains
+downhill as it goes, and that weight tips the world further. By "the whole world's different now" it leans 16°; on
+the last "degree" it reaches 24°, passes the tipping point and falls off the needle, leaving the needle alone for the
+title. **The verses are an atlas of slow change**: instruments that measure something too
 small to notice, with a compounding counter (×1.01ⁿ over the song's year) running through them. Full concept,
 palette, type and plate list: [`docs/TREATMENT.md`](docs/TREATMENT.md).
 
@@ -30,7 +30,7 @@ palette, type and plate list: [`docs/TREATMENT.md`](docs/TREATMENT.md).
 | `ground` | One step… / One word… | a seismograph (MAGNITUDE 0.0); a sound-level meter pinned at −∞ dB |
 | `days` | One day… / Nothing worth remembering yet | a year of identical crossed-off days; "1% better each day" creeps from ×1.00; on "yet", day one turns orange |
 | `river` | But the river… / It's carving… | a survey cross-section in geological map symbols; the river cuts a canyon; the words label the layers |
-| `turn` | One degree, one degree / Turn so slow… | the level island tips one degree on the needle; the lake spills; the spirit level sees it |
+| `turn` | One degree, one degree / Turn so slow… | the level island tips a degree per "degree"; the lake spills; the spirit level sees it |
 | `bending` | But the whole world's bending / one degree ×3 | the river bends its way across the dry land, a surge per "degree" |
 | `pages` | One page… / One glance… | a book's fore-edge growing a page per eighth note; a stopwatch: a second is 1.000 s |
 | `night` | One night… / something's gathering | star trails closing into rings and gathering on the pole star |
@@ -38,10 +38,10 @@ palette, type and plate list: [`docs/TREATMENT.md`](docs/TREATMENT.md).
 | `ice` | One degree ×4 / Turn so slow… / bending | trees, fields, the first village and its people |
 | `whoa` | One degree, whoa ×3 + break | more villages; dusk, the windows coming on |
 | `quiet` | I almost gave up… / But I was changing | whispered: a wall of tally marks, each a hair steeper; the pull-back shows the turn |
-| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | still one degree; the whole island alive; the river falls off the edge |
+| `thaw` | One degree ×4 / Turned so slow… / different now / all I need | the whole island alive at 16°; the river falls off the edge |
 | `lights` | tag | night on the island: everyone's windows |
-| `coda` | One degree… was all I need | the last surges, into the morning: "one degree, once" |
-| `outro` | — | the island on its needle above the title card |
+| `coda` | One degree… was all I need | the last degrees to 24°; the tipping point: it falls off the needle |
+| `outro` | — | the needle alone above the title card |
 
 ## Layout
 
@@ -92,8 +92,8 @@ lyric alignment (the sung lyrics differ from the sheet, so the line list was reb
 vocal map and the pitch track), the kit, all sixteen plates, the contact-sheet reviews and the renders. The first cut
 rolled the whole frame one degree per "degree"; revision 2 dropped that and added the compounding counter; revision
 3 turned the choruses and the ending into a little planet whose axis tilted instead, and redrew the river's strata;
-revision 4 replaced the planet with the island, which tips one degree, once, so the consequences can be seen
-rather than explained.
+revision 4 replaced the planet with the island, so the consequences can be seen rather than explained; revision 5
+tips it a degree per "degree" until it falls off the needle.
 
 ## Credits
 

@@ -1,15 +1,15 @@
-// The island (revision 4): the whole world is one small flat island balanced on the point of the needle, seen from a
-// little above. At first it is level: a still lake on the left, the rest dry and dead, two people. On the first sung
-// "degree" it tips by exactly one degree (right side down) and stays there: one degree, once, for the whole song.
-// That is enough for the lake to spill. Every later "degree" sends another surge down the river, and the land comes
-// alive behind the water (grass, trees, fields, houses, people, lights), spreading out from the river as it goes.
-// By the end of the final chorus the river reaches the far edge and falls off the world.
+// The island (revisions 4–5): the whole world is one small flat island balanced on the point of the needle, seen from
+// a little above. At first it is level: a still lake on the left, the rest dry and dead, two people. On every sung
+// "degree" it tips one degree more (right side down). One degree is enough for the lake to spill; every "degree" sends
+// another surge down the river, and the land comes alive behind the water (grass, trees, fields, houses, people,
+// lights). The lake drains as it leans. By the end of the final chorus the river reaches the far edge and falls off
+// the world; after the last "degree" (24°) the island passes the tipping point and falls off the needle.
 import type { LineBatch } from '../engine/lines';
 import type { Lyrics } from '../engine/lyrics';
 import { W, H } from '../engine/gl';
 import { LIN } from '../engine/palette';
 import { clamp, ease, hash, lerp, noise1, prog, TAU } from '../engine/util';
-import { degreeTimes } from './_od';
+import { degreeTimes, heading } from './_od';
 
 type RGB = [number, number, number];
 export const A = 700, B = 230, THICK = 30, DEPTH = 330; // the disc's half-axes, rim thickness and underside depth (px)
@@ -17,10 +17,23 @@ export const PIVOT = { x: 0, y: DEPTH + 6 };
 export const RIVER_KM = 120;
 
 // ------------------------------------------------------------------ time: the tilt and the spread
-/** The world's tilt (degrees) at t: 0 until the first "degree", then one degree, eased over the word. */
+/** The world's tilt (degrees) at t: one more degree on every sung "degree" (a ratchet, 0° → 24°), then, after the
+ *  last one, the tipping point: it keeps going, faster, and falls off the needle (see fallAt). */
 export function tiltAt(ly: Lyrics, t: number) {
-  const d1 = degreeTimes(ly)[0]!;
-  return prog(t, d1 - 0.05, d1 + 1.6, (x) => ease.outBack(ease.inOutCubic(x), 1.4));
+  return heading(ly, t) + fallAt(ly, t).extra;
+}
+const DETACH = 0.62; // seconds after the fall starts when the island leaves the needle
+/** The fall after the last "degree": extra tilt (degrees), drop (px, pre-camera), whether it has left the needle. */
+export function fallAt(ly: Lyrics, t: number) {
+  const ds = degreeTimes(ly);
+  const t0 = ds[ds.length - 1]! + 0.8;
+  const tau = Math.max(0, t - t0);
+  const k = 30;
+  const ang = (x: number) => k * (x * x + x * x * x);
+  const w = k * (2 * DETACH + 3 * DETACH * DETACH); // deg/s at the moment it lets go
+  const f = Math.max(0, tau - DETACH);
+  const extra = tau < DETACH ? ang(tau) : ang(DETACH) + w * f * 0.8;
+  return { extra, dx: 340 * f + 120 * f * f, dy: 0.5 * 2600 * f * f, t0, detached: tau > DETACH, since: f };
 }
 /** How far life has spread (path units; the water front is min(1, S)) after n degrees. */
 const STEP = [0, 0, 0.05, 0.11, 0.17, 0.23, 0.29, 0.35, 0.41, 0.47, 0.53, 0.6, 0.66, 0.72, 0.78, 0.86, 0.95, 1.04, 1.12, 1.24, 1.36, 1.48, 1.6, 1.72, 1.84];
@@ -136,10 +149,10 @@ for (let Y = -B; Y <= DEPTH + 4; Y += 5) {
 export interface Cam { ax: number; ay: number; fx: number; fy: number; zoom: number }
 export const WIDE: Cam = { ax: 1010, ay: 610, fx: 0, fy: 0, zoom: 1 };
 export class View {
-  th = 0; c = 1; s = 0; cam: Cam = WIDE; zw = 1;
-  set(tiltDeg: number, cam: Cam) {
+  th = 0; c = 1; s = 0; cam: Cam = WIDE; zw = 1; ox = 0; oy = 0;
+  set(tiltDeg: number, cam: Cam, off: { x: number; y: number } = { x: 0, y: 0 }) {
     this.th = (tiltDeg * Math.PI) / 180; this.c = Math.cos(this.th); this.s = Math.sin(this.th); this.cam = cam;
-    this.zw = Math.pow(cam.zoom, 0.72);
+    this.zw = Math.pow(cam.zoom, 0.72); this.ox = off.x; this.oy = off.y;
   }
   /** pre-transform px -> rotated about the pivot */
   rot(px: number, py: number) {
@@ -149,7 +162,7 @@ export class View {
   /** pre-transform px -> screen */
   sp(px: number, py: number) {
     const r = this.rot(px, py), k = this.cam;
-    return { x: k.ax + (r.x - k.fx) * k.zoom, y: k.ay + (r.y - k.fy) * k.zoom };
+    return { x: k.ax + (r.x + this.ox - k.fx) * k.zoom, y: k.ay + (r.y + this.oy - k.fy) * k.zoom };
   }
   /** world (x, z on the disc, h px up) -> screen */
   w(x: number, z: number, h = 0) { return this.sp(x * A, z * B - h); }
@@ -245,20 +258,46 @@ export function drawIsland(lb: LineBatch, v: View, st: IslandState) {
       pseg(Math.cos(a0) * A, Math.sin(a0) * B, Math.cos(a1) * A, Math.sin(a1) * B, 1.5 * z, sc(bone, lineK), 0.9);
     }
   }
-  // the lake: shore, level water strokes (signal), a few ripples
+  // the lake: its shore, and the water in it, always level on screen (water doesn't tip with the ground). As the
+  // island leans, the lake drains toward its outlet: the weight running downhill is what tips it further.
   {
     const n = 64;
+    const shore: { x: number; z: number }[] = [];
     for (let i = 0; i < n; i++) {
-      const a0 = (i / n) * TAU, a1 = ((i + 1) / n) * TAU;
-      const r0 = 1 + 0.03 * Math.sin(a0 * 3) + 0.015 * Math.sin(a0 * 5 + 1), r1 = 1 + 0.03 * Math.sin(a1 * 3) + 0.015 * Math.sin(a1 * 5 + 1);
-      seg(v.w(LAKE.x + Math.cos(a0) * LAKE.rx * r0, LAKE.z + Math.sin(a0) * LAKE.rz * r0), v.w(LAKE.x + Math.cos(a1) * LAKE.rx * r1, LAKE.z + Math.sin(a1) * LAKE.rz * r1), 1.3 * z, sc(bone, lineK), 0.85);
+      const a = (i / n) * TAU, r = 1 + 0.03 * Math.sin(a * 3) + 0.015 * Math.sin(a * 5 + 1);
+      shore.push({ x: LAKE.x + Math.cos(a) * LAKE.rx * r, z: LAKE.z + Math.sin(a) * LAKE.rz * r });
     }
-    for (let k = -9; k <= 9; k++) {
-      const zz = (k / 10) * 0.92;
-      const hw = Math.sqrt(Math.max(0, 1 - zz * zz)) * 0.86;
-      if (hw <= 0) continue;
-      const shim = 0.5 + 0.5 * Math.sin(t * 1.4 + k * 1.7);
-      seg(v.w(LAKE.x - hw * LAKE.rx, LAKE.z + zz * LAKE.rz), v.w(LAKE.x + hw * LAKE.rx, LAKE.z + zz * LAKE.rz), 1.4 * z, sc(LIN.signal, 0.8 + 0.4 * nt), 0.35 + 0.25 * shim);
+    for (let i = 0; i < n; i++) seg(v.w(shore[i]!.x, shore[i]!.z), v.w(shore[(i + 1) % n]!.x, shore[(i + 1) % n]!.z), 1.3 * z, sc(bone, lineK), 0.85);
+    const f = clamp(1 - st.tilt / 27, 0.1, 1);
+    const xl = LAKE.x + LAKE.rx * (1 - 2 * f) * 0.92;
+    // the water: the shore pulled in a little, clipped to x >= xl (local), then to screen
+    const inner = shore.map((p) => ({ x: LAKE.x + (p.x - LAKE.x) * 0.93, z: LAKE.z + (p.z - LAKE.z) * 0.93 }));
+    const clip: { x: number; z: number }[] = [];
+    for (let i = 0; i < n; i++) {
+      const p = inner[i]!, q = inner[(i + 1) % n]!;
+      const pin = p.x >= xl, qin = q.x >= xl;
+      if (pin) clip.push(p);
+      if (pin !== qin) { const u = (xl - p.x) / (q.x - p.x); clip.push({ x: xl, z: p.z + (q.z - p.z) * u }); }
+    }
+    if (clip.length > 2) {
+      const P = clip.map((p) => v.w(p.x, p.z));
+      let y0 = Infinity, y1 = -Infinity;
+      for (const p of P) { y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); }
+      const step = 9 * v.cam.zoom;
+      let k = 0;
+      for (let y = y0 + step * 0.5; y < y1; y += step, k++) {
+        const xs: number[] = [];
+        for (let i = 0; i < P.length; i++) {
+          const a = P[i]!, b = P[(i + 1) % P.length]!;
+          if ((a.y <= y) !== (b.y <= y)) xs.push(a.x + ((y - a.y) / (b.y - a.y)) * (b.x - a.x));
+        }
+        xs.sort((p, q) => p - q);
+        const shim = 0.5 + 0.5 * Math.sin(t * 1.4 + k * 1.7);
+        for (let j = 0; j + 1 < xs.length; j += 2) {
+          if (xs[j + 1]! - xs[j]! < 2) continue;
+          lb.seg2(xs[j]!, y, xs[j + 1]!, y, 1.4 * z, sc(LIN.signal, 0.8 + 0.4 * nt), (0.35 + 0.25 * shim) * al);
+        }
+      }
     }
   }
   // items, back to front (the river is drawn in its depth band between them)
@@ -437,16 +476,21 @@ function drawPeople(lb: LineBatch, v: View, st: IslandState, seg: SegFn, lineK: 
 }
 
 /** The plumb line (dashed, fixed) and the world's own axis (tilted with it), from the pivot up, plus the needle. */
-export function drawAxes(lb: LineBatch, v: View, t: number, o: { alpha?: number; top?: number; needleTo?: number } = {}) {
+export function drawAxes(lb: LineBatch, v: View, t: number, o: { alpha?: number; top?: number; needleTo?: number; released?: number; axis?: boolean } = {}) {
   const al = o.alpha ?? 1, z = v.zw, k = v.cam;
   const top = o.top ?? -B - 250;
   const S0 = (x: number, y: number) => ({ x: k.ax + (x - k.fx) * k.zoom, y: k.ay + (y - k.fy) * k.zoom }); // unrotated
   const piv = S0(PIVOT.x, PIVOT.y);
   // the needle the world stands on (fixed, vertical), and its hot point
   const bot = o.needleTo ?? H + 20;
-  lb.seg2(piv.x, piv.y + 4, piv.x, bot, 1.6 * z, LIN.bone, 0.8 * al);
-  lb.seg2(piv.x, piv.y, piv.x + 0.01, piv.y, 16 * z, sc(LIN.signal, 0.5), 0.4 * al);
-  lb.seg2(piv.x, piv.y, piv.x + 0.01, piv.y, 6 * z, sc(LIN.ember, 2.4), 0.95 * al);
+  // once the world has let go, the needle springs back: a decaying twang at its tip, and a flash
+  const r = o.released ?? -1;
+  const tw = r >= 0 ? 14 * Math.sin(r * 38) * Math.exp(-r * 3.2) : 0;
+  const hot = r >= 0 ? 1 + 2.5 * Math.exp(-r * 4) : 1;
+  lb.seg2(piv.x + tw, piv.y + 4, piv.x, bot, 1.6 * z, LIN.bone, 0.8 * al);
+  lb.seg2(piv.x + tw, piv.y, piv.x + tw + 0.01, piv.y, 16 * z * hot, sc(LIN.signal, 0.5), 0.4 * al);
+  lb.seg2(piv.x + tw, piv.y, piv.x + tw + 0.01, piv.y, 6 * z, sc(LIN.ember, 2.4 * hot), 0.95 * al);
+  if (o.axis === false) return { top: S0(0, top), tip: S0(0, top) };
   // plumb: dashed vertical above the disc
   for (let y = -B - 10; y > top; y -= 16) {
     const a = S0(0, y), b = S0(0, Math.max(top, y - 8));
@@ -475,7 +519,7 @@ export function drawLevel(lb: LineBatch, v: View, tilt: number, alpha = 1) {
   // centre marks
   ln(P(-7, h0 + 1), P(-7, h0 + Hh - 1), 1 * z, LIN.ash); ln(P(7, h0 + 1), P(7, h0 + Hh - 1), 1 * z, LIN.ash);
   // bubble: one degree moves it well off the marks (to the left, the high side)
-  const off = -tilt * 17;
+  const off = Math.max(-(L - 7), -tilt * 17);
   const bc = P(off, h0 + Hh / 2);
   lb.seg2(bc.x - 5 * zy, bc.y, bc.x + 5 * zy, bc.y, 5.5 * zy, sc(LIN.ember, 1.6), alpha);
   void c0;

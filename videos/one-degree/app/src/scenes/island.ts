@@ -1,6 +1,6 @@
-// island — the choruses and the ending (revision 4): the world is one small island balanced on the needle. It tips
-// one degree on the first sung "degree" and stays there; every later "degree" sends a surge down the river it set
-// running, and the land comes alive behind the water (see _island.ts). One module serves several timeline entries;
+// island — the choruses and the ending (revisions 4–5): the world is one small island balanced on the needle. Every
+// sung "degree" tips it one degree more and sends a surge down the river it set running; the land comes alive behind
+// the water, and after the last one it falls off the needle (see _island.ts). One module serves several timeline entries;
 // `params.part` picks the shot list, the light and the lyric pages:
 //   c1a  One degree, one degree / Turn so slow you can't see       the tip; the lake spills; the level
 //   c1b  But the whole world's bending / one degree ×3 / break       the river bends its way across
@@ -17,9 +17,9 @@ import { F, font } from '../engine/type';
 import { LIN, rgba } from '../engine/palette';
 import { clamp, ease, lerp, prog, pulse } from '../engine/util';
 import { degreeTimes, drawCompound, drawKaraoke, mono } from './_od';
-import { ITEMS, PATH, RIVER_KM, View, WIDE, drawAxes, drawIsland, drawLevel, pathAt, spreadAt, tiltAt, type Cam } from './_island';
+import { ITEMS, PATH, RIVER_KM, View, WIDE, drawAxes, drawIsland, drawLevel, fallAt, pathAt, spreadAt, tiltAt, type Cam } from './_island';
 
-type Shot = { t0: number; cam: (S: number, u: number) => Cam };
+type Shot = { t0: number; cam: (S: number, u: number, tilt: number) => Cam };
 type Page = { lines: number[]; style: 'big' | 'rows' | 'quiet' };
 
 export default class Island extends Scene {
@@ -43,15 +43,16 @@ export default class Island extends Scene {
     const ba = (t: number) => au.timeOfBeat(Math.ceil(au.beatAt(t) - 1e-3));
     const L = (i: number) => ly.lines[i]!;
     const tmp = new View();
-    const tilt = 1;
-    // cameras
-    const wide = (z0 = 1, z1 = 1.04, ax = WIDE.ax, ay = WIDE.ay, fx0 = 0, fx1 = 0) => (_S: number, u: number): Cam =>
-      ({ ax, ay, fx: lerp(fx0, fx1, ease.inOutQuad(u)), fy: 0, zoom: lerp(z0, z1, ease.inOutQuad(u)) });
-    const at = (x: number, z: number, h: number, z0: number, z1 = z0 * 1.05) => (_S: number, u: number): Cam => {
-      tmp.set(tilt, WIDE); const f = tmp.focusOf(x, z, h);
+    // cameras (the wide shot eases back and down as the island leans, to keep it clear of the lyrics)
+    const wide = (z0 = 1, z1 = 1.04, ax = WIDE.ax, ay = WIDE.ay, fx0 = 0, fx1 = 0) => (_S: number, u: number, tilt: number): Cam => {
+      const k = clamp(tilt / 24);
+      return { ax: ax - 30 * k, ay: ay + 70 * k, fx: lerp(fx0, fx1, ease.inOutQuad(u)), fy: 0, zoom: lerp(z0, z1, ease.inOutQuad(u)) * (1 - 0.13 * k) };
+    };
+    const at = (x: number, z: number, h: number, z0: number, z1 = z0 * 1.05) => (_S: number, u: number, tilt: number): Cam => {
+      tmp.set(Math.min(tilt, 24), WIDE); const f = tmp.focusOf(x, z, h);
       return { ax: W / 2 + 80, ay: 600, fx: f.x, fy: f.y, zoom: lerp(z0, z1, ease.inOutQuad(u)) };
     };
-    const track = (zoom = 2.2, back = 0.06) => (S: number, u: number): Cam => {
+    const track = (zoom = 2.2, back = 0.06) => (S: number, u: number, tilt: number): Cam => {
       const p = pathAt(Math.max(0, Math.min(1, S) - back));
       tmp.set(tilt, WIDE); const f = tmp.focusOf(p.x, p.z, 10);
       return { ax: W / 2 + 120, ay: 620, fx: f.x, fy: f.y, zoom: zoom * (1 + 0.04 * u) };
@@ -148,52 +149,44 @@ export default class Island extends Scene {
     const shot = this.shots[i]!;
     const t1 = this.shots[i + 1]?.t0 ?? this.ctx.end;
     const u = clamp((t - shot.t0) / Math.max(1e-3, t1 - shot.t0));
-    const cam = shot.cam(S, u);
+    const fall = fallAt(lyrics, t);
+    const cam = shot.cam(S, u, Math.min(tilt, 24));
     this.closeK = clamp((cam.zoom - 1.3) / 0.3);
-    const v = this.view; v.set(tilt, cam);
-    const endFade = this.part === 'coda' ? 1 - prog(t, this.ctx.end - 1.6, this.ctx.end - 0.1, ease.inOutCubic) : 1;
+    const v = this.view; v.set(tilt, cam, { x: fall.dx, y: fall.dy });
+    // (the island itself doesn't fade at the end of the coda: it falls out of the frame)
+    const endFade = this.part === 'coda' ? 1 - prog(t, this.ctx.end - 1.4, this.ctx.end - 0.1, ease.inOutCubic) : 1;
     const all = degreeTimes(lyrics);
     const surge = all.slice(1).map((d) => (t - d - 0.15) / 2.4);
     clearRT(renderer, out, LIN.ink);
     const lb = this.lb; lb.clear();
-    drawIsland(lb, v, { t, S, tilt, night, surge, alpha: endFade });
-    drawLevel(lb, v, tilt, endFade);
+    drawIsland(lb, v, { t, S, tilt, night, surge });
+    drawLevel(lb, v, tilt);
     lb.render(renderer, out);
     const top = this.lbTop; top.clear();
-    const ax = drawAxes(top, v, t, { alpha: endFade * (cam.zoom > 1.6 ? 0.6 : 1) });
+    const ax = drawAxes(top, v, t, { alpha: cam.zoom > 1.6 ? 0.6 : 1, released: fall.detached ? fall.since : -1 });
     top.render(renderer, out);
 
     const T = this.text, c = T.ctx; T.clear();
-    // the angle: "1°" between the plumb line and the world's axis (wide shots)
-    const flare = pulse(t, all[0]!, 0.6);
-    if (tilt > 0.05 && cam.zoom < 1.6) {
-      c.save(); c.globalAlpha = clamp(tilt) * endFade;
+    // the angle between the plumb line and the world's axis (wide shots); it jumps on every "degree"
+    const flare = all.reduce((m, d) => Math.max(m, pulse(t, d, 0.5)), 0);
+    if (tilt > 0.05 && cam.zoom < 1.6 && !fall.detached && fall.extra < 2) {
+      c.save(); c.globalAlpha = clamp(tilt);
       c.font = font(F.serif(600, true), 46 + 30 * flare); c.fillStyle = rgba('signal', 1); c.textAlign = 'left';
-      c.fillText(`${tilt.toFixed(0)}°`, ax.tip.x + 14, ax.tip.y + 26);
+      c.fillText(`${Math.round(tilt)}°`, ax.tip.x + 14, ax.tip.y + 26);
       c.restore();
     }
-    // readout, bottom right
-    const xr = W - 120, yb = 868;
+    this.drawLyrics(c, t, endFade);
+    // readout, top right (the low side of the island is bottom right)
+    const xr = W - 120, yb = 120;
     const houses = ITEMS.reduce((m, it) => m + (it.kind === 'house' ? clamp((S - it.k - 0.06) / 0.1) : 0), 0);
     const people = 2 + Math.round(houses * 37);
     const km = Math.round(clamp(S) * RIVER_KM);
     c.save(); c.globalAlpha = endFade * (this.part === 'coda' ? 0.7 : 1);
     mono(c, 'TILT', xr, yb, { size: 12, color: rgba('ash', 0.85), track: 3, align: 'right' });
-    mono(c, `${tilt.toFixed(1)}°`, xr, yb + 34, { size: 30, color: rgba('signal', 1), track: 2, align: 'right', weight: 500 });
+    mono(c, fall.detached ? '—' : `${tilt.toFixed(1)}°`, xr, yb + 34, { size: 30, color: rgba('signal', 1), track: 2, align: 'right', weight: 500 });
     mono(c, km > 0 ? `THE RIVER ${km} KM` : 'THE LAKE IS STILL', xr, yb + 62, { size: 13, color: rgba('bone', 0.85), track: 3, align: 'right' });
     mono(c, `LIVING HERE ${people.toLocaleString('en-US')}`, xr, yb + 86, { size: 13, color: rgba('bone', 0.85), track: 3, align: 'right' });
     c.restore();
-    this.drawLyrics(c, t, endFade);
-    if (this.part === 'coda') {
-      const last = this.degs[this.degs.length - 1] ?? this.ctx.end;
-      const y1 = prog(t, last + 0.9, last + 1.9, ease.outCubic) * endFade;
-      if (y1 > 0) {
-        c.save(); c.globalAlpha = y1;
-        c.font = font(F.serif(400, true), 40); c.textAlign = 'center'; c.fillStyle = rgba('bone', 0.92);
-        c.fillText('one degree, once', W / 2, 1000);
-        c.restore();
-      }
-    }
     if (this.part !== 'coda') drawCompound(c, 120, 1000, t, { ly: lyrics });
     comp.draw(renderer, T.upload(), out);
     return { bloom: 0.55, ca: 0.35, vignette: 0.4, roll: 0 };
