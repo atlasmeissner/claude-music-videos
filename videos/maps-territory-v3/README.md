@@ -8,8 +8,9 @@ This is the third version. [Version 1](../maps-territory/) told the idea in twen
 [version 2](../maps-territory-v2/) walked the artist's own life across one map. Version 3 keeps the one map and
 the one continuous shot, and tells **a fictional life, planned and unplanned**.
 
-**Watch / download:** the 1080p30 render is in [`render/`](render/), split into parts (GitHub's 100 MB file limit);
-join them with one command, see [`render/README.md`](render/README.md).
+**Watch / download:** the 1080p30 render (5:19, 486 MB) is in [`render/`](render/), split into five parts (GitHub's
+100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
+`cat maps-territory-v3_1080p30.mp4.part0 … maps-territory-v3_1080p30.mp4.part4 > maps-territory-v3_1080p30.mp4`.
 
 ## The story
 
