@@ -12,7 +12,8 @@ Mara, a gold lamp whose trail cuts the paper away so the real ground shows throu
 keeps to the plan on schedule. Every time Mara leaves the plan behind, the ghost fades a step. At each turning point
 an engraved plate unfolds out of the map — the life as lived, drawn like the territory, bright lines on a dark
 plate — with the plan's version printed underneath and struck through. The bittersweet middle is her father's death;
-the end is a lighthouse on an islet that was never on the map, whose turning beam opens the whole country.
+the end is the seaside she had never seen and a lighthouse for sale on an islet that was never on the map: she buys
+it, lights it, and its turning beam opens the whole country.
 
 ## Characters
 
@@ -21,7 +22,8 @@ the end is a lighthouse on an islet that was never on the map, whose turning bea
   THE CLINIC, 2016). It reaches the plan's places on the same beats as the real events (THE CLINIC when Ida is born,
   MARRIED when Mara's opens, THE HOUSE when her father dies), and fades in steps: 72 %, 52 %, 38 %, 20 %, gone by
   "arrive". It never reaches RETIREMENT.
-- **Her father**, who drew the plan: a small lamp at HOME from her birth until 2021.
+- **Her father**, who drew the plan: a small lamp at HOME from her birth until 2021. He never walks with her; when he
+  dies the camera pulls back so his lamp is in the frame as it goes out, and a tag stays there: HER FATHER · d. 2021.
 - **Jonah**, met at the feast in 2014: his trail joins hers and they walk on as two lines.
 - **Ida**, born 2016: a small lamp that follows and grows.
 
@@ -38,12 +40,13 @@ the end is a lighthouse on an islet that was never on the map, whose turning bea
 | 1:46 | "off the shore" | she leaves the road across the lake; the ghost walks on alone, fading | FIG. 1 THE FERRY |
 | 1:57 | verse 2 | four plates in quick succession, alternating sides of the frame | FIG. 2–5 |
 | 2:12 | pre-chorus 2 | the camera pulls back to the whole sheet: "fits better than the one I drew by hand" | |
-| 2:40 | "Now I'm lost" | her father's lamp at HOME goes out; her trail turns grey; the compass spins | FIG. 6 HER FATHER (the candle gutters out) |
+| 2:38 | "Now I'm lost" | the camera pulls back to the whole sheet; name tags on Mara, Jonah and Ida; her father's lamp at HOME goes out with the candle; her trail turns grey; the compass spins | FIG. 6 HER FATHER (the candle gutters out) |
 | 2:45 | bridge | loops; the camera turns with them | |
-| 2:59 | "finally arrive" | THE COAST; the lighthouse on the islet, flashing every two bars; the ghost is gone | FIG. 7 THE LIGHTHOUSE |
+| 2:59 | "finally arrive" | THE SEASIDE; a dark lighthouse on the islet with a FOR SALE sign; the ghost is gone | FIG. 7 THE SEASIDE |
 | 3:02 | final chorus | gold light comes into the country; the grey trail warms again | |
+| 3:16 | "beyond the story" / "beautiful" | she signs; on "beautiful" it is stamped SOLD, and the sign on the map turns to SOLD | FIG. 8 THE DEED |
 | 3:31 | instrumental | the three of them cross the water to the islet | |
-| 3:45 | the drop | HERE: the lighthouse lights | |
+| 3:45 | the drop | HERE: names on the three lamps; she lights the lighthouse | |
 | 3:50 | the build | the beam turns once every two bars; each turn cuts the paper further out, a spiral; the camera pulls back | |
 | 4:11 | last chorus | the whole sheet is territory; RETIREMENT is stamped UNVISITED; on "beyond the story" the plan is peeled off | |
 | 4:37 | outro | night; the beam turning; three lamps on the islet; the horn rings out from the lighthouse; the title | |

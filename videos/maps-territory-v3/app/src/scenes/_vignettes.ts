@@ -15,6 +15,8 @@ export const DW = 700, DH = 380;
 export interface AnimCtx {
   /** Song time, seconds since the plate opened, the static drawing's progress, and 0..1 over the plate's life. */
   t: number; age: number; k: number; life: number;
+  /** The story's named times (song seconds). */
+  T: Record<string, number>;
 }
 export interface Glow {
   lamp(x: number, y: number, scale: number, I: number): void;
@@ -586,7 +588,7 @@ function planOnSheet(p: Plot, q: [Pt, Pt, Pt, Pt]) {
 const P6: PlateDef = {
   fig: 6, title: 'HER FATHER', year: '2021',
   planned: 'THE HOUSE NEXT DOOR TO HIM, 2020',
-  happened: 'She lost him that winter. She kept his pens.',
+  happened: 'Her father died that winter. She kept his pens.',
   draw: 2.4,
   build(p) {
     // the winter window
@@ -658,89 +660,181 @@ const P6: PlateDef = {
 };
 
 const P7: PlateDef = {
-  fig: 7, title: 'THE LIGHTHOUSE', year: '2024',
+  fig: 7, title: 'THE SEASIDE', year: '2024',
   planned: 'NOTHING DRAWN HERE',
-  happened: 'An islet no map had shown. They arrived.',
+  happened: 'The sea, for the first time. And a lighthouse for sale.',
   draw: 2.6,
   build(p) {
-    const H = 250;
-    stars(p, 70, 0, 4, DW, H - 30, 71);
-    p.set({ w: 0.9, a: 0.7, speed: 1 });
-    p.line(0, H, 380, H); p.line(650, H, DW, H);
+    const H = 250, S: Pt = [318, H];
+    // the dusk sky: horizontal rules, close together near the setting sun
+    p.set({ w: 0.7, a: 0.55, speed: 3 });
+    p.hatch(rect(0, 4, DW, H - 8), 0, 6.5, (x, y) => 1 - sst(50, 400, Math.hypot(x - S[0], (y - S[1]) * 1.7)));
+    p.set({ w: 1.3, a: 0.95, speed: 1 });
+    p.arc(S[0], S[1], 30, 30, Math.PI, TAU);
+    p.set({ w: 0.9, a: 0.7 });
+    for (let i = 0; i <= 14; i++) { const a = Math.PI + (i / 14) * Math.PI; const r0 = 40, r1 = 56 + 24 * hash(i, 8); p.line(S[0] + Math.cos(a) * r0, S[1] + Math.sin(a) * r0, S[0] + Math.cos(a) * r1, S[1] + Math.sin(a) * r1); }
+    p.set({ w: 0.9, a: 0.75, speed: 1 });
+    p.line(0, H, 372, H); p.line(660, H, DW, H);
     // the islet's rocks
     p.set({ w: 1.3, a: 0.95 });
     const rock: Pt[] = [[372, H + 4], [392, H - 8], [420, H - 14], [450, H - 12], [480, H - 22], [520, H - 26], [560, H - 20], [600, H - 10], [640, H - 2], [660, H + 6]];
     p.path(rock);
     p.set({ w: 0.6, a: 0.5, speed: 3 });
     p.hatch([...rock, [660, H + 14], [372, H + 14]], 0.7, 4.5);
-    // the cottage
+    // the cottage, shuttered
     p.set({ w: 1.2, a: 0.92, speed: 1 });
     p.rect(414, H - 46, 54, 34); p.path([[408, H - 46], [441, H - 70], [474, H - 46]]);
-    p.rect(426, H - 38, 12, 12); p.line(452, H - 12, 452, H - 32); p.line(460, H - 12, 460, H - 32); p.line(452, H - 32, 460, H - 32);
-    // the tower, banded
-    const tw: Pt[] = [[502, H - 24], [538, H - 24], [530, 112], [510, 112]];
-    p.path(tw, true);
+    p.rect(426, H - 38, 12, 12); p.line(426, H - 38, 438, H - 26); p.line(438, H - 38, 426, H - 26);
+    p.line(452, H - 12, 452, H - 32); p.line(460, H - 12, 460, H - 32); p.line(452, H - 32, 460, H - 32);
+    // the tower, banded, its lamp dark
+    p.path([[502, H - 24], [538, H - 24], [530, 112], [510, 112]], true);
     for (let b = 0; b < 3; b++) {
       const y0 = H - 24 - (b + 0.5) * 38, y1 = y0 - 18;
       const xl = (y: number) => lerp(502, 510, (H - 24 - y) / (H - 136)), xr = (y: number) => lerp(538, 530, (H - 24 - y) / (H - 136));
       p.with({ w: 0.7, a: 0.7, speed: 3 }, () => p.hatch([[xl(y0), y0], [xr(y0), y0], [xr(y1), y1], [xl(y1), y1]], 1.2, 2.8));
     }
     p.arc(520, H - 24, 6, 9, Math.PI, TAU);
-    // gallery, lantern room, roof
     p.line(498, 112, 542, 112); p.line(500, 104, 540, 104);
     for (let x = 500; x <= 540; x += 8) p.line(x, 104, x, 112);
     p.rect(509, 80, 22, 24); p.line(516, 80, 516, 104); p.line(524, 80, 524, 104);
     p.path([[505, 80], [520, 62], [535, 80]]); p.circle(520, 59, 3);
-    // the sea
+    // the sign: FOR SALE
+    p.set({ w: 1.2, a: 0.95 });
+    p.line(600, H - 12, 600, H - 44);
+    p.rect(566, H - 66, 68, 24);
+    const fs = strokeText('FOR SALE', 'sans', 12, 1.5);
+    p.with({ w: 1.2, a: 1, col: 'ember', wobble: 0 }, () => p.text(fs, 600 - fs.width / 2, H - 49));
+    // the sea, with the sun's road on it
     p.set({ w: 0.8, a: 0.5, speed: 2.5 });
-    sea(p, H + 6, DH, 17, (x, y) => 1 - sst(10 + (y - H) * 0.3, 30 + (y - H) * 0.6, Math.abs(x - 520)));
-    // the near shore, and the three of them looking out
+    sea(p, H + 6, DH, 17, (x, y) => 1 - sst(14 + (y - H) * 0.35, 40 + (y - H) * 0.7, Math.abs(x - S[0])));
+    // the near shore, and the three of them, seeing it
     p.set({ w: 1.2, a: 0.95, speed: 1 });
     p.path([[0, 336], [70, 330], [160, 334], [230, 348], [270, 380]]);
     p.with({ w: 0.6, a: 0.45, speed: 3 }, () => p.hatch([[0, 340], [70, 334], [160, 338], [230, 352], [266, 380], [0, 380]], -0.7, 5));
     p.set({ w: 1.5, a: 1, col: 'ember' });
     figure(p, 112, 331, 52, true);
-    figure(p, 140, 332, 58);
-    figure(p, 164, 334, 30, true);
+    p.line(118, 290, 140, 276); // pointing out to sea
+    figure(p, 150, 332, 58);
+    figure(p, 172, 334, 30, true);
     p.set({ col: 'bone' });
   },
   anim(c, a) {
-    const k = clamp((a.k - 0.55) / 0.3);
+    const k = clamp((a.k - 0.4) / 0.4);
     if (k <= 0) return;
+    // gulls
     c.save(); c.globalAlpha *= k;
-    c.fillStyle = rgba('ember', 0.95);
-    c.fillRect(511, 84, 18, 18);
-    c.fillStyle = rgba('signal', 0.8);
-    c.fillRect(428, 214, 8, 8);
+    c.strokeStyle = rgba('bone', 0.85); c.lineWidth = 1.1; c.lineCap = 'round';
+    for (let i = 0; i < 5; i++) {
+      const x = ((80 + i * 120 + a.t * (14 + 4 * i)) % 760) - 30, y = 60 + 40 * hash(i, 2) + 6 * Math.sin(a.t * 0.7 + i);
+      const f = 4 * Math.sin(a.t * (5 + i) + i), w = 7 + 3 * hash(i, 3);
+      c.beginPath(); c.moveTo(x - w, y - f); c.quadraticCurveTo(x - w / 2, y - 3 - f / 2, x, y); c.quadraticCurveTo(x + w / 2, y - 3 - f / 2, x + w, y - f); c.stroke();
+    }
     c.restore();
   },
   glow(g, a) {
-    const k = clamp((a.k - 0.55) / 0.3);
-    if (k <= 0) return;
-    // two beams turning: seen from the shore they sweep left and right across the sky
-    const ang = a.t * 1.9;
-    for (const off of [0, Math.PI]) {
-      const d = Math.cos(ang + off), face = Math.sin(ang + off);
-      if (Math.abs(d) < 0.04) continue;
-      const len = (d > 0 ? DW - 540 : 500) * Math.abs(d);
-      for (let j = -6; j <= 6; j++) {
-        const spread = j * 1.6 * (0.4 + Math.abs(d));
-        const ex = 520 + Math.sign(d) * len, ey = 92 + spread * 4 + (face > 0 ? 6 : -6) * Math.abs(d);
-        g.seg(520, 92, ex, Math.max(4, Math.min(DH - 4, ey)), 2.2, LIN.ember, 0.12 * k * (1 - Math.abs(j) / 7) * (0.5 + 0.5 * Math.abs(d)));
-      }
-    }
-    const flare = Math.pow(Math.max(0, Math.sin(ang)), 8) + Math.pow(Math.max(0, Math.sin(ang + Math.PI)), 8);
-    g.lamp(520, 92, 1.0 + 1.6 * flare, k);
-    g.lamp(432, 218, 0.35, 0.6 * k);
-    for (let i = 0; i < 16; i++) {
-      const y = 262 + Math.pow(hash(i, 3), 1.3) * 110, w = 4 + (y - 250) * 0.15;
-      const x = 520 + (hash(i, 5) - 0.5) * (10 + (y - 250) * 0.4);
-      g.seg(x - w, y, x + w, y, 1.4, LIN.ember, 0.6 * k * (0.4 + 0.6 * flare) * (0.5 + 0.5 * Math.sin(a.t * 4 + i)));
+    g.lamp(318, 250, 2.3, 0.8);
+    for (let i = 0; i < 24; i++) {
+      const y = 258 + Math.pow(hash(i, 3), 1.4) * 115, w = 6 + (y - 250) * 0.25 * hash(i, 4);
+      const x = 318 + (hash(i, 5) - 0.5) * (14 + (y - 250) * 0.5);
+      const f = 0.5 + 0.5 * Math.sin(a.t * (3 + 4 * hash(i, 6)) + i);
+      g.seg(x - w, y, x + w, y, 1.6, LIN.ember, 0.85 * f);
     }
   },
 };
 
-export const PLATES: Record<string, PlateDef> = { ferry: P1, bakery: P2, feast: P3, ida: P4, oven: P5, father: P6, light: P7 };
+const KEYS: [number, number, number][] = [[588, 228, -0.12], [612, 236, 0.02], [636, 222, 0.16]];
+const P8: PlateDef = {
+  fig: 8, title: 'THE DEED', year: '2025',
+  planned: 'RETIREMENT, 2055',
+  happened: 'She bought the lighthouse. It needed a keeper.',
+  draw: 3.2,
+  build(p) {
+    // the deed on the table, a little askew
+    p.set({ w: 1.4, a: 0.95, speed: 1 });
+    const D: Pt[] = [[150, 30], [524, 20], [534, 362], [160, 372]];
+    p.path(D, true);
+    p.set({ w: 0.7, a: 0.55 });
+    p.path([[162, 42], [512, 33], [521, 350], [171, 359]], true);
+    p.set({ w: 0.5, a: 0.25, speed: 4 });
+    p.hatch(D, 0.05, 9);
+    const head = strokeText('DEED OF SALE', 'serif', 26, 3);
+    p.set({ w: 1.5, a: 1, speed: 1, wobble: 0 });
+    p.text(head, 342 - head.width / 2, 82);
+    const sub = strokeText('THE LIGHTHOUSE ON THE ISLET, AND ITS COTTAGE', 'readable', 11, 1.2);
+    p.with({ w: 1, a: 0.85 }, () => p.text(sub, 342 - sub.width / 2, 106));
+    p.set({ wobble: 0.35 });
+    // a small engraving of the lighthouse in the corner
+    p.set({ w: 1, a: 0.9 });
+    p.path([[192, 236], [222, 236], [216, 156], [198, 156]], true);
+    p.line(194, 154, 220, 154); p.rect(201, 138, 12, 16); p.path([[199, 138], [207, 128], [215, 138]]);
+    p.with({ w: 0.6, a: 0.6, speed: 3 }, () => p.hatch([[194, 222], [220, 222], [219, 208], [195, 208]], 1.2, 2.5));
+    p.path([[180, 240], [196, 234], [222, 234], [238, 242]]);
+    // the text: ruled words
+    p.set({ w: 0.9, a: 0.6, speed: 4, wobble: 0.15 });
+    for (let r = 0; r < 10; r++) {
+      const y = 132 + r * 12;
+      let x = 254;
+      for (let i = 0; x < 498; i++) { const L = 14 + 34 * hash(r, i, 4); const xe = Math.min(498, x + L); if (!(r === 9 && x > 380)) p.line(x, y, xe, y); x = xe + 6; }
+    }
+    // the seal, and the line for her name
+    p.set({ w: 1.3, a: 0.95, speed: 1, wobble: 0.35 });
+    p.circle(220, 302, 24); p.circle(220, 302, 17);
+    for (let i = 0; i < 8; i++) { const a = (i / 8) * TAU; const r = i % 2 ? 6 : 13; p.line(220, 302, 220 + Math.cos(a) * r, 302 + Math.sin(a) * r); }
+    p.path([[206, 322], [200, 344], [212, 332]]); p.path([[232, 322], [240, 342], [228, 332]]);
+    p.line(300, 316, 500, 316);
+    p.with({ w: 0.8, a: 0.6 }, () => { p.line(300, 322, 306, 328); p.line(306, 322, 300, 328); });
+    // the keys on their ring, and his pen
+    p.set({ w: 1.2, a: 0.95 });
+    p.circle(612, 120, 24);
+    p.path([[560, 352], [676, 286], [682, 294], [566, 360]], true);
+    p.line(560, 352, 548, 362);
+    // her name
+    const name = strokeText('Mara', 'script', 46, 0);
+    p.set({ w: 2.3, a: 1, col: 'ember', speed: 0.8, wobble: 0 });
+    p.text(name, 318, 310);
+    p.set({ col: 'bone', wobble: 0.35 });
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.3);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.3; c.lineCap = 'round'; c.lineJoin = 'round';
+    // three old keys, swinging a little on the ring
+    KEYS.forEach(([x, y, a0], i) => {
+      const sw = a0 + 0.05 * Math.sin(a.t * 1.6 + i * 1.3);
+      c.save(); c.translate(612, 140); c.rotate(sw);
+      const L = Math.hypot(x - 612, y - 140);
+      c.beginPath(); c.arc(0, 8, 8, 0, TAU); c.stroke();
+      c.beginPath(); c.moveTo(0, 16); c.lineTo(0, L); c.stroke();
+      c.beginPath(); c.moveTo(0, L - 4); c.lineTo(9, L - 4); c.lineTo(9, L - 10); c.moveTo(0, L - 14); c.lineTo(7, L - 14); c.stroke();
+      c.restore();
+    });
+    c.restore();
+    // SOLD, stamped on the word
+    const T = a.T, sk = clamp((a.t - T.sold!) / 0.3);
+    if (sk > 0) {
+      const thump = 1 + 0.7 * (1 - ease.outBack(sk));
+      c.save();
+      c.globalAlpha *= clamp(sk * 3);
+      c.translate(430, 200); c.rotate(-0.2); c.scale(thump, thump);
+      c.strokeStyle = rgba('#D0452F', 0.95); c.lineWidth = 4; c.strokeRect(-78, -30, 156, 60);
+      c.lineWidth = 1.5; c.strokeRect(-70, -22, 140, 44);
+      c.font = `40px "Plex-700"`; c.letterSpacing = '10px'; c.fillStyle = rgba('#D0452F', 0.95); c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText('SOLD', 5, 2);
+      c.restore();
+    }
+  },
+  glow(g, a) {
+    KEYS.forEach(([x, y, a0], i) => {
+      const sw = a0 + 0.05 * Math.sin(a.t * 1.6 + i * 1.3), L = Math.hypot(x - 612, y - 140);
+      g.lamp(612 - Math.sin(sw) * (L - 30), 140 + Math.cos(sw) * (L - 30), 0.16, 0.55 * (0.5 + 0.5 * Math.sin(a.t * 2.3 + i * 2)));
+    });
+    const sk = clamp((a.t - a.T.sold!) / 0.3);
+    if (sk > 0) g.lamp(220, 302, 0.7, 0.5 * Math.pow(0.5, (a.t - a.T.sold!) / 0.6));
+  },
+};
+
+export const PLATES: Record<string, PlateDef> = { ferry: P1, bakery: P2, feast: P3, ida: P4, oven: P5, father: P6, sea: P7, deed: P8 };
 const built = new Map<string, Plot>();
 /** The static engraving of a plate (built once). */
 export function plot(id: string): Plot {

@@ -17,7 +17,7 @@ export interface StoryEvent {
   label: string;
 }
 /** One engraved figure plate (see _vignettes.ts). `anchor`: what the plate unfolds from (a waypoint index or 'light'). */
-export interface PlateCue { id: string; t0: number; t1: number; side: 1 | -1; anchor: number | 'light' }
+export interface PlateCue { id: string; t0: number; t1: number; side: 1 | -1; anchor: number | 'light' | 'home' }
 export interface Story {
   /** [time, km walked] keys; walked(t) interpolates with a sine ease between keys. */
   sKeys: [number, number][];
@@ -51,7 +51,7 @@ export function story(ly: Lyrics, au: AudioData): Story {
     rain: last(10).start, feast: last(11).start, road: last(12).start, east: last(13).start, pre2: sec('pre2'),
     chorus2: L(16).words[0]!.start - 0.4, lost: W(19, 2).start, bridge: sec('bridge'), lost2: last(21).end, arrive: last(22).start,
     final: sec('final'), beautiful: W(26, 3).start, inst: sec('inst'), here: db(130), drop: db(130), build: db(133),
-    final2: sec('final2'), stamp: W(29, 4).start, peel: L(30).words[0]!.start, outro: sec('outro'), band: db(170), horn: db(180), end: au.duration,
+    sold: W(26, 3).start, final2: sec('final2'), stamp: W(29, 4).start, peel: L(30).words[0]!.start, outro: sec('outro'), band: db(170), horn: db(180), end: au.duration,
   };
   const sKeys: [number, number][] = [
     [0, 0], [T.tracing!, 0],
@@ -67,7 +67,7 @@ export function story(ly: Lyrics, au: AudioData): Story {
     [L(18).end, N("MARA'S") + (N('HER FATHER') - N("MARA'S")) * 0.6],
     [T.lost!, N('HER FATHER')],
     [T.lost2!, N('WANDERING')],
-    [T.arrive!, N('THE COAST')],
+    [T.arrive!, N('THE SEASIDE')],
     [T.beautiful!, N('THE JETTY')],
     [T.inst! + 1, N('THE JETTY')],
     [T.here! - 0.3, track().total],
@@ -94,15 +94,15 @@ export function story(ly: Lyrics, au: AudioData): Story {
   const gFade: [number, number][] = [[T.ferry!, 0.72], [T.road!, 0.52], [T.east!, 0.38], [T.lost!, 0.2], [T.arrive!, 0]];
   const yKeys: [number, number][] = [
     [T.page!, 1990], [L(7).end, 2004], [L(8).end, 2008], [T.ferry!, 2011], [T.rain!, 2012], [T.feast!, 2014], [T.road!, 2016],
-    [T.east!, 2018], [T.lost!, 2021], [T.arrive!, 2024], [T.here!, 2025], [T.final2!, 2026],
+    [T.east!, 2018], [T.lost!, 2021], [T.arrive!, 2024], [W(26, 3).start, 2025], [T.here!, 2025], [T.final2!, 2026],
   ];
   const YEARS: Record<string, number> = {
     'HOME': 1990, 'THE FERRY': 2011, 'THE BAKERY': 2012, 'THE FEAST': 2014, 'IDA': 2016, "MARA'S": 2018, 'HER FATHER': 2021,
-    'WANDERING': 2022, 'THE COAST': 2024, 'THE JETTY': 2024, 'HERE': 2025,
+    'WANDERING': 2022, 'THE SEASIDE': 2024, 'THE JETTY': 2024, 'HERE': 2025,
   };
   const LABELS: Record<string, string> = {
     'THE FERRY': 'THE FERRY · 2011', 'THE BAKERY': 'A BAKERY IN THE RAIN · 2012', 'THE FEAST': 'THE FEAST · JONAH · 2014',
-    'IDA': 'IDA · 2016', "MARA'S": "MARA'S · 2018", 'HER FATHER': 'HER FATHER · 2021', 'THE COAST': 'THE COAST · 2024', 'HERE': 'HERE · 2025',
+    'IDA': 'IDA · 2016', "MARA'S": "MARA'S · 2018", 'THE SEASIDE': 'THE SEASIDE · 2024', 'HERE': 'HERE · 2025',
   };
   const events: StoryEvent[] = [];
   for (const w of WAY) {
@@ -120,8 +120,9 @@ export function story(ly: Lyrics, au: AudioData): Story {
     { id: 'feast', t0: L(11).start - 0.35, t1: L(13).start - 0.6, side: -1, anchor: wayIx('THE FEAST') },
     { id: 'ida', t0: L(12).start - 0.35, t1: T.pre2! + 0.6, side: 1, anchor: wayIx('IDA') },
     { id: 'oven', t0: L(13).start - 0.3, t1: T.pre2! + 1.8, side: -1, anchor: wayIx("MARA'S") },
-    { id: 'father', t0: L(18).end + 0.3, t1: T.bridge! + 0.9, side: -1, anchor: wayIx('HER FATHER') },
-    { id: 'light', t0: L(22).start + 0.6, t1: T.final! + 2.4, side: -1, anchor: 'light' },
+    { id: 'father', t0: L(18).end + 0.3, t1: T.bridge! + 0.9, side: 1, anchor: 'home' },
+    { id: 'sea', t0: L(22).start + 0.6, t1: T.final! + 2.4, side: -1, anchor: 'light' },
+    { id: 'deed', t0: L(25).start + 0.7, t1: L(26).end - 0.5, side: -1, anchor: 'light' },
   ];
   void ev;
   const st = { sKeys, gKeys, gFade, yKeys, events, plates, T };

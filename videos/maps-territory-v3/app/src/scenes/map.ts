@@ -38,7 +38,10 @@ const C_HORN = 4.2; // km/s: the horn's call across the country (slowed, so it c
 const OMEGA = TAU / 3.438; // the lighthouse: one turn every two bars
 const PLATE_TOP = 132;
 
+const HEX_INK = '#0A1013';
 const sm = (x: number) => ease.inOutSine(clamp(x));
+/** Where a plate unfolds from. */
+const anchorOf = (cue: PlateCue) => (cue.anchor === 'light' ? LIGHT : cue.anchor === 'home' ? PLAN[0]! : WAY[cue.anchor]!);
 
 export default class MapScene extends Scene {
   terrain = new Terrain();
@@ -98,7 +101,9 @@ export default class MapScene extends Scene {
       [T.verse2! - 1.5, (t) => this.follow(t, 27), 2.0],
       [T.pre2!, () => WIDE, 2.2],
       [T.chorus2!, (t) => this.follow(t, 25), 2.4],
-      [T.bridge!, (t) => this.follow(t, 34, 0.4 * Math.sin((t - T.bridge!) * 0.42)), 2.0],
+      // her father: pull back to the whole sheet, so his lamp at HOME is in the frame when it goes out
+      [this.fatherCue().t0 - 0.4, (t) => lerpView({ cx: 44, cy: 50.5, s: 11.6, rot: 0 }, { cx: 43.5, cy: 50.5, s: 10.9, rot: 0 }, sm((t - this.fatherCue().t0) / 8)), 2.6],
+      [T.bridge! + 1.2, (t) => this.follow(t, 34, 0.4 * Math.sin((t - T.bridge!) * 0.42)), 2.4],
       [T.arrive! - 3.5, (t) => this.follow(t, 15, 0), 3.0],
       [T.final! + 0.5, (t) => this.follow(t, 21), 2.0],
       [T.inst!, (t) => this.follow(t, 26), 1.5],
@@ -118,6 +123,10 @@ export default class MapScene extends Scene {
     }
     return v;
   }
+
+  fatherCue() { return this.st.plates.find((p) => p.id === 'father')!; }
+  /** When her father's light goes out: with the candle in his plate. */
+  dadOut() { const f = this.fatherCue(); return f.t0 + 0.62 * (f.t1 - f.t0); }
 
   /** The lighthouse: swept angle since it was lit. */
   beamA(t: number) { return Math.max(0, t - this.st.T.here!) * OMEGA; }
@@ -287,18 +296,30 @@ export default class MapScene extends Scene {
       const nrm = { x: -Math.sin(p.angle + v.rot), y: Math.cos(p.angle + v.rot) };
       return { x: lerp(q0.x + nrm.x * off, q1.x, settle), y: lerp(q0.y + nrm.y * off, q1.y, settle) };
     };
+    const who: [string, number, number, number][] = [['MARA', hp.x, hp.y, -1e9]];
     if (s > together - 0.01) {
       const k = after('THE FEAST', 0.8);
       const q = fam(0.55, 5, { x: here.x + 0.5, y: here.y + 0.25 }, k);
       lamp(gl, q.x, q.y, t + 3, 0.78 + 0.1 * warm, k * 0.95);
+      who.push(['JONAH', q.x, q.y, fired('THE FEAST')]);
     }
     if (s > sE['IDA']! - 0.01) {
       const k = after('IDA', 0.8);
       const q = fam(1.05, -5, { x: here.x - 0.4, y: here.y + 0.45 }, k);
       lamp(gl, q.x, q.y, t + 7, lerp(0.34, 0.62, prog(t, T.road!, T.final2!)), k * 0.9);
+      who.push(['IDA', q.x, q.y, fired('IDA')]);
     }
-    const dad = prog(t, T.page!, T.page! + 1.5) * (1 - prog(t, T.lost!, T.lost! + 2.8, ease.inOutSine));
-    if (dad > 0) { const q = w2s(v, home.x, home.y); lamp(gl, q.x + 8, q.y - 6, t + 11, 0.7, dad * 0.85); }
+    const fc = this.fatherCue(), dOut = this.dadOut();
+    const dad = prog(t, T.page!, T.page! + 1.5) * (1 - prog(t, dOut, dOut + 1.3, ease.inOutSine));
+    const dadBig = prog(t, fc.t0 - 1, fc.t0 + 0.5) * (1 - prog(t, fc.t1, fc.t1 + 1));
+    if (dad > 0) { const q = w2s(v, home.x, home.y); lamp(gl, q.x + 8, q.y - 6, t + 11, 0.7 + 0.8 * dadBig, dad * 0.9); }
+    if (t > dOut && t < dOut + 4.5) {
+      // a thread of smoke where his light was
+      const q = w2s(v, home.x, home.y), ph = clamp((t - dOut) / 4.5);
+      c.save(); c.globalAlpha = Math.sin(ph * Math.PI) * 0.8; c.strokeStyle = rgba('graphite', 0.9); c.lineWidth = 1.2; c.beginPath();
+      for (let j = 0; j <= 24; j++) c.lineTo(q.x + 8 + 5 * Math.sin(j * 0.5 + t * 1.4) * (j / 24), q.y - 6 - j * 2.4 * (0.4 + ph));
+      c.stroke(); c.restore();
+    }
     // Jonah's trail, joining hers during "Packed for war but found a feast"
     const l11 = lyrics.lines[11]!;
     const sp = prog(t, l11.words[0]!.start - 0.3, T.feast!, ease.inOutSine);
@@ -330,13 +351,17 @@ export default class MapScene extends Scene {
       }
     }
     // the lighthouse on the islet: seen from the plate on, a flash every two bars; lit for good at HERE
-    const lhK = prog(t, st.plates.find((p) => p.id === 'light')!.t0 + 0.4, st.plates.find((p) => p.id === 'light')!.t0 + 1.2);
+    const seaCue = st.plates.find((p) => p.id === 'sea')!;
+    const lhK = prog(t, seaCue.t0 + 0.4, seaCue.t0 + 1.2);
     if (lhK > 0) {
       const q = w2s(v, LIGHT.x, LIGHT.y);
       this.tower(c, q.x, q.y, clamp(v.s / 26, 0.55, 1.6), lhK);
       const sz = clamp(v.s / 26, 0.55, 1.6);
-      const flash = t < T.here! ? Math.pow(0.5, ((t - T.arrive!) % 1.719 + 1.719) % 1.719 / 0.18) : 0;
-      lamp(gl, q.x, q.y - 26 * sz, t + 5, 0.5 + 0.9 * beamI, lhK * Math.max(flash * 0.9, beamI));
+      // dark until she buys it and lights it
+      if (beamI > 0) lamp(gl, q.x, q.y - 26 * sz, t + 5, 0.5 + 0.9 * beamI, lhK * beamI);
+      // its sign: FOR SALE from the seaside on, SOLD on "beautiful", gone once she is there
+      const sk = prog(t, seaCue.t1 + 0.4, seaCue.t1 + 0.8, ease.outCubic) * (1 - prog(t, T.here! + 1, T.here! + 2));
+      if (sk > 0) this.saleSign(c, q.x + 14 * sz, q.y - 14 * sz, t, sk);
       if (beamI > 0) {
         // the beams' bright cores, out from the lamp
         for (const off of [0, Math.PI]) {
@@ -360,6 +385,25 @@ export default class MapScene extends Scene {
       this.glyph(c, e.name, q.x, q.y, clamp(k));
       const tagA = 1 - prog(t, T.band!, T.band! + 5, ease.inOutSine);
       if (tagA > 0) { c.save(); c.globalAlpha = tagA; this.tag(c, q.x, q.y, e.label, clamp(k), G); c.restore(); }
+    }
+
+    // her father, at HOME, once his light has gone out
+    {
+      const k = prog(t, this.dadOut() + 0.4, this.dadOut() + 0.8, ease.outBack) * (1 - prog(t, T.band!, T.band! + 5, ease.inOutSine));
+      if (k > 1e-3) { const q = w2s(v, home.x, home.y); this.tag(c, q.x, q.y, 'HER FATHER · d. 2021', clamp(k), G); }
+    }
+    // who walks with her: names by the lamps when they join, while her father's plate is open, and on the islet
+    {
+      const fc = this.fatherCue();
+      const shown = (since: number) => Math.max(
+        prog(t, since + 0.4, since + 0.8) * (1 - prog(t, since + 4.5, since + 5.2)),
+        prog(t, fc.t0 + 0.8, fc.t0 + 1.4) * (1 - prog(t, fc.t1, fc.t1 + 0.6)),
+        prog(t, T.here! + 1.8, T.here! + 2.4) * (1 - prog(t, T.here! + 7, T.here! + 7.8)));
+      for (const [name, x, y, since] of who) {
+        const k = name === 'MARA' ? Math.max(prog(t, fc.t0 + 0.8, fc.t0 + 1.4) * (1 - prog(t, fc.t1, fc.t1 + 0.6)), prog(t, T.here! + 1.8, T.here! + 2.4) * (1 - prog(t, T.here! + 7, T.here! + 7.8))) : shown(since);
+        const wide = prog(t, fc.t0 - 1, fc.t0) * (1 - prog(t, fc.t1, fc.t1 + 0.6)) > 0.5;
+        if (k > 0) this.nameTag(c, name, x, y, k, (name === 'MARA' ? 0 : name === 'JONAH' ? 1 : 2) + (wide ? 3 : 0));
+      }
     }
 
     // ---------------------------------------------------------------- the sheet's furniture, the card, the intro type
@@ -447,7 +491,7 @@ export default class MapScene extends Scene {
     const open = ease.outCubic(prog(age, 0, 0.85));
     const close = ease.inOutCubic(prog(t, cue.t1, cue.t1 + 0.65));
     const e = open * (1 - close);
-    const aw = cue.anchor === 'light' ? LIGHT : WAY[cue.anchor]!;
+    const aw = anchorOf(cue);
     const A = w2s(v, aw.x, aw.y);
     const slot = { x: cue.side < 0 ? 64 + (CW * PS) / 2 : 1856 - (CW * PS) / 2, y: PLATE_TOP + (CH * PS) / 2 };
     const m = ease.inOutSine(e);
@@ -458,14 +502,14 @@ export default class MapScene extends Scene {
       x: lerp(A.x, slot.x, m), y: lerp(A.y, slot.y, m),
       sx: lerp(0.03, 1, ease.outCubic(clamp(e * 1.7))), sy: lerp(0.012, 1, ease.inOutSine(clamp((e - 0.35) / 0.65))),
       alpha: clamp(e * 5),
-      a: { t, age, k: ease.inOutSine(prog(age, 0.45, 0.45 + dd)), life: clamp(age / life) },
+      a: { t, age, k: ease.inOutSine(prog(age, 0.45, 0.45 + dd)), life: clamp(age / life), T: this.st.T },
       planK: prog(age, 0.55, 0.95), strikeK: prog(age, sk0, sk0 + 0.45), happenK: prog(age, sk0 + 0.35, sk0 + 1.3),
     };
   }
 
   /** The leader from the place on the map to its plate. */
   leader(c: CanvasRenderingContext2D, cue: PlateCue, ps: PlateState, v: View) {
-    const aw = cue.anchor === 'light' ? LIGHT : WAY[cue.anchor]!;
+    const aw = anchorOf(cue);
     const A = w2s(v, aw.x, aw.y);
     const k = clamp((ps.sy - 0.2) / 0.5) * ps.alpha;
     if (k <= 0) return;
@@ -559,6 +603,46 @@ export default class MapScene extends Scene {
     c.fillText(String(y), 74, 108 - roll * 44);
     if (roll > 0) c.fillText(String(y + 1), 74, 152 - roll * 44);
     c.restore();
+    c.restore();
+  }
+
+  /** A name by a lamp: a small dark pill, ember type. `slot` spreads the three apart when they stand together. */
+  nameTag(c: CanvasRenderingContext2D, name: string, x: number, y: number, k: number, slot: number) {
+    // (slots 3..5: fanned out to the left, clear of a plate on the right)
+    const [dx, dy] = [[0, -30], [24, 26], [-26, 28], [-36, -34], [-84, -6], [-58, 28]][slot]!;
+    c.save();
+    c.globalAlpha *= k;
+    c.font = font(F.mono(600), 11); c.letterSpacing = '3px';
+    const w = c.measureText(name).width + 14;
+    const bx = x + dx - w / 2, by = y + dy - 9;
+    c.strokeStyle = rgba('ember', 0.6); c.lineWidth = 0.8;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x + dx, y + dy + (dy < 0 ? 9 : -9)); c.stroke();
+    c.fillStyle = rgba('ink2', 0.92); c.fillRect(bx, by, w, 18);
+    c.strokeStyle = rgba('ember', 0.8); c.strokeRect(bx, by, w, 18);
+    c.fillStyle = rgba('ember', 1); c.textBaseline = 'middle'; c.textAlign = 'left';
+    c.fillText(name, bx + 8, by + 9.5);
+    c.restore();
+  }
+
+  /** The lighthouse's sign on the map: FOR SALE, then SOLD. */
+  saleSign(c: CanvasRenderingContext2D, x: number, y: number, t: number, k: number) {
+    const T = this.st.T as Record<string, number>;
+    const sold = prog(t, T.sold!, T.sold! + 0.3);
+    const lx = x + 26, ly = y - 20;
+    c.save();
+    c.globalAlpha *= k;
+    c.strokeStyle = rgba('ink', 0.85); c.lineWidth = 1;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(lx, ly + 10); c.stroke();
+    const text = sold > 0.5 ? 'SOLD' : 'FOR SALE';
+    c.font = font(F.mono(700), 12); c.letterSpacing = '2.5px';
+    const w = c.measureText(text).width + 14;
+    const thump = sold > 0.5 ? 1 + 0.5 * (1 - ease.outBack(clamp((sold - 0.5) * 2))) : 1;
+    c.translate(lx + w / 2, ly); c.scale(thump, thump); c.rotate(sold > 0.5 ? -0.08 : 0); c.translate(-(lx + w / 2), -ly);
+    c.fillStyle = rgba('bone', 0.97); c.fillRect(lx, ly - 10, w, 20);
+    const col = sold > 0.5 ? '#C0392B' : HEX_INK;
+    c.strokeStyle = col; c.lineWidth = sold > 0.5 ? 2 : 1; c.strokeRect(lx, ly - 10, w, 20);
+    c.fillStyle = col; c.textBaseline = 'middle'; c.textAlign = 'left';
+    c.fillText(text, lx + 7, ly + 0.5);
     c.restore();
   }
 

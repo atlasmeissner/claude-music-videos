@@ -160,7 +160,7 @@ export const WAY: { x: number; y: number; name?: string; straight?: boolean }[] 
   // lost: the trail loops back over itself before it finds anything
   { x: 57.2, y: 47.8 }, { x: 55.6, y: 52.8 }, { x: 59.9, y: 52.2 }, { x: 58.1, y: 48.9 }, { x: 56.8, y: 54.8 },
   { x: 61.8, y: 57.8, name: 'WANDERING' },
-  { x: 66, y: 62, name: 'THE COAST' },
+  { x: 66, y: 62, name: 'THE SEASIDE' },
   { x: 68.6, y: 63.2, name: 'THE JETTY' },
   { x: ISLET.x - 0.2, y: ISLET.y + 0.3, name: 'HERE', straight: true },
 ];
