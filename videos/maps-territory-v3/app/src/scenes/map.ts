@@ -58,6 +58,8 @@ export default class MapScene extends Scene {
   spouse: { x: number; y: number }[] = [];
   sLegs: Record<string, number> = {};
   rows = new Map<number, { lines: Line[]; fam: string; size: number; tr: number }>();
+  /** The new plan she makes after each station: drawn from where she is, struck when the next station proves it wrong. */
+  plans: { a: { x: number; y: number }; b: { x: number; y: number }; label: string; t0: number; strike: number; side: number }[] = [];
 
   override init() {
     const { lyrics, audio } = this.ctx;
@@ -75,6 +77,26 @@ export default class MapScene extends Scene {
     }
     for (const w of WAY) if (w.name) this.sLegs[w.name] = waySAt(WAY.indexOf(w));
     this.sLegs['EAST SHORE'] = waySAt(wayIx('THE FERRY') + 1);
+    // after every station a new plan, from the ferry on (the father's plan before that), each one a ruled road to
+    // somewhere she never goes; it is struck through when the next plate shows what happened instead
+    const P = this.st.plates, TR = track();
+    const dd = (c: PlateCue) => Math.min(PLATES[c.id]!.draw ?? 2.2, (c.t1 - c.t0) * 0.5);
+    const strikeAt = (c: PlateCue) => c.t0 + 0.45 + dd(c) * 0.8;
+    const i0 = P.findIndex((c) => c.id === 'ferry'), i1 = P.findIndex((c) => c.id === 'chair');
+    for (let i = i0; i < i1; i++) {
+      const c = P[i]!, n = P[i + 1]!;
+      const tS = strikeAt(n);
+      const t0 = Math.max(c.t0 + 0.9, Math.min(strikeAt(c) + 1.3, tS - 1.6));
+      const sNow = walked(this.st, t0), atIslet = sNow >= TR.total - 0.01;
+      const here = trackAt(sNow), ahead = trackAt(Math.min(TR.total, sNow + 2));
+      const h = Math.atan2(ahead.y - here.y, ahead.x - here.x);
+      const base = atIslet ? -Math.PI / 2 : Math.sin(h) > 0 ? -Math.PI / 2 : Math.PI / 2;
+      const ang = base + (i % 2 ? 0.55 : -0.55) + (atIslet ? (i % 3) * 0.35 : 0);
+      const L = atIslet ? 6 : 7;
+      const b = { x: Math.min(96, Math.max(4, here.x + Math.cos(ang) * L)), y: Math.min(96, Math.max(4, here.y + Math.sin(ang) * L)) };
+      // (its name goes on the side away from the plate that is open while it is drawn)
+      this.plans.push({ a: { x: here.x, y: here.y }, b, label: PLATES[n.id]!.planned, t0, strike: tS, side: -c.side });
+    }
   }
 
   /** The head's position averaged over ±0.8 s (a steadicam on the walker). */
@@ -384,6 +406,9 @@ export default class MapScene extends Scene {
       }
     }
 
+    // ---------------------------------------------------------------- the new plans, made and abandoned
+    this.drawPlans(c, v, t, peel);
+
     // ---------------------------------------------------------------- events: glyphs and tags (on the map)
     for (const e of evs) {
       if (!e.label) continue;
@@ -619,6 +644,60 @@ export default class MapScene extends Scene {
     if (roll > 0) c.fillText(String(y + 1), 74, 152 - roll * 44);
     c.restore();
     c.restore();
+  }
+
+  drawPlans(c: CanvasRenderingContext2D, v: View, t: number, peel: number) {
+    const T = this.st.T as Record<string, number>;
+    const all = (1 - peel) * (1 - prog(t, T.band!, T.band! + 4));
+    if (all <= 0) return;
+    for (const pl of this.plans) {
+      if (t < pl.t0) continue;
+      const dk = ease.inOutSine(prog(t, pl.t0, pl.t0 + 1.1));
+      const struck = prog(t, pl.strike, pl.strike + 0.45);
+      const lineA = all * (1 - 0.72 * prog(t, pl.strike + 0.5, pl.strike + 1.8));
+      const tagA = all * (1 - prog(t, pl.strike + 2.6, pl.strike + 4.2));
+      const A = w2s(v, pl.a.x, pl.a.y), B0 = w2s(v, pl.b.x, pl.b.y);
+      const B = { x: A.x + (B0.x - A.x) * dk, y: A.y + (B0.y - A.y) * dk };
+      const len = Math.hypot(B.x - A.x, B.y - A.y) || 1, nx = -(B.y - A.y) / len, ny = (B.x - A.x) / len;
+      c.save();
+      c.globalAlpha = lineA; c.lineCap = 'round';
+      c.strokeStyle = rgba('ink', 0.75); c.lineWidth = 3.4;
+      c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(B.x, B.y); c.stroke();
+      c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.3;
+      c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(B.x, B.y); c.stroke();
+      // a tick a year, like her father's
+      c.lineWidth = 1;
+      for (let d = 14; d < len; d += 14) { const x = A.x + ((B.x - A.x) * d) / len, y = A.y + ((B.y - A.y) * d) / len; c.beginPath(); c.moveTo(x - nx * 4, y - ny * 4); c.lineTo(x + nx * 4, y + ny * 4); c.stroke(); }
+      c.restore();
+      if (dk < 1) { penCross(c, B.x, B.y, all); continue; }
+      // where it was going: a place mark and its name
+      c.save();
+      c.globalAlpha = Math.max(lineA, tagA);
+      c.fillStyle = rgba('bone', 0.95); c.strokeStyle = rgba('ink', 0.9); c.lineWidth = 1.4;
+      c.beginPath(); c.arc(B.x, B.y, 6, 0, TAU); c.fill(); c.stroke();
+      if (struck > 0) {
+        const r = 9 * struck;
+        c.strokeStyle = rgba('ink', 0.95); c.lineWidth = 2;
+        c.beginPath(); c.moveTo(B.x - r, B.y - r); c.lineTo(B.x + r, B.y + r); c.moveTo(B.x + r, B.y - r); c.lineTo(B.x - r, B.y + r); c.stroke();
+      }
+      c.restore();
+      if (tagA <= 0) continue;
+      const pop = ease.outBack(prog(t, pl.t0 + 1.1, pl.t0 + 1.45));
+      if (pop <= 0) continue;
+      c.save();
+      c.globalAlpha = tagA * clamp(pop * 1.5);
+      const text = `NEW PLAN · ${pl.label}`;
+      c.font = font(F.mono(600), 12); c.letterSpacing = '2px';
+      const w = c.measureText(text).width + 16, right = pl.side > 0;
+      const bx = right ? B.x + 12 : B.x - 12 - w, by = B.y - 11;
+      c.translate(B.x, B.y); c.scale(pop, pop); c.translate(-B.x, -B.y);
+      c.fillStyle = rgba('bone', 0.96); c.fillRect(bx, by, w, 22);
+      c.strokeStyle = rgba('ink', 0.85); c.lineWidth = 1; c.setLineDash([4, 3]); c.strokeRect(bx, by, w, 22); c.setLineDash([]);
+      c.fillStyle = rgba('ink', 0.95); c.textBaseline = 'middle'; c.textAlign = 'left';
+      c.fillText(text, bx + 8, by + 11.5);
+      if (struck > 0) { c.strokeStyle = rgba('ink', 0.95); c.lineWidth = 2; c.beginPath(); c.moveTo(bx + 4, by + 11); c.lineTo(bx + 4 + (w - 8) * struck, by + 11); c.stroke(); }
+      c.restore();
+    }
   }
 
   /** A thread of smoke where a lamp went out (for 4.5 s from `at`). */

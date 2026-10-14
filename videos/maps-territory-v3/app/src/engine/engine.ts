@@ -561,14 +561,18 @@ export class Engine {
       const prev = active[idx - 1], next = active[idx + 1];
       const tin = prev ? Math.min(1, (t - e.start) / Math.max(1e-3, prev.end - e.start)) : 1;
       const tout = next ? Math.max(0, (t - next.start) / Math.max(1e-3, e.end - next.start)) : 0;
-      if (!rec?.scene) {
+      // A segment render loads only its own entry, but its first frame can fall a few ms before the entry's start
+      // (frames are numbered from round(from * fps)). The neighbouring entry is the same scene class here (one
+      // continuous scene split into parts), so render the frame with whichever instance is loaded instead of the
+      // dark-red "not loaded" placeholder, which showed as a one-frame red flash at every part boundary.
+      const s = rec?.scene ?? [...this.loaded.values()].find((x) => x.scene && x.entry.load.toString() === e.load.toString())?.scene ?? null;
+      if (!s) {
         clearRT(r, rt, [0.25, 0.0, 0.0]);
         under = rt.texture; outTex = rt.texture;
         return;
       }
-      const s = rec.scene;
       // (sub-frames of one frame may step back within its shutter: not a seek)
-      const sceneSeeked = seeked || rec.lastT < 0 || Math.abs(t - rec.lastT) > 0.25;
+      const sceneSeeked = seeked || !rec || rec.lastT < 0 || Math.abs(t - rec.lastT) > 0.25;
       if (s.stateful && sceneSeeked) {
         s.reset();
         const from = Math.max(e.start, t - s.prerollMax);
@@ -586,7 +590,7 @@ export class Engine {
         console.error(`scene ${e.id} render error`, err);
         clearRT(r, rt, [0.25, 0.0, 0.0]);
       }
-      rec.lastT = t;
+      if (rec) rec.lastT = t;
       post = { ...post, ...(e.post ?? {}), ...(ov ?? {}) };
       if (idx > 0 && !s.handlesTransition && under) {
         // default: crossfade from the previous scene over the overlap

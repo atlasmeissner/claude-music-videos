@@ -113,14 +113,18 @@ export function story(ly: Lyrics, au: AudioData): Story {
     // childhood, at HOME
     { id: 'postcard', t0: L(6).start + 0.2, t1: L(7).start - 0.25, side: 1, anchor: 'home' },
     { id: 'dance', t0: L(7).start + 0.1, t1: L(8).start - 0.6, side: 1, anchor: 'home' },
+    { id: 'school', t0: L(8).start + 0.1, t1: T.ferry! - 1.2, side: 1, anchor: 1 },
     { id: 'ferry', t0: T.ferry! - 0.8, t1: T.verse2! - 1.0, side: 1, anchor: wayIx('THE FERRY') },
     // verse 2: four in quick succession, alternating sides, each open until the next-but-one arrives
     { id: 'bakery', t0: L(10).start - 1.0, t1: L(12).start - 0.65, side: 1, anchor: wayIx('THE BAKERY') },
     { id: 'feast', t0: L(11).start - 0.35, t1: L(13).start - 0.6, side: -1, anchor: wayIx('THE FEAST') },
     { id: 'ida', t0: L(12).start - 0.35, t1: T.pre2! + 0.6, side: 1, anchor: wayIx('IDA') },
-    { id: 'oven', t0: L(13).start - 0.3, t1: T.pre2! + 1.8, side: -1, anchor: wayIx("MARA'S") },
-    { id: 'fire', t0: L(16).start + 0.3, t1: L(17).end + 0.8, side: 1, anchor: wayIx("MARA'S") },
+    { id: 'oven', t0: L(13).start - 0.3, t1: T.pre2! + 1.6, side: -1, anchor: wayIx("MARA'S") },
+    { id: 'van', t0: T.pre2! + 1.0, t1: L(16).start - 0.1, side: 1, anchor: wayIx("MARA'S") },
+    { id: 'fire', t0: L(16).start + 0.3, t1: L(17).end + 0.6, side: -1, anchor: wayIx("MARA'S") },
+    { id: 'leaves', t0: L(17).end + 1.3, t1: L(18).end, side: -1, anchor: wayIx("MARA'S") },
     { id: 'father', t0: L(18).end + 0.3, t1: T.bridge! + 0.9, side: 1, anchor: 'home' },
+    { id: 'boat', t0: T.bridge! + 1.8, t1: L(21).end + 0.2, side: 1, anchor: wayIx('WANDERING') },
     { id: 'sea', t0: L(22).start + 0.6, t1: T.final! - 0.2, side: -1, anchor: 'light' },
     { id: 'deed', t0: T.final! + 0.4, t1: L(24).end + 0.6, side: -1, anchor: 'light' },
     { id: 'lens', t0: L(25).start + 0.2, t1: L(26).end - 0.5, side: -1, anchor: 'light' },
@@ -136,8 +140,8 @@ export function story(ly: Lyrics, au: AudioData): Story {
   T.maraOut = T.outro! + 9;
   const yKeys: [number, number][] = [
     [T.page!, 1952], [cue('postcard').t0 + 1, 1957], [cue('postcard').t1, 1961], [cue('dance').t0 + 1, 1966], [cue('dance').t1, 1969],
-    [L(8).end, 1970], [T.ferry!, 1973], [T.rain!, 1974], [T.feast!, 1976], [T.road!, 1978], [T.east!, 1981], [T.chorus2!, 1987],
-    [cue('fire').t0 + 2, 1989], [cue('fire').t1, 1992], [T.lost!, 1994], [T.arrive!, 1997], [T.sold!, 1998], [T.beautiful!, 1999],
+    [L(8).end, 1970], [T.ferry!, 1973], [T.rain!, 1974], [T.feast!, 1976], [T.road!, 1978], [T.east!, 1981], [T.pre2! + 3, 1984], [T.chorus2!, 1987],
+    [cue('fire').t0 + 2, 1989], [cue('leaves').t0 + 1.5, 1991], [T.lost!, 1994], [cue('boat').t0 + 2, 1995], [T.arrive!, 1997], [T.sold!, 1998], [T.beautiful!, 1999],
     [T.here!, 1999], [T.final2!, 2005], [T.noaIn!, 2006], [T.stamp!, 2017], [T.jonahOut!, 2019], [T.outro!, 2025], [T.maraOut!, 2034],
     [cue('found').t0 + 1.5, 2041],
   ];

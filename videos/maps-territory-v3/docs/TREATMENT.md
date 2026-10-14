@@ -11,8 +11,11 @@ Mara's father draws her life in the first verse as a ruled road, HOME 1952 to RE
 two figures walk: the real Mara, a gold lamp whose trail cuts the paper away so the real ground shows through, and a
 pale pencilled ghost who keeps to the plan on schedule and fades each time she leaves it. At each turning point an
 engraved plate unfolds out of the map (the life as lived, drawn like the territory, bright lines on a dark plate)
-with the plan's version printed underneath and struck through. Fifteen plates, eighty-two years: a childhood
-postcard of the sea, a dance, a ferry, a bakery, a feast and Jonah, Ida, her own bakery, a fire, her father's death,
+with the plan's version printed underneath and struck through. After every station she draws a new plan on the
+map, a short ruled road from where she stands; the next plate strikes it out, and the map crosses it through.
+Nineteen plates, eighty-two years: a childhood
+postcard of the sea, a dance, finishing school (the one plan she kept), a ferry, a bakery, a feast and Jonah, Ida, her own bakery, a summer in a
+van, a fire, Ida leaving, her father's death, a small boat,
 the seaside from the postcard, a lighthouse bought and lit, a granddaughter, Jonah's death, and, after her own lamp
 goes out, a coda in which her granddaughter draws Mara's real road onto the old plan.
 
@@ -40,22 +43,22 @@ goes out, a coda in which her granddaughter draws Mara's real road onto the old 
 | 1:02 | verse 1 | the plan, drawn as sung; the verse handwritten on the card | |
 | 1:17 | pre-chorus | down to HOME; "ground" opens the paper; on "page" she is born: *Mara, b. 1952* | |
 | 1:24 | chorus 1 | childhood at HOME; the year counter runs; her father's lamp beside hers | 1 A POSTCARD · 2 THE DANCE |
-| 1:38 | "tracing someone else's story" | she and the ghost walk the plan's road together | |
-| 1:46 | "off the shore" | she leaves the road across the lake; the ghost walks on alone, fading | 3 THE FERRY |
-| 1:57 | verse 2 | four plates in quick succession, alternating sides of the frame | 4–7 |
-| 2:12 | pre-chorus 2 | the camera pulls back to the whole sheet | |
-| 2:19 | chorus 2 | | 8 THE FIRE |
-| 2:38 | "Now I'm lost" | the camera pulls back; name tags; her father's lamp at HOME goes out with the candle; her trail turns grey | 9 HER FATHER |
-| 2:45 | bridge | loops; the camera turns with them | |
-| 2:59 | "finally arrive" | THE SEASIDE; a dark lighthouse on the islet, FOR SALE | 10 THE SEASIDE |
-| 3:02 | final chorus | she signs; stamped SOLD on "would", and the sign on the map turns to SOLD | 11 THE DEED |
-| 3:16 | "Oh, it's more beautiful" | Jonah's mended lamp lights on "beautiful" | 12 THE LAMP |
+| 1:38 | "tracing someone else's story" | she and the ghost walk the plan's road together | 3 SCHOOL (kept: ticked) |
+| 1:46 | "off the shore" | she leaves the road across the lake; the ghost walks on alone; her first own plan | 4 THE FERRY |
+| 1:57 | verse 2 | four plates in quick succession, alternating sides; a new plan after each, struck by the next | 5–8 |
+| 2:12 | pre-chorus 2 | the camera pulls back: the sheet already crossed with abandoned plans | 9 THE VAN |
+| 2:19 | chorus 2 | | 10 THE FIRE · 11 IDA LEAVES |
+| 2:38 | "Now I'm lost" | the camera pulls back; name tags; her father's lamp at HOME goes out with the candle; her trail turns grey | 12 HER FATHER |
+| 2:45 | bridge | loops; the camera turns with them | 13 THE BOAT |
+| 2:59 | "finally arrive" | THE SEASIDE; a dark lighthouse on the islet, FOR SALE | 14 THE SEASIDE |
+| 3:02 | final chorus | she signs; stamped SOLD on "would", and the sign on the map turns to SOLD | 15 THE DEED |
+| 3:16 | "Oh, it's more beautiful" | Jonah's mended lamp lights on "beautiful" | 16 THE LAMP |
 | 3:31 | instrumental | the family crosses to the islet | |
 | 3:45 | the drop | HERE, 1999: names on the lamps; she lights the lighthouse | |
 | 3:50 | the build | the beam turns once every two bars and cuts the paper away in a spiral; the years run on | |
-| 4:11 | last chorus | Noa's lamp joins; RETIREMENT stamped UNVISITED; Jonah's lamp goes out; the plan is peeled off | 13 NOA · 14 JONAH |
+| 4:11 | last chorus | Noa's lamp joins; RETIREMENT stamped UNVISITED; Jonah's lamp goes out; the plan is peeled off | 17 NOA · 18 JONAH |
 | 4:37 | outro | night; the beam turning; Mara's lamp goes out on the islet: MARA · 1952–2034 | |
-| 4:54 | the band drops out | coda: Noa draws Mara's real road onto the old plan, in gold | 15 THE MAP, FOUND |
+| 4:54 | the band drops out | coda: Noa draws Mara's real road onto the old plan, in gold | 19 THE MAP, FOUND |
 | 5:11 | the horn | the horn rings out from the lighthouse; the title | |
 
 ## The plates
@@ -69,6 +72,10 @@ live every frame, and the lights glow gold on top. Underneath, on a strip of the
 (PLANNED · …) is struck through in red, and what happened is written out in italic.
 
 ## Craft
+
+- **Red.** None anywhere: the film halation and chromatic aberration are off, accents are ochre and gold, and the
+  engine no longer shows its dark-red "scene not loaded" placeholder on the first frame of a part (it renders the
+  frame with the neighbouring part's scene, which is the same continuous scene).
 
 - **Type.** The lyric is set large along the bottom (Archivo, up to 84 px; the bridge in Cormorant italic at 108 px),
   word by word as sung, the rest of the line visible as a faint ghost of itself; long lines break into two rows.

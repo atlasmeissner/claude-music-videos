@@ -24,6 +24,8 @@ export interface Glow {
 }
 export interface PlateDef {
   fig: number; title: string; year: string; planned: string; happened: string;
+  /** The one plan that was kept: ticked instead of struck through. */
+  kept?: boolean;
   build(p: Plot): void;
   anim?(c: CanvasRenderingContext2D, a: AnimCtx): void;
   glow?(g: Glow, a: AnimCtx): void;
@@ -85,7 +87,7 @@ function flame(c: CanvasRenderingContext2D, x: number, y: number, h: number, t: 
 
 // ------------------------------------------------------------------ the plates
 const P1: PlateDef = {
-  fig: 3, title: 'THE FERRY', year: '1973',
+  fig: 4, title: 'THE FERRY', year: '1973',
   planned: 'MEDICAL SCHOOL, 1970–1976',
   happened: 'She left on the morning ferry, at twenty-one.',
   draw: 3.0,
@@ -187,8 +189,8 @@ const P1: PlateDef = {
 };
 
 const P2: PlateDef = {
-  fig: 4, title: 'A BAKERY IN THE RAIN', year: '1974',
-  planned: 'A SUMMER INTERNSHIP · SUNNY',
+  fig: 5, title: 'A BAKERY IN THE RAIN', year: '1974',
+  planned: 'STUDY IN THE CITY, NORTH',
   happened: 'Rain. She ducked into a bakery, and stayed to learn.',
   draw: 1.9,
   build(p) {
@@ -298,8 +300,8 @@ const P2: PlateDef = {
 
 const LANTERNS: Pt[] = Array.from({ length: 9 }, (_, i) => { const x = 50 + i * 75; const u = (x - 350) / 360; return [x, 36 + 58 * (1 - u * u)]; });
 const P3: PlateDef = {
-  fig: 5, title: 'THE FEAST', year: '1976',
-  planned: 'FINAL EXAMS, JUNE 1976',
+  fig: 6, title: 'THE FEAST', year: '1976',
+  planned: 'BACK TO STUDIES IN THE AUTUMN',
   happened: 'Packed for war; found a long table, and Jonah.',
   draw: 1.9,
   build(p) {
@@ -381,8 +383,8 @@ const P3: PlateDef = {
 };
 
 const P4: PlateDef = {
-  fig: 6, title: 'A DAUGHTER', year: '1978',
-  planned: 'THE CLINIC, 1978',
+  fig: 7, title: 'A DAUGHTER', year: '1978',
+  planned: 'SEE THE WORLD, ALONE',
   happened: 'Ida. The detour was the road.',
   draw: 1.8,
   build(p) {
@@ -465,8 +467,8 @@ const P4: PlateDef = {
 };
 
 const P5: PlateDef = {
-  fig: 7, title: 'HER OWN BAKERY', year: '1981',
-  planned: 'MARRIED TO SOMEONE SUITABLE, 1980',
+  fig: 8, title: 'HER OWN BAKERY', year: '1981',
+  planned: 'A HOUSE WITH A GARDEN, INLAND',
   happened: "Mara's. Every wrong turn headed east.",
   draw: 2.4,
   build(p) {
@@ -586,8 +588,8 @@ function planOnSheet(p: Plot, q: [Pt, Pt, Pt, Pt]) {
   p.set({ speed: 1, wobble: 0.35 });
 }
 const P6: PlateDef = {
-  fig: 9, title: 'HER FATHER', year: '1994',
-  planned: 'THE HOUSE NEXT DOOR TO HIM',
+  fig: 12, title: 'HER FATHER', year: '1994',
+  planned: 'THE HOUSE NEXT DOOR TO HER FATHER',
   happened: 'Her father died that winter. She kept his pens.',
   draw: 2.4,
   build(p) {
@@ -660,8 +662,8 @@ const P6: PlateDef = {
 };
 
 const P7: PlateDef = {
-  fig: 10, title: 'THE SEASIDE', year: '1997',
-  planned: 'NOTHING DRAWN HERE',
+  fig: 14, title: 'THE SEASIDE', year: '1997',
+  planned: 'SAIL TO THE ISLANDS, ONE SUMMER',
   happened: 'The sea from the postcard. And the lighthouse, for sale.',
   draw: 2.6,
   build(p) {
@@ -744,8 +746,8 @@ const P7: PlateDef = {
 
 const KEYS: [number, number, number][] = [[588, 228, -0.12], [612, 236, 0.02], [636, 222, 0.16]];
 const P8: PlateDef = {
-  fig: 11, title: 'THE DEED', year: '1998',
-  planned: 'RETIREMENT, 2017',
+  fig: 15, title: 'THE DEED', year: '1998',
+  planned: 'JUST LOOK, THEN GO HOME',
   happened: 'She bought the lighthouse. It needed a keeper.',
   draw: 3.2,
   build(p) {
@@ -990,8 +992,8 @@ const P00: PlateDef = {
 };
 
 const P8F: PlateDef = {
-  fig: 8, title: 'THE FIRE', year: '1989',
-  planned: 'THE HOUSE, PAID OFF',
+  fig: 10, title: 'THE FIRE', year: '1989',
+  planned: 'NEVER CLOSE AGAIN',
   happened: "Mara's burned. The town came with buckets, then with bricks.",
   draw: 2.0,
   build(p) {
@@ -1050,8 +1052,8 @@ const P8F: PlateDef = {
 };
 
 const P12: PlateDef = {
-  fig: 12, title: 'THE LAMP', year: '1999',
-  planned: 'A QUIET LIFE, INLAND',
+  fig: 16, title: 'THE LAMP', year: '1999',
+  planned: 'A QUIET LIFE BY THE SEA',
   happened: 'Jonah spent the winter mending the old lamp.',
   draw: 2.6,
   build(p) {
@@ -1113,8 +1115,8 @@ const P12: PlateDef = {
 };
 
 const P13: PlateDef = {
-  fig: 13, title: 'NOA', year: '2006',
-  planned: 'GRANDCHILDREN, NEARBY',
+  fig: 17, title: 'NOA', year: '2006',
+  planned: 'JUST THE TWO OF THEM',
   happened: "Noa, Ida's girl, climbed all hundred and twenty-one steps.",
   draw: 2.4,
   build(p) {
@@ -1172,8 +1174,8 @@ const P13: PlateDef = {
 };
 
 const P14: PlateDef = {
-  fig: 14, title: 'JONAH', year: '2019',
-  planned: 'GROWING OLD IN THE HOUSE',
+  fig: 18, title: 'JONAH', year: '2019',
+  planned: 'GROWING OLD TOGETHER, HERE',
   happened: 'Jonah died in the spring. She kept the lamp lit.',
   draw: 2.4,
   build(p) {
@@ -1229,7 +1231,7 @@ const P14: PlateDef = {
 
 const FQ: Pt[] = [[120, 40], [580, 30], [604, 350], [98, 362]];
 const P15: PlateDef = {
-  fig: 15, title: 'THE MAP, FOUND', year: '2041',
+  fig: 19, title: 'THE MAP, FOUND', year: '2041',
   planned: 'THE PLAN, AS DRAWN IN 1952',
   happened: 'Noa found the old plan in a drawer, and drew in the life Mara lived.',
   draw: 2.6,
@@ -1280,7 +1282,236 @@ const P15: PlateDef = {
   },
 };
 
-export const PLATES: Record<string, PlateDef> = { postcard: P0, dance: P00, fire: P8F, lens: P12, noa: P13, chair: P14, found: P15, ferry: P1, bakery: P2, feast: P3, ida: P4, oven: P5, father: P6, sea: P7, deed: P8 };
+
+const PS3: PlateDef = {
+  fig: 3, title: 'SCHOOL', year: '1970', kept: true,
+  planned: 'SCHOOL, FINISHED BY 1970',
+  happened: 'She did exactly as planned. Just this once.',
+  draw: 2.2,
+  build(p) {
+    // the classroom: blackboard, clock, a window, desks in rows
+    p.set({ w: 1.3, a: 0.95, speed: 1 });
+    p.rect(150, 24, 300, 120);
+    p.with({ w: 0.5, a: 0.3, speed: 4 }, () => p.hatch(rect(152, 26, 296, 116), 0.12, 9));
+    const ex = strokeText('Final exams, June 1970', 'hscript', 22, 0);
+    p.with({ w: 1.2, a: 0.95, wobble: 0 }, () => p.text(ex, 300 - ex.width / 2, 78));
+    const sm = strokeText('x = the life she was given', 'hscript', 15, 0);
+    p.with({ w: 1, a: 0.8, wobble: 0 }, () => p.text(sm, 300 - sm.width / 2, 116));
+    p.line(146, 150, 454, 150);
+    p.circle(520, 50, 22); p.circle(520, 50, 2);
+    p.rect(580, 30, 100, 130); p.line(630, 30, 630, 160); p.line(580, 95, 680, 95);
+    // desks in perspective
+    p.set({ w: 1, a: 0.85 });
+    for (let r = 0; r < 3; r++) for (let i = 0; i < 4; i++) {
+      const sc = 0.6 + r * 0.22, x = 120 + i * 140 + (r - 1) * 18 * (i - 1.5), y = 200 + r * 62;
+      p.path([[x - 44 * sc, y], [x + 44 * sc, y], [x + 50 * sc, y + 14 * sc], [x - 50 * sc, y + 14 * sc]], true);
+      p.line(x - 46 * sc, y + 14 * sc, x - 46 * sc, y + 46 * sc); p.line(x + 46 * sc, y + 14 * sc, x + 46 * sc, y + 46 * sc);
+      if (!(r === 2 && i === 1)) { p.circle(x, y - 34 * sc, 9 * sc); p.arc(x, y - 6 * sc, 22 * sc, 20 * sc, Math.PI * 1.1, Math.PI * 1.9); }
+    }
+    // Mara, front row, writing
+    p.set({ w: 1.6, a: 1, col: 'ember' });
+    p.circle(260, 286, 11); p.arc(260, 318, 26, 24, Math.PI * 1.1, Math.PI * 1.9); p.line(272, 306, 286, 318);
+    p.set({ col: 'bone' });
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.3);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.4; c.lineCap = 'round';
+    const m = a.t * 1.2, h = a.t * 0.1;
+    c.beginPath(); c.moveTo(520, 50); c.lineTo(520 + Math.sin(m) * 16, 50 - Math.cos(m) * 16); c.stroke();
+    c.beginPath(); c.moveTo(520, 50); c.lineTo(520 + Math.sin(h) * 10, 50 - Math.cos(h) * 10); c.stroke();
+    c.restore();
+  },
+  glow(g) { g.lamp(630, 95, 1.4, 0.6); },
+};
+
+const PV9: PlateDef = {
+  fig: 9, title: 'THE VAN', year: '1984',
+  planned: 'A SECOND SHOP, ACROSS TOWN',
+  happened: 'They shut the shop for a summer and drove south in a van.',
+  draw: 2.0,
+  build(p) {
+    // a coast road running to the horizon, hills, the sea on the left, the sun
+    p.set({ w: 1.1, a: 0.85, speed: 1 });
+    p.line(0, 170, DW, 170);
+    p.path([[300, 380], [372, 170]]); p.path([[560, 380], [388, 170]]);
+    const hl: Pt[] = []; for (let x = 380; x <= DW; x += 10) hl.push([x, 170 - 34 * Math.abs(Math.sin((x - 380) / 90)) - 10 * Math.sin(x / 23)]);
+    p.path(hl);
+    p.with({ w: 0.6, a: 0.45, speed: 3 }, () => p.hatch([...hl, [DW, 170], [380, 170]], 1.3, 5));
+    p.set({ w: 0.8, a: 0.5, speed: 2.5 });
+    sea(p, 176, DH, 23, () => 0.2, 0, 300);
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.arc(170, 170, 26, 26, Math.PI, TAU);
+    for (let i = 1; i < 10; i++) { const an = Math.PI + (i / 10) * Math.PI; p.line(170 + Math.cos(an) * 34, 170 + Math.sin(an) * 34, 170 + Math.cos(an) * 50, 170 + Math.sin(an) * 50); }
+    p.set({ w: 1.1, a: 0.85 });
+    for (let i = 0; i < 4; i++) { const x = 640 - i * 40; p.line(x, 300 - i * 30, x, 240 - i * 30); p.circle(x, 236 - i * 30, 4); }
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.35);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    // the centre line running toward the horizon
+    c.strokeStyle = rgba('bone', 0.8); c.lineWidth = 1.4;
+    for (let i = 0; i < 9; i++) {
+      const u0 = ((i / 9 + a.t * 0.35) % 1), u1 = u0 + 0.04;
+      const y0 = 170 + 210 * u0 * u0, y1 = 170 + 210 * u1 * u1;
+      c.beginPath(); c.moveTo(380 + (430 - 380) * u0 * u0, y0); c.lineTo(380 + (430 - 380) * u1 * u1, y1); c.stroke();
+    }
+    // the van, bobbing
+    const bx = 430, by = 330 + 1.5 * Math.sin(a.t * 9);
+    c.save(); c.translate(bx, by);
+    c.fillStyle = rgba('ink2', 1); c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(-60, 0); c.lineTo(-60, -52); c.quadraticCurveTo(-60, -64, -46, -64); c.lineTo(46, -64); c.quadraticCurveTo(60, -64, 60, -52); c.lineTo(60, 0); c.closePath(); c.fill(); c.stroke();
+    c.beginPath(); c.moveTo(-60, -30); c.lineTo(60, -30); c.stroke();
+    c.strokeRect(-50, -56, 44, 20); c.strokeRect(6, -56, 44, 20);
+    c.strokeRect(-40, -88, 80, 22);
+    c.beginPath(); c.moveTo(-36, -88); c.lineTo(-30, -96); c.lineTo(30, -96); c.lineTo(36, -88); c.stroke();
+    for (const x of [-40, 40]) {
+      c.beginPath(); c.arc(x, 0, 12, 0, TAU); c.fill(); c.stroke();
+      for (let j = 0; j < 4; j++) { const an = a.t * 12 + (j * Math.PI) / 2; c.beginPath(); c.moveTo(x, 0); c.lineTo(x + Math.cos(an) * 10, Math.sin(an) * 10); c.stroke(); }
+    }
+    c.fillStyle = rgba('ember', 0.95);
+    c.beginPath(); c.arc(-28, -46, 3, 0, TAU); c.fill(); c.beginPath(); c.arc(28, -46, 2.4, 0, TAU); c.fill();
+    c.restore();
+    // dust behind it
+    for (let i = 0; i < 8; i++) {
+      const ph = (a.t * 0.8 + i / 8) % 1;
+      c.strokeStyle = rgba('ash', (1 - ph) * 0.5); c.lineWidth = 1;
+      c.beginPath(); c.arc(bx - 10 + 30 * Math.sin(i * 1.7), by + 20 + ph * 30, 4 + ph * 14, 0, TAU); c.stroke();
+    }
+    c.restore();
+  },
+  glow(g, a) {
+    g.lamp(170, 170, 2.0, 0.75);
+    const by = 330 + 1.5 * Math.sin(a.t * 9);
+    g.lamp(402, by - 46, 0.25, 0.7); g.lamp(458, by - 46, 0.2, 0.6);
+  },
+};
+
+const PL11: PlateDef = {
+  fig: 11, title: 'IDA LEAVES', year: '1991',
+  planned: 'IDA TAKES OVER THE BAKERY',
+  happened: 'Ida left for art school. Mara cried, then baked.',
+  draw: 2.0,
+  build(p) {
+    // the platform, the canopy, the station clock and lamp
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.line(0, 300, DW, 300); p.line(0, 312, DW, 312);
+    p.path([[0, 40], [DW, 40]]); p.path([[0, 52], [DW, 52]]);
+    for (let x = 60; x < DW; x += 150) p.line(x, 52, x, 300);
+    p.with({ w: 0.6, a: 0.4, speed: 3 }, () => p.hatch(rect(0, 0, DW, 40), 0.05, 6));
+    p.line(560, 52, 560, 70); p.circle(560, 90, 20); p.circle(560, 90, 2);
+    p.line(110, 300, 110, 150); p.path([[98, 150], [122, 150], [118, 132], [102, 132]], true);
+    // Mara on the platform, a cake tin under her arm
+    p.set({ w: 1.6, a: 1, col: 'ember' });
+    figure(p, 210, 300, 96, true);
+    p.rect(176, 238, 22, 14);
+    p.set({ col: 'bone' });
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.35);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    // the train pulls out to the right
+    const off = 30 + 380 * Math.pow(clamp((a.life - 0.35) / 0.65), 2);
+    c.save(); c.beginPath(); c.rect(0, 0, DW, 300); c.clip();
+    for (let car = 0; car < 3; car++) {
+      const x = 250 + off - car * 250;
+      c.fillStyle = rgba('ink2', 1); c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.4;
+      c.beginPath(); c.rect(x, 150, 240, 140); c.fill(); c.stroke();
+      c.beginPath(); c.moveTo(x, 150); c.quadraticCurveTo(x + 120, 130, x + 240, 150); c.stroke();
+      for (let w = 0; w < 4; w++) { c.strokeRect(x + 14 + w * 56, 170, 44, 40); }
+      c.beginPath(); c.moveTo(x, 260); c.lineTo(x + 240, 260); c.stroke();
+      if (car === 0) {
+        // Ida at the first window, waving
+        const wx = x + 36, wy = 196;
+        c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.5;
+        c.beginPath(); c.arc(wx, wy - 8, 6, 0, TAU); c.stroke();
+        c.beginPath(); c.moveTo(wx - 8, wy + 14); c.lineTo(wx - 6, wy); c.lineTo(wx + 6, wy); c.lineTo(wx + 8, wy + 14); c.stroke();
+        const wv = Math.sin(a.t * 7) * 0.5;
+        c.beginPath(); c.moveTo(wx + 6, wy); c.lineTo(wx + 14 + 4 * Math.cos(wv), wy - 14 + 4 * Math.sin(wv)); c.stroke();
+      }
+    }
+    c.restore();
+    // Mara's hand, waving back
+    c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.6;
+    const wv = Math.sin(a.t * 6 + 1) * 0.45;
+    c.beginPath(); c.moveTo(218, 230); c.lineTo(232 + 8 * Math.cos(-1.2 + wv), 222 + 14 * Math.sin(-1.2 + wv)); c.stroke();
+    // steam
+    for (let i = 0; i < 8; i++) {
+      const ph = (a.t * 0.3 + i / 8) % 1;
+      c.strokeStyle = rgba('bone', (1 - ph) * 0.45); c.lineWidth = 1;
+      c.beginPath(); c.arc(480 + off * 0.6 + 40 * Math.sin(i), 120 - ph * 70, 8 + ph * 26, 0, TAU); c.stroke();
+    }
+    c.restore();
+  },
+  glow(g, a) {
+    g.lamp(110, 142, 0.7, 0.8);
+    const off = 30 + 380 * Math.pow(clamp((a.life - 0.35) / 0.65), 2);
+    for (let car = 0; car < 3; car++) for (let w = 0; w < 4; w++) { const x = 250 + off - car * 250 + 36 + w * 56; if (x < DW - 10 && x > 10) g.lamp(x, 190, 0.3, 0.35); }
+  },
+};
+
+const PB13: PlateDef = {
+  fig: 13, title: 'THE BOAT', year: '1995',
+  planned: 'KEEP THE BAKERY UNTIL 65',
+  happened: "She sold Mara's, bought a small boat, and learned the sea.",
+  draw: 2.0,
+  build(p) {
+    p.set({ w: 0.9, a: 0.8, speed: 1 });
+    p.line(0, 196, DW, 196);
+    p.set({ w: 0.7, a: 0.5, speed: 3 });
+    p.hatch(rect(0, 4, DW, 186), 0, 7, (x, y) => 1 - sst(40, 360, Math.hypot(x - 560, (y - 196) * 1.6)));
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.arc(560, 196, 24, 24, Math.PI, TAU);
+    p.set({ w: 0.8, a: 0.5, speed: 2.5 });
+    sea(p, 200, DH, 31, (x, y) => 1 - sst(12 + (y - 196) * 0.3, 36 + (y - 196) * 0.6, Math.abs(x - 560)));
+    // a buoy and a far headland
+    p.set({ w: 1.1, a: 0.85, speed: 1 });
+    p.path([[600, 196], [640, 184], [700, 178]]);
+    p.path([[96, 250], [104, 226], [112, 250]], true); p.line(104, 226, 104, 214);
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.35);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    const bx = 330 + 30 * Math.sin(a.t * 0.25), by = 292, rock = 0.06 * Math.sin(a.t * 1.4);
+    c.save(); c.translate(bx, by); c.rotate(rock);
+    c.fillStyle = rgba('ink2', 1); c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(-74, -10); c.lineTo(78, -10); c.quadraticCurveTo(66, 14, 40, 16); c.lineTo(-56, 16); c.quadraticCurveTo(-72, 8, -74, -10); c.closePath(); c.fill(); c.stroke();
+    c.beginPath(); c.moveTo(0, -10); c.lineTo(0, -150); c.stroke();
+    const fl = 6 * Math.sin(a.t * 2.2);
+    c.beginPath(); c.moveTo(4, -146); c.quadraticCurveTo(48 + fl, -80, 70, -16); c.lineTo(4, -16); c.closePath(); c.fill(); c.stroke();
+    c.save(); c.clip();
+    c.strokeStyle = rgba('bone', 0.45); c.lineWidth = 0.7;
+    for (let y = -146; y < -16; y += 6) { c.beginPath(); c.moveTo(0, y); c.lineTo(80, y + 30); c.stroke(); }
+    c.restore();
+    c.beginPath(); c.moveTo(-4, -120); c.quadraticCurveTo(-34 - fl * 0.6, -70, -54, -16); c.lineTo(-4, -16); c.closePath(); c.stroke();
+    // Mara at the tiller
+    c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.6;
+    c.beginPath(); c.arc(-48, -34, 5, 0, TAU); c.stroke();
+    c.beginPath(); c.moveTo(-52, -10); c.lineTo(-50, -28); c.lineTo(-44, -28); c.lineTo(-42, -10); c.stroke();
+    c.beginPath(); c.moveTo(-44, -22); c.lineTo(-66, -14); c.stroke();
+    c.restore();
+    // gulls
+    c.strokeStyle = rgba('bone', 0.85); c.lineWidth = 1.1;
+    for (let i = 0; i < 4; i++) {
+      const x = ((100 + i * 170 + a.t * (12 + 3 * i)) % 760) - 30, y = 50 + 30 * hash(i, 5), f = 4 * Math.sin(a.t * (5 + i) + i), w = 7;
+      c.beginPath(); c.moveTo(x - w, y - f); c.quadraticCurveTo(x - w / 2, y - 3 - f / 2, x, y); c.quadraticCurveTo(x + w / 2, y - 3 - f / 2, x + w, y - f); c.stroke();
+    }
+    c.restore();
+  },
+  glow(g, a) {
+    g.lamp(560, 196, 2.0, 0.75);
+    g.lamp(104, 212, 0.3, 0.6 * (Math.sin(a.t * 3) > 0.6 ? 1 : 0.2));
+  },
+};
+
+export const PLATES: Record<string, PlateDef> = { school: PS3, van: PV9, leaves: PL11, boat: PB13, postcard: P0, dance: P00, fire: P8F, lens: P12, noa: P13, chair: P14, found: P15, ferry: P1, bakery: P2, feast: P3, ida: P4, oven: P5, father: P6, sea: P7, deed: P8 };
 const built = new Map<string, Plot>();
 /** The static engraving of a plate (built once). */
 export function plot(id: string): Plot {
@@ -1360,7 +1591,15 @@ export function drawPlate(c: CanvasRenderingContext2D, id: string, s: PlateState
     let tw = c.measureText(def.planned).width;
     if (tw > DW - 150) { c.font = `${(15 * (DW - 150)) / tw}px "${fonts.mono(500)}"`; tw = c.measureText(def.planned).width; }
     c.fillText(def.planned, DX + 128, y0 + 25);
-    if (s.strikeK > 0) {
+    if (s.strikeK > 0 && def.kept) {
+      // the one plan she kept: a tick
+      const x0 = DX + 128 + tw + 14, y1 = y0 + 19;
+      c.strokeStyle = rgba('ink', 0.9); c.lineWidth = 2.6; c.lineCap = 'round'; c.lineJoin = 'round';
+      const k1 = clamp(s.strikeK * 2), k2 = clamp(s.strikeK * 2 - 1);
+      c.beginPath(); c.moveTo(x0, y1); c.lineTo(x0 + 6 * k1, y1 + 6 * k1);
+      if (k2 > 0) c.lineTo(x0 + 6 + 12 * k2, y1 + 6 - 16 * k2);
+      c.stroke();
+    } else if (s.strikeK > 0) {
       c.strokeStyle = rgba('blood', 1); c.lineWidth = 2.6; c.lineCap = 'round';
       c.beginPath(); c.moveTo(DX + 122, y0 + 20); c.lineTo(DX + 122 + (tw + 14) * ease.inOutSine(s.strikeK), y0 + 19 - 1.5 * s.strikeK); c.stroke();
     }
