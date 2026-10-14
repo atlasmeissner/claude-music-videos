@@ -6,50 +6,57 @@ country, same palette and type as [version 1](../../maps-territory/) and [versio
 
 ## The idea in one paragraph
 
-**A planned life and an unplanned one, on one map.** The whole song is one continuous camera move over one sheet.
-Mara's father draws her life in the first verse as a ruled road. From the first chorus two figures walk: the real
-Mara, a gold lamp whose trail cuts the paper away so the real ground shows through, and a pale pencilled ghost who
-keeps to the plan on schedule. Every time Mara leaves the plan behind, the ghost fades a step. At each turning point
-an engraved plate unfolds out of the map — the life as lived, drawn like the territory, bright lines on a dark
-plate — with the plan's version printed underneath and struck through. The bittersweet middle is her father's death;
-the end is the seaside she had never seen and a lighthouse for sale on an islet that was never on the map: she buys
-it, lights it, and its turning beam opens the whole country.
+**A whole life, planned and lived, on one map.** The whole song is one continuous camera move over one sheet.
+Mara's father draws her life in the first verse as a ruled road, HOME 1952 to RETIREMENT 2017. From the first chorus
+two figures walk: the real Mara, a gold lamp whose trail cuts the paper away so the real ground shows through, and a
+pale pencilled ghost who keeps to the plan on schedule and fades each time she leaves it. At each turning point an
+engraved plate unfolds out of the map (the life as lived, drawn like the territory, bright lines on a dark plate)
+with the plan's version printed underneath and struck through. Fifteen plates, eighty-two years: a childhood
+postcard of the sea, a dance, a ferry, a bakery, a feast and Jonah, Ida, her own bakery, a fire, her father's death,
+the seaside from the postcard, a lighthouse bought and lit, a granddaughter, Jonah's death, and, after her own lamp
+goes out, a coda in which her granddaughter draws Mara's real road onto the old plan.
 
 ## Characters
 
-- **Mara**, born 1990 at HOME. A child's small lamp that grows as the year counter runs to 2008.
+- **Mara**, 1952–2034, born at HOME. A child's small lamp that grows as the year counter runs to 1970; it goes out
+  on the islet in the outro, at 82.
 - **The ghost**, Mara as planned: a pale disc and a dotted pencil line along the ruled road, with a label (AS PLANNED ·
-  THE CLINIC, 2016). It reaches the plan's places on the same beats as the real events (THE CLINIC when Ida is born,
+  THE CLINIC, 1978). It reaches the plan's places on the same beats as the real events (THE CLINIC when Ida is born,
   MARRIED when Mara's opens, THE HOUSE when her father dies), and fades in steps: 72 %, 52 %, 38 %, 20 %, gone by
-  "arrive". It never reaches RETIREMENT.
-- **Her father**, who drew the plan: a small lamp at HOME from her birth until 2021. He never walks with her; when he
-  dies the camera pulls back so his lamp is in the frame as it goes out, and a tag stays there: HER FATHER · d. 2021.
-- **Jonah**, met at the feast in 2014: his trail joins hers and they walk on as two lines.
-- **Ida**, born 2016: a small lamp that follows and grows.
+  "arrive". It never reaches RETIREMENT, which is stamped UNVISITED in the last chorus.
+- **Her father**, who drew the plan: a small lamp at HOME from her birth until 1994. He never walks with her; when he
+  dies the camera pulls back so his lamp is in the frame as it goes out, and a tag stays there: HER FATHER · d. 1994.
+- **Jonah**, 1949–2019, met at the feast in 1976: his trail joins hers and they walk on as two lines; he mends the
+  lighthouse's lamp; his lamp goes out in the last chorus.
+- **Ida**, born 1978: a small lamp that follows and grows, and keeps the lighthouse after Mara.
+- **Noa**, Ida's daughter, born 2006: a small lamp on the islet; in 2041 she finds the plan.
 
 ## Cue sheet
 
 | Time | Lyric / music | On the map | Plate |
 |---|---|---|---|
-| 0:00 | horn intro | the dark sheet; the horn's call rings from HOME; the title | |
-| 0:34 | drum break | "The map is not the territory."; the plotter draws the sheet and the card (FOR MARA · DRAWN BY HER FATHER, 1990) | |
+| 0:00 | horn intro | the dark sheet; the horn's call rings from HOME; the title (one font, fading in) | |
+| 0:34 | drum break | "The map is not the territory."; the plotter draws the sheet and the card (FOR MARA · DRAWN BY HER FATHER, 1952) | |
 | 1:02 | verse 1 | the plan, drawn as sung; the verse handwritten on the card | |
-| 1:17 | pre-chorus | down to HOME; "ground" opens the paper; on "page" she is born: *Mara, b. 1990* | |
-| 1:24 | chorus 1 | childhood: the year counter runs; her father's lamp beside hers | |
+| 1:17 | pre-chorus | down to HOME; "ground" opens the paper; on "page" she is born: *Mara, b. 1952* | |
+| 1:24 | chorus 1 | childhood at HOME; the year counter runs; her father's lamp beside hers | 1 A POSTCARD · 2 THE DANCE |
 | 1:38 | "tracing someone else's story" | she and the ghost walk the plan's road together | |
-| 1:46 | "off the shore" | she leaves the road across the lake; the ghost walks on alone, fading | FIG. 1 THE FERRY |
-| 1:57 | verse 2 | four plates in quick succession, alternating sides of the frame | FIG. 2–5 |
-| 2:12 | pre-chorus 2 | the camera pulls back to the whole sheet: "fits better than the one I drew by hand" | |
-| 2:38 | "Now I'm lost" | the camera pulls back to the whole sheet; name tags on Mara, Jonah and Ida; her father's lamp at HOME goes out with the candle; her trail turns grey; the compass spins | FIG. 6 HER FATHER (the candle gutters out) |
+| 1:46 | "off the shore" | she leaves the road across the lake; the ghost walks on alone, fading | 3 THE FERRY |
+| 1:57 | verse 2 | four plates in quick succession, alternating sides of the frame | 4–7 |
+| 2:12 | pre-chorus 2 | the camera pulls back to the whole sheet | |
+| 2:19 | chorus 2 | | 8 THE FIRE |
+| 2:38 | "Now I'm lost" | the camera pulls back; name tags; her father's lamp at HOME goes out with the candle; her trail turns grey | 9 HER FATHER |
 | 2:45 | bridge | loops; the camera turns with them | |
-| 2:59 | "finally arrive" | THE SEASIDE; a dark lighthouse on the islet with a FOR SALE sign; the ghost is gone | FIG. 7 THE SEASIDE |
-| 3:02 | final chorus | gold light comes into the country; the grey trail warms again | |
-| 3:16 | "beyond the story" / "beautiful" | she signs; on "beautiful" it is stamped SOLD, and the sign on the map turns to SOLD | FIG. 8 THE DEED |
-| 3:31 | instrumental | the three of them cross the water to the islet | |
-| 3:45 | the drop | HERE: names on the three lamps; she lights the lighthouse | |
-| 3:50 | the build | the beam turns once every two bars; each turn cuts the paper further out, a spiral; the camera pulls back | |
-| 4:11 | last chorus | the whole sheet is territory; RETIREMENT is stamped UNVISITED; on "beyond the story" the plan is peeled off | |
-| 4:37 | outro | night; the beam turning; three lamps on the islet; the horn rings out from the lighthouse; the title | |
+| 2:59 | "finally arrive" | THE SEASIDE; a dark lighthouse on the islet, FOR SALE | 10 THE SEASIDE |
+| 3:02 | final chorus | she signs; stamped SOLD on "would", and the sign on the map turns to SOLD | 11 THE DEED |
+| 3:16 | "Oh, it's more beautiful" | Jonah's mended lamp lights on "beautiful" | 12 THE LAMP |
+| 3:31 | instrumental | the family crosses to the islet | |
+| 3:45 | the drop | HERE, 1999: names on the lamps; she lights the lighthouse | |
+| 3:50 | the build | the beam turns once every two bars and cuts the paper away in a spiral; the years run on | |
+| 4:11 | last chorus | Noa's lamp joins; RETIREMENT stamped UNVISITED; Jonah's lamp goes out; the plan is peeled off | 13 NOA · 14 JONAH |
+| 4:37 | outro | night; the beam turning; Mara's lamp goes out on the islet: MARA · 1952–2034 | |
+| 4:54 | the band drops out | coda: Noa draws Mara's real road onto the old plan, in gold | 15 THE MAP, FOUND |
+| 5:11 | the horn | the horn rings out from the lighthouse; the title | |
 
 ## The plates
 

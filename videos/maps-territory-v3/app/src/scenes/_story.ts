@@ -51,7 +51,7 @@ export function story(ly: Lyrics, au: AudioData): Story {
     rain: last(10).start, feast: last(11).start, road: last(12).start, east: last(13).start, pre2: sec('pre2'),
     chorus2: L(16).words[0]!.start - 0.4, lost: W(19, 2).start, bridge: sec('bridge'), lost2: last(21).end, arrive: last(22).start,
     final: sec('final'), beautiful: W(26, 3).start, inst: sec('inst'), here: db(130), drop: db(130), build: db(133),
-    sold: W(26, 3).start, final2: sec('final2'), stamp: W(29, 4).start, peel: L(30).words[0]!.start, outro: sec('outro'), band: db(170), horn: db(180), end: au.duration,
+    sold: W(24, 7).start, final2: sec('final2'), stamp: W(29, 4).start, peel: L(30).words[0]!.start, outro: sec('outro'), band: db(170), horn: db(180), end: au.duration,
   };
   const sKeys: [number, number][] = [
     [0, 0], [T.tracing!, 0],
@@ -92,17 +92,13 @@ export function story(ly: Lyrics, au: AudioData): Story {
   ];
   // and it fades a step each time she leaves the plan behind
   const gFade: [number, number][] = [[T.ferry!, 0.72], [T.road!, 0.52], [T.east!, 0.38], [T.lost!, 0.2], [T.arrive!, 0]];
-  const yKeys: [number, number][] = [
-    [T.page!, 1990], [L(7).end, 2004], [L(8).end, 2008], [T.ferry!, 2011], [T.rain!, 2012], [T.feast!, 2014], [T.road!, 2016],
-    [T.east!, 2018], [T.lost!, 2021], [T.arrive!, 2024], [W(26, 3).start, 2025], [T.here!, 2025], [T.final2!, 2026],
-  ];
   const YEARS: Record<string, number> = {
-    'HOME': 1990, 'THE FERRY': 2011, 'THE BAKERY': 2012, 'THE FEAST': 2014, 'IDA': 2016, "MARA'S": 2018, 'HER FATHER': 2021,
-    'WANDERING': 2022, 'THE SEASIDE': 2024, 'THE JETTY': 2024, 'HERE': 2025,
+    'HOME': 1952, 'THE FERRY': 1973, 'THE BAKERY': 1974, 'THE FEAST': 1976, 'IDA': 1978, "MARA'S": 1981, 'HER FATHER': 1994,
+    'WANDERING': 1995, 'THE SEASIDE': 1997, 'THE JETTY': 1998, 'HERE': 1999,
   };
   const LABELS: Record<string, string> = {
-    'THE FERRY': 'THE FERRY · 2011', 'THE BAKERY': 'A BAKERY IN THE RAIN · 2012', 'THE FEAST': 'THE FEAST · JONAH · 2014',
-    'IDA': 'IDA · 2016', "MARA'S": "MARA'S · 2018", 'THE SEASIDE': 'THE SEASIDE · 2024', 'HERE': 'HERE · 2025',
+    'THE FERRY': 'THE FERRY · 1973', 'THE BAKERY': 'A BAKERY IN THE RAIN · 1974', 'THE FEAST': 'THE FEAST · JONAH · 1976',
+    'IDA': 'IDA · 1978', "MARA'S": "MARA'S · 1981 · REBUILT 1989", 'THE SEASIDE': 'THE SEASIDE · 1997', 'HERE': 'HERE · 1999',
   };
   const events: StoryEvent[] = [];
   for (const w of WAY) {
@@ -112,17 +108,38 @@ export function story(ly: Lyrics, au: AudioData): Story {
     events.push({ name: w.name, way: wi, t, year: YEARS[w.name] ?? 0, label: LABELS[w.name] ?? '' });
   }
   const ev = (n: string) => events.find((e) => e.name === n)!.t;
-  // the plates, each open while its line is sung (verse 2 is a quick run of four, alternating sides)
+  // the plates, each open while its line is sung (fifteen, a whole life)
   const plates: PlateCue[] = [
+    // childhood, at HOME
+    { id: 'postcard', t0: L(6).start + 0.2, t1: L(7).start - 0.25, side: 1, anchor: 'home' },
+    { id: 'dance', t0: L(7).start + 0.1, t1: L(8).start - 0.6, side: 1, anchor: 'home' },
     { id: 'ferry', t0: T.ferry! - 0.8, t1: T.verse2! - 1.0, side: 1, anchor: wayIx('THE FERRY') },
     // verse 2: four in quick succession, alternating sides, each open until the next-but-one arrives
     { id: 'bakery', t0: L(10).start - 1.0, t1: L(12).start - 0.65, side: 1, anchor: wayIx('THE BAKERY') },
     { id: 'feast', t0: L(11).start - 0.35, t1: L(13).start - 0.6, side: -1, anchor: wayIx('THE FEAST') },
     { id: 'ida', t0: L(12).start - 0.35, t1: T.pre2! + 0.6, side: 1, anchor: wayIx('IDA') },
     { id: 'oven', t0: L(13).start - 0.3, t1: T.pre2! + 1.8, side: -1, anchor: wayIx("MARA'S") },
+    { id: 'fire', t0: L(16).start + 0.3, t1: L(17).end + 0.8, side: 1, anchor: wayIx("MARA'S") },
     { id: 'father', t0: L(18).end + 0.3, t1: T.bridge! + 0.9, side: 1, anchor: 'home' },
-    { id: 'sea', t0: L(22).start + 0.6, t1: T.final! + 2.4, side: -1, anchor: 'light' },
-    { id: 'deed', t0: L(25).start + 0.7, t1: L(26).end - 0.5, side: -1, anchor: 'light' },
+    { id: 'sea', t0: L(22).start + 0.6, t1: T.final! - 0.2, side: -1, anchor: 'light' },
+    { id: 'deed', t0: T.final! + 0.4, t1: L(24).end + 0.6, side: -1, anchor: 'light' },
+    { id: 'lens', t0: L(25).start + 0.2, t1: L(26).end - 0.5, side: -1, anchor: 'light' },
+    // on the islet: the years go by
+    { id: 'noa', t0: L(27).start + 0.2, t1: L(28).end + 0.3, side: -1, anchor: 'light' },
+    { id: 'chair', t0: L(29).start - 0.75, t1: L(30).end + 0.2, side: -1, anchor: 'light' },
+    // the coda: years later, the old plan, found
+    { id: 'found', t0: T.band! + 0.5, t1: T.horn! - 0.4, side: -1, anchor: 'light' },
+  ];
+  const cue = (id: string) => plates.find((p) => p.id === id)!;
+  T.noaIn = cue('noa').t0 + 2.2;
+  T.jonahOut = cue('chair').t0 + 0.6 * (cue('chair').t1 - cue('chair').t0);
+  T.maraOut = T.outro! + 9;
+  const yKeys: [number, number][] = [
+    [T.page!, 1952], [cue('postcard').t0 + 1, 1957], [cue('postcard').t1, 1961], [cue('dance').t0 + 1, 1966], [cue('dance').t1, 1969],
+    [L(8).end, 1970], [T.ferry!, 1973], [T.rain!, 1974], [T.feast!, 1976], [T.road!, 1978], [T.east!, 1981], [T.chorus2!, 1987],
+    [cue('fire').t0 + 2, 1989], [cue('fire').t1, 1992], [T.lost!, 1994], [T.arrive!, 1997], [T.sold!, 1998], [T.beautiful!, 1999],
+    [T.here!, 1999], [T.final2!, 2005], [T.noaIn!, 2006], [T.stamp!, 2017], [T.jonahOut!, 2019], [T.outro!, 2025], [T.maraOut!, 2034],
+    [cue('found').t0 + 1.5, 2041],
   ];
   void ev;
   const st = { sKeys, gKeys, gFade, yKeys, events, plates, T };

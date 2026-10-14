@@ -1,19 +1,20 @@
-// map — Mara's life on one map, one continuous shot (the camera moves, it never cuts).
+// map — Mara's whole life (1952–2034) on one map, one continuous shot (the camera moves, it never cuts).
 //
-//  intro    the sheet in the dark; the French horn's call rings out from HOME and lights it; the title; on the drum
-//           break "The map is not the territory."; a plotter draws the empty sheet and a card: FOR MARA · DRAWN BY
-//           HER FATHER, 1990.
-//  verse 1  THE PLAN, her father's: HOME → SCHOOL → MEDICAL SCHOOL → THE CLINIC → MARRIED → THE HOUSE → RETIREMENT
-//           2055, a ruled road with a tick a year, drawn as it is sung; the verse written by a second pen on the card.
-//  pre 1    down to HOME; on "ground" the paper opens onto the real ground; on "page" she is born: Mara, 1990.
-//  then     she walks. A pale ghost of her walks the plan on schedule; each time the real Mara leaves the plan behind,
-//           the ghost fades a step. Seven engraved plates unfold from the map at the events (see _vignettes.ts):
-//           THE FERRY · A BAKERY IN THE RAIN · THE FEAST (Jonah's trail joins hers) · IDA (a small lamp follows) ·
-//           MARA'S · HER FATHER (his lamp at HOME goes out; her trail goes grey while she is lost) · THE LIGHTHOUSE.
-//  inst     across the water to the islet no map shows: HERE. The lighthouse lights; its beam sweeps the country
-//           and every turn cuts the paper away a little further out, until the whole sheet is territory.
-//  final    the plan is stamped UNVISITED at RETIREMENT and peeled off like tape.
-//  outro    night; the beam turning; three lamps on the islet; the horn rings out from the lighthouse; the title.
+//  intro    the sheet in the dark; the French horn's call rings out from HOME and lights it; the title (one font,
+//           fading in); "The map is not the territory."; a plotter draws the empty sheet and a card: FOR MARA ·
+//           DRAWN BY HER FATHER, 1952.
+//  verse 1  THE PLAN, her father's: HOME 1952 → SCHOOL → MEDICAL SCHOOL → THE CLINIC → MARRIED → THE HOUSE →
+//           RETIREMENT 2017, a ruled road with a tick a year, drawn as it is sung.
+//  pre 1    down to HOME; on "ground" the paper opens onto the real ground; on "page" she is born.
+//  then     her childhood at HOME (a postcard of the sea, a dance), then she walks. A pale ghost of her walks the
+//           plan on schedule and fades a step each time she leaves it. Fifteen engraved plates unfold from the map
+//           at the events of her life (see _story.ts and _vignettes.ts); her father's lamp at HOME goes out (the
+//           camera pulls back to show it); Jonah's trail joins hers; Ida's and later Noa's lamps follow.
+//  inst     across the water to the islet she bought: HERE. She lights the lighthouse; its beam sweeps the country
+//           and every turn cuts the paper away a little further out, while the years run on.
+//  final    Noa; RETIREMENT stamped UNVISITED; Jonah's lamp goes out; the plan is peeled off like tape.
+//  outro    night; Mara's lamp goes out on the islet; the coda: Noa draws Mara's real road onto the old plan; the horn
+//           rings out from the lighthouse; the title.
 //
 // The lyric is set large along the bottom, word-synced.
 import * as THREE from 'three';
@@ -215,7 +216,7 @@ export default class MapScene extends Scene {
           drawStrokeText(c, this.mara, this.mara.total * jk);
           c.restore();
           c.save(); c.globalAlpha = planA * prog(t, T.page! + 1, T.page! + 1.6);
-          mono(c, 'b. 1990', q.x - 16 - this.mara.width + 4, q.y + 60, { size: 12, color: rgba('blood', 1), track: 2, weight: 600 });
+          mono(c, 'b. 1952', q.x - 16 - this.mara.width + 4, q.y + 60, { size: 12, color: rgba('blood', 1), track: 2, weight: 600 });
           c.restore();
         }
         // RETIREMENT, never reached: stamped UNVISITED
@@ -225,9 +226,9 @@ export default class MapScene extends Scene {
           const thump = 1 + 0.6 * (1 - ease.outBack(sk));
           c.save(); c.globalAlpha = planA * clamp(sk * 3) * (1 - prog(peel, 0.85, 1));
           c.translate(q.x + 10, q.y + 38); c.rotate(-0.16); c.scale(thump, thump);
-          c.strokeStyle = rgba('#C0392B', 0.95); c.lineWidth = 3; c.strokeRect(-92, -24, 184, 48);
+          c.strokeStyle = rgba('bone', 0.92); c.lineWidth = 3; c.strokeRect(-92, -24, 184, 48);
           c.lineWidth = 1.2; c.strokeRect(-86, -18, 172, 36);
-          c.font = font(F.mono(700), 24); c.letterSpacing = '6px'; c.fillStyle = rgba('#C0392B', 0.95); c.textAlign = 'center'; c.textBaseline = 'middle';
+          c.font = font(F.mono(700), 24); c.letterSpacing = '6px'; c.fillStyle = rgba('bone', 0.92); c.textAlign = 'center'; c.textBaseline = 'middle';
           c.fillText('UNVISITED', 3, 1);
           c.restore();
         }
@@ -287,7 +288,9 @@ export default class MapScene extends Scene {
     const lampOn = prog(t, T.pre1! + 0.2, T.pre1! + 1.0);
     const grown = lerp(0.55, 1.05, prog(t, T.page!, lyrics.lines[8]!.end, ease.inOutSine));
     const hp = w2s(v, head.x, head.y);
-    if (t > T.pre1!) lamp(gl, hp.x, hp.y, t, grown + 0.2 * warm, lampOn);
+    const maraOn = 1 - prog(t, T.maraOut!, T.maraOut! + 2.6, ease.inOutSine);
+    if (t > T.pre1! && maraOn > 0) lamp(gl, hp.x, hp.y, t, grown + 0.2 * warm, lampOn * maraOn);
+    this.smoke(c, hp.x, hp.y, t, T.maraOut!);
     const here = WAY[WAY.length - 1]!;
     const settle = prog(t, T.here!, T.here! + 2.5, ease.inOutSine);
     const fam = (ds: number, off: number, home2: { x: number; y: number }, k: number) => {
@@ -300,14 +303,21 @@ export default class MapScene extends Scene {
     if (s > together - 0.01) {
       const k = after('THE FEAST', 0.8);
       const q = fam(0.55, 5, { x: here.x + 0.5, y: here.y + 0.25 }, k);
-      lamp(gl, q.x, q.y, t + 3, 0.78 + 0.1 * warm, k * 0.95);
-      who.push(['JONAH', q.x, q.y, fired('THE FEAST')]);
+      const on = 1 - prog(t, T.jonahOut!, T.jonahOut! + 2.4, ease.inOutSine);
+      if (on > 0) { lamp(gl, q.x, q.y, t + 3, 0.78 + 0.1 * warm, k * 0.95 * on); who.push(['JONAH', q.x, q.y, fired('THE FEAST')]); }
+      this.smoke(c, q.x, q.y, t, T.jonahOut!);
     }
     if (s > sE['IDA']! - 0.01) {
       const k = after('IDA', 0.8);
       const q = fam(1.05, -5, { x: here.x - 0.4, y: here.y + 0.45 }, k);
       lamp(gl, q.x, q.y, t + 7, lerp(0.34, 0.62, prog(t, T.road!, T.final2!)), k * 0.9);
       who.push(['IDA', q.x, q.y, fired('IDA')]);
+    }
+    if (t > T.noaIn!) {
+      // Noa, Ida's girl, on the islet
+      const k = prog(t, T.noaIn!, T.noaIn! + 0.8, ease.outCubic), q = w2s(v, here.x - 0.1, here.y + 0.85);
+      lamp(gl, q.x, q.y, t + 13, lerp(0.3, 0.5, prog(t, T.noaIn!, T.end!)), k * 0.9);
+      who.push(['NOA', q.x, q.y, T.noaIn!]);
     }
     const fc = this.fatherCue(), dOut = this.dadOut();
     const dad = prog(t, T.page!, T.page! + 1.5) * (1 - prog(t, dOut, dOut + 1.3, ease.inOutSine));
@@ -390,7 +400,12 @@ export default class MapScene extends Scene {
     // her father, at HOME, once his light has gone out
     {
       const k = prog(t, this.dadOut() + 0.4, this.dadOut() + 0.8, ease.outBack) * (1 - prog(t, T.band!, T.band! + 5, ease.inOutSine));
-      if (k > 1e-3) { const q = w2s(v, home.x, home.y); this.tag(c, q.x, q.y, 'HER FATHER · d. 2021', clamp(k), G); }
+      if (k > 1e-3) { const q = w2s(v, home.x, home.y); this.tag(c, q.x, q.y, 'HER FATHER · d. 1994', clamp(k), G); }
+    }
+    // on the islet: Jonah's and Mara's years
+    for (const [txt, at, ox, oy] of [['JONAH · 1949–2019', T.jonahOut!, -150, 46], ['MARA · 1952–2034', T.maraOut!, 60, 44]] as [string, number, number, number][]) {
+      const k = prog(t, at + 1.2, at + 1.6, ease.outBack) * (1 - prog(t, T.horn!, T.horn! + 2, ease.inOutSine));
+      if (k > 1e-3) { const q = w2s(v, here.x, here.y); this.tag(c, q.x, q.y, txt, clamp(k), G, [ox, oy]); }
     }
     // who walks with her: names by the lamps when they join, while her father's plate is open, and on the islet
     {
@@ -402,7 +417,7 @@ export default class MapScene extends Scene {
       for (const [name, x, y, since] of who) {
         const k = name === 'MARA' ? Math.max(prog(t, fc.t0 + 0.8, fc.t0 + 1.4) * (1 - prog(t, fc.t1, fc.t1 + 0.6)), prog(t, T.here! + 1.8, T.here! + 2.4) * (1 - prog(t, T.here! + 7, T.here! + 7.8))) : shown(since);
         const wide = prog(t, fc.t0 - 1, fc.t0) * (1 - prog(t, fc.t1, fc.t1 + 0.6)) > 0.5;
-        if (k > 0) this.nameTag(c, name, x, y, k, (name === 'MARA' ? 0 : name === 'JONAH' ? 1 : 2) + (wide ? 3 : 0));
+        if (k > 0) this.nameTag(c, name, x, y, k, name === 'NOA' ? 6 : (name === 'MARA' ? 0 : name === 'JONAH' ? 1 : 2) + (wide ? 3 : 0));
       }
     }
 
@@ -481,7 +496,7 @@ export default class MapScene extends Scene {
     gl.render(renderer, out);
     comp.draw(renderer, L.upload(), out);
     top.render(renderer, out);
-    return { bloom: 0.5 + 0.2 * warm + 0.15 * beamI, vignette: 0.3, ca: 0.4, halation: 0.15 + 0.15 * warm, grain: 0.05, fade: prog(t, T.end! - 0.6, T.end! - 0.02) };
+    return { bloom: 0.5 + 0.2 * warm + 0.15 * beamI, vignette: 0.3, ca: 0, halation: 0, grain: 0.05, fade: prog(t, T.end! - 0.6, T.end! - 0.02) };
   }
 
   /** Where a plate is (and how far open) at time t. */
@@ -584,16 +599,16 @@ export default class MapScene extends Scene {
   /** The year, counting with her, top left. */
   year(c: CanvasRenderingContext2D, t: number) {
     const T = this.st.T as Record<string, number>;
-    const k = prog(t, T.page! - 0.3, T.page! + 0.6, ease.outCubic) * (1 - prog(t, T.band!, T.band! + 3));
+    const k = prog(t, T.page! - 0.3, T.page! + 0.6, ease.outCubic) * (1 - prog(t, T.horn! - 0.6, T.horn! + 1));
     if (k <= 0) return;
     const yf = yearAt(this.st, t), y = Math.floor(yf + 1e-6);
-    const age = y - 1990;
+    const age = y - 1952;
     c.save();
     c.globalAlpha = k;
     c.fillStyle = rgba('ink2', 0.96); c.fillRect(56, 34, 236, 88);
     c.strokeStyle = rgba('bone', 0.5); c.lineWidth = 0.8; c.strokeRect(60, 38, 228, 80);
     mono(c, 'MARA', 76, 62, { size: 11, color: rgba('signal', 1), track: 4, weight: 600 });
-    mono(c, age === 0 ? 'BORN' : `AGE ${age}`, 270, 62, { size: 11, color: rgba('ash', 0.95), track: 3, align: 'right' });
+    mono(c, t > T.maraOut! + 1 ? '1952–2034' : age === 0 ? 'BORN' : `AGE ${age}`, 270, 62, { size: 11, color: rgba('ash', 0.95), track: 3, align: 'right' });
     // the digits roll over like a counter
     const fr = yf - y, roll = ease.inOutCubic(clamp((fr - 0.75) / 0.25));
     const fam = F.archivo(112.5, 300);
@@ -606,10 +621,19 @@ export default class MapScene extends Scene {
     c.restore();
   }
 
+  /** A thread of smoke where a lamp went out (for 4.5 s from `at`). */
+  smoke(c: CanvasRenderingContext2D, x: number, y: number, t: number, at: number) {
+    if (t < at || t > at + 4.5) return;
+    const ph = clamp((t - at) / 4.5);
+    c.save(); c.globalAlpha = Math.sin(ph * Math.PI) * 0.8; c.strokeStyle = rgba('ash', 0.9); c.lineWidth = 1.2; c.beginPath();
+    for (let j = 0; j <= 24; j++) c.lineTo(x + 5 * Math.sin(j * 0.5 + t * 1.4) * (j / 24), y - j * 2.4 * (0.4 + ph));
+    c.stroke(); c.restore();
+  }
+
   /** A name by a lamp: a small dark pill, ember type. `slot` spreads the three apart when they stand together. */
   nameTag(c: CanvasRenderingContext2D, name: string, x: number, y: number, k: number, slot: number) {
     // (slots 3..5: fanned out to the left, clear of a plate on the right)
-    const [dx, dy] = [[0, -30], [24, 26], [-26, 28], [-36, -34], [-84, -6], [-58, 28]][slot]!;
+    const [dx, dy] = [[0, -30], [24, 26], [-26, 28], [-36, -34], [-84, -6], [-58, 28], [-40, 40]][slot]!;
     c.save();
     c.globalAlpha *= k;
     c.font = font(F.mono(600), 11); c.letterSpacing = '3px';
@@ -639,8 +663,8 @@ export default class MapScene extends Scene {
     const thump = sold > 0.5 ? 1 + 0.5 * (1 - ease.outBack(clamp((sold - 0.5) * 2))) : 1;
     c.translate(lx + w / 2, ly); c.scale(thump, thump); c.rotate(sold > 0.5 ? -0.08 : 0); c.translate(-(lx + w / 2), -ly);
     c.fillStyle = rgba('bone', 0.97); c.fillRect(lx, ly - 10, w, 20);
-    const col = sold > 0.5 ? '#C0392B' : HEX_INK;
-    c.strokeStyle = col; c.lineWidth = sold > 0.5 ? 2 : 1; c.strokeRect(lx, ly - 10, w, 20);
+    const col = HEX_INK;
+    c.strokeStyle = sold > 0.5 ? rgba('signal', 1) : col; c.lineWidth = sold > 0.5 ? 2.2 : 1; c.strokeRect(lx, ly - 10, w, 20);
     c.fillStyle = col; c.textBaseline = 'middle'; c.textAlign = 'left';
     c.fillText(text, lx + 7, ly + 0.5);
     c.restore();
@@ -662,13 +686,13 @@ export default class MapScene extends Scene {
   }
 
   /** A tag on the map: a small paper label on a leader line (readable on paper and on terrain alike). */
-  tag(c: CanvasRenderingContext2D, x: number, y: number, text: string, k: number, G: number) {
+  tag(c: CanvasRenderingContext2D, x: number, y: number, text: string, k: number, G: number, off?: [number, number]) {
     // hand-placed leaders so the labels of the crowded middle years do not collide
     const OFF: Record<string, [number, number]> = {
-      'THE FERRY · 2011': [-60, -42], 'A BAKERY IN THE RAIN · 2012': [56, -46], 'THE FEAST · JONAH · 2014': [-74, -14],
-      'IDA · 2016': [-80, 30], "MARA'S · 2018": [70, 18], 'HER FATHER · 2021': [84, -22], 'THE COAST · 2024': [-30, 84], 'HERE · 2025': [50, -40],
+      'THE FERRY · 1973': [-60, -42], 'A BAKERY IN THE RAIN · 1974': [56, -46], 'THE FEAST · JONAH · 1976': [-74, -14],
+      'IDA · 1978': [-80, 30], "MARA'S · 1981 · REBUILT 1989": [70, 18], 'THE SEASIDE · 1997': [-30, 84], 'HERE · 1999': [50, -40],
     };
-    const [ox, oy] = OFF[text] ?? [34, -30];
+    const [ox, oy] = off ?? OFF[text] ?? [34, -30];
     const side = ox > 0 ? 1 : -1;
     const lx = x + ox, ly = y + oy;
     c.save();
@@ -718,8 +742,9 @@ export default class MapScene extends Scene {
     const a = prog(t, T.title! + 0.2, T.title! + 2.2, ease.outCubic) * (1 - prog(t, T.epigraph! - 2.2, T.epigraph! - 0.3, ease.inOutCubic));
     if (a > 0) {
       const title = 'MAPS & TERRITORY';
-      const fam = F.archivo(lerp(100, 125, prog(t, T.title!, T.epigraph!, ease.outCubic)), 300);
-      const size = 92, tr = lerp(8, 22, prog(t, T.title!, T.epigraph!, ease.outCubic));
+      // one font, one size, one tracking: it only fades in (and the same at the end)
+      const fam = F.archivo(125, 300);
+      const size = 84, tr = 22;
       c.save(); c.globalAlpha = a;
       c.font = font(fam, size); c.letterSpacing = `${tr}px`; c.textBaseline = 'alphabetic'; c.fillStyle = rgba('bone', 1);
       const wt = measure(title, fam, size, tr);
@@ -727,7 +752,7 @@ export default class MapScene extends Scene {
       const bk = prog(t, T.title! + 5, T.title! + 7, ease.outCubic);
       c.globalAlpha = a * bk;
       mono(c, 'JOBURGALEX', 960, 566, { size: 20, color: rgba('signal', 1), track: 14, align: 'center', weight: 500 });
-      mono(c, 'MARA, b. 1990  ·  A LIFE AS PLANNED, AND AS IT WENT', 960, 600, { size: 12, color: rgba('ash', 0.9), track: 4, align: 'center' });
+      mono(c, 'MARA, 1952–2034  ·  A LIFE AS PLANNED, AND AS IT WENT', 960, 600, { size: 12, color: rgba('ash', 0.9), track: 4, align: 'center' });
       c.restore();
     }
     // the epigraph on the drum break

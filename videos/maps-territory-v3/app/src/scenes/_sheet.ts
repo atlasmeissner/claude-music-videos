@@ -61,7 +61,7 @@ export function drawFurniture(c: CanvasRenderingContext2D, v: View, k: Furniture
     mono(c, 'SHEET 1', COL_X, 132, { size: 13, color: rgba('ink', 0.85), track: 5, weight: 600 });
     mono(c, 'A LIFE, DRAWN IN ADVANCE', COL_X, 286, { size: 12, color: rgba('ink', 0.75), track: 3 });
     mono(c, 'SCALE 1 : 1 000 000  ·  RELIEF NOT SHOWN', COL_X, 308, { size: 12, color: rgba('ink', 0.6), track: 2 });
-    mono(c, 'FOR MARA  ·  DRAWN BY HER FATHER, 1990', COL_X, 344, { size: 13, color: rgba('blood', 1), track: 3, weight: 600 });
+    mono(c, 'FOR MARA  ·  DRAWN BY HER FATHER, 1952', COL_X, 344, { size: 13, color: rgba('blood', 1), track: 3, weight: 600 });
     c.restore();
   }
   // legend (left column, bottom)

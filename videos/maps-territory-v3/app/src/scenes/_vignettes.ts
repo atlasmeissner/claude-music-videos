@@ -8,7 +8,7 @@ import { rgba, LIN } from '../engine/palette';
 import { clamp, ease, hash, noise1, TAU, lerp } from '../engine/util';
 import { strokeText } from '../engine/stroke';
 import { Plot, type Pt } from './_plot';
-import { PLAN_PTS } from './_world';
+import { PLAN_PTS, track } from './_world';
 import type { RGB } from './_mt';
 
 export const DW = 700, DH = 380;
@@ -85,8 +85,8 @@ function flame(c: CanvasRenderingContext2D, x: number, y: number, h: number, t: 
 
 // ------------------------------------------------------------------ the plates
 const P1: PlateDef = {
-  fig: 1, title: 'THE FERRY', year: '2011',
-  planned: 'MEDICAL SCHOOL, 2008–2014',
+  fig: 3, title: 'THE FERRY', year: '1973',
+  planned: 'MEDICAL SCHOOL, 1970–1976',
   happened: 'She left on the morning ferry, at twenty-one.',
   draw: 3.0,
   build(p) {
@@ -187,7 +187,7 @@ const P1: PlateDef = {
 };
 
 const P2: PlateDef = {
-  fig: 2, title: 'A BAKERY IN THE RAIN', year: '2012',
+  fig: 4, title: 'A BAKERY IN THE RAIN', year: '1974',
   planned: 'A SUMMER INTERNSHIP · SUNNY',
   happened: 'Rain. She ducked into a bakery, and stayed to learn.',
   draw: 1.9,
@@ -298,8 +298,8 @@ const P2: PlateDef = {
 
 const LANTERNS: Pt[] = Array.from({ length: 9 }, (_, i) => { const x = 50 + i * 75; const u = (x - 350) / 360; return [x, 36 + 58 * (1 - u * u)]; });
 const P3: PlateDef = {
-  fig: 3, title: 'THE FEAST', year: '2014',
-  planned: 'FINAL EXAMS, JUNE 2014',
+  fig: 5, title: 'THE FEAST', year: '1976',
+  planned: 'FINAL EXAMS, JUNE 1976',
   happened: 'Packed for war; found a long table, and Jonah.',
   draw: 1.9,
   build(p) {
@@ -381,8 +381,8 @@ const P3: PlateDef = {
 };
 
 const P4: PlateDef = {
-  fig: 4, title: 'A DAUGHTER', year: '2016',
-  planned: 'THE CLINIC, 2016',
+  fig: 6, title: 'A DAUGHTER', year: '1978',
+  planned: 'THE CLINIC, 1978',
   happened: 'Ida. The detour was the road.',
   draw: 1.8,
   build(p) {
@@ -465,8 +465,8 @@ const P4: PlateDef = {
 };
 
 const P5: PlateDef = {
-  fig: 5, title: 'HER OWN BAKERY', year: '2018',
-  planned: 'MARRIED TO SOMEONE SUITABLE, 2018',
+  fig: 7, title: 'HER OWN BAKERY', year: '1981',
+  planned: 'MARRIED TO SOMEONE SUITABLE, 1980',
   happened: "Mara's. Every wrong turn headed east.",
   draw: 2.4,
   build(p) {
@@ -586,8 +586,8 @@ function planOnSheet(p: Plot, q: [Pt, Pt, Pt, Pt]) {
   p.set({ speed: 1, wobble: 0.35 });
 }
 const P6: PlateDef = {
-  fig: 6, title: 'HER FATHER', year: '2021',
-  planned: 'THE HOUSE NEXT DOOR TO HIM, 2020',
+  fig: 9, title: 'HER FATHER', year: '1994',
+  planned: 'THE HOUSE NEXT DOOR TO HIM',
   happened: 'Her father died that winter. She kept his pens.',
   draw: 2.4,
   build(p) {
@@ -660,9 +660,9 @@ const P6: PlateDef = {
 };
 
 const P7: PlateDef = {
-  fig: 7, title: 'THE SEASIDE', year: '2024',
+  fig: 10, title: 'THE SEASIDE', year: '1997',
   planned: 'NOTHING DRAWN HERE',
-  happened: 'The sea, for the first time. And a lighthouse for sale.',
+  happened: 'The sea from the postcard. And the lighthouse, for sale.',
   draw: 2.6,
   build(p) {
     const H = 250, S: Pt = [318, H];
@@ -744,8 +744,8 @@ const P7: PlateDef = {
 
 const KEYS: [number, number, number][] = [[588, 228, -0.12], [612, 236, 0.02], [636, 222, 0.16]];
 const P8: PlateDef = {
-  fig: 8, title: 'THE DEED', year: '2025',
-  planned: 'RETIREMENT, 2055',
+  fig: 11, title: 'THE DEED', year: '1998',
+  planned: 'RETIREMENT, 2017',
   happened: 'She bought the lighthouse. It needed a keeper.',
   draw: 3.2,
   build(p) {
@@ -817,9 +817,9 @@ const P8: PlateDef = {
       c.save();
       c.globalAlpha *= clamp(sk * 3);
       c.translate(430, 200); c.rotate(-0.2); c.scale(thump, thump);
-      c.strokeStyle = rgba('#D0452F', 0.95); c.lineWidth = 4; c.strokeRect(-78, -30, 156, 60);
+      c.strokeStyle = rgba('ember', 0.95); c.lineWidth = 4; c.strokeRect(-78, -30, 156, 60);
       c.lineWidth = 1.5; c.strokeRect(-70, -22, 140, 44);
-      c.font = `40px "Plex-700"`; c.letterSpacing = '10px'; c.fillStyle = rgba('#D0452F', 0.95); c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = `40px "Plex-700"`; c.letterSpacing = '10px'; c.fillStyle = rgba('ember', 0.95); c.textAlign = 'center'; c.textBaseline = 'middle';
       c.fillText('SOLD', 5, 2);
       c.restore();
     }
@@ -834,7 +834,453 @@ const P8: PlateDef = {
   },
 };
 
-export const PLATES: Record<string, PlateDef> = { ferry: P1, bakery: P2, feast: P3, ida: P4, oven: P5, father: P6, sea: P7, deed: P8 };
+
+/** A rotated rectangle's corners (centre, size, angle). */
+const rrect = (cx: number, cy: number, w: number, h: number, a: number): Pt[] => [[-w / 2, -h / 2], [w / 2, -h / 2], [w / 2, h / 2], [-w / 2, h / 2]].map(([x, y]) => [cx + x * Math.cos(a) - y * Math.sin(a), cy + x * Math.sin(a) + y * Math.cos(a)] as Pt);
+/** Map local (u, v) in 0..1 into a quad (tl, tr, br, bl). */
+const inQuad = (q: Pt[], u: number, v: number): Pt => {
+  const top: Pt = [lerp(q[0]![0], q[1]![0], u), lerp(q[0]![1], q[1]![1], u)], bot: Pt = [lerp(q[3]![0], q[2]![0], u), lerp(q[3]![1], q[2]![1], u)];
+  return [lerp(top[0], bot[0], v), lerp(top[1], bot[1], v)];
+};
+/** A tiny lighthouse (feet at x, y; height h). */
+function miniTower(p: Plot, x: number, y: number, h: number) {
+  const w = h * 0.22;
+  p.path([[x - w, y], [x + w, y], [x + w * 0.65, y - h * 0.72], [x - w * 0.65, y - h * 0.72]], true);
+  p.rect(x - w * 0.5, y - h * 0.88, w, h * 0.16);
+  p.path([[x - w * 0.7, y - h * 0.88], [x, y - h], [x + w * 0.7, y - h * 0.88]]);
+  p.line(x - w * 0.8, y - h * 0.38, x + w * 0.8, y - h * 0.38);
+}
+
+const PCARD: Pt[] = rrect(300, 262, 220, 140, -0.08);
+const DRAW: Pt[] = rrect(575, 250, 160, 120, 0.12);
+const P0: PlateDef = {
+  fig: 1, title: 'A POSTCARD', year: '1959',
+  planned: 'PIANO LESSONS, TUESDAYS',
+  happened: 'A postcard from the sea. She kept it under her pillow.',
+  draw: 2.2,
+  build(p) {
+    // the kitchen: a window, the table's edge, the grain of the wood
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.rect(40, 16, 170, 116); p.line(125, 16, 125, 132); p.line(40, 74, 210, 74);
+    p.with({ w: 0.7, a: 0.55, speed: 2 }, () => { p.wave(46, 204, 112, 4, 60); p.wave(46, 204, 122, 3, 44, 1); });
+    p.line(0, 168, DW, 168); p.line(0, 175, DW, 175);
+    p.set({ w: 0.6, a: 0.3, speed: 4, wobble: 0.6 });
+    for (let y = 192; y < DH; y += 16) p.wave(0, DW, y, 1.6, 140 + y, y * 0.1);
+    p.set({ w: 1.2, a: 0.95, speed: 1, wobble: 0.35 });
+    // the pendant lamp
+    p.line(430, 0, 430, 40);
+    p.path([[404, 40], [456, 40], [472, 64], [388, 64]], true);
+    // the envelope it came in
+    const E = rrect(112, 248, 150, 96, 0.16);
+    p.path(E, true); p.path([E[0]!, inQuad(E, 0.5, 0.55), E[1]!]);
+    // the postcard: the sea and a lighthouse
+    p.set({ w: 1.4, a: 1 });
+    p.path(PCARD, true);
+    p.set({ w: 1, a: 0.9 });
+    const c = (u: number, v: number) => inQuad(PCARD, u, v);
+    p.path([c(0.05, 0.62), c(0.95, 0.62)]);
+    for (let r = 0; r < 4; r++) p.path(Array.from({ length: 12 }, (_, i) => c(0.06 + i * 0.08, 0.7 + r * 0.07 + 0.01 * Math.sin(i * 1.7 + r))));
+    const t0 = c(0.68, 0.62);
+    miniTower(p, t0[0], t0[1], 54);
+    p.arc(c(0.25, 0.62)[0], c(0.25, 0.62)[1], 14, 14, Math.PI, TAU);
+    const st = c(0.84, 0.08);
+    p.rect(st[0] - 14, st[1] - 2, 26, 30);
+    p.with({ w: 0.7, a: 0.6 }, () => { for (let i = 0; i < 3; i++) p.wave(st[0] - 34, st[0] + 6, st[1] + 8 + i * 6, 2, 10); });
+    const gr = strokeText('Greetings from the sea', 'script', 15, 0);
+    const g0 = c(0.06, 0.2);
+    p.with({ w: 1.1, wobble: 0 }, () => p.text(gr, g0[0], g0[1]));
+    // crayons
+    p.set({ w: 1.1, a: 0.85 });
+    for (let i = 0; i < 4; i++) { const q = rrect(470 + i * 24, 345 + (i % 2) * 8, 60, 9, 0.5 - i * 0.3); p.path(q, true); }
+    // her own drawing of it, in crayon
+    p.set({ w: 1.1, a: 0.9 });
+    p.path(DRAW, true);
+    const d = (u: number, v: number) => inQuad(DRAW, u, v);
+    p.set({ w: 2.2, a: 1, col: 'ember', wobble: 1.4, speed: 0.8 });
+    const b0 = d(0.5, 0.86);
+    p.path([[b0[0] - 12, b0[1]], [b0[0] - 6, b0[1] - 62], [b0[0] + 6, b0[1] - 62], [b0[0] + 12, b0[1]]], true);
+    p.path([[b0[0] - 9, b0[1] - 62], [b0[0], b0[1] - 76], [b0[0] + 9, b0[1] - 62]]);
+    for (let i = 0; i < 5; i++) { const a = -2.6 + i * 0.25; p.line(b0[0] + Math.cos(a) * 14, b0[1] - 68 + Math.sin(a) * 14, b0[0] + Math.cos(a) * 46, b0[1] - 68 + Math.sin(a) * 46); }
+    p.wave(d(0.08, 0.9)[0], d(0.92, 0.9)[0], d(0.5, 0.9)[1], 3, 22);
+    p.set({ col: 'bone', wobble: 0.35, speed: 1 });
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.3);
+    if (k <= 0) return;
+    // dust in the lamplight
+    c.save(); c.globalAlpha *= k * 0.8;
+    c.fillStyle = rgba('bone', 0.7);
+    for (let i = 0; i < 30; i++) {
+      const x = 380 + 110 * hash(i, 1) + 10 * Math.sin(a.t * 0.4 + i), y = 70 + ((hash(i, 2) * 200 + a.t * 6) % 200);
+      c.fillRect(x, y, 1.4, 1.4);
+    }
+    c.restore();
+  },
+  glow(g, a) {
+    g.lamp(430, 62, 1.25, 0.8 * (0.95 + 0.05 * Math.sin(a.t * 3)));
+  },
+};
+
+const BULBS: Pt[] = Array.from({ length: 11 }, (_, i) => { const x = 20 + i * 66; const u = (x - 350) / 360; return [x, 26 + 34 * (1 - u * u)]; });
+const P00: PlateDef = {
+  fig: 2, title: 'THE DANCE', year: '1968',
+  planned: 'A SUITABLE BOY, AT A SUITABLE DANCE',
+  happened: 'She danced all night with the wrong boy, and laughed.',
+  draw: 2.0,
+  build(p) {
+    // the hall: the back wall, the floor in perspective, the bandstand
+    p.set({ w: 1.1, a: 0.85, speed: 1 });
+    p.line(0, 156, DW, 156);
+    p.set({ w: 0.6, a: 0.4, speed: 3 });
+    for (let i = -10; i <= 10; i++) p.line(350 + i * 80, DH, 350 + i * 14, 156);
+    for (let y = 170, d = 14; y < DH; y += d, d *= 1.18) p.line(0, y, DW, y);
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.rect(270, 118, 160, 38);
+    // the band: a bass, a trumpet, a drum
+    figure(p, 305, 118, 46); p.path([[318, 118], [324, 76], [332, 78], [328, 118]], true); p.line(326, 76, 330, 60);
+    figure(p, 352, 118, 44); p.line(358, 86, 380, 82); p.arc(384, 82, 4, 6);
+    figure(p, 398, 118, 42); p.arc(412, 108, 10, 8);
+    // the string of lights
+    p.set({ w: 0.8, a: 0.7 });
+    p.path(Array.from({ length: 40 }, (_, i) => { const x = -10 + i * 19; const u = (x - 350) / 360; return [x, 26 + 34 * (1 - u * u) - 6] as Pt; }));
+    for (const [x, y] of BULBS) p.circle(x, y + 2, 3.5);
+    // a bicycle by the door
+    p.set({ w: 1.1, a: 0.85 });
+    p.circle(48, 330, 22); p.circle(122, 330, 22);
+    p.path([[48, 330], [78, 300], [110, 300], [122, 330]]); p.path([[78, 300], [86, 330], [110, 300]]); p.line(110, 300, 114, 286); p.line(78, 300, 74, 290);
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.35) / 0.35);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    const couple = (x: number, y: number, h: number, col: string, ph: number, lw: number) => {
+      const sw = Math.sin(a.t * 3.2 + ph), d = h * 0.11;
+      c.strokeStyle = col; c.lineWidth = lw;
+      for (const [s, skirt] of [[-1, true], [1, false]] as [number, boolean][]) {
+        const fx = x + s * d * (0.8 + 0.4 * sw) + 0.06 * h * Math.sin(a.t * 1.6 + ph);
+        const hr = h * 0.09;
+        c.beginPath(); c.arc(fx, y - h + hr, hr, 0, TAU); c.stroke();
+        c.beginPath();
+        if (skirt) { c.moveTo(fx - h * 0.05, y - h * 0.8); c.lineTo(fx - h * 0.17 - 0.04 * h * sw, y - h * 0.32); c.lineTo(fx + h * 0.17 + 0.04 * h * sw, y - h * 0.32); c.lineTo(fx + h * 0.05, y - h * 0.8); c.closePath(); }
+        else { c.moveTo(fx - h * 0.08, y - h * 0.8); c.lineTo(fx - h * 0.1, y - h * 0.4); c.lineTo(fx + h * 0.1, y - h * 0.4); c.lineTo(fx + h * 0.08, y - h * 0.8); c.closePath(); }
+        c.stroke();
+        c.beginPath(); c.moveTo(fx - h * 0.04, y - h * 0.36); c.lineTo(fx - h * 0.06 - 0.03 * h * sw * s, y); c.moveTo(fx + h * 0.04, y - h * 0.36); c.lineTo(fx + h * 0.06 + 0.03 * h * sw * s, y); c.stroke();
+      }
+      c.beginPath(); c.moveTo(x - d, y - h * 0.68); c.lineTo(x + d, y - h * 0.68); c.stroke();
+    };
+    couple(180, 236, 54, rgba('bone', 0.7), 0.5, 1);
+    couple(520, 228, 50, rgba('bone', 0.7), 2.1, 1);
+    couple(250, 196, 36, rgba('bone', 0.55), 1.2, 0.9);
+    couple(460, 192, 34, rgba('bone', 0.55), 3.3, 0.9);
+    couple(350, 330, 120, rgba('ember', 1), 0, 1.7);
+    // notes rising from the band
+    c.fillStyle = rgba('bone', 0.8); c.strokeStyle = rgba('bone', 0.8); c.lineWidth = 1;
+    for (let i = 0; i < 5; i++) {
+      const ph = (a.t * 0.35 + i / 5) % 1, x = 300 + 120 * hash(i, 4) + 14 * Math.sin(ph * 6 + i), y = 110 - ph * 90;
+      c.globalAlpha = k * Math.sin(ph * Math.PI);
+      c.beginPath(); c.ellipse(x, y, 3.2, 2.4, -0.4, 0, TAU); c.fill();
+      c.beginPath(); c.moveTo(x + 3, y); c.lineTo(x + 3, y - 12); c.lineTo(x + 8, y - 9); c.stroke();
+    }
+    c.restore();
+  },
+  glow(g, a) {
+    BULBS.forEach(([x, y], i) => g.lamp(x, y + 2, 0.32, 0.75 * (0.8 + 0.2 * noise1(a.t * 5 + i, 7))));
+  },
+};
+
+const P8F: PlateDef = {
+  fig: 8, title: 'THE FIRE', year: '1989',
+  planned: 'THE HOUSE, PAID OFF',
+  happened: "Mara's burned. The town came with buckets, then with bricks.",
+  draw: 2.0,
+  build(p) {
+    // her bakery, burning
+    p.set({ w: 1.3, a: 0.95, speed: 1 });
+    p.path([[220, 330], [220, 92], [350, 40], [480, 92], [480, 330]]);
+    p.path([[400, 72], [400, 30], [424, 30], [424, 82]]);
+    for (const x of [252, 404]) { p.rect(x, 110, 46, 56); p.line(x + 23, 110, x + 23, 166); }
+    p.rect(250, 230, 140, 82); p.rect(410, 226, 50, 104);
+    p.rect(286, 184, 128, 30);
+    const nm = strokeText("Mara's", 'script', 26, 0);
+    p.with({ w: 1.4, wobble: 0 }, () => p.text(nm, 350 - nm.width / 2, 207));
+    p.set({ w: 0.6, a: 0.4, speed: 3, wobble: 0.2 });
+    for (let y = 100, r = 0; y < 330; y += 10, r++) { const x0 = y < 92 ? 300 : 222; p.line(x0, y, 478, y); }
+    p.set({ w: 1.1, a: 0.85, speed: 1, wobble: 0.35 });
+    p.line(0, 340, DW, 340);
+    // the bucket chain, from the pump
+    p.path([[24, 340], [24, 290], [40, 290], [40, 340]]); p.line(40, 298, 62, 286);
+    for (let i = 0; i < 6; i++) {
+      const x = 70 + i * 26;
+      figure(p, x, 340, 46 + (i % 2) * 4, i % 3 === 1);
+      p.line(x + 3, 312, x + 14, 304);
+      p.path([[x + 12, 300], [x + 20, 300], [x + 18, 310], [x + 14, 310]], true);
+    }
+    // and on the right, already, new bricks and a ladder
+    p.set({ w: 0.9, a: 0.8 });
+    for (let r = 0; r < 5; r++) for (let i = 0; i < 6 - r; i++) p.rect(560 + i * 20 + r * 10, 330 - (r + 1) * 9, 18, 8);
+    p.line(500, 340, 540, 120); p.line(522, 340, 562, 120);
+    for (let i = 1; i < 10; i++) { const u = i / 10; p.line(lerp(500, 540, u), lerp(340, 120, u), lerp(522, 562, u), lerp(340, 120, u)); }
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.35);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    // smoke
+    for (let i = 0; i < 14; i++) {
+      const ph = (a.t * 0.18 + i / 14) % 1;
+      c.strokeStyle = rgba('ash', (1 - ph) * 0.5); c.lineWidth = 1;
+      c.beginPath(); c.arc(330 + 60 * Math.sin(i * 2.1) + ph * 90, 60 - ph * 80, 10 + ph * 34, 0, TAU); c.stroke();
+    }
+    // flames: from the windows and over the roof
+    const tongues: [number, number, number][] = [[275, 112, 26], [427, 112, 26], [320, 230, 34], [360, 232, 30], [300, 64, 40], [350, 46, 52], [400, 62, 40], [440, 80, 30], [262, 84, 30]];
+    tongues.forEach(([x, y, h], i) => {
+      for (let j = -1; j <= 1; j++) flame(c, x + j * h * 0.3, y, h * (0.7 + 0.3 * (1 - Math.abs(j))) * (0.85 + 0.3 * noise1(a.t * 3 + i + j, 9)), a.t + j, i * 5 + j, j === 0 ? rgba('ember', 0.95) : rgba('signal', 0.9));
+    });
+    c.fillStyle = rgba('ember', 0.9);
+    for (let i = 0; i < 16; i++) { const ph = (a.t * 0.6 + hash(i, 3)) % 1; c.fillRect(300 + 120 * hash(i, 4) + 20 * Math.sin(ph * 8 + i), 60 - ph * 70, 2, 2); }
+    c.restore();
+  },
+  glow(g, a) {
+    const f = 0.8 + 0.2 * noise1(a.t * 6, 3);
+    g.lamp(350, 70, 2.4, 0.7 * f);
+    g.lamp(340, 250, 1.3, 0.55 * f);
+    g.lamp(275, 128, 0.7, 0.5 * f); g.lamp(427, 128, 0.7, 0.5 * f);
+  },
+};
+
+const P12: PlateDef = {
+  fig: 12, title: 'THE LAMP', year: '1999',
+  planned: 'A QUIET LIFE, INLAND',
+  happened: 'Jonah spent the winter mending the old lamp.',
+  draw: 2.6,
+  build(p) {
+    // the workshop: a bench, a window with snow
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.line(40, 304, 660, 304); p.line(40, 312, 660, 312); p.line(70, 312, 70, DH); p.line(630, 312, 630, DH);
+    p.rect(520, 30, 140, 110); p.line(590, 30, 590, 140); p.line(520, 85, 660, 85);
+    // the lens: a cylinder of glass rings round a bull's-eye
+    p.set({ w: 1.4, a: 0.95 });
+    p.line(250, 60, 250, 290); p.line(410, 60, 410, 290);
+    p.arc(330, 60, 80, 14); p.arc(330, 290, 80, 14, 0, Math.PI);
+    p.set({ w: 0.8, a: 0.7, speed: 1.6 });
+    for (let y = 76; y < 288; y += 12) if (Math.abs(y - 176) > 52) p.arc(330, y, 80, 12, 0.05, Math.PI - 0.05);
+    p.set({ w: 1.1, a: 0.9 });
+    for (const r of [10, 22, 34, 46]) p.circle(330, 176, r);
+    p.set({ w: 1.2, a: 0.9 });
+    for (const x of [262, 398]) p.line(x, 62, x, 298);
+    p.path([[240, 290], [420, 290], [430, 304], [230, 304]], true);
+    // tools: a wrench, an oil can, a rag
+    p.set({ w: 1.1, a: 0.85 });
+    p.path([[90, 296], [180, 280]]); p.arc(80, 298, 10, 8, 0.6, 5.6);
+    p.path([[480, 300], [480, 270], [516, 270], [516, 300]], true); p.path([[516, 276], [548, 256]]); p.line(490, 270, 498, 260);
+    p.path([[560, 302], [580, 290], [610, 296], [624, 302]]);
+    // Jonah, at the lens with a cloth
+    p.set({ w: 1.3, a: 0.95 });
+    figure(p, 460, 304, 128);
+    p.line(452, 214, 412, 196); p.line(468, 214, 440, 236);
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.35) / 0.35);
+    if (k <= 0) return;
+    c.save(); c.globalAlpha *= k;
+    // snow in the window
+    c.save(); c.beginPath(); c.rect(521, 31, 138, 108); c.clip();
+    c.fillStyle = rgba('bone', 0.8);
+    for (let i = 0; i < 30; i++) { const y = ((hash(i, 1) * 110 + a.t * (12 + 8 * hash(i, 2))) % 110) + 30, x = 520 + ((hash(i, 3) * 140 + 5 * Math.sin(a.t + i)) % 140); c.fillRect(x, y, 1.6, 1.6); }
+    c.restore();
+    // a sheen running down the glass rings
+    const y = 70 + ((a.t * 60) % 230);
+    c.strokeStyle = rgba('ember', 0.55); c.lineWidth = 2;
+    c.beginPath(); c.ellipse(330, y, 80, 12, 0, 0.3, Math.PI - 0.3); c.stroke();
+    // on "beautiful" the lamp is lit for the first time
+    const lit = clamp((a.t - a.T.beautiful!) / 0.6);
+    if (lit > 0) {
+      c.globalAlpha = k * lit;
+      const gr = c.createRadialGradient(330, 176, 4, 330, 176, 120);
+      gr.addColorStop(0, rgba('ember', 0.8)); gr.addColorStop(1, rgba('signal', 0));
+      c.fillStyle = gr; c.fillRect(200, 50, 260, 260);
+    }
+    c.restore();
+  },
+  glow(g, a) {
+    const lit = clamp((a.t - a.T.beautiful!) / 0.6);
+    if (lit > 0) {
+      g.lamp(330, 176, 1.2 + 1.4 * lit, lit);
+      for (let i = 0; i < 12; i++) { const an = (i / 12) * TAU + a.t * 0.3; g.seg(330 + Math.cos(an) * 56, 176 + Math.sin(an) * 56, 330 + Math.cos(an) * (110 + 30 * lit), 176 + Math.sin(an) * (110 + 30 * lit), 1.4, LIN.ember, 0.35 * lit); }
+    }
+  },
+};
+
+const P13: PlateDef = {
+  fig: 13, title: 'NOA', year: '2006',
+  planned: 'GRANDCHILDREN, NEARBY',
+  happened: "Noa, Ida's girl, climbed all hundred and twenty-one steps.",
+  draw: 2.4,
+  build(p) {
+    // inside the tower: the spiral stair round its column
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.line(150, 0, 150, DH); p.line(550, 0, 550, DH);
+    p.line(342, 0, 342, DH); p.line(358, 0, 358, DH);
+    p.set({ w: 0.9, a: 0.8, speed: 2 });
+    for (let i = 0; i < 44; i++) {
+      const an = i * 0.42, y = 372 - i * 8.6, cx = Math.cos(an);
+      if (Math.sin(an) < -0.2) continue; // steps behind the column
+      const x1 = 350 + cx * 190, xn = 350 + Math.cos(an + 0.42) * 190, x0 = 350 + Math.sign(cx || 1) * 8;
+      // tread (its front edge and the edge toward the next step), riser, and a little shading under it
+      p.line(x0, y, x1, y); p.line(x1, y, x1, y + 8); p.line(x0, y + 8, x1, y + 8);
+      p.line(x1, y, lerp(x1, xn, 0.5), y - 4.3);
+      p.with({ w: 0.5, a: 0.35, speed: 4 }, () => { for (let j = 1; j < 4; j++) { const u = j / 4; p.line(lerp(x0, x1, u), y + 8, lerp(x0, x1, u) + 3, y + 12); } });
+    }
+    p.set({ w: 0.8, a: 0.6 });
+    for (let i = 1; i < 120; i++) {
+      const a0 = (i - 1) * 0.155, a1 = i * 0.155;
+      if (Math.sin(a0) < -0.2 || Math.sin(a1) < -0.2) continue; // the rail behind the column
+      p.line(350 + Math.cos(a0) * 192, 344 - (i - 1) * 3.15, 350 + Math.cos(a1) * 192, 344 - i * 3.15);
+    }
+    // a slit window with the sea in it
+    p.set({ w: 1.1, a: 0.85 });
+    p.rect(170, 150, 22, 70);
+    p.with({ w: 0.6, a: 0.6 }, () => { for (let i = 0; i < 4; i++) p.line(172, 194 + i * 6, 190, 194 + i * 6); });
+    // light from the lamp above
+    p.set({ w: 0.6, a: 0.45, speed: 3 });
+    p.hatch([[250, 0], [450, 0], [520, 120], [180, 120]], 1.35, 6, (x, y) => 1 - y / 130);
+    // Mara at the top, waiting
+    p.set({ w: 1.4, a: 1, col: 'bone' });
+    figure(p, 470, 66, 74, true);
+    p.path([[458, 0], [478, 2], [486, 22]]);
+    p.line(462, 30, 446, 46); // reaching down to her
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.3);
+    if (k <= 0) return;
+    // Noa, climbing
+    const u = ease.inOutSine(clamp((a.life - 0.15) / 0.75));
+    const i = 4 + u * 36, an = i * 0.42, y = 372 - i * 8.6, x = 350 + Math.cos(an) * 120;
+    const h = 46, bob = 2 * Math.abs(Math.sin(a.t * 6));
+    c.save(); c.globalAlpha *= k;
+    c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.6; c.lineCap = 'round';
+    c.beginPath(); c.arc(x, y - h + 3 - bob, 3.5, 0, TAU); c.stroke();
+    c.beginPath(); c.moveTo(x - 2, y - h * 0.78 - bob); c.lineTo(x - 6, y - h * 0.35); c.lineTo(x + 6, y - h * 0.35); c.lineTo(x + 2, y - h * 0.78 - bob); c.closePath(); c.stroke();
+    c.beginPath(); c.moveTo(x - 2, y - h * 0.35); c.lineTo(x - 4 + 3 * Math.sin(a.t * 6), y); c.moveTo(x + 2, y - h * 0.35); c.lineTo(x + 4 - 3 * Math.sin(a.t * 6), y); c.stroke();
+    c.restore();
+  },
+  glow(g) {
+    g.lamp(350, 0, 2.2, 0.75);
+    g.lamp(181, 185, 0.4, 0.4);
+  },
+};
+
+const P14: PlateDef = {
+  fig: 14, title: 'JONAH', year: '2019',
+  planned: 'GROWING OLD IN THE HOUSE',
+  happened: 'Jonah died in the spring. She kept the lamp lit.',
+  draw: 2.4,
+  build(p) {
+    // the cottage at night: the window to the sea
+    p.set({ w: 1.3, a: 0.95, speed: 1 });
+    p.rect(130, 50, 230, 210); p.line(245, 50, 245, 260); p.line(130, 155, 360, 155);
+    p.line(118, 264, 372, 264);
+    p.set({ w: 0.7, a: 0.55, speed: 2 });
+    p.line(132, 200, 358, 200);
+    for (let i = 0; i < 6; i++) p.wave(134 + (i % 2) * 20, 356, 210 + i * 8, 1, 20, i);
+    stars(p, 14, 136, 56, 354, 150, 91);
+    p.set({ w: 1.2, a: 0.9, speed: 1 });
+    p.line(0, 322, DW, 322);
+    // his chair, empty, his cap on it
+    p.path([[430, 322], [436, 250], [560, 250], [566, 322]]);
+    p.path([[440, 250], [446, 140], [550, 140], [556, 250]]);
+    p.path([[420, 270], [420, 236], [446, 236]]); p.path([[576, 270], [576, 236], [550, 236]]);
+    p.with({ w: 0.6, a: 0.45, speed: 3 }, () => p.hatch([[446, 146], [550, 146], [554, 246], [442, 246]], 1.1, 6));
+    p.arc(498, 244, 26, 12, Math.PI, TAU); p.path([[468, 246], [532, 246], [540, 250]]);
+    // the side table: his pipe, a cup
+    p.rect(600, 250, 70, 6); p.line(610, 256, 610, 322); p.line(660, 256, 660, 322);
+    p.path([[612, 248], [630, 242], [640, 236]]); p.arc(645, 236, 6, 4, 0, Math.PI);
+    p.path([[650, 248], [650, 232], [666, 232], [666, 248]]); p.arc(670, 240, 4, 5, -1.4, 1.4);
+    // his coat on the hook
+    p.line(60, 70, 74, 70);
+    p.path([[66, 72], [50, 110], [44, 230], [92, 230], [86, 110], [70, 72]], true);
+  },
+  anim(c, a) {
+    const k = clamp((a.k - 0.3) / 0.3);
+    if (k <= 0) return;
+    // the beam passing the window every two bars
+    const ph = ((a.t / 3.438) % 1 + 1) % 1, x = 130 + (ph * 2 - 0.5) * 230;
+    c.save(); c.globalAlpha *= k;
+    c.beginPath(); c.rect(131, 51, 228, 208); c.clip();
+    const gr = c.createLinearGradient(x - 60, 0, x + 60, 0);
+    gr.addColorStop(0, rgba('ember', 0)); gr.addColorStop(0.5, rgba('ember', 0.45)); gr.addColorStop(1, rgba('ember', 0));
+    c.fillStyle = gr; c.fillRect(x - 60, 51, 120, 208);
+    c.restore();
+    // and its light across the floor and the chair
+    const w = Math.max(0, 1 - Math.abs(ph - 0.5) * 3);
+    if (w > 0) {
+      c.save(); c.globalAlpha *= k * w * 0.5;
+      c.fillStyle = rgba('ember', 0.4);
+      c.beginPath(); c.moveTo(250, 264); c.lineTo(330, 264); c.lineTo(600, 380); c.lineTo(380, 380); c.closePath(); c.fill();
+      c.restore();
+    }
+  },
+  glow(g, a) {
+    const ph = ((a.t / 3.438) % 1 + 1) % 1, x = 130 + (ph * 2 - 0.5) * 230;
+    if (x > 140 && x < 350) g.lamp(x, 150, 0.9, 0.5);
+  },
+};
+
+const FQ: Pt[] = [[120, 40], [580, 30], [604, 350], [98, 362]];
+const P15: PlateDef = {
+  fig: 15, title: 'THE MAP, FOUND', year: '2041',
+  planned: 'THE PLAN, AS DRAWN IN 1952',
+  happened: 'Noa found the old plan in a drawer, and drew in the life Mara lived.',
+  draw: 2.6,
+  build(p) {
+    // the old plan, unfolded, its creases
+    p.set({ w: 1.4, a: 0.95, speed: 1 });
+    p.path(FQ, true);
+    p.set({ w: 0.6, a: 0.45 });
+    p.path([inQuad(FQ, 0.5, 0), inQuad(FQ, 0.5, 1)]); p.path([inQuad(FQ, 0, 0.5), inQuad(FQ, 1, 0.5)]);
+    p.path([inQuad(FQ, 0.25, 0), inQuad(FQ, 0.25, 1)]); p.path([inQuad(FQ, 0.75, 0), inQuad(FQ, 0.75, 1)]);
+    planOnSheet(p, FQ as [Pt, Pt, Pt, Pt]);
+    const fm = strokeText('for Mara', 'script', 24, 0);
+    const f0 = inQuad(FQ, 0.06, 0.93);
+    p.set({ w: 1.3, a: 0.9, wobble: 0 });
+    p.text(fm, f0[0], f0[1]);
+    p.set({ wobble: 0.35 });
+    // the postcard, tucked into its corner
+    p.set({ w: 1.2, a: 0.95 });
+    const PC = rrect(560, 70, 110, 72, 0.18);
+    p.path(PC, true);
+    const pc = (u: number, v: number) => inQuad(PC, u, v);
+    p.path([pc(0.05, 0.65), pc(0.95, 0.65)]);
+    const tt = pc(0.66, 0.65); miniTower(p, tt[0], tt[1], 30);
+    // a pencil
+    p.path([[620, 360], [690, 300], [694, 305], [624, 365]], true);
+  },
+  anim(c, a) {
+    // Noa draws Mara's real road onto her father's plan, in gold
+    const k = clamp((a.k - 0.6) / 0.25);
+    if (k <= 0) return;
+    const T = track(), n = T.pts.length;
+    const u = ease.inOutSine(clamp((a.life - 0.25) / 0.6));
+    const at = (x: number, y: number) => inQuad(FQ, x / 100, y / 100);
+    c.save(); c.globalAlpha *= k;
+    c.strokeStyle = rgba('ember', 1); c.lineWidth = 2.2; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.beginPath();
+    const m = Math.floor(n * u);
+    for (let i = 0; i < m; i += 2) { const q = at(T.pts[i]!.x, T.pts[i]!.y); if (i === 0) c.moveTo(q[0], q[1]); else c.lineTo(q[0], q[1]); }
+    c.stroke();
+    if (m > 1 && u < 1) { const q = at(T.pts[m - 1]!.x, T.pts[m - 1]!.y); c.fillStyle = rgba('ember', 1); c.beginPath(); c.arc(q[0], q[1], 3, 0, TAU); c.fill(); }
+    if (u >= 1) { const q = at(T.pts[n - 1]!.x, T.pts[n - 1]!.y); c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.4; c.beginPath(); c.arc(q[0], q[1], 7, 0, TAU); c.stroke(); }
+    c.restore();
+  },
+  glow(g, a) {
+    g.lamp(660, 20, 1.3, 0.7);
+    const u = ease.inOutSine(clamp((a.life - 0.25) / 0.6));
+    if (u >= 1) { const T = track(), q = inQuad(FQ, T.pts[T.pts.length - 1]!.x / 100, T.pts[T.pts.length - 1]!.y / 100); g.lamp(q[0], q[1], 0.35, 0.8); }
+  },
+};
+
+export const PLATES: Record<string, PlateDef> = { postcard: P0, dance: P00, fire: P8F, lens: P12, noa: P13, chair: P14, found: P15, ferry: P1, bakery: P2, feast: P3, ida: P4, oven: P5, father: P6, sea: P7, deed: P8 };
 const built = new Map<string, Plot>();
 /** The static engraving of a plate (built once). */
 export function plot(id: string): Plot {
@@ -911,8 +1357,9 @@ export function drawPlate(c: CanvasRenderingContext2D, id: string, s: PlateState
     c.font = `12px "${fonts.mono(600)}"`; c.letterSpacing = '3px'; c.fillStyle = rgba('ink', 0.7);
     c.fillText('PLANNED', DX + 14, y0 + 24);
     c.font = `15px "${fonts.mono(500)}"`; c.letterSpacing = '2px'; c.fillStyle = rgba('ink', 0.92);
+    let tw = c.measureText(def.planned).width;
+    if (tw > DW - 150) { c.font = `${(15 * (DW - 150)) / tw}px "${fonts.mono(500)}"`; tw = c.measureText(def.planned).width; }
     c.fillText(def.planned, DX + 128, y0 + 25);
-    const tw = c.measureText(def.planned).width;
     if (s.strikeK > 0) {
       c.strokeStyle = rgba('blood', 1); c.lineWidth = 2.6; c.lineCap = 'round';
       c.beginPath(); c.moveTo(DX + 122, y0 + 20); c.lineTo(DX + 122 + (tw + 14) * ease.inOutSine(s.strikeK), y0 + 19 - 1.5 * s.strikeK); c.stroke();
@@ -927,7 +1374,9 @@ export function drawPlate(c: CanvasRenderingContext2D, id: string, s: PlateState
     c.fillText('HAPPENED', DX + 14, y - 6);
     c.letterSpacing = '0px';
     c.font = `29px "${fonts.serif(500, true)}"`;
-    const tw = c.measureText(def.happened).width;
+    let tw = c.measureText(def.happened).width;
+    const maxW = CW - DX - 128 - 26;
+    if (tw > maxW) { c.font = `${(29 * maxW) / tw}px "${fonts.serif(500, true)}"`; tw = c.measureText(def.happened).width; }
     const xr = DX + 128 + (tw + 30) * ease.outCubic(clamp(s.happenK));
     const gr = c.createLinearGradient(xr - 30, 0, xr, 0);
     gr.addColorStop(0, rgba('bone', 1)); gr.addColorStop(1, rgba('bone', 0));

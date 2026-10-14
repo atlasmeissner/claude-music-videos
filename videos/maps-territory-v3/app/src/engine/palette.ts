@@ -11,7 +11,7 @@ export const HEX = {
   bone: '#EEE7D6', // map paper, primary text
   signal: '#F0962E', // lamplight amber-gold: the walked track, the sung word, the horn
   ember: '#FFCF7A', // gold core / highlights
-  blood: '#A2501A', // deep amber (signal's shadow; sung words on paper)
+  blood: '#8A6424', // deep ochre (signal's shadow; ink accents on paper) — no red anywhere
   acid: '#5FB3AA', // sea teal: only the shore and the sea
 } as const;
 

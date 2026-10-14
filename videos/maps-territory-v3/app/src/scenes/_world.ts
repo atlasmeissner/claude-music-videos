@@ -129,13 +129,13 @@ export function heightTexture(): THREE.DataTexture {
 export interface Place { name: string; x: number; y: number; year: number }
 /** The planned life: named places on ruled roads, a year on each. (Deadpan milestone names.) */
 export const PLAN: Place[] = [
-  { name: 'HOME', x: 9, y: 62, year: 1990 },
-  { name: 'SCHOOL', x: 20, y: 54, year: 2008 },
-  { name: 'MEDICAL SCHOOL', x: 34, y: 47, year: 2014 },
-  { name: 'THE CLINIC', x: 47, y: 37, year: 2016 }, // (in the middle of the lake)
-  { name: 'MARRIED', x: 56, y: 30, year: 2018 },
-  { name: 'THE HOUSE', x: 64, y: 22, year: 2020 },
-  { name: 'RETIREMENT', x: 69, y: 11, year: 2055 },
+  { name: 'HOME', x: 9, y: 62, year: 1952 },
+  { name: 'SCHOOL', x: 20, y: 54, year: 1970 },
+  { name: 'MEDICAL SCHOOL', x: 34, y: 47, year: 1976 },
+  { name: 'THE CLINIC', x: 47, y: 37, year: 1978 }, // (in the middle of the lake)
+  { name: 'MARRIED', x: 56, y: 30, year: 1980 },
+  { name: 'THE HOUSE', x: 64, y: 22, year: 1982 },
+  { name: 'RETIREMENT', x: 69, y: 11, year: 2017 },
 ];
 /** The plan's road as one polyline (km). */
 export const PLAN_PTS = PLAN.map((p) => ({ x: p.x, y: p.y }));
