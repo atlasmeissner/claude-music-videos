@@ -31,7 +31,8 @@ goes out, a coda in which her granddaughter draws Mara's real road onto the old 
   dies the camera pulls back so his lamp is in the frame as it goes out, and a tag stays there: HER FATHER · d. 1994.
 - **Jonah**, 1949–2019, met at the feast in 1976: his trail joins hers and they walk on as two lines; he mends the
   lighthouse's lamp; his lamp goes out in the last chorus.
-- **Ida**, born 1978: a small lamp that follows and grows, and keeps the lighthouse after Mara.
+- **Ida**, born 1978: a small lamp that follows and grows; it leaves on its own in 1991 (art school) and comes back
+  across the water with Noa in 2006; Ida keeps the lighthouse after Mara.
 - **Noa**, Ida's daughter, born 2006: a small lamp on the islet; in 2041 she finds the plan.
 
 ## Cue sheet
@@ -47,16 +48,17 @@ goes out, a coda in which her granddaughter draws Mara's real road onto the old 
 | 1:46 | "off the shore" | she leaves the road across the lake; the ghost walks on alone; her first own plan | 4 THE FERRY |
 | 1:57 | verse 2 | four plates in quick succession, alternating sides; a new plan after each, struck by the next | 5–8 |
 | 2:12 | pre-chorus 2 | the camera pulls back: the sheet already crossed with abandoned plans | 9 THE VAN |
-| 2:19 | chorus 2 | | 10 THE FIRE · 11 IDA LEAVES |
+| 2:19 | chorus 2 | Ida's lamp leaves on its own | 10 THE FIRE · 11 IDA LEAVES |
 | 2:38 | "Now I'm lost" | the camera pulls back; name tags; her father's lamp at HOME goes out with the candle; her trail turns grey | 12 HER FATHER |
 | 2:45 | bridge | loops; the camera turns with them | 13 THE BOAT |
 | 2:59 | "finally arrive" | THE SEASIDE; a dark lighthouse on the islet, FOR SALE | 14 THE SEASIDE |
 | 3:02 | final chorus | she signs; stamped SOLD on "would", and the sign on the map turns to SOLD | 15 THE DEED |
-| 3:16 | "Oh, it's more beautiful" | Jonah's mended lamp lights on "beautiful" | 16 THE LAMP |
-| 3:31 | instrumental | the family crosses to the islet | |
-| 3:45 | the drop | HERE, 1999: names on the lamps; she lights the lighthouse | |
+| 3:14 | after "would" | the two of them cross to the islet: HERE, 1999 | |
+| 3:16 | "Oh, it's more beautiful" | Jonah's mended lamp lights on "beautiful", and the lighthouse on the map with it; the beam begins to turn | 16 THE LAMP |
+| 3:31 | instrumental | on the islet, the beam turning | |
+| 3:45 | the drop | close on the islet: names on the lamps | |
 | 3:50 | the build | the beam turns once every two bars and cuts the paper away in a spiral; the years run on | |
-| 4:11 | last chorus | Noa's lamp joins; RETIREMENT stamped UNVISITED; Jonah's lamp goes out; the plan is peeled off | 17 NOA · 18 JONAH |
+| 4:11 | last chorus | Ida comes back across the water with Noa; RETIREMENT stamped UNVISITED; Jonah's lamp goes out; the plan is peeled off | 17 NOA · 18 JONAH |
 | 4:37 | outro | night; the beam turning; Mara's lamp goes out on the islet: MARA · 1952–2034 | |
 | 4:54 | the band drops out | coda: Noa draws Mara's real road onto the old plan, in gold | 19 THE MAP, FOUND |
 | 5:11 | the horn | the horn rings out from the lighthouse; the title | |

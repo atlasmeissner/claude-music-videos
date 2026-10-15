@@ -68,9 +68,10 @@ export function story(ly: Lyrics, au: AudioData): Story {
     [T.lost!, N('HER FATHER')],
     [T.lost2!, N('WANDERING')],
     [T.arrive!, N('THE SEASIDE')],
-    [T.beautiful!, N('THE JETTY')],
-    [T.inst! + 1, N('THE JETTY')],
-    [T.here! - 0.3, track().total],
+    // to the jetty while she buys it; across to the islet once it is hers, before Jonah mends the lamp
+    [T.final! + 3, N('THE JETTY')],
+    [T.sold! + 0.4, N('THE JETTY')],
+    [T.sold! + 5, track().total],
   ];
   // the ghost: with her as far as SCHOOL, then on schedule along the ruled road while she goes her own way
   const P = PLACE_S;
@@ -127,7 +128,7 @@ export function story(ly: Lyrics, au: AudioData): Story {
     { id: 'boat', t0: T.bridge! + 1.8, t1: L(21).end + 0.2, side: 1, anchor: wayIx('WANDERING') },
     { id: 'sea', t0: L(22).start + 0.6, t1: T.final! - 0.2, side: -1, anchor: 'light' },
     { id: 'deed', t0: T.final! + 0.4, t1: L(24).end + 0.6, side: -1, anchor: 'light' },
-    { id: 'lens', t0: L(25).start + 0.2, t1: L(26).end - 0.5, side: -1, anchor: 'light' },
+    { id: 'lens', t0: T.sold! + 5.3, t1: L(26).end - 0.5, side: -1, anchor: 'light' },
     // on the islet: the years go by
     { id: 'noa', t0: L(27).start + 0.2, t1: L(28).end + 0.3, side: -1, anchor: 'light' },
     { id: 'chair', t0: L(29).start - 0.75, t1: L(30).end + 0.2, side: -1, anchor: 'light' },
@@ -136,12 +137,17 @@ export function story(ly: Lyrics, au: AudioData): Story {
   ];
   const cue = (id: string) => plates.find((p) => p.id === id)!;
   T.noaIn = cue('noa').t0 + 2.2;
+  // on the islet from the day the lighthouse is theirs; its lamp is lit on "beautiful", when Jonah has mended it
+  T.landed = T.sold! + 5;
+  T.lit = T.beautiful!;
+  // Ida leaves home in 1991 (her lamp goes off to the north-west), and comes back with Noa in 2006
+  T.idaGo = cue('leaves').t0 + 2.6;
   T.jonahOut = cue('chair').t0 + 0.6 * (cue('chair').t1 - cue('chair').t0);
   T.maraOut = T.outro! + 9;
   const yKeys: [number, number][] = [
     [T.page!, 1952], [cue('postcard').t0 + 1, 1957], [cue('postcard').t1, 1961], [cue('dance').t0 + 1, 1966], [cue('dance').t1, 1969],
     [L(8).end, 1970], [T.ferry!, 1973], [T.rain!, 1974], [T.feast!, 1976], [T.road!, 1978], [T.east!, 1981], [T.pre2! + 3, 1984], [T.chorus2!, 1987],
-    [cue('fire').t0 + 2, 1989], [cue('leaves').t0 + 1.5, 1991], [T.lost!, 1994], [cue('boat').t0 + 2, 1995], [T.arrive!, 1997], [T.sold!, 1998], [T.beautiful!, 1999],
+    [cue('fire').t0 + 2, 1989], [cue('leaves').t0 + 1.5, 1991], [T.lost!, 1994], [cue('boat').t0 + 2, 1995], [T.arrive!, 1997], [T.sold!, 1998], [T.landed!, 1999], [T.beautiful!, 1999],
     [T.here!, 1999], [T.final2!, 2005], [T.noaIn!, 2006], [T.stamp!, 2017], [T.jonahOut!, 2019], [T.outro!, 2025], [T.maraOut!, 2034],
     [cue('found').t0 + 1.5, 2041],
   ];

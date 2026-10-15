@@ -152,7 +152,7 @@ export default class MapScene extends Scene {
   dadOut() { const f = this.fatherCue(); return f.t0 + 0.62 * (f.t1 - f.t0); }
 
   /** The lighthouse: swept angle since it was lit. */
-  beamA(t: number) { return Math.max(0, t - this.st.T.here!) * OMEGA; }
+  beamA(t: number) { return Math.max(0, t - this.st.T.lit!) * OMEGA; }
 
   render(f: Frame, out: THREE.WebGLRenderTarget) {
     const { renderer, comp, audio, lyrics } = this.ctx;
@@ -173,19 +173,19 @@ export default class MapScene extends Scene {
     const R = t < T.ground! ? 0 : lerp(0, 2.2, prog(t, T.ground!, T.ground! + 0.8, ease.outCubic)) - 0.6 * prog(t, T.tracing! - 1, T.tracing! + 1) + 0.9 * prog(t, T.chorus1!, T.chorus2!) + 1.6 * prog(t, T.chorus2!, T.final! + 6)
       + 60 * prog(t, T.final2!, T.outro!, ease.inOutSine);
     const G = prog(t, T.peel!, T.outro! - 1, ease.inOutSine); // the country beyond the sheet's edge
-    const sea = Math.max(prog(t, T.now! + 1.5, T.shore!, ease.inOutSine) * (1 - prog(t, T.verse2!, T.verse2! + 3)) * 0.6, prog(t, T.here! - 1.5, T.here! + 1, ease.inOutSine) * (1 - prog(t, T.outro!, T.outro! + 6) * 0.7));
+    const sea = Math.max(prog(t, T.now! + 1.5, T.shore!, ease.inOutSine) * (1 - prog(t, T.verse2!, T.verse2! + 3)) * 0.6, prog(t, T.landed! - 1.5, T.landed! + 1, ease.inOutSine) * (1 - prog(t, T.outro!, T.outro! + 6) * 0.7));
     const dark = 1 - 0.1 * prog(t, 0.2, T.title! + 4, ease.inOutSine) - 0.9 * prog(t, T.sheet! + 0.4, T.sheet! + 2.6, ease.inOutSine);
     const outroDark = prog(t, T.band! + 4, T.horn!, ease.inOutSine) * 0.55 + 0.4 * prog(t, T.end! - 5, T.end! - 0.5, ease.inOutSine);
     const coast = prog(t, T.sheet! + 1.72 * 1.5, T.sheet! + 1.72 * 4.5, ease.inOutCubic);
     // the beam: lit at HERE; from the build each turn cuts the paper further out (radius 105 km by the last chorus)
-    const A = this.beamA(t), Abuild = (T.build! - T.here!) * OMEGA;
+    const A = this.beamA(t), Abuild = (T.build! - T.lit!) * OMEGA;
     const growth = 105 / ((T.final2! - T.build!) * OMEGA);
-    const beamI = prog(t, T.here!, T.here! + 1.6, ease.outCubic) * (1 - prog(t, T.end! - 3.5, T.end! - 0.8)) * (0.75 + 0.35 * prog(t, T.outro!, T.band!));
+    const beamI = prog(t, T.lit!, T.lit! + 1.6, ease.outCubic) * (1 - prog(t, T.end! - 3.5, T.end! - 0.8)) * (0.75 + 0.35 * prog(t, T.outro!, T.band!));
     this.terrain.draw(renderer, out, {
       view: v, mapMix: 1, contourInk: 0, paperInk: coast, reveal: [t > T.ground! ? (atEnd ? s + 5 : Math.max(s, 1.2)) : s, R, G], warmth: warm, seaAcid: sea,
       terrInk: 0.5, relief: 3.2, t, sun: warm > 0.01 ? [lerp(-0.5, -0.8, warm), lerp(-0.6, -0.3, warm), lerp(0.55, 0.42, warm)] : [-0.5, -0.6, 0.55],
       ghost: prog(t, T.band! + 2, T.horn!, ease.inOutSine) * 0.8, contour: 0.05, fadeOut: Math.max(dark * 0.988, outroDark),
-      beam: [LIGHT.x, LIGHT.y, A, beamI], beamR: [growth, -Abuild * growth, 140, t > T.here! ? 1 : 0],
+      beam: [LIGHT.x, LIGHT.y, A, beamI], beamR: [growth, -Abuild * growth, 140, t > T.lit! ? 1 : 0],
     });
 
     const ink = this.ink; ink.clear();
@@ -314,7 +314,7 @@ export default class MapScene extends Scene {
     if (t > T.pre1! && maraOn > 0) lamp(gl, hp.x, hp.y, t, grown + 0.2 * warm, lampOn * maraOn);
     this.smoke(c, hp.x, hp.y, t, T.maraOut!);
     const here = WAY[WAY.length - 1]!;
-    const settle = prog(t, T.here!, T.here! + 2.5, ease.inOutSine);
+    const settle = prog(t, T.landed!, T.landed! + 2.5, ease.inOutSine);
     const fam = (ds: number, off: number, home2: { x: number; y: number }, k: number) => {
       const p = trackAt(Math.max(0, s - ds * k));
       const q0 = w2s(v, p.x, p.y), q1 = w2s(v, home2.x, home2.y);
@@ -329,15 +329,30 @@ export default class MapScene extends Scene {
       if (on > 0) { lamp(gl, q.x, q.y, t + 3, 0.78 + 0.1 * warm, k * 0.95 * on); who.push(['JONAH', q.x, q.y, fired('THE FEAST')]); }
       this.smoke(c, q.x, q.y, t, T.jonahOut!);
     }
-    if (s > sE['IDA']! - 0.01) {
+    const idaSize = lerp(0.34, 0.62, prog(t, T.road!, T.final2!));
+    const jetty = WAY[wayIx('THE JETTY')]!;
+    if (s > sE['IDA']! - 0.01 && t < T.idaGo!) {
       const k = after('IDA', 0.8);
       const q = fam(1.05, -5, { x: here.x - 0.4, y: here.y + 0.45 }, k);
-      lamp(gl, q.x, q.y, t + 7, lerp(0.34, 0.62, prog(t, T.road!, T.final2!)), k * 0.9);
+      lamp(gl, q.x, q.y, t + 7, idaSize, k * 0.9);
       who.push(['IDA', q.x, q.y, fired('IDA')]);
+    } else if (t >= T.idaGo! && t < T.idaGo! + 5) {
+      // Ida leaves home: her lamp goes off on its own to the north-west, and out of sight
+      const p0 = trackAt(Math.max(0, walked(st, T.idaGo!) - 1.05)), u = ease.inOutSine(clamp((t - T.idaGo!) / 5));
+      const q = w2s(v, p0.x - 16 * u, p0.y - 12 * u);
+      lamp(gl, q.x, q.y, t + 7, idaSize * (1 - 0.4 * u), 0.9 * (1 - prog(u, 0.6, 1)));
+      who.push(['IDA', q.x, q.y, T.idaGo! - 0.4]);
+    } else if (t >= T.noaIn!) {
+      // and comes back with Noa, across the water to the islet
+      const u = ease.inOutSine(clamp((t - T.noaIn!) / 2.6)), k = prog(t, T.noaIn!, T.noaIn! + 0.6);
+      const q = w2s(v, lerp(jetty.x, here.x - 0.4, u), lerp(jetty.y, here.y + 0.45, u));
+      lamp(gl, q.x, q.y, t + 7, idaSize, 0.9 * k);
+      who.push(['IDA', q.x, q.y, T.noaIn!]);
     }
     if (t > T.noaIn!) {
-      // Noa, Ida's girl, on the islet
-      const k = prog(t, T.noaIn!, T.noaIn! + 0.8, ease.outCubic), q = w2s(v, here.x - 0.1, here.y + 0.85);
+      // Noa, Ida's girl
+      const u = ease.inOutSine(clamp((t - T.noaIn!) / 2.6)), k = prog(t, T.noaIn!, T.noaIn! + 0.8, ease.outCubic);
+      const q = w2s(v, lerp(jetty.x - 0.3, here.x - 0.1, u), lerp(jetty.y + 0.4, here.y + 0.85, u));
       lamp(gl, q.x, q.y, t + 13, lerp(0.3, 0.5, prog(t, T.noaIn!, T.end!)), k * 0.9);
       who.push(['NOA', q.x, q.y, T.noaIn!]);
     }
@@ -392,7 +407,7 @@ export default class MapScene extends Scene {
       // dark until she buys it and lights it
       if (beamI > 0) lamp(gl, q.x, q.y - 26 * sz, t + 5, 0.5 + 0.9 * beamI, lhK * beamI);
       // its sign: FOR SALE from the seaside on, SOLD on "beautiful", gone once she is there
-      const sk = prog(t, seaCue.t1 + 0.4, seaCue.t1 + 0.8, ease.outCubic) * (1 - prog(t, T.here! + 1, T.here! + 2));
+      const sk = prog(t, seaCue.t1 + 0.4, seaCue.t1 + 0.8, ease.outCubic) * (1 - prog(t, T.landed! + 1, T.landed! + 2));
       if (sk > 0) this.saleSign(c, q.x + 14 * sz, q.y - 14 * sz, t, sk);
       if (beamI > 0) {
         // the beams' bright cores, out from the lamp
@@ -435,12 +450,13 @@ export default class MapScene extends Scene {
     // who walks with her: names by the lamps when they join, while her father's plate is open, and on the islet
     {
       const fc = this.fatherCue();
+      const islet = Math.max(prog(t, T.landed! + 2.4, T.landed! + 3) * (1 - prog(t, T.landed! + 7, T.landed! + 7.8)), prog(t, T.here! + 0.6, T.here! + 1.2) * (1 - prog(t, T.here! + 6, T.here! + 6.8)));
       const shown = (since: number) => Math.max(
         prog(t, since + 0.4, since + 0.8) * (1 - prog(t, since + 4.5, since + 5.2)),
         prog(t, fc.t0 + 0.8, fc.t0 + 1.4) * (1 - prog(t, fc.t1, fc.t1 + 0.6)),
-        prog(t, T.here! + 1.8, T.here! + 2.4) * (1 - prog(t, T.here! + 7, T.here! + 7.8)));
+        islet);
       for (const [name, x, y, since] of who) {
-        const k = name === 'MARA' ? Math.max(prog(t, fc.t0 + 0.8, fc.t0 + 1.4) * (1 - prog(t, fc.t1, fc.t1 + 0.6)), prog(t, T.here! + 1.8, T.here! + 2.4) * (1 - prog(t, T.here! + 7, T.here! + 7.8))) : shown(since);
+        const k = name === 'MARA' ? Math.max(prog(t, fc.t0 + 0.8, fc.t0 + 1.4) * (1 - prog(t, fc.t1, fc.t1 + 0.6)), islet) : shown(since);
         const wide = prog(t, fc.t0 - 1, fc.t0) * (1 - prog(t, fc.t1, fc.t1 + 0.6)) > 0.5;
         if (k > 0) this.nameTag(c, name, x, y, k, name === 'NOA' ? 6 : (name === 'MARA' ? 0 : name === 'JONAH' ? 1 : 2) + (wide ? 3 : 0));
       }

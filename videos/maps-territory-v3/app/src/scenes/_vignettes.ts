@@ -8,7 +8,7 @@ import { rgba, LIN } from '../engine/palette';
 import { clamp, ease, hash, noise1, TAU, lerp } from '../engine/util';
 import { strokeText } from '../engine/stroke';
 import { Plot, type Pt } from './_plot';
-import { PLAN_PTS, track } from './_world';
+import { PLAN_PTS, track, coastX } from './_world';
 import type { RGB } from './_mt';
 
 export const DW = 700, DH = 380;
@@ -156,7 +156,7 @@ const P1: PlateDef = {
     c.beginPath(); c.moveTo(-34, -68); c.lineTo(-18, -68); c.stroke();
     c.beginPath(); c.moveTo(52, -16); c.lineTo(52, -66); c.moveTo(52, -66); c.lineTo(-52, -50); c.moveTo(52, -66); c.lineTo(92, -22); c.stroke();
     c.fillStyle = rgba('signal', 1);
-    c.beginPath(); c.moveTo(52, -66); c.lineTo(70, -62 + Math.sin(a.t * 6) * 2); c.lineTo(52, -58); c.closePath(); c.fill();
+    c.beginPath(); c.moveTo(52, -66); c.lineTo(34, -62 + Math.sin(a.t * 6) * 2); c.lineTo(52, -58); c.closePath(); c.fill(); // streams aft: she is under way
     // rail, and Mara at the stern, looking back
     c.strokeStyle = rgba('bone', 0.8); c.lineWidth = 0.9;
     c.beginPath(); c.moveTo(-112, -24); c.lineTo(-72, -24); c.stroke();
@@ -507,7 +507,7 @@ const P5: PlateDef = {
     p.set({ w: 1.1, a: 0.9, speed: 1 });
     p.line(540, 0, 560, 40); p.line(680, 0, 660, 40);
     p.rect(530, 40, 160, 72);
-    const name = strokeText("Mara's", 'script', 56, 0);
+    const name = strokeText("Mara's", 'script', 40, 0);
     p.set({ w: 2.2, a: 1, col: 'ember', wobble: 0 });
     p.text(name, 610 - name.width / 2, 92);
     p.set({ col: 'bone', wobble: 0.35 });
@@ -583,7 +583,7 @@ function planOnSheet(p: Plot, q: [Pt, Pt, Pt, Pt]) {
   // the coast, roughly
   p.set({ w: 0.8, a: 0.6, speed: 1.5, wobble: 0.6 });
   const co: Pt[] = [];
-  for (let y = 4; y <= 96; y += 6) co.push(at(84 + 6 * Math.sin(y / 9), y));
+  for (let y = 2; y <= 98; y += 3) co.push(at(Math.min(99, coastX(y)), y));
   p.path(co);
   p.set({ speed: 1, wobble: 0.35 });
 }
@@ -714,10 +714,9 @@ const P7: PlateDef = {
     p.path([[0, 336], [70, 330], [160, 334], [230, 348], [270, 380]]);
     p.with({ w: 0.6, a: 0.45, speed: 3 }, () => p.hatch([[0, 340], [70, 334], [160, 338], [230, 352], [266, 380], [0, 380]], -0.7, 5));
     p.set({ w: 1.5, a: 1, col: 'ember' });
-    figure(p, 112, 331, 52, true);
-    p.line(118, 290, 140, 276); // pointing out to sea
-    figure(p, 150, 332, 58);
-    figure(p, 172, 334, 30, true);
+    figure(p, 122, 331, 52, true);
+    p.line(128, 290, 150, 276); // pointing out to sea
+    figure(p, 166, 332, 58); // Jonah (Ida has left home by now)
     p.set({ col: 'bone' });
   },
   anim(c, a) {
@@ -864,10 +863,16 @@ const P0: PlateDef = {
     // the kitchen: a window, the table's edge, the grain of the wood
     p.set({ w: 1.2, a: 0.9, speed: 1 });
     p.rect(40, 16, 170, 116); p.line(125, 16, 125, 132); p.line(40, 74, 210, 74);
-    p.with({ w: 0.7, a: 0.55, speed: 2 }, () => { p.wave(46, 204, 112, 4, 60); p.wave(46, 204, 122, 3, 44, 1); });
+    p.line(32, 20, 218, 20);
+    p.with({ w: 0.7, a: 0.55, speed: 2 }, () => { for (const [x0, d] of [[42, 1], [208, -1]] as [number, number][]) for (let j = 0; j < 4; j++) p.bez([x0 + d * j * 6, 20], [x0 + d * (j * 6 + 4), 60], [x0 + d * (j * 6 - 2), 100], [x0 + d * (j * 7 + 2), 134], 12); });
     p.line(0, 168, DW, 168); p.line(0, 175, DW, 175);
     p.set({ w: 0.6, a: 0.3, speed: 4, wobble: 0.6 });
-    for (let y = 192; y < DH; y += 16) p.wave(0, DW, y, 1.6, 140 + y, y * 0.1);
+    {
+      const objs: Pt[][] = [rrect(112, 248, 150, 96, 0.16), PCARD, DRAW, ...[0, 1, 2, 3].map((i) => rrect(470 + i * 24, 345 + (i % 2) * 8, 60, 9, 0.5 - i * 0.3))];
+      const inside = (x: number, y: number, q: Pt[]) => { let c = false; for (let i = 0, j = q.length - 1; i < q.length; j = i++) { const [xi, yi] = q[i]!, [xj, yj] = q[j]!; if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c; } return c; };
+      // the grain: broken under the envelope, the postcard, her drawing and the crayons (they lie on the table)
+      p.hatch(rect(0, 182, DW, DH - 182), 0.02, 16, (x, y) => (objs.some((q) => inside(x, y, q)) ? 0 : 1));
+    }
     p.set({ w: 1.2, a: 0.95, speed: 1, wobble: 0.35 });
     // the pendant lamp
     p.line(430, 0, 430, 40);
@@ -882,7 +887,7 @@ const P0: PlateDef = {
     const c = (u: number, v: number) => inQuad(PCARD, u, v);
     p.path([c(0.05, 0.62), c(0.95, 0.62)]);
     for (let r = 0; r < 4; r++) p.path(Array.from({ length: 12 }, (_, i) => c(0.06 + i * 0.08, 0.7 + r * 0.07 + 0.01 * Math.sin(i * 1.7 + r))));
-    const t0 = c(0.68, 0.62);
+    const t0 = c(0.56, 0.62);
     miniTower(p, t0[0], t0[1], 54);
     p.arc(c(0.25, 0.62)[0], c(0.25, 0.62)[1], 14, 14, Math.PI, TAU);
     const st = c(0.84, 0.08);
@@ -946,10 +951,13 @@ const P00: PlateDef = {
     p.set({ w: 0.8, a: 0.7 });
     p.path(Array.from({ length: 40 }, (_, i) => { const x = -10 + i * 19; const u = (x - 350) / 360; return [x, 26 + 34 * (1 - u * u) - 6] as Pt; }));
     for (const [x, y] of BULBS) p.circle(x, y + 2, 3.5);
-    // a bicycle by the door
+    // the door in the back wall, and a bicycle leaning on the wall beside it
     p.set({ w: 1.1, a: 0.85 });
-    p.circle(48, 330, 22); p.circle(122, 330, 22);
-    p.path([[48, 330], [78, 300], [110, 300], [122, 330]]); p.path([[78, 300], [86, 330], [110, 300]]); p.line(110, 300, 114, 286); p.line(78, 300, 74, 290);
+    p.path([[40, 156], [40, 80], [92, 80], [92, 156]]); p.circle(84, 120, 2);
+    const bs = 0.55, bx0 = 104, by0 = 156;
+    const B = (x: number, y: number): Pt => [bx0 + (x - 48) * bs, by0 + (y - 352) * bs];
+    p.circle(...B(48, 330), 22 * bs); p.circle(...B(122, 330), 22 * bs);
+    p.path([B(48, 330), B(78, 300), B(110, 300), B(122, 330)]); p.path([B(78, 300), B(86, 330), B(110, 300)]); p.path([B(110, 300), B(114, 286)]); p.path([B(78, 300), B(74, 290)]);
   },
   anim(c, a) {
     const k = clamp((a.k - 0.35) / 0.35);
@@ -1007,7 +1015,14 @@ const P8F: PlateDef = {
     const nm = strokeText("Mara's", 'script', 26, 0);
     p.with({ w: 1.4, wobble: 0 }, () => p.text(nm, 350 - nm.width / 2, 207));
     p.set({ w: 0.6, a: 0.4, speed: 3, wobble: 0.2 });
-    for (let y = 100, r = 0; y < 330; y += 10, r++) { const x0 = y < 92 ? 300 : 222; p.line(x0, y, 478, y); }
+    const OPEN: [number, number, number, number][] = [[252, 110, 46, 56], [404, 110, 46, 56], [250, 230, 140, 82], [410, 226, 50, 104], [286, 184, 128, 30]];
+    for (let y = 100; y < 330; y += 10) {
+      // each course, broken where a window, the door or the sign is
+      const cuts = OPEN.filter(([, oy, , oh]) => y > oy - 1 && y < oy + oh + 1).map(([ox, , ow]) => [ox - 2, ox + ow + 2]).sort((u, w) => u[0]! - w[0]!);
+      let x = 222;
+      for (const [a0, a1] of cuts) { if (a0! > x) p.line(x, y, a0!, y); x = Math.max(x, a1!); }
+      if (x < 478) p.line(x, y, 478, y);
+    }
     p.set({ w: 1.1, a: 0.85, speed: 1, wobble: 0.35 });
     p.line(0, 340, DW, 340);
     // the bucket chain, from the pump
@@ -1021,8 +1036,11 @@ const P8F: PlateDef = {
     // and on the right, already, new bricks and a ladder
     p.set({ w: 0.9, a: 0.8 });
     for (let r = 0; r < 5; r++) for (let i = 0; i < 6 - r; i++) p.rect(560 + i * 20 + r * 10, 330 - (r + 1) * 9, 18, 8);
-    p.line(500, 340, 540, 120); p.line(522, 340, 562, 120);
-    for (let i = 1; i < 10; i++) { const u = i / 10; p.line(lerp(500, 540, u), lerp(340, 120, u), lerp(522, 562, u), lerp(340, 120, u)); }
+    // the ladder: its feet on the ground out from the wall, its top resting on the facade under the upper window
+    p.set({ w: 1.1, a: 0.9 });
+    const L0: Pt = [512, 340], L1: Pt = [462, 170], w = 20;
+    p.line(L0[0], L0[1], L1[0], L1[1]); p.line(L0[0] + w, L0[1], L1[0] + w, L1[1]);
+    for (let i = 1; i < 9; i++) { const u = i / 9; p.line(lerp(L0[0], L1[0], u), lerp(L0[1], L1[1], u), lerp(L0[0], L1[0], u) + w, lerp(L0[1], L1[1], u)); }
   },
   anim(c, a) {
     const k = clamp((a.k - 0.3) / 0.35);
@@ -1359,21 +1377,30 @@ const PV9: PlateDef = {
       const y0 = 170 + 210 * u0 * u0, y1 = 170 + 210 * u1 * u1;
       c.beginPath(); c.moveTo(380 + (430 - 380) * u0 * u0, y0); c.lineTo(380 + (430 - 380) * u1 * u1, y1); c.stroke();
     }
-    // the van, bobbing
-    const bx = 430, by = 330 + 1.5 * Math.sin(a.t * 9);
-    c.save(); c.translate(bx, by);
+    // the van, seen from behind as it drives away toward the horizon (the road's markings come toward us)
+    const bx = 468, by = 330 + 1.5 * Math.sin(a.t * 9);
+    c.save(); c.translate(bx, by); c.scale(0.85, 0.85); // in the right-hand lane
     c.fillStyle = rgba('ink2', 1); c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.5;
-    c.beginPath(); c.moveTo(-60, 0); c.lineTo(-60, -52); c.quadraticCurveTo(-60, -64, -46, -64); c.lineTo(46, -64); c.quadraticCurveTo(60, -64, 60, -52); c.lineTo(60, 0); c.closePath(); c.fill(); c.stroke();
-    c.beginPath(); c.moveTo(-60, -30); c.lineTo(60, -30); c.stroke();
-    c.strokeRect(-50, -56, 44, 20); c.strokeRect(6, -56, 44, 20);
-    c.strokeRect(-40, -88, 80, 22);
-    c.beginPath(); c.moveTo(-36, -88); c.lineTo(-30, -96); c.lineTo(30, -96); c.lineTo(36, -88); c.stroke();
-    for (const x of [-40, 40]) {
-      c.beginPath(); c.arc(x, 0, 12, 0, TAU); c.fill(); c.stroke();
-      for (let j = 0; j < 4; j++) { const an = a.t * 12 + (j * Math.PI) / 2; c.beginPath(); c.moveTo(x, 0); c.lineTo(x + Math.cos(an) * 10, Math.sin(an) * 10); c.stroke(); }
-    }
-    c.fillStyle = rgba('ember', 0.95);
-    c.beginPath(); c.arc(-28, -46, 3, 0, TAU); c.fill(); c.beginPath(); c.arc(28, -46, 2.4, 0, TAU); c.fill();
+    // body: the rear, a rounded box on its wheels
+    c.beginPath(); c.moveTo(-56, -6); c.lineTo(-56, -56); c.quadraticCurveTo(-56, -70, -42, -70); c.lineTo(42, -70); c.quadraticCurveTo(56, -70, 56, -56); c.lineTo(56, -6); c.closePath(); c.fill(); c.stroke();
+    // tyres under the body (we see their backs), the bumper, the number plate
+    c.fillRect(-50, -8, 18, 14); c.strokeRect(-50, -8, 18, 14); c.fillRect(32, -8, 18, 14); c.strokeRect(32, -8, 18, 14);
+    c.beginPath(); c.rect(-60, -14, 120, 8); c.fill(); c.stroke();
+    c.strokeRect(-14, -26, 28, 9);
+    // the rear window (two figures inside, looking ahead), the engine grille, the spare wheel
+    c.strokeRect(-40, -62, 80, 22);
+    c.strokeStyle = rgba('bone', 0.7); c.lineWidth = 1;
+    for (const hx of [-18, 16]) { c.beginPath(); c.arc(hx, -48, 5, 0, TAU); c.stroke(); }
+    c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.2;
+    for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(-26, -36 + i * 4); c.lineTo(26, -36 + i * 4); c.stroke(); }
+    // roof rack with the luggage
+    c.lineWidth = 1.3;
+    c.beginPath(); c.moveTo(-44, -70); c.lineTo(-44, -76); c.lineTo(44, -76); c.lineTo(44, -70); c.stroke();
+    c.beginPath(); c.rect(-34, -92, 40, 16); c.fill(); c.stroke();
+    c.beginPath(); c.rect(10, -88, 26, 12); c.fill(); c.stroke();
+    // tail lights (amber)
+    c.fillStyle = rgba('signal', 0.95);
+    c.fillRect(-54, -34, 7, 12); c.fillRect(47, -34, 7, 12);
     c.restore();
     // dust behind it
     for (let i = 0; i < 8; i++) {
@@ -1386,7 +1413,7 @@ const PV9: PlateDef = {
   glow(g, a) {
     g.lamp(170, 170, 2.0, 0.75);
     const by = 330 + 1.5 * Math.sin(a.t * 9);
-    g.lamp(402, by - 46, 0.25, 0.7); g.lamp(458, by - 46, 0.2, 0.6);
+    g.lamp(468 - 43, by - 24, 0.2, 0.55); g.lamp(468 + 43, by - 24, 0.2, 0.55);
   },
 };
 
@@ -1400,15 +1427,9 @@ const PL11: PlateDef = {
     p.set({ w: 1.2, a: 0.9, speed: 1 });
     p.line(0, 300, DW, 300); p.line(0, 312, DW, 312);
     p.path([[0, 40], [DW, 40]]); p.path([[0, 52], [DW, 52]]);
-    for (let x = 60; x < DW; x += 150) p.line(x, 52, x, 300);
     p.with({ w: 0.6, a: 0.4, speed: 3 }, () => p.hatch(rect(0, 0, DW, 40), 0.05, 6));
     p.line(560, 52, 560, 70); p.circle(560, 90, 20); p.circle(560, 90, 2);
-    p.line(110, 300, 110, 150); p.path([[98, 150], [122, 150], [118, 132], [102, 132]], true);
-    // Mara on the platform, a cake tin under her arm
-    p.set({ w: 1.6, a: 1, col: 'ember' });
-    figure(p, 210, 300, 96, true);
-    p.rect(176, 238, 22, 14);
-    p.set({ col: 'bone' });
+    // (the canopy's posts, the lamp and Mara are drawn over the train, in anim)
   },
   anim(c, a) {
     const k = clamp((a.k - 0.3) / 0.35);
@@ -1436,6 +1457,20 @@ const PL11: PlateDef = {
       }
     }
     c.restore();
+    // in front of the train: the canopy's posts, the platform lamp, and Mara with a cake tin under her arm
+    c.strokeStyle = rgba('bone', 0.9); c.lineWidth = 1.2;
+    for (let x = 60; x < DW; x += 150) { c.beginPath(); c.moveTo(x, 52); c.lineTo(x, 300); c.stroke(); }
+    c.fillStyle = rgba('ink2', 1);
+    c.beginPath(); c.moveTo(110, 300); c.lineTo(110, 150); c.stroke();
+    c.beginPath(); c.moveTo(98, 150); c.lineTo(122, 150); c.lineTo(118, 132); c.lineTo(102, 132); c.closePath(); c.fill(); c.stroke();
+    {
+      const x = 210, y = 300, h = 96;
+      c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.6; c.fillStyle = rgba('ink2', 1);
+      c.beginPath(); c.arc(x, y - h + h * 0.09, h * 0.09, 0, TAU); c.fill(); c.stroke();
+      c.beginPath(); c.moveTo(x - h * 0.06, y - h * 0.8); c.lineTo(x - h * 0.15, y - h * 0.35); c.lineTo(x + h * 0.15, y - h * 0.35); c.lineTo(x + h * 0.06, y - h * 0.8); c.closePath(); c.fill(); c.stroke();
+      c.beginPath(); c.moveTo(x - h * 0.05, y - h * 0.38); c.lineTo(x - h * 0.07, y); c.moveTo(x + h * 0.05, y - h * 0.38); c.lineTo(x + h * 0.07, y); c.stroke();
+      c.strokeRect(176, 238, 22, 14);
+    }
     // Mara's hand, waving back
     c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.6;
     const wv = Math.sin(a.t * 6 + 1) * 0.45;
@@ -1484,13 +1519,16 @@ const PB13: PlateDef = {
     c.fillStyle = rgba('ink2', 1); c.strokeStyle = rgba('bone', 0.95); c.lineWidth = 1.5;
     c.beginPath(); c.moveTo(-74, -10); c.lineTo(78, -10); c.quadraticCurveTo(66, 14, 40, 16); c.lineTo(-56, 16); c.quadraticCurveTo(-72, 8, -74, -10); c.closePath(); c.fill(); c.stroke();
     c.beginPath(); c.moveTo(0, -10); c.lineTo(0, -150); c.stroke();
-    const fl = 6 * Math.sin(a.t * 2.2);
-    c.beginPath(); c.moveTo(4, -146); c.quadraticCurveTo(48 + fl, -80, 70, -16); c.lineTo(4, -16); c.closePath(); c.fill(); c.stroke();
+    const fl = 5 * Math.sin(a.t * 2.2);
+    // the mainsail, aft of the mast, on its boom (the boom swings over the cockpit, above her head)
+    c.beginPath(); c.moveTo(-3, -148); c.quadraticCurveTo(-30 - fl, -100, -72, -48); c.lineTo(-3, -48); c.closePath(); c.fill(); c.stroke();
     c.save(); c.clip();
     c.strokeStyle = rgba('bone', 0.45); c.lineWidth = 0.7;
-    for (let y = -146; y < -16; y += 6) { c.beginPath(); c.moveTo(0, y); c.lineTo(80, y + 30); c.stroke(); }
+    for (let y = -150; y < -46; y += 6) { c.beginPath(); c.moveTo(-80, y + 24); c.lineTo(0, y); c.stroke(); }
     c.restore();
-    c.beginPath(); c.moveTo(-4, -120); c.quadraticCurveTo(-34 - fl * 0.6, -70, -54, -16); c.lineTo(-4, -16); c.closePath(); c.stroke();
+    c.lineWidth = 2; c.beginPath(); c.moveTo(-2, -48); c.lineTo(-76, -48); c.stroke(); c.lineWidth = 1.5;
+    // the jib, forward: from the masthead to the bow
+    c.beginPath(); c.moveTo(4, -136); c.quadraticCurveTo(40 + fl * 0.6, -80, 74, -12); c.lineTo(6, -16); c.closePath(); c.stroke();
     // Mara at the tiller
     c.strokeStyle = rgba('ember', 1); c.lineWidth = 1.6;
     c.beginPath(); c.arc(-48, -34, 5, 0, TAU); c.stroke();

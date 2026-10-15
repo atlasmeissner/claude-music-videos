@@ -8,7 +8,7 @@ This is the third version. [Version 1](../maps-territory/) told the idea in twen
 [version 2](../maps-territory-v2/) walked the artist's own life across one map. Version 3 keeps the one map and
 the one continuous shot, and tells **a fictional life, planned and unplanned**.
 
-**Watch / download:** the 1080p30 render (5:19, 476 MB) is in [`render/`](render/), split into five parts (GitHub's
+**Watch / download:** the 1080p30 render (5:19, 473 MB) is in [`render/`](render/), split into five parts (GitHub's
 100 MB file limit); join them with one command, see [`render/README.md`](render/README.md):
 `cat maps-territory-v3_1080p30.mp4.part0 … maps-territory-v3_1080p30.mp4.part4 > maps-territory-v3_1080p30.mp4`.
 
@@ -55,15 +55,17 @@ stroke by stroke, with its own gold light, and a caption that strikes out what w
 | 19 | THE MAP, FOUND, 2041 | The plan, as drawn in 1952 | Noa found the old plan in a drawer, and drew in the life Mara lived. |
 
 On the map, Jonah's trail joins hers at the feast and they walk on as two lines; a small lamp (Ida) follows from
-1978 (name tags make clear who walks with her). Her father never leaves HOME: when he dies in 1994 the camera pulls
-back to the whole sheet and his lamp there goes out with the candle in his plate. Her trail turns grey while she is
-lost, warming again when she reaches the seaside, the sea from her childhood postcard, with a lighthouse for sale
-on the islet. She buys it; Jonah mends its lamp; in the instrumental the family crosses to the islet, **HERE**, in
-1999, and lights it. Every turn of the beam cuts the paper away a little further out, a spiral, while the years run
-on to 2005. In the last chorus Noa's lamp joins them, RETIREMENT is stamped **UNVISITED** (she never retired), Jonah's
-lamp goes out (1949–2019), and the plan is peeled off like tape. In the outro Mara's own lamp goes out, at 82
-(1952–2034); the lighthouse keeps turning. Then the coda: in 2041 Noa finds the old plan and draws onto it, in gold,
-the road Mara actually walked. The French horn rings out from the lighthouse, and the title.
+1978 (name tags make clear who walks with her). When Ida leaves home in 1991 her lamp goes off on its own to the
+north-west, and the two of them walk on. Her father never leaves HOME: when he dies in 1994 the camera pulls back to
+the whole sheet and his lamp there goes out with the candle in his plate. Her trail turns grey while she is lost,
+warming again when she reaches the seaside, the sea from her childhood postcard, with a lighthouse for sale on the
+islet. She buys it and the two of them cross to the islet, **HERE**, in 1999; Jonah mends the old lamp over the
+winter, and on "beautiful" the lighthouse is lit. Every turn of the beam cuts the paper away a little further out, a
+spiral, while the years run on. In 2006 Ida comes back across the water with her daughter Noa; RETIREMENT is stamped
+**UNVISITED** (she never retired); Jonah's lamp goes out (1949–2019); the plan is peeled off like tape. In the outro
+Mara's own lamp goes out, at 82 (1952–2034); Ida keeps the lighthouse turning. Then the coda: in 2041 Noa finds the
+old plan and draws onto it, in gold, the road Mara actually walked. The French horn rings out from the lighthouse,
+and the title.
 
 Full plan and cue sheet: [`docs/TREATMENT.md`](docs/TREATMENT.md).
 

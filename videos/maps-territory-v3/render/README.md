@@ -1,6 +1,6 @@
 # Maps & Territory (version 3) — the render
 
-`maps-territory-v3_1080p30.mp4` (1920×1080, 30 fps, 5:19, H.264 + AAC, 476 MB) split into five pieces, because
+`maps-territory-v3_1080p30.mp4` (1920×1080, 30 fps, 5:19, H.264 + AAC, 473 MB) split into five pieces, because
 GitHub caps files at 100 MB. Download all five parts into one folder, then join them:
 
 **macOS / Linux**
@@ -16,7 +16,7 @@ copy /b maps-territory-v3_1080p30.mp4.part0 + maps-territory-v3_1080p30.mp4.part
 ```
 
 Check the result (optional) — the SHA-256 must be
-`29fd60ce80a4086cf5c76ad3f84b4936df213d13e2eb2a8389303ee157f90250`:
+`8473c12387f217ab400033902a29d54250566fe90c7f09ee2ec83c4424cf75db`:
 
 ```sh
 shasum -a 256 maps-territory-v3_1080p30.mp4        # macOS (Linux: sha256sum maps-territory-v3_1080p30.mp4)
